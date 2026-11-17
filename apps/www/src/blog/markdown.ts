@@ -7,7 +7,7 @@ import { formatPostDate } from "./format";
 type Post = CollectionEntry<"blog">;
 
 export const BLOG_DESCRIPTION =
-  "Notes on running an open source AI agent yourself, including setup and how Rakazo compares with other projects.";
+  "Notes on running an open source AI agent yourself, including setup and how RunTars compares with other projects.";
 
 function siteUrl(href: string): string {
   return href.startsWith("/") ? `${SITE_URL}${href}` : href;
@@ -65,7 +65,7 @@ export function blogPostMarkdown(post: Post): string {
 
 export function blogIndexMarkdown(posts: readonly Post[]): string {
   return [
-    "# Rakazo blog",
+    "# RunTars blog",
     "",
     BLOG_DESCRIPTION,
     "",

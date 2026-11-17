@@ -651,7 +651,7 @@ describe("DesktopUpdateController", () => {
   });
 
   describe("with a download verifier", () => {
-    const downloaded = { version: "0.2.0", downloadedFile: "/cache/Rakazo-0.2.0.AppImage" };
+    const downloaded = { version: "0.2.0", downloadedFile: "/cache/RunTars-0.2.0.AppImage" };
 
     function verifiedUpdater() {
       let fake: ReturnType<typeof fakeUpdater>;

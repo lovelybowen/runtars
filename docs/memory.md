@@ -33,9 +33,9 @@ their notes. In **Settings → Memory**, choose **Connect memory provider**:
 
 - **Supermemory**: its cloud service, or your own instance.
 - **Serenity**: choose **Recall and write**, or **Recall only** to keep it read-only.
-- **Honcho**: saves and recalls facts using Rakazo’s own peers. Optionally, enter a workspace
+- **Honcho**: saves and recalls facts using RunTars’s own peers. Optionally, enter a workspace
   and **User peer** to also recall what Honcho already knows about you. That existing peer stays
-  read-only; Rakazo writes new facts to its own peers in the same workspace.
+  read-only; RunTars writes new facts to its own peers in the same workspace.
 - **Hindsight**: its cloud service, or your own server. Each bot keeps its own memory; with the
   Shared scope, bots also share one memory for the Space, including learned direct-chat turns.
   Bots learn from their conversations (their
@@ -60,7 +60,7 @@ their notes. In **Settings → Memory**, choose **Connect memory provider**:
   `rakazo-` are reserved for Space isolation and cannot be imported. Bots can also ask
   their own bot memory to answer a question by combining what it knows; reflection does not query
   the Space's shared bank. Shared facts remain available through recall. Summaries of long chats stay in
-  Rakazo: Hindsight learns from the conversation itself, not from summaries of it.
+  RunTars: Hindsight learns from the conversation itself, not from summaries of it.
 
 To change a connected provider's settings, choose **Edit**. You only need to enter the key again
 when you change where it connects or what it can read.

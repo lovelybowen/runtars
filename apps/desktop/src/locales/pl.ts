@@ -4,7 +4,7 @@ export const PL_MESSAGES: Record<string, string> = {
   "Check for Updates…": "Sprawdź aktualizacje…",
   "Computer Access…": "Dostęp do komputera…",
   "Revoke Local Computer Access": "Cofnij dostęp do lokalnego komputera",
-  "Change Rakazo Server…": "Zmień serwer Rakazo…",
+  "Change RunTars Server…": "Zmień serwer RunTars…",
   "Stop Local Stack": "Zatrzymaj lokalne usługi",
   "Hide {name}": "Ukryj {name}",
   "Hide Others": "Ukryj pozostałe",
@@ -38,12 +38,12 @@ export const PL_MESSAGES: Record<string, string> = {
   "Bring All to Front": "Przenieś wszystkie na wierzch",
 
   // Updates
-  "Rakazo {version} is ready to install.": "Rakazo {version} jest gotowe do zainstalowania.",
+  "RunTars {version} is ready to install.": "RunTars {version} jest gotowe do zainstalowania.",
   Restart: "Uruchom ponownie",
   Later: "Później",
   "Could not install the update.": "Nie udało się zainstalować aktualizacji.",
   "Could not check for updates.": "Nie udało się sprawdzić aktualizacji.",
-  "Rakazo is up to date.": "Rakazo jest aktualne.",
+  "RunTars is up to date.": "RunTars jest aktualne.",
   "Version {version}": "Wersja {version}",
   "Automatic updates are turned off for this install.":
     "Automatyczne aktualizacje są wyłączone w tej instalacji.",
@@ -55,8 +55,8 @@ export const PL_MESSAGES: Record<string, string> = {
     "Przenieś Rakazo do folderu Aplikacje, aby instalować aktualizacje.",
   "Free up disk space to install updates.":
     "Zwolnij miejsce na dysku, aby zainstalować aktualizacje.",
-  "This update could not be verified. Reinstall Rakazo from a trusted download.":
-    "Nie udało się zweryfikować aktualizacji. Zainstaluj Rakazo ponownie z zaufanego źródła.",
+  "This update could not be verified. Reinstall RunTars from a trusted download.":
+    "Nie udało się zweryfikować aktualizacji. Zainstaluj RunTars ponownie z zaufanego źródła.",
   "The update could not be completed. Try again later.":
     "Nie udało się dokończyć aktualizacji. Spróbuj ponownie później.",
   "Could not reach the update server.": "Nie udało się połączyć z serwerem aktualizacji.",
@@ -79,15 +79,15 @@ export const PL_MESSAGES: Record<string, string> = {
     "Logowanie już trwa. Anuluj je i spróbuj ponownie.",
   "Could not open browser sign-in. Close other sign-in attempts and retry.":
     "Nie udało się otworzyć logowania w przeglądarce. Zamknij inne próby logowania i spróbuj ponownie.",
-  "Sign-in callback rejected. Return to Rakazo to retry.":
-    "Odrzucono odpowiedź logowania. Wróć do Rakazo i spróbuj ponownie.",
-  "You can close this tab and return to Rakazo.": "Możesz zamknąć tę kartę i wrócić do Rakazo.",
+  "Sign-in callback rejected. Return to RunTars to retry.":
+    "Odrzucono odpowiedź logowania. Wróć do RunTars i spróbuj ponownie.",
+  "You can close this tab and return to RunTars.": "Możesz zamknąć tę kartę i wrócić do RunTars.",
 
   // Setup window
-  "Set up Rakazo": "Skonfiguruj Rakazo",
-  "Quit Rakazo": "Zakończ Rakazo",
-  "Welcome to Rakazo": "Witaj w Rakazo",
-  "Choose where Rakazo runs.": "Wybierz, gdzie działa Rakazo.",
+  "Set up RunTars": "Skonfiguruj RunTars",
+  "Quit RunTars": "Zakończ RunTars",
+  "Welcome to RunTars": "Witaj w RunTars",
+  "Choose where RunTars runs.": "Wybierz, gdzie działa RunTars.",
   Instance: "Instancja",
   "This computer": "Ten komputer",
   "Existing instance": "Istniejąca instancja",
@@ -100,14 +100,14 @@ export const PL_MESSAGES: Record<string, string> = {
   Continue: "Kontynuuj",
   Retry: "Spróbuj ponownie",
   "Getting ready…": "Przygotowywanie…",
-  "Downloading Rakazo…": "Pobieranie Rakazo…",
-  "Starting Rakazo…": "Uruchamianie Rakazo…",
+  "Downloading RunTars…": "Pobieranie RunTars…",
+  "Starting RunTars…": "Uruchamianie RunTars…",
   "Almost ready…": "Prawie gotowe…",
-  "Rakazo is ready.": "Rakazo jest gotowe.",
+  "RunTars is ready.": "RunTars jest gotowe.",
   "{size} downloaded": "Pobrano {size}",
   "Connecting…": "Łączenie…",
   "Checking…": "Sprawdzanie…",
-  "Rakazo answered at {url}.": "Rakazo odpowiedziało pod adresem {url}.",
+  "RunTars answered at {url}.": "RunTars odpowiedziało pod adresem {url}.",
   "Enter a server address first.": "Najpierw wpisz adres serwera.",
   "Could not save that address.": "Nie udało się zapisać tego adresu.",
   "Could not save that address. Try again.": "Nie udało się zapisać tego adresu. Spróbuj ponownie.",
@@ -118,8 +118,8 @@ export const PL_MESSAGES: Record<string, string> = {
   "Could not run the connection check. Try again.":
     "Nie udało się sprawdzić połączenia. Spróbuj ponownie.",
   "Setup bridge unavailable.": "Moduł konfiguracji jest niedostępny.",
-  "Setup could not start. Quit Rakazo and try again.":
-    "Nie udało się rozpocząć konfiguracji. Zamknij Rakazo i spróbuj ponownie.",
+  "Setup could not start. Quit RunTars and try again.":
+    "Nie udało się rozpocząć konfiguracji. Zamknij RunTars i spróbuj ponownie.",
 
   // Connecting to a server
   "Enter a server address.": "Wpisz adres serwera.",
@@ -127,10 +127,10 @@ export const PL_MESSAGES: Record<string, string> = {
   "Enter a valid server address. Public servers require HTTPS; a new local instance must use localhost.":
     "Wpisz poprawny adres serwera. Serwery publiczne wymagają HTTPS. Nowa lokalna instancja musi używać localhost.",
   "Invalid custom headers": "Nieprawidłowe nagłówki niestandardowe",
-  "That address redirects elsewhere. Enter the final Rakazo server address.":
-    "Ten adres przekierowuje w inne miejsce. Wpisz docelowy adres serwera Rakazo.",
-  "That address did not respond like a Rakazo server.":
-    "Ten adres nie odpowiedział jak serwer Rakazo.",
+  "That address redirects elsewhere. Enter the final RunTars server address.":
+    "Ten adres przekierowuje w inne miejsce. Wpisz docelowy adres serwera RunTars.",
+  "That address did not respond like a RunTars server.":
+    "Ten adres nie odpowiedział jak serwer RunTars.",
   "The server answered with HTTP {status}.": "Serwer odpowiedział kodem HTTP {status}.",
   "Timed out reaching that address.": "Przekroczono czas oczekiwania na połączenie z tym adresem.",
   "Nothing is listening at that address yet.": "Pod tym adresem nie działa jeszcze żadna usługa.",
@@ -155,8 +155,8 @@ export const PL_MESSAGES: Record<string, string> = {
     "Nie udało się zapisać konfiguracji. Przywrócono poprzednią instancję.",
   "Connected, but could not save setup for the next launch. Try Continue again.":
     "Połączono, ale nie udało się zapisać konfiguracji na następne uruchomienie. Kliknij ponownie Kontynuuj.",
-  "The app-managed Rakazo services are not ready. Retry setup.":
-    "Usługi Rakazo zarządzane przez aplikację nie są gotowe. Ponów konfigurację.",
+  "The app-managed RunTars services are not ready. Retry setup.":
+    "Usługi RunTars zarządzane przez aplikację nie są gotowe. Ponów konfigurację.",
 
   // Docker
   "Docker is installed, but Docker Compose is missing. Install Docker Desktop or the docker-compose-plugin.":
@@ -179,10 +179,10 @@ export const PL_MESSAGES: Record<string, string> = {
     "Docker przestał odpowiadać. Uruchom Docker i spróbuj ponownie.",
   "Docker Compose is missing. Install Docker Desktop or the docker-compose-plugin, then retry.":
     "Brakuje Docker Compose. Zainstaluj Docker Desktop lub docker-compose-plugin i spróbuj ponownie.",
-  "Downloading Rakazo images failed. Check the output below, then retry.":
-    "Nie udało się pobrać obrazów Rakazo. Sprawdź poniższe komunikaty i spróbuj ponownie.",
-  "Rakazo services did not start. Check the output below, then retry.":
-    "Usługi Rakazo nie uruchomiły się. Sprawdź poniższe komunikaty i spróbuj ponownie.",
+  "Downloading RunTars images failed. Check the output below, then retry.":
+    "Nie udało się pobrać obrazów RunTars. Sprawdź poniższe komunikaty i spróbuj ponownie.",
+  "RunTars services did not start. Check the output below, then retry.":
+    "Usługi RunTars nie uruchomiły się. Sprawdź poniższe komunikaty i spróbuj ponownie.",
   "The stack started but the web app did not answer. Retry, and check the output below.":
     "Usługi uruchomiły się, ale aplikacja webowa nie odpowiedziała. Spróbuj ponownie i sprawdź poniższe komunikaty.",
   "Could not prepare the local stack. Retry.":
@@ -206,15 +206,15 @@ export const PL_MESSAGES: Record<string, string> = {
   "Chat Details": "Szczegóły czatu",
   Help: "Pomoc",
   "Keyboard Shortcuts": "Skróty klawiszowe",
-  "Downloading Rakazo failed. Check the internet connection, then retry.":
-    "Nie udało się pobrać Rakazo. Sprawdź połączenie z internetem i spróbuj ponownie.",
+  "Downloading RunTars failed. Check the internet connection, then retry.":
+    "Nie udało się pobrać RunTars. Sprawdź połączenie z internetem i spróbuj ponownie.",
   "Could not move your data from Docker. Check the output below, then retry.":
     "Nie udało się przenieść danych z Dockera. Sprawdź dane wyjściowe poniżej i spróbuj ponownie.",
   "The computer runtime already running is too old. Update or quit it, then retry.":
     "Uruchomione już środowisko komputerów jest zbyt stare. Zaktualizuj je lub zamknij, a potem spróbuj ponownie.",
-  "Your Rakazo data is in a different computer runtime. Quit the one running, then retry.":
-    "Twoje dane Rakazo są w innym środowisku komputerów. Zamknij to, które jest uruchomione, a potem spróbuj ponownie.",
-  "Run Rakazo without Docker?": "Uruchamiać Rakazo bez Dockera?",
+  "Your RunTars data is in a different computer runtime. Quit the one running, then retry.":
+    "Twoje dane RunTars są w innym środowisku komputerów. Zamknij to, które jest uruchomione, a potem spróbuj ponownie.",
+  "Run RunTars without Docker?": "Uruchamiać RunTars bez Dockera?",
   "Your bots and data move over. Docker is stopped, not removed.":
     "Twoje boty i dane zostaną przeniesione. Docker zostanie zatrzymany, nie usunięty.",
   Move: "Przenieś",
@@ -223,12 +223,12 @@ export const PL_MESSAGES: Record<string, string> = {
   "Your data stays on this computer.": "Twoje dane zostają na tym komputerze.",
   "Connect to a server you or your team already run.":
     "Połącz się z serwerem, który Ty lub Twój zespół już prowadzicie.",
-  "Rakazo needs Docker Desktop to run on this computer.":
-    "Rakazo potrzebuje Docker Desktop, aby działać na tym komputerze.",
-  "Rakazo needs Docker to run on this computer.":
-    "Rakazo potrzebuje Dockera, aby działać na tym komputerze.",
-  "Docker Desktop is a free app that runs Rakazo in the background. Install it and open it once.":
-    "Docker Desktop to darmowa aplikacja, która uruchamia Rakazo w tle. Zainstaluj ją i otwórz raz.",
+  "RunTars needs Docker Desktop to run on this computer.":
+    "RunTars potrzebuje Docker Desktop, aby działać na tym komputerze.",
+  "RunTars needs Docker to run on this computer.":
+    "RunTars potrzebuje Dockera, aby działać na tym komputerze.",
+  "Docker Desktop is a free app that runs RunTars in the background. Install it and open it once.":
+    "Docker Desktop to darmowa aplikacja, która uruchamia RunTars w tle. Zainstaluj ją i otwórz raz.",
   "Install Docker Engine and start it.": "Zainstaluj Docker Engine i uruchom go.",
   "Download Docker Desktop": "Pobierz Docker Desktop",
   "Install Docker": "Zainstaluj Dockera",
