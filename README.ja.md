@@ -2,7 +2,7 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md)
 
-[![GitHub stars](https://img.shields.io/github/stars/elie222/rakazo?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/elie222/rakazo/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/lovelybowen/runtars?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/lovelybowen/runtars/stargazers)
 [![Discord コミュニティに参加](https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?labelColor=black&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RWwKa2Sn7h)
 [![App Store で iPhone 版をダウンロード](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
 [![Google Play で Android 版をダウンロード](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.rakazo.app)
@@ -13,12 +13,12 @@ Rakazo は、Grok Bot のオープンソースかつセルフホスト可能な�
 
 メモリ、ルーティン、アプリ、コンピューターを持つ常駐型の AI チームメイト。自分のマシンで、自分のモデルを使って動かせます。
 
-[Web](https://app.rakazo.com)、[デスクトップ](https://rakazo.com/download/)、[iPhone](https://apps.apple.com/app/rakazo/id6801531099)、
+[Web](https://app.runtars.com)、[デスクトップ](https://rakazo.com/download/)、[iPhone](https://apps.apple.com/app/rakazo/id6801531099)、
 [Android](https://play.google.com/store/apps/details?id=com.rakazo.app) で利用できます。
 
 Meta Muse、OpenAI Dots、Instinct、OpenClaw、Hermes Agent、Claude Duet の代替ツールでもあります。
 
-詳しくは [rakazo.com](https://rakazo.com) をご覧ください。
+詳しくは [runtars.com](https://runtars.com) をご覧ください。
 
 このドキュメントは[英語版 README](./README.md) の日本語訳です。リンク先のドキュメントは現在英語のみです。
 
@@ -104,8 +104,9 @@ Web、デスクトップ、iPhone、iPad、Android が同じサーバーにつ�
 Docker Engine、Compose プラグイン、curl、OpenSSL が必要です。リポジトリのクローンや Node のインストールは不要です。
 
 ```bash
+export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
 mkdir -p rakazo && cd rakazo &&
-curl -fsSLO https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/install-images.sh &&
+curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh
 ```
 
@@ -149,7 +150,7 @@ Node.js 24.x 系の 24.15.0 以降、または Node.js 26 以降と、
 pnpm 12、Docker が必要です。Node.js 25.x はサポートしていません。
 
 ```bash
-git clone https://github.com/elie222/rakazo.git
+git clone https://github.com/lovelybowen/runtars.git rakazo
 cd rakazo
 cp .env.example .env
 ```
@@ -320,13 +321,13 @@ pnpm test:e2e
 
 ## Rakazo と他製品の比較
 
-- [Grok Bot](https://rakazo.com/grok-bot-alternative/)
-- [Muse](https://rakazo.com/muse-alternative/)
-- [Dots](https://rakazo.com/dots-alternative/)
-- [Instinct](https://rakazo.com/instinct-alternative/)
-- [OpenClaw](https://rakazo.com/openclaw-alternative/)
-- [Hermes Agent](https://rakazo.com/hermes-alternative/)
-- [すべての比較](https://rakazo.com/alternatives/)
+- [Grok Bot](https://runtars.com/grok-bot-alternative/)
+- [Muse](https://runtars.com/muse-alternative/)
+- [Dots](https://runtars.com/dots-alternative/)
+- [Instinct](https://runtars.com/instinct-alternative/)
+- [OpenClaw](https://runtars.com/openclaw-alternative/)
+- [Hermes Agent](https://runtars.com/hermes-alternative/)
+- [すべての比較](https://runtars.com/alternatives/)
 
 ## 謝辞
 

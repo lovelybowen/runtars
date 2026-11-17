@@ -11,8 +11,9 @@
 ## Published images (ไม่ต้อง checkout)
 
 ```bash
+export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
 mkdir -p rakazo && cd rakazo &&
-curl -fsSLO https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/install-images.sh &&
+curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh
 ```
 

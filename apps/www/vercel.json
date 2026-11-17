@@ -3,14 +3,14 @@
   "redirects": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": { "eq": "www.rakazo.com" } }],
-      "destination": "https://rakazo.com/",
+      "has": [{ "type": "host", "value": { "eq": "www.runtars.com" } }],
+      "destination": "https://runtars.com/",
       "statusCode": 301
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": { "eq": "www.rakazo.com" } }],
-      "destination": "https://rakazo.com/:path*",
+      "has": [{ "type": "host", "value": { "eq": "www.runtars.com" } }],
+      "destination": "https://runtars.com/:path*",
       "statusCode": 301
     },
     {
@@ -30,7 +30,7 @@
     },
     {
       "source": "/github",
-      "destination": "https://github.com/elie222/rakazo",
+      "destination": "https://github.com/lovelybowen/runtars",
       "permanent": false
     },
     {
@@ -77,7 +77,7 @@
       "headers": [
         {
           "key": "Link",
-          "value": "<https://rakazo.com/>; rel=\"canonical\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\", </.well-known/ai-catalog.json>; rel=\"ai-catalog\"; type=\"application/ai-catalog+json\""
+          "value": "<https://runtars.com/>; rel=\"canonical\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\", </.well-known/ai-catalog.json>; rel=\"ai-catalog\"; type=\"application/ai-catalog+json\""
         }
       ]
     },
@@ -86,7 +86,7 @@
       "headers": [
         {
           "key": "Link",
-          "value": "<https://rakazo.com/:path/>; rel=\"canonical\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\", </.well-known/ai-catalog.json>; rel=\"ai-catalog\"; type=\"application/ai-catalog+json\""
+          "value": "<https://runtars.com/:path/>; rel=\"canonical\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\", </.well-known/ai-catalog.json>; rel=\"ai-catalog\"; type=\"application/ai-catalog+json\""
         }
       ]
     }

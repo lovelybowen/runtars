@@ -10,7 +10,7 @@ applying the instructions to your setup. Copy this prompt and fill in the placeh
 
 ```text
 Help me troubleshoot Rakazo using this guide:
-https://rakazo.com/docs/troubleshooting/
+https://runtars.com/docs/troubleshooting/
 
 Error code: <code from the relevant section below>
 App version: <version>
@@ -24,7 +24,7 @@ settings needed. Do not disable authentication or URL validation to bypass the e
 ```
 
 Review proposed commands before running them. If the guide does not resolve the error,
-[report a bug](https://github.com/elie222/rakazo/issues) with the error code, version,
+[report a bug](https://github.com/lovelybowen/runtars/issues) with the error code, version,
 installation method, and steps to reproduce. Remove secrets and personal information first.
 
 ## MCP OAuth redirect mismatch

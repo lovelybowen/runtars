@@ -79,34 +79,34 @@ ${getHomeCopy("en")
 
 ${home.cta.copy}
 
-- [Agent setup prompt](https://github.com/elie222/rakazo/blob/main/SETUP_PROMPT.md)
-- [Self-hosting guide](https://rakazo.com/self-hosted-ai-agent/)
-- [Full self-hosting reference](https://github.com/elie222/rakazo/blob/main/docs/self-host.md)
-- [OpenClaw comparison](https://rakazo.com/openclaw-alternative/)
-- [Source code](https://github.com/elie222/rakazo)
+- [Agent setup prompt](https://github.com/lovelybowen/runtars/blob/main/SETUP_PROMPT.md)
+- [Self-hosting guide](https://runtars.com/self-hosted-ai-agent/)
+- [Full self-hosting reference](https://github.com/lovelybowen/runtars/blob/main/docs/self-host.md)
+- [OpenClaw comparison](https://runtars.com/openclaw-alternative/)
+- [Source code](https://github.com/lovelybowen/runtars)
 
 ## Site index
 
-- [Agent instructions](https://rakazo.com/llms.txt)
-- [Self-hosted AI agent](https://rakazo.com/self-hosted-ai-agent/)
-- [OpenClaw comparison](https://rakazo.com/openclaw-alternative/)
-- [Alternatives](https://rakazo.com/alternatives/)
-- [Docs](https://rakazo.com/docs/)
-- [Integrations](https://rakazo.com/integrations/)
-- [Sandboxes for AI agents](https://rakazo.com/sandboxes/)
-- [Integration platforms for AI agents](https://rakazo.com/integration-platforms/)
-- [Voice providers for AI agents](https://rakazo.com/voice-providers/)
-- [Blog](https://rakazo.com/blog/)
-- [Grok Bot alternatives](https://rakazo.com/grok-bot-alternative/)
-- [Pricing](https://rakazo.com/pricing/): free to self-host, or hosted with your own model or RunTars credits.
-- [Enterprise](https://rakazo.com/enterprise/): SSO, SCIM, audit log, encryption at rest, and approval rules on your own infrastructure.
-- [Download](https://rakazo.com/download/): desktop, mobile, and web apps.
-- [About](https://rakazo.com/about/)
-- [Brand](https://rakazo.com/brand/)
-- [Support](https://rakazo.com/support/)
-- [Privacy](https://rakazo.com/privacy/)
-- [Terms](https://rakazo.com/terms/)
-- [Sitemap](https://rakazo.com/sitemap-index.xml)
+- [Agent instructions](https://runtars.com/llms.txt)
+- [Self-hosted AI agent](https://runtars.com/self-hosted-ai-agent/)
+- [OpenClaw comparison](https://runtars.com/openclaw-alternative/)
+- [Alternatives](https://runtars.com/alternatives/)
+- [Docs](https://runtars.com/docs/)
+- [Integrations](https://runtars.com/integrations/)
+- [Sandboxes for AI agents](https://runtars.com/sandboxes/)
+- [Integration platforms for AI agents](https://runtars.com/integration-platforms/)
+- [Voice providers for AI agents](https://runtars.com/voice-providers/)
+- [Blog](https://runtars.com/blog/)
+- [Grok Bot alternatives](https://runtars.com/grok-bot-alternative/)
+- [Pricing](https://runtars.com/pricing/): free to self-host, or hosted with your own model or RunTars credits.
+- [Enterprise](https://runtars.com/enterprise/): SSO, SCIM, audit log, encryption at rest, and approval rules on your own infrastructure.
+- [Download](https://runtars.com/download/): desktop, mobile, and web apps.
+- [About](https://runtars.com/about/)
+- [Brand](https://runtars.com/brand/)
+- [Support](https://runtars.com/support/)
+- [Privacy](https://runtars.com/privacy/)
+- [Terms](https://runtars.com/terms/)
+- [Sitemap](https://runtars.com/sitemap-index.xml)
 `;
 
 export const ABOUT_MARKDOWN = `# About RunTars
@@ -115,12 +115,13 @@ RunTars is an open source Grok Bot alternative for persistent AI teammates: bots
 
 The project started from a simple premise: useful agents should be understandable and controllable by the people who run them. RunTars keeps routines in readable Markdown, supports multiple model providers, records actions in an audit log, and lets operators keep model keys, browser sessions, and deployment infrastructure under their own control.
 
-RunTars is based on Rakazo. Rakazo targets the web, macOS, Windows, Linux, iOS, and Android. The source is available under the Apache-2.0 license and accepts public issues and contributions on GitHub. Inbox Zero Inc. maintains the upstream Rakazo project and offers support at hello@rakazo.com.
+RunTars is based on Rakazo. Rakazo targets the web, macOS, Windows, Linux, iOS, and Android. The source is available under the Apache-2.0 license and accepts public issues and contributions on GitHub. Inbox Zero Inc. maintains the upstream Rakazo project. Contact RunTars support at support@runtars.com.
 
+- [Source code](https://github.com/lovelybowen/runtars)
 - [Upstream source code](https://github.com/elie222/rakazo)
-- [Self-hosting guide](https://rakazo.com/self-hosted-ai-agent/)
-- [Full self-hosting reference](https://github.com/elie222/rakazo/blob/main/docs/self-host.md)
-- [Support](https://rakazo.com/support/)
+- [Self-hosting guide](https://runtars.com/self-hosted-ai-agent/)
+- [Full self-hosting reference](https://github.com/lovelybowen/runtars/blob/main/docs/self-host.md)
+- [Support](https://runtars.com/support/)
 `;
 
 export const DOWNLOAD_MARKDOWN = `# Download Rakazo
@@ -132,25 +133,25 @@ export const DOWNLOAD_MARKDOWN = `# Download Rakazo
 - [Android](${ANDROID_APP_STORE_URL})
 - [Web](${APP_URL})
 
-The apps also connect to a self-hosted server. See the [self-hosting guide](https://rakazo.com/self-hosted-ai-agent/).
+The apps also connect to a self-hosted server. See the [self-hosting guide](https://runtars.com/self-hosted-ai-agent/).
 `;
 
-export const SUPPORT_MARKDOWN = `# Rakazo support
+export const SUPPORT_MARKDOWN = `# RunTars support
 
-For help with the Rakazo mobile app or a hosted Rakazo account, email [hello@rakazo.com](mailto:hello@rakazo.com). Include the email address on the account, what you expected to happen, and any error message you saw. Never send passwords, API keys, access tokens, or other secrets.
+For help with RunTars or a hosted RunTars account, email [support@runtars.com](mailto:support@runtars.com). Include the email address on the account, what you expected to happen, and any error message you saw. Never send passwords, API keys, access tokens, or other secrets.
 
-For self-hosted Rakazo, start with the [self-hosting guide](https://rakazo.com/self-hosted-ai-agent/). The [full reference](https://github.com/elie222/rakazo/blob/main/docs/self-host.md) is on GitHub. Open reproducible bugs and feature requests in the [public GitHub repository](https://github.com/elie222/rakazo/issues). Report vulnerabilities only to [security@rakazo.com](mailto:security@rakazo.com).
+For self-hosted RunTars, start with the [self-hosting guide](https://runtars.com/self-hosted-ai-agent/). The [full reference](https://github.com/lovelybowen/runtars/blob/main/docs/self-host.md) is on GitHub. Open reproducible bugs and feature requests in the [public GitHub repository](https://github.com/lovelybowen/runtars/issues). Report vulnerabilities only to [support@runtars.com](mailto:support@runtars.com).
 
-Hosted users can permanently delete their account and associated personal Space data from the Account screen in the Rakazo app, or on the web at [app.rakazo.com](https://app.rakazo.com) under Settings → Account. Without access to the app, email [hello@rakazo.com](mailto:hello@rakazo.com) from the account's email address to ask us to delete it. Sign-in security records are kept for up to 90 days.
+Hosted users can permanently delete their account and associated personal Space data from the Account screen in the RunTars app, or on the web at [app.runtars.com](https://app.runtars.com) under Settings → Account. Without access to the app, email [support@runtars.com](mailto:support@runtars.com) from the account's email address to ask us to delete it. Sign-in security records are kept for up to 90 days.
 `;
 
-export const PRIVACY_MARKDOWN = `# Rakazo privacy
+export const PRIVACY_MARKDOWN = `# RunTars privacy
 
 Last updated: November 12, 2026
 
-Rakazo processes account details, user-provided bot content, connection information, and technical records needed to operate and secure the service. Content comes from what you enter, upload, record, or authorize your bots to access. Rakazo does not sell personal information or use Rakazo content for third-party advertising.
+RunTars processes account details, user-provided bot content, connection information, and technical records needed to operate and secure the service. Content comes from what you enter, upload, record, or authorize your bots to access. RunTars does not sell personal information or use RunTars content for third-party advertising.
 
-Before submitting content or starting AI work, the Rakazo mobile app names the configured recipients, explains the data and purpose, and asks permission. Messages, relevant history, instructions, memories, attachments, screenshots, and connected-app content may be sent to model services for responses and tasks, including scheduled tasks. Recorded audio may be sent for transcription and text for speech generation. Conversations, names of people and bots, memories, queries, and bot and Space identifiers may be sent to a configured memory service.
+Before submitting content or starting AI work, the RunTars mobile app names the configured recipients, explains the data and purpose, and asks permission. Messages, relevant history, instructions, memories, attachments, screenshots, and connected-app content may be sent to model services for responses and tasks, including scheduled tasks. Recorded audio may be sent for transcription and text for speech generation. Conversations, names of people and bots, memories, queries, and bot and Space identifiers may be sent to a configured memory service.
 
 Supported connections include OpenAI, Anthropic, Google, OpenRouter, Vercel AI Gateway, Cursor, custom model servers, ElevenLabs, Cartesia, Fish Audio, xAI, Supermemory, and Hindsight. The mobile disclosure identifies the configured services. Gateways forward requests to model providers according to their routing settings and provider agreements. The mobile permission flow does not modify provider routing or promise zero retention.
 
@@ -158,24 +159,24 @@ Permission records include the recipient, Space, disclosure version, and time. C
 
 Services we select must provide protection equal to or greater than the safeguards in our complete policy, including limited processing purposes, security, retention, and deletion protections. We review provider terms and safeguards before enabling a provider. Self-hosted operators are responsible for the services they select and their agreements. Provider terms govern processing and retention after receipt; provider policy links are available in AI data sharing and in the complete policy.
 
-Hosted users can delete their account and associated personal Space data from Account. In self-hosted deployments, the server operator controls information sent to that deployment. For privacy requests, email [hello@rakazo.com](mailto:hello@rakazo.com).
+Hosted users can delete their account and associated personal Space data from Account. In self-hosted deployments, the server operator controls information sent to that deployment. For privacy requests, email [support@runtars.com](mailto:support@runtars.com).
 
-Read the [complete privacy policy](https://rakazo.com/privacy/) for account information, other service providers, retention, deletion, security, international transfers, children, and your rights.
+Read the [complete privacy policy](https://runtars.com/privacy/) for account information, other service providers, retention, deletion, security, international transfers, children, and your rights.
 `;
 
-export const TERMS_MARKDOWN = `# Rakazo terms
+export const TERMS_MARKDOWN = `# RunTars terms
 
 Last updated: November 11, 2026
 
-These terms are an agreement between you and Inbox Zero Inc. for the Rakazo service we host, the Rakazo apps, and rakazo.com. The Rakazo source code is governed by the Apache License 2.0, which does not grant rights to the Rakazo name or logo, and self-hosted deployments are the operator's responsibility.
+These terms are an agreement between you and Inbox Zero Inc. for the RunTars service we host, the RunTars apps, and runtars.com. The RunTars source code is governed by the Apache License 2.0, which does not grant rights to the RunTars name or logo, and self-hosted deployments are the operator's responsibility.
 
 You are responsible for your account and for actions your bots take on your behalf, including in scheduled routines; give bots only the access they need and require approval for actions that are hard to undo. AI output can be wrong, so review it before relying on it, and do not use the Service where an error could cause serious harm. Do not use the Service to break the law, send spam or malware, access systems without authorization, abuse its computers, or violate the terms of connected providers. You keep ownership of your content and bot output, and you pay any fees charged by third-party services, including usage on your own API keys.
 
-Free trials convert to a paid plan when they end unless cancelled before then. Fair use on hosted plans is the computer-hours a month listed for your plan on the [pricing page](https://rakazo.com/pricing/) and 5 computers running at once per account; computers sleep when idle, there are no charges for computer use beyond the plan, and we may slow or pause usage beyond these limits. Self-hosted deployments have no such limits. Paid plans renew automatically until cancelled and are charged through Stripe. Cancel at any time from billing settings or by emailing [hello@rakazo.com](mailto:hello@rakazo.com); access continues until the end of the paid period. Payments are non-refundable and not prorated except where required by law. Credits, including top-ups, are used up by the work your bots do, whatever its outcome, and used credits are not refunded. If we close your account or stop offering the Service for reasons other than a violation of these terms, we refund prepaid fees for the unused period. Consumers in the EU and UK can withdraw from a new subscription within 14 days and are refunded less the value of the Service already provided. For credits, that means a refund of the credits not yet used.
+Free trials convert to a paid plan when they end unless cancelled before then. Fair use on hosted plans is the computer-hours a month listed for your plan on the [pricing page](https://runtars.com/pricing/) and 5 computers running at once per account; computers sleep when idle, there are no charges for computer use beyond the plan, and we may slow or pause usage beyond these limits. Self-hosted deployments have no such limits. Paid plans renew automatically until cancelled and are charged through Stripe. Cancel at any time from billing settings or by emailing [support@runtars.com](mailto:support@runtars.com); access continues until the end of the paid period. Payments are non-refundable and not prorated except where required by law. Credits, including top-ups, are used up by the work your bots do, whatever its outcome, and used credits are not refunded. If we close your account or stop offering the Service for reasons other than a violation of these terms, we refund prepaid fees for the unused period. Consumers in the EU and UK can withdraw from a new subscription within 14 days and are refunded less the value of the Service already provided. For credits, that means a refund of the credits not yet used.
 
 The Service is provided as is. Our liability is limited to the greater of what you paid us in the previous 12 months or US$100, except where the law does not allow a limit. Delaware law governs these terms.
 
-Read the [complete terms](https://rakazo.com/terms/) for acceptable use, termination and data deletion, disclaimers, indemnity, app store terms, changes, and contact details.
+Read the [complete terms](https://runtars.com/terms/) for acceptable use, termination and data deletion, disclaimers, indemnity, app store terms, changes, and contact details.
 `;
 
 export const BRAND_MARKDOWN = `# RunTars brand
@@ -184,7 +185,7 @@ Logos and colors for writing about RunTars.
 
 ## Logos
 
-${BRAND_LOGOS.map((logo) => `- [${logo.name}](https://rakazo.com${logo.file}): ${logo.format}`).join("\n")}
+${BRAND_LOGOS.map((logo) => `- [${logo.name}](https://runtars.com${logo.file}): ${logo.format}`).join("\n")}
 
 ## Colors
 
@@ -194,7 +195,7 @@ ${BRAND_COLORS.map((color) => `- ${color.name}: \`${color.hex}\``).join("\n")}
 
 Write RunTars with a capital R and T. The wordmark uses the same capitalization. Do not alter the mascot or imply an endorsement.
 
-For upstream press enquiries, email hello@rakazo.com.
+For RunTars press enquiries, email support@runtars.com.
 `;
 
 export const PLUGIN_SUBMIT_MARKDOWN = `# Submit a plugin to Rakazo
@@ -203,7 +204,7 @@ List a plugin in the Rakazo marketplace. We review every submission and email th
 
 The plugin must be a public GitHub repository with a plugin manifest (\`plugin.json\` following [Agent Plugins](https://agent-plugins.org), \`.cursor-plugin/plugin.json\`, or \`.grok-plugin/plugin.json\`) and skills, a hosted MCP server, or both.
 
-[Build a plugin](https://rakazo.com/docs/build-a-plugin/) starts with a hosted MCP server and covers configuration, testing, and marketplace submission. Copy the [MCP server example](${GITHUB_URL}/tree/main/examples/plugins/mcp-server) for hosted tools, or the [hello world example](${GITHUB_URL}/tree/main/examples/plugins/hello-world) for skills only.
+[Build a plugin](https://runtars.com/docs/build-a-plugin/) starts with a hosted MCP server and covers configuration, testing, and marketplace submission. Copy the [MCP server example](${GITHUB_URL}/tree/main/examples/plugins/mcp-server) for hosted tools, or the [hello world example](${GITHUB_URL}/tree/main/examples/plugins/hello-world) for skills only.
 
 ## Submit with the API
 
@@ -233,10 +234,10 @@ export const NOT_FOUND_MARKDOWN = `# Page not found
 
 The requested RunTars page does not exist.
 
-- [Agent instructions](https://rakazo.com/llms.txt)
-- [Site map](https://rakazo.com/sitemap-index.xml)
-- [Home](https://rakazo.com/)
-- [Self-hosting guide](https://rakazo.com/self-hosted-ai-agent/)
+- [Agent instructions](https://runtars.com/llms.txt)
+- [Site map](https://runtars.com/sitemap-index.xml)
+- [Home](https://runtars.com/)
+- [Self-hosting guide](https://runtars.com/self-hosted-ai-agent/)
 `;
 
 const MARKDOWN_DOCUMENTS = new Map<string, string>([

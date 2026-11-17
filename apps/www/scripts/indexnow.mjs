@@ -7,7 +7,7 @@ import { readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const SITE = "https://rakazo.com";
+const SITE = "https://runtars.com";
 const ENDPOINT = "https://api.indexnow.org/indexnow";
 const BATCH_SIZE = 10_000;
 const REQUEST_TIMEOUT_MS = 30_000;

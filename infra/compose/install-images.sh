@@ -7,11 +7,17 @@ image_tag="${RAKAZO_IMAGE_TAG-}"
 if [[ -z "${RAKAZO_IMAGE_TAG+x}" && -f .env ]]; then
   image_tag=$(sed -nE "s/^[[:space:]]*(export[[:space:]]+)?RAKAZO_IMAGE_TAG[[:space:]]*=[[:space:]]*[\"']?([^\"'#[:space:]]*).*/\2/p" .env | tail -n 1)
 fi
+for selected_tag in "$image_tag" "${RAKAZO_COMPUTER_IMAGE_TAG:-}"; do
+  if [[ -n "$selected_tag" && ! "$selected_tag" =~ ^[A-Za-z0-9_][A-Za-z0-9_.-]{0,127}$ ]]; then
+    echo "RunTars setup failed: image tags must be valid Docker tags." >&2
+    exit 1
+  fi
+done
 download_ref=main
 if [[ "$image_tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
   download_ref="$image_tag"
 fi
-DOWNLOAD_BASE="${RAKAZO_DOWNLOAD_BASE:-https://raw.githubusercontent.com/elie222/rakazo/${download_ref}/infra/compose}"
+DOWNLOAD_BASE="${RAKAZO_DOWNLOAD_BASE:-https://raw.githubusercontent.com/lovelybowen/runtars/${download_ref}/infra/compose}"
 while [[ "$DOWNLOAD_BASE" == */ ]]; do
   DOWNLOAD_BASE="${DOWNLOAD_BASE%/}"
 done
@@ -260,6 +266,12 @@ create_env() {
         ;;
       "SANDBOX_SUPERVISOR_TOKEN=")
         printf 'SANDBOX_SUPERVISOR_TOKEN=%s\n' "$(openssl rand -hex 32)"
+        ;;
+      RAKAZO_IMAGE_TAG=*)
+        printf 'RAKAZO_IMAGE_TAG=%s\n' "${image_tag:-${line#*=}}"
+        ;;
+      RAKAZO_COMPUTER_IMAGE_TAG=*)
+        printf 'RAKAZO_COMPUTER_IMAGE_TAG=%s\n' "${RAKAZO_COMPUTER_IMAGE_TAG:-${image_tag:-${line#*=}}}"
         ;;
       *)
         printf '%s\n' "$line"

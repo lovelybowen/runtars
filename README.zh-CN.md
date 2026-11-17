@@ -2,7 +2,7 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md)
 
-[![GitHub stars](https://img.shields.io/github/stars/elie222/rakazo?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/elie222/rakazo/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/lovelybowen/runtars?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/lovelybowen/runtars/stargazers)
 [![加入 Discord 社区](https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?labelColor=black&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RWwKa2Sn7h)
 [![在 App Store 下载 iPhone 版](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
 [![在 Google Play 下载 Android 版](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.rakazo.app)
@@ -13,12 +13,12 @@ Rakazo 是 Grok Bot 的开源、自托管替代方案。
 
 长期在线的 AI 队友，各自拥有记忆、例行任务、应用和计算机。在自己的机器上运行，使用自己的模型。
 
-可在[网页](https://app.rakazo.com)、[桌面端](https://rakazo.com/download/)、[iPhone](https://apps.apple.com/app/rakazo/id6801531099) 和
+可在[网页](https://app.runtars.com)、[桌面端](https://rakazo.com/download/)、[iPhone](https://apps.apple.com/app/rakazo/id6801531099) 和
 [Android](https://play.google.com/store/apps/details?id=com.rakazo.app) 上使用。
 
 它也是 Meta Muse、OpenAI Dots、Instinct、OpenClaw、Hermes Agent 和 Claude Duet 的替代方案。
 
-详情见 [rakazo.com](https://rakazo.com)。
+详情见 [runtars.com](https://runtars.com)。
 
 本文是 [英文 README](./README.md) 的简体中文译文。[自托管指南](./docs/zh-CN/self-host.md)已提供中文。
 
@@ -104,8 +104,9 @@ Gmail、Slack、GitHub、Notion、Linear 等数千个应用，以及你自己的
 需要 Docker Engine、Compose 插件、curl 和 OpenSSL。无需克隆仓库或安装 Node.js。
 
 ```bash
+export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
 mkdir -p rakazo && cd rakazo &&
-curl -fsSLO https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/install-images.sh &&
+curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh
 ```
 
@@ -147,7 +148,7 @@ bash install-images.sh
 不支持 Node.js 25.x。
 
 ```bash
-git clone https://github.com/elie222/rakazo.git
+git clone https://github.com/lovelybowen/runtars.git rakazo
 cd rakazo
 cp .env.example .env
 ```
@@ -328,15 +329,15 @@ Rakazo 启动后，你可以像使用 Grok Bot 一样，通过聊天设置和管
 Muse、Dots、Instinct 和 Claude Duet 是托管式助手；OpenClaw 和 Hermes Agent 则同样是可以自行运行的开源智能体。
 后两者的文档介绍了安装器、配置文件和网关。Hermes Desktop 无需命令行即可开始第一次聊天；消息网关则是独立进程。
 
-- [Grok Bot](https://rakazo.com/grok-bot-alternative/)
-- [Muse](https://rakazo.com/muse-alternative/)
-- [Dots](https://rakazo.com/dots-alternative/)
-- [Instinct](https://rakazo.com/instinct-alternative/)，可通过短信或电话交流的个人助手
-- [OpenClaw](https://rakazo.com/openclaw-alternative/)
-- [Hermes Agent](https://rakazo.com/hermes-alternative/)，Nous Research 的开源智能体
-- [Claude Duet](https://rakazo.com/claude-duet-alternative/)，Anthropic 的主动式个人智能体
-- [全部对比](https://rakazo.com/alternatives/)
-- [自托管指南](https://rakazo.com/self-hosted-ai-agent/)
+- [Grok Bot](https://runtars.com/grok-bot-alternative/)
+- [Muse](https://runtars.com/muse-alternative/)
+- [Dots](https://runtars.com/dots-alternative/)
+- [Instinct](https://runtars.com/instinct-alternative/)，可通过短信或电话交流的个人助手
+- [OpenClaw](https://runtars.com/openclaw-alternative/)
+- [Hermes Agent](https://runtars.com/hermes-alternative/)，Nous Research 的开源智能体
+- [Claude Duet](https://runtars.com/claude-duet-alternative/)，Anthropic 的主动式个人智能体
+- [全部对比](https://runtars.com/alternatives/)
+- [自托管指南](https://runtars.com/self-hosted-ai-agent/)
 
 ## 致谢
 

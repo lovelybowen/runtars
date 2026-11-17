@@ -74,16 +74,16 @@ export function welcomeEmail(
       <Text style={{ marginTop: 0 }}>
         {withNodes(say("RunTars is open source. {star} helps more people find it."), {
           star: (
-            <Link href="https://github.com/elie222/rakazo" style={linkStyle}>
+            <Link href="https://github.com/lovelybowen/runtars" style={linkStyle}>
               {say("A star on GitHub")}
             </Link>
           ),
         })}
       </Text>
       <Text style={{ marginTop: "28px" }}>{say("Questions? Just reply. I read every one.")}</Text>
-      <Text>Elie</Text>
+      <Text>RunTars</Text>
     </>,
     unsubscribeUrl,
-    { src: "https://rakazo.com/email/welcome.jpg", alt: "RunTars" },
+    { src: "https://runtars.com/og-image.png", alt: "RunTars" },
   );
 }

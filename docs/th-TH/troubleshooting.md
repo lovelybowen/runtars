@@ -8,7 +8,7 @@
 
 ```text
 Help me troubleshoot Rakazo using this guide:
-https://rakazo.com/docs/troubleshooting/
+https://runtars.com/docs/troubleshooting/
 
 Error code: <code from the relevant section below>
 App version: <version>

@@ -3,7 +3,7 @@
 # Self-hosting RunTars
 
 Run the API, worker, web app, database and bot computers on a machine you control.
-Other self-hosted AI agents are compared on the [self-hosted AI agent](https://rakazo.com/self-hosted-ai-agent/#other-agents) page.
+Other self-hosted AI agents are compared on the [self-hosted AI agent](https://runtars.com/self-hosted-ai-agent/#other-agents) page.
 
 The signed-in product is a long-running API, a Graphile Worker, Postgres, and a computer provider (Docker supervisor, E2B, Daytona, CreateOS, or Boat). It is not a static site. The marketing site in `apps/www` can be hosted separately.
 
@@ -19,12 +19,13 @@ English | [简体中文](./zh-CN/self-host.md)
 
 ## Published images (no checkout)
 
-Pull Postgres and `ghcr.io/elie222/rakazo/app` into any empty folder. No clone or image build.
+Pull Postgres and `ghcr.io/lovelybowen/runtars/app` into any empty folder. No clone or image build.
 Requires Docker Engine 26+ (API 1.45+ for bot home volume subpaths), the Compose plugin, curl, and OpenSSL.
 
 ```bash
+export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
 mkdir -p rakazo && cd rakazo &&
-curl -fsSLO https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/install-images.sh &&
+curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh
 ```
 
@@ -38,7 +39,7 @@ When `RAKAZO_IMAGE_TAG` is a release such as `v0.8.0`, the installer downloads t
 from that release instead of `main`.
 
 `SANDBOX_PROVIDER` defaults to `docker`. The images Compose file runs a sandbox supervisor
-(from the app image, on the internal network only) and pulls `ghcr.io/elie222/rakazo/computer`.
+(from the app image, on the internal network only) and pulls `ghcr.io/lovelybowen/runtars/computer`.
 Signup and local Docker computers work without an E2B account. Optional remote providers: set
 `SANDBOX_PROVIDER` to `e2b`, `novita`, `daytona`, `createos`, or `boat` and add the matching API key. The published-images
 Compose stack requires `SANDBOX_SUPERVISOR_TOKEN` for every provider; leave it empty and `compose up` fails closed.
@@ -149,7 +150,7 @@ Compose bot homes mount only their own subdirectory of the application volume us
 
 ## Reporting a problem
 
-Attach a diagnostics report to a [self-host issue](https://github.com/elie222/rakazo/issues/new?template=self-host.yml):
+Attach a diagnostics report to a [self-host issue](https://github.com/lovelybowen/runtars/issues/new?template=self-host.yml):
 
 ```bash
 docker compose -f docker-compose.images.yml exec api node dist/cli/diagnostics.js

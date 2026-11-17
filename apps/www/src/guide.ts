@@ -15,15 +15,16 @@ export const OPENCLAW_FEATURES_URL = "https://docs.openclaw.ai/concepts/features
 export const OPENCLAW_SANDBOX_URL = "https://docs.openclaw.ai/gateway/sandboxing";
 export const OPENCLAW_GITHUB_URL = "https://github.com/openclaw/openclaw";
 
-export const PUBLISHED_IMAGES_INSTALL = `mkdir -p rakazo && cd rakazo &&
-curl -fsSLO https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/install-images.sh &&
+export const PUBLISHED_IMAGES_INSTALL = `export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
+mkdir -p rakazo && cd rakazo &&
+curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/\${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh`;
 
 export const PUBLISHED_IMAGES_SERVER = `bash install-images.sh --prepare-only
 # Edit .env, then:
 bash install-images.sh`;
 
-export const SOURCE_CHECKOUT = `git clone https://github.com/elie222/rakazo.git
+export const SOURCE_CHECKOUT = `git clone https://github.com/lovelybowen/runtars.git rakazo
 cd rakazo
 cp .env.example .env`;
 
@@ -163,7 +164,7 @@ export const SELF_HOST_FAQS: readonly FaqItem[] = [
   },
   {
     question: "Is hosted RunTars available?",
-    answer: "Yes. Rakazo Cloud is in beta at app.rakazo.com. Self-hosting is available too.",
+    answer: "Yes. RunTars Cloud is in beta at app.runtars.com. Self-hosting is available too.",
   },
   {
     question: "How does this compare with OpenClaw?",
@@ -178,7 +179,7 @@ export const SELF_HOST_FAQS: readonly FaqItem[] = [
   {
     question: "Should I self-host or use a hosted AI agent?",
     answer:
-      "Self-host when you want the data on your machines, your own model, and features that are self-host only. A hosted agent saves you upgrades, backups, and TLS. Rakazo Cloud is the hosted version of the same product, in beta.",
+      "Self-host when you want the data on your machines, your own model, and features that are self-host only. A hosted agent saves you upgrades, backups, and TLS. RunTars Cloud is the hosted version of the same product, in beta.",
   },
   {
     question: "How do I build my own AI agent?",
@@ -241,7 +242,7 @@ export const OPENCLAW_FAQS: readonly FaqItem[] = [
   {
     question: "Does either project charge for the software?",
     answer:
-      "RunTars is free to self-host. Hosted Rakazo Cloud is in beta. OpenClaw's documentation says the project has no paid tier and no hosted service. You still pay for models, machines, and any optional computer providers you use.",
+      "RunTars is free to self-host. Hosted RunTars Cloud is in beta. OpenClaw's documentation says the project has no paid tier and no hosted service. You still pay for models, machines, and any optional computer providers you use.",
   },
 ];
 
@@ -275,7 +276,7 @@ export const COMPARISON_ROWS: readonly ComparisonRow[] = [
   {
     aspect: "Where it runs",
     rakazo:
-      "You self-host with published Docker images or from source. Web, desktop, and mobile apps are clients of that API. Hosted Rakazo Cloud is in beta.",
+      "You self-host with published Docker images or from source. Web, desktop, and mobile apps are clients of that API. Hosted RunTars Cloud is in beta.",
     openclaw:
       "You run the Gateway on your own computer or a server. The docs say there is no hosted service in the middle. Interfaces include a browser Control UI, companion apps, and iOS and Android nodes.",
   },
@@ -362,7 +363,7 @@ ${SELF_HOST_DEFINITION}
 
 RunTars is an open source AI agent for persistent teammates. Each bot can use a browser and a shell, keep routines as Markdown, and pause for approval when work crosses a boundary you set. Self-hosting means that stack runs on infrastructure you operate.
 
-The software is [Apache-2.0](${GITHUB_URL}/blob/main/LICENSE). Hosted Rakazo Cloud is in beta. This page is the essential setup. The [full self-hosting guide](${DOCS_URL}) on GitHub covers backups, upgrades, secrets, restricted networks, and production Compose.
+The software is [Apache-2.0](${GITHUB_URL}/blob/main/LICENSE). Hosted RunTars Cloud is in beta. This page is the essential setup. The [full self-hosting guide](${DOCS_URL}) on GitHub covers backups, upgrades, secrets, restricted networks, and production Compose.
 
 ## What self-hosting gives you
 
@@ -384,7 +385,7 @@ ${SELF_HOST_MODEL_PARAGRAPHS.join("\n\n")}
 
 ## Self-host only, for now
 
-These work on your own deployment and are not yet on Rakazo Cloud. Each turns on from \`.env\`.
+These work on your own deployment and are not yet on RunTars Cloud. Each turns on from \`.env\`.
 
 - **Telegram, WhatsApp, iMessage and SMS, Feishu and Lark.** Add the platform's credentials: \`TELEGRAM_BOT_TOKEN\`, \`WHATSAPP_*\`, \`SENDBLUE_*\` (iMessage and SMS), or \`LARK_*\`.
 - **Image and video generation.** \`MEDIA_GENERATION_PROVIDER=fal\`, \`MEDIA_GENERATION_API_KEY\`, and an image or video model (\`MEDIA_GENERATION_IMAGE_MODEL\`, \`MEDIA_GENERATION_VIDEO_MODEL\`).
@@ -522,7 +523,7 @@ RunTars is a web, desktop, and mobile app for persistent teammates: a bot has a 
 
 RunTars runs bot work on a computer. Local Docker is the default. OpenClaw can sandbox tool execution, and its docs say sandboxing is off by default. The Gateway process stays on the host.
 
-Both let you bring a model provider, including a server you run. Neither charges a seat fee for the software. OpenClaw's docs say it has no paid tier and no hosted service. RunTars is free to self-host. Hosted Rakazo Cloud is in beta.
+Both let you bring a model provider, including a server you run. Neither charges a seat fee for the software. OpenClaw's docs say it has no paid tier and no hosted service. RunTars is free to self-host. Hosted RunTars Cloud is in beta.
 
 RunTars is based on Rakazo, an Apache-2.0 project maintained by Inbox Zero Inc. OpenClaw is MIT, stewarded by the OpenClaw Foundation.
 
@@ -540,7 +541,8 @@ Choose OpenClaw when the assistant should live in chat apps you already use, wit
 - [OpenClaw sandboxing](${OPENCLAW_SANDBOX_URL})
 - [OpenClaw source](${OPENCLAW_GITHUB_URL})
 - [RunTars self-host guide](${SITE_URL}${SELF_HOST_GUIDE_PATH})
-- [Upstream Rakazo source](${GITHUB_URL})
+- [RunTars source](${GITHUB_URL})
+- [Upstream Rakazo source](https://github.com/elie222/rakazo)
 
 ## FAQ
 

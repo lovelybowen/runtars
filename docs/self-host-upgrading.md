@@ -134,15 +134,22 @@ application traffic queued indefinitely.
 
 ## Published images and tags
 
+For production, select a published RunTars `vX.Y.Z` release and pin both `RAKAZO_IMAGE_TAG` and
+`RAKAZO_COMPUTER_IMAGE_TAG` to it. Download the installer and Compose files from that same Git tag.
+`edge` follows development on `main`; it is not the production release channel. The installer
+preserves an existing `.env`, so change both pins there deliberately when upgrading. Never use
+a Rakazo upstream tag as a substitute for a RunTars release.
+
+
 `.github/workflows/publish-server-image.yml` publishes to `ghcr.io/<owner>/<repo>/…`, derived from
 `${{ github.repository }}` rather than hardcoded, so a fork's CI fills the fork's own namespace. For
 this repository that is:
 
 | Image                             | Contents                                                                |
 | --------------------------------- | ----------------------------------------------------------------------- |
-| `ghcr.io/elie222/rakazo/app`      | api, worker, web, and sandbox supervisor — one image, multiple commands |
-| `ghcr.io/elie222/rakazo/computer` | Linux desktop used as each bot computer                                 |
-| `ghcr.io/elie222/rakazo/updater`  | the updater sidecar, plus the Docker CLI                                |
+| `ghcr.io/lovelybowen/runtars/app`      | api, worker, web, and sandbox supervisor — one image, multiple commands |
+| `ghcr.io/lovelybowen/runtars/computer` | Linux desktop used as each bot computer                                 |
+| `ghcr.io/lovelybowen/runtars/updater`  | the updater sidecar, plus the Docker CLI                                |
 
 `infra/compose/docker-compose.images.yml` is the no-checkout path for those app and computer tags
 plus Postgres. The supervisor runs from the app image on the internal network only (not a separate

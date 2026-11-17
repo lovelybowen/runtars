@@ -16,8 +16,9 @@ Rakazo 需要持续运行的后端服务，不是静态网站；`apps/www` 中�
 在空目录中运行：
 
 ```bash
+export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
 mkdir -p rakazo && cd rakazo &&
-curl -fsSLO https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/install-images.sh &&
+curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh
 ```
 
@@ -138,7 +139,7 @@ docker compose --env-file .env -f infra/compose/docker-compose.yml \
 
 ## 报告问题
 
-镜像版可以生成诊断报告，附到[自托管问题](https://github.com/elie222/rakazo/issues/new?template=self-host.yml)中：
+镜像版可以生成诊断报告，附到[自托管问题](https://github.com/lovelybowen/runtars/issues/new?template=self-host.yml)中：
 
 ```bash
 docker compose -f docker-compose.images.yml exec api node dist/cli/diagnostics.js

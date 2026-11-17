@@ -6,13 +6,13 @@ import { DISCORD_URL, GITHUB_URL, SITE_NAME, SITE_URL, X_URL } from "./site";
 
 const LEGAL_NAME = "Inbox Zero Inc.";
 
-export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+export const ORGANIZATION_ID = "https://rakazo.com/#organization";
 /** Original publisher attribution. A display-brand change does not change the legal operator. */
 const ORGANIZATION = {
   "@type": "Organization",
   "@id": ORGANIZATION_ID,
   name: "Rakazo",
-  url: `${SITE_URL}/`,
+  url: "https://rakazo.com/",
 };
 const SOFTWARE_ID = `${SITE_URL}/#software`;
 
@@ -244,14 +244,14 @@ export function homeStructuredData(input: HomeStructuredDataInput) {
       "@id": ORGANIZATION_ID,
       name: ORGANIZATION.name,
       legalName: LEGAL_NAME,
-      url: `${SITE_URL}/`,
-      logo: `${SITE_URL}/brand/rakazo-mark.png`,
+      url: `https://rakazo.com/`,
+      logo: `https://rakazo.com/brand/rakazo-mark.png`,
       email: "hello@rakazo.com",
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer support",
         email: "hello@rakazo.com",
-        url: `${SITE_URL}/support/`,
+        url: `https://rakazo.com/support/`,
         availableLanguage: input.availableLanguages,
       },
       address: {
@@ -262,7 +262,12 @@ export function homeStructuredData(input: HomeStructuredDataInput) {
         postalCode: "19713",
         addressCountry: "US",
       },
-      sameAs: [GITHUB_URL, X_URL, DISCORD_URL, "https://www.getinboxzero.com/"],
+      sameAs: [
+        "https://github.com/elie222/rakazo",
+        X_URL,
+        DISCORD_URL,
+        "https://www.getinboxzero.com/",
+      ],
     },
     {
       "@type": "WebSite",

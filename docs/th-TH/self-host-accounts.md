@@ -77,11 +77,11 @@ SMTP: `SMTP_URL=smtps://...` และ `EMAIL_FROM` development ใช้ `EMAIL
 
 เปิดเมื่อ `WEB_ORIGIN` เป็นโดเมน HTTPS หรือ `localhost` ตอนพัฒนา passkey เดิมใช้ได้เฉพาะโดเมนเดิม ปิดเมื่อเป็น SSO อย่างเดียว
 
-แอปที่ build เองใช้ passkey ของโดเมนนี้ได้เมื่อตั้งค่าด้านล่าง ยังไม่ตั้งแพลตฟอร์มไหน แอปนั้นจะซ่อน passkey แอป macOS ที่ปล่อยทั่วไปผูกกับ `app.rakazo.com` จึงซ่อน passkey ของเซิร์ฟเวอร์อื่น
+แอปที่ build เองใช้ passkey ของโดเมนนี้ได้เมื่อตั้งค่าด้านล่าง ยังไม่ตั้งแพลตฟอร์มไหน แอปนั้นจะซ่อน passkey แอป macOS ที่ดาวน์โหลดจาก upstream ยังผูกกับ `app.rakazo.com` จึงซ่อน passkey ของเซิร์ฟเวอร์อื่น รวมถึง `app.runtars.com`
 
 ```bash
 PASSKEY_APPLE_APP_IDS=ABCDE12345.com.rakazo.app,ABCDE12345.dev.rakazo.desktop
 PASSKEY_ANDROID_CERT_SHA256=AA:BB:...:FF
 ```
 
-reverse proxy ต้องส่ง `/.well-known/` ต่อไปที่เว็บ ถ้า build เอง ให้ `RAKAZO_PASSKEY_RP_ID` ตรงกับโดเมน บนเครือข่ายส่วนตัวตั้ง `RAKAZO_PASSKEY_DEVELOPER_MODE=1`
+reverse proxy ต้องส่ง `/.well-known/` ต่อไปที่เว็บ ค่าเริ่มต้นของ `RAKAZO_PASSKEY_RP_ID` ใน desktop build ยังคงเป็น `app.rakazo.com` หาก build สำหรับ RunTars ต้องตั้ง `RAKAZO_PASSKEY_RP_ID=app.runtars.com` ทั้งตอน `pnpm build` และตอนรัน `scripts/passkey-entitlements.ts` (ใช้โดเมนของคุณเองสำหรับเซิร์ฟเวอร์อื่น) จากนั้นตั้ง `-c.mac.entitlements` ของ electron-builder ให้ใช้ไฟล์ที่สคริปต์สร้าง และ `-c.mac.provisioningProfile` ให้ใช้โปรไฟล์ของ App ID ที่เปิด Associated Domains พร้อมตั้งค่า association ฝั่งเซิร์ฟเวอร์ตามด้านบน บนเครือข่ายส่วนตัวตั้ง `RAKAZO_PASSKEY_DEVELOPER_MODE=1`

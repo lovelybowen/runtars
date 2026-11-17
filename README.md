@@ -2,7 +2,7 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md)
 
-[![GitHub stars](https://img.shields.io/github/stars/elie222/rakazo?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/elie222/rakazo/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/lovelybowen/runtars?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/lovelybowen/runtars/stargazers)
 [![Discord](https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?labelColor=black&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RWwKa2Sn7h)
 [![Download on the App Store](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
 [![Get Android on Google Play](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.rakazo.app)
@@ -14,13 +14,13 @@ Rakazo is an open source, self-hosted alternative to Grok Bot.
 Persistent AI teammates with their own memory, routines, apps, and computer. Run it on your own
 machine, with your own model.
 
-Use it on the [web](https://app.rakazo.com), [desktop](https://rakazo.com/download/), [iPhone](https://apps.apple.com/app/rakazo/id6801531099), and
+Use it on the [web](https://app.runtars.com), [desktop](https://rakazo.com/download/), [iPhone](https://apps.apple.com/app/rakazo/id6801531099), and
 [Android](https://play.google.com/store/apps/details?id=com.rakazo.app).
 
 It is also an alternative to Meta Muse, OpenAI Dots, Instinct, OpenClaw, Hermes Agent, and Claude
 Duet.
 
-Learn more at [rakazo.com](https://rakazo.com).
+Learn more at [runtars.com](https://runtars.com).
 
 ## Features
 
@@ -104,8 +104,9 @@ Web, desktop, iPhone, iPad, and Android, all talking to the same server.
 You need Docker Engine, the Compose plugin, curl, and OpenSSL. No clone or Node install.
 
 ```bash
+export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
 mkdir -p rakazo && cd rakazo &&
-curl -fsSLO https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/install-images.sh &&
+curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh
 ```
 
@@ -149,7 +150,7 @@ You need Node.js 24.15.0 or newer in the 24.x line, or Node.js 26+; pnpm 12;
 and Docker. Node.js 25.x is not supported.
 
 ```bash
-git clone https://github.com/elie222/rakazo.git
+git clone https://github.com/lovelybowen/runtars.git rakazo
 cd rakazo
 cp .env.example .env
 ```
@@ -364,13 +365,13 @@ Chinese guides cover [self-hosting](./docs/zh-CN/self-host.md), [models](./docs/
 
 ## How Rakazo compares
 
-- [Grok Bot](https://rakazo.com/grok-bot-alternative/)
-- [Muse](https://rakazo.com/muse-alternative/)
-- [Dots](https://rakazo.com/dots-alternative/)
-- [Instinct](https://rakazo.com/instinct-alternative/)
-- [OpenClaw](https://rakazo.com/openclaw-alternative/)
-- [Hermes Agent](https://rakazo.com/hermes-alternative/)
-- [All comparisons](https://rakazo.com/alternatives/)
+- [Grok Bot](https://runtars.com/grok-bot-alternative/)
+- [Muse](https://runtars.com/muse-alternative/)
+- [Dots](https://runtars.com/dots-alternative/)
+- [Instinct](https://runtars.com/instinct-alternative/)
+- [OpenClaw](https://runtars.com/openclaw-alternative/)
+- [Hermes Agent](https://runtars.com/hermes-alternative/)
+- [All comparisons](https://runtars.com/alternatives/)
 
 ## Thanks
 
