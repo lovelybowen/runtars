@@ -11865,3 +11865,117 @@ msgstr "你的语音提供商拒绝了该密钥。"
 #: apps/web/src/components/vault/VaultItemEditor.tsx
 msgid "ZIP or postal code"
 msgstr "邮政编码"
+
+#: apps/web/src/components/ModelCredits.tsx
+#: apps/web/src/components/SubscriptionGate.tsx
+msgid "Choose how to use RunTars"
+msgstr "选择如何使用 RunTars"
+
+#. js-lingui-explicit-id
+#: packages/i18n/src/run-error.ts
+msgid "Connect your own API key in Models or choose RunTars credits in Billing."
+msgstr "请在“模型”中连接你自己的 API 密钥，或在“账单”中选择 RunTars 额度。"
+
+#: apps/web/src/components/GitHubStarPrompt.tsx
+msgid "Enjoying RunTars?"
+msgstr "喜欢 RunTars 吗？"
+
+#: apps/mobile/app/(settings)/signup-survey.tsx
+#: apps/web/src/components/SignupSurvey.tsx
+msgid "How will you use RunTars?"
+msgstr "你会如何使用 RunTars？"
+
+#: apps/web/src/pages/shell/import-status.ts
+msgid "Not in RunTars's catalog"
+msgstr "不在 RunTars 目录中"
+
+#: apps/web/src/pages/shell/agent-import-plan.tsx
+#: apps/web/src/pages/shell/import-status.ts
+msgid "Not supported in RunTars"
+msgstr "RunTars 不支持"
+
+#: apps/web/src/pages/shell/agent-import-plan.tsx
+msgid "Not used by RunTars"
+msgstr "RunTars 不使用"
+
+#: apps/web/src/components/pages/PublicPageShell.tsx
+#: apps/web/src/pages/Invite.tsx
+#: apps/web/src/pages/SharedPage.tsx
+msgid "Open RunTars"
+msgstr "打开 RunTars"
+
+#: apps/mobile/components/compatible-endpoint-form.tsx
+#: apps/web/src/pages/model-settings/compatible-model-fields.tsx
+msgid "Paste the OpenAI-compatible address from your server. RunTars adds /v1 if needed."
+msgstr "粘贴服务器的 OpenAI 兼容地址。需要时 RunTars 会补上 /v1。"
+
+#: apps/mobile/app/(settings)/ai-data-sharing.tsx
+#: apps/mobile/app/(settings)/general.tsx
+#: apps/mobile/app/bot-settings.tsx
+#: apps/web/src/pages/AccountSettingsOverlay.tsx
+#: apps/web/src/pages/shell/avatar-studio-popover.tsx
+msgid "RunTars"
+msgstr "RunTars"
+
+#: apps/mobile/app/(settings)/billing.tsx
+#: apps/web/src/pages/onboarding/use-onboarding-model.ts
+msgid "RunTars credits"
+msgstr "RunTars 额度"
+
+#: apps/web/src/components/ProviderSettingsForm.tsx
+msgid "rakazo-shared and IDs starting with bot- are reserved for RunTars."
+msgstr "rakazo-shared 和以 bot- 开头的 ID 保留给 RunTars 使用。"
+
+#: apps/web/src/components/ProviderSettingsForm.tsx
+msgid "Recall from this peer; save to RunTars’s own peers."
+msgstr "从此 peer 读取；保存到 RunTars 自己的 peer。"
+
+#: apps/web/src/pages/McpOAuthCallback.tsx
+#: apps/web/src/pages/SlackInstallCallback.tsx
+msgid "Return to RunTars"
+msgstr "返回 RunTars"
+
+#: apps/mobile/app/sign-in.tsx
+msgid "Sign in to continue to RunTars"
+msgstr "登录以继续使用 RunTars"
+
+#: apps/mobile/app/sign-in.tsx
+#: apps/web/src/pages/Auth.tsx
+msgid "Sign in to RunTars"
+msgstr "登录 RunTars"
+
+#: apps/mobile/app/sign-in.tsx
+msgid "Sign up for RunTars"
+msgstr "注册 RunTars"
+
+#: apps/mobile/app/paywall.tsx
+msgid "Start using RunTars"
+msgstr "开始使用 RunTars"
+
+#: apps/mobile/lib/endpoint.ts
+msgid "That URL did not look like a RunTars server"
+msgstr "该地址看起来不是 RunTars 服务器"
+
+#: apps/web/src/lib/agent-import-errors.ts
+msgid "This export is newer than RunTars can read. Update RunTars and try again."
+msgstr "此导出内容的版本比 RunTars 能读取的更新。请更新 RunTars 后重试。"
+
+#: apps/mobile/app/(settings)/model-connection.tsx
+#: apps/web/src/pages/model-settings/connection-controls.tsx
+msgid "This subscription sign-in is not available in RunTars yet. Use a deployment credential or choose another provider."
+msgstr "此订阅登录在 RunTars 中尚不可用。请使用部署凭据或选择其他提供商。"
+
+#: apps/mobile/app/(settings)/billing.tsx
+#: apps/web/src/components/ModelCredits.tsx
+msgid "Use RunTars credits"
+msgstr "使用 RunTars 额度"
+
+#: apps/mobile/app/(settings)/_layout.tsx
+#: apps/web/src/components/SignupSurvey.tsx
+msgid "Welcome to RunTars"
+msgstr "欢迎使用 RunTars"
+
+#: apps/mobile/app/(settings)/signup-survey.tsx
+#: apps/web/src/components/SignupSurvey.tsx
+msgid "What do you most want RunTars to help with?"
+msgstr "你最希望 RunTars 帮你做什么？"
