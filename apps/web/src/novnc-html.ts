@@ -128,7 +128,7 @@ export function injectNovncStorageShim(html: string, { viewOnly = false } = {}) 
     } catch {}
   });
   let last = "";
-  // Pages that never set noVNC's classes (older Rakazo embed images) still build their viewer
+  // Pages that never set noVNC's classes (older RunTars embed images) still build their viewer
   // canvas, which is as far as they can be followed.
   let classed = false;
   const sync = () => {

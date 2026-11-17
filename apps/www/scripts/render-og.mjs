@@ -8,7 +8,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = join(root, "public/og");
 const chrome = process.env.CHROME_PATH ?? "/usr/bin/google-chrome";
 
-const mark = readFileSync(join(root, "public/brand/rakazo-mark.png")).toString("base64");
+const logo = readFileSync(join(root, "public/brand/kit/rakazo-logo.png")).toString("base64");
 
 function pageHtml(kicker, title) {
   const fontSize = title.length > 72 ? 40 : 68;
@@ -32,8 +32,7 @@ function pageHtml(kicker, title) {
       <h1>${title.replaceAll("&", "&amp;").replaceAll("<", "&lt;")}</h1>
     </div>
     <div class="brand">
-      <img width="36" height="36" src="data:image/png;base64,${mark}" alt="" />
-      Rakazo
+      <img width="200" src="data:image/png;base64,${logo}" alt="" />
     </div>
   </div>
 </body>
@@ -44,12 +43,22 @@ mkdirSync(outDir, { recursive: true });
 const tmp = join(outDir, ".og-render.html");
 
 const selected = new Set(process.argv.slice(2));
-const pages = ogPages().filter((page) => selected.size === 0 || selected.has(page.id));
+// The homepage used to have a one-off raster card with no editable source.
+// Keep its existing headline and render its branding through the same template.
+const pages = [
+  {
+    id: "home",
+    kicker: "Open source Grok Bot alternative",
+    title: "AI teammates you actually own",
+  },
+  ...ogPages(),
+].filter((page) => selected.size === 0 || selected.has(page.id));
 
 try {
   for (const page of pages) {
     writeFileSync(tmp, pageHtml(page.kicker, page.title));
-    const target = join(outDir, `${page.id}.png`);
+    const target =
+      page.id === "home" ? join(root, "public/og-image.png") : join(outDir, `${page.id}.png`);
     const result = spawnSync(
       chrome,
       [

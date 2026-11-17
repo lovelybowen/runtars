@@ -29,7 +29,7 @@ export const AGENT_DISCOVERY_LINKS =
 
 const home = getHomeCopy("en");
 
-export const HOME_MARKDOWN = `# Rakazo
+export const HOME_MARKDOWN = `# RunTars
 
 ${home.hero.eyebrow}
 
@@ -98,7 +98,7 @@ ${home.cta.copy}
 - [Voice providers for AI agents](https://rakazo.com/voice-providers/)
 - [Blog](https://rakazo.com/blog/)
 - [Grok Bot alternatives](https://rakazo.com/grok-bot-alternative/)
-- [Pricing](https://rakazo.com/pricing/): free to self-host, or hosted with your own model or Rakazo credits.
+- [Pricing](https://rakazo.com/pricing/): free to self-host, or hosted with your own model or RunTars credits.
 - [Enterprise](https://rakazo.com/enterprise/): SSO, SCIM, audit log, encryption at rest, and approval rules on your own infrastructure.
 - [Download](https://rakazo.com/download/): desktop, mobile, and web apps.
 - [About](https://rakazo.com/about/)
@@ -109,15 +109,15 @@ ${home.cta.copy}
 - [Sitemap](https://rakazo.com/sitemap-index.xml)
 `;
 
-export const ABOUT_MARKDOWN = `# About Rakazo
+export const ABOUT_MARKDOWN = `# About RunTars
 
-Rakazo is an open source Grok Bot alternative for persistent AI teammates: bots that can use a browser and shell, remember the work around a job, run routines on a schedule, and ask for approval when they reach a boundary. It is designed for practical operational work rather than one-off chat.
+RunTars is an open source Grok Bot alternative for persistent AI teammates: bots that can use a browser and shell, remember the work around a job, run routines on a schedule, and ask for approval when they reach a boundary. It is designed for practical operational work rather than one-off chat.
 
-The project started from a simple premise: useful agents should be understandable and controllable by the people who run them. Rakazo keeps routines in readable Markdown, supports multiple model providers, records actions in an audit log, and lets operators keep model keys, browser sessions, and deployment infrastructure under their own control.
+The project started from a simple premise: useful agents should be understandable and controllable by the people who run them. RunTars keeps routines in readable Markdown, supports multiple model providers, records actions in an audit log, and lets operators keep model keys, browser sessions, and deployment infrastructure under their own control.
 
-Rakazo targets the web, macOS, Windows, Linux, iOS, and Android. The source is available under the Apache-2.0 license and accepts public issues and contributions on GitHub. Inbox Zero Inc. maintains the project and offers support at hello@rakazo.com.
+RunTars is based on Rakazo. Rakazo targets the web, macOS, Windows, Linux, iOS, and Android. The source is available under the Apache-2.0 license and accepts public issues and contributions on GitHub. Inbox Zero Inc. maintains the upstream Rakazo project and offers support at hello@rakazo.com.
 
-- [Source code](https://github.com/elie222/rakazo)
+- [Upstream source code](https://github.com/elie222/rakazo)
 - [Self-hosting guide](https://rakazo.com/self-hosted-ai-agent/)
 - [Full self-hosting reference](https://github.com/elie222/rakazo/blob/main/docs/self-host.md)
 - [Support](https://rakazo.com/support/)
@@ -178,9 +178,9 @@ The Service is provided as is. Our liability is limited to the greater of what y
 Read the [complete terms](https://rakazo.com/terms/) for acceptable use, termination and data deletion, disclaimers, indemnity, app store terms, changes, and contact details.
 `;
 
-export const BRAND_MARKDOWN = `# Rakazo brand
+export const BRAND_MARKDOWN = `# RunTars brand
 
-Logos and colors for writing about Rakazo.
+Logos and colors for writing about RunTars.
 
 ## Logos
 
@@ -192,9 +192,9 @@ ${BRAND_COLORS.map((color) => `- ${color.name}: \`${color.hex}\``).join("\n")}
 
 ## Usage
 
-Write Rakazo with a capital R in text. The wordmark is lowercase. Do not alter the mascot or imply an endorsement.
+Write RunTars with a capital R and T. The wordmark uses the same capitalization. Do not alter the mascot or imply an endorsement.
 
-For press, email hello@rakazo.com.
+For upstream press enquiries, email hello@rakazo.com.
 `;
 
 export const PLUGIN_SUBMIT_MARKDOWN = `# Submit a plugin to Rakazo
@@ -231,7 +231,7 @@ A new submission returns \`201\` with \`{"id","status":"pending"}\`. Resubmittin
 
 export const NOT_FOUND_MARKDOWN = `# Page not found
 
-The requested Rakazo page does not exist.
+The requested RunTars page does not exist.
 
 - [Agent instructions](https://rakazo.com/llms.txt)
 - [Site map](https://rakazo.com/sitemap-index.xml)

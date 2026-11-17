@@ -96,7 +96,7 @@ export function classifyUpdaterFailure(error: unknown): UpdaterFailure {
   if (SIGNATURE.some((needle) => text.includes(needle))) {
     return {
       kind: "signature",
-      message: t("This update could not be verified. Reinstall Rakazo from a trusted download."),
+      message: t("This update could not be verified. Reinstall RunTars from a trusted download."),
     };
   }
   return {

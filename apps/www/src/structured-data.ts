@@ -7,11 +7,11 @@ import { DISCORD_URL, GITHUB_URL, SITE_NAME, SITE_URL, X_URL } from "./site";
 const LEGAL_NAME = "Inbox Zero Inc.";
 
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
-/** Points at the home page's Organization, and names it for readers that see one page alone. */
+/** Original publisher attribution. A display-brand change does not change the legal operator. */
 const ORGANIZATION = {
   "@type": "Organization",
   "@id": ORGANIZATION_ID,
-  name: SITE_NAME,
+  name: "Rakazo",
   url: `${SITE_URL}/`,
 };
 const SOFTWARE_ID = `${SITE_URL}/#software`;
@@ -203,7 +203,6 @@ function softwareApplicationNode(extra: object) {
     isAccessibleForFree: true,
     codeRepository: GITHUB_URL,
     license: `${GITHUB_URL}/blob/main/LICENSE`,
-    provider: ORGANIZATION,
     offers: priceOffers(),
     ...extra,
   };
@@ -219,6 +218,8 @@ export function downloadStructuredData(
 ) {
   return graph([
     softwareApplicationNode({
+      // These links still download upstream releases, not renamed native builds.
+      name: "Rakazo",
       operatingSystem: platforms.map((platform) => platform.operatingSystem).join(", "),
       downloadUrl: platforms.map((platform) => new URL(platform.href, SITE_URL).toString()),
     }),
@@ -241,7 +242,7 @@ export function homeStructuredData(input: HomeStructuredDataInput) {
     {
       "@type": "Organization",
       "@id": ORGANIZATION_ID,
-      name: SITE_NAME,
+      name: ORGANIZATION.name,
       legalName: LEGAL_NAME,
       url: `${SITE_URL}/`,
       logo: `${SITE_URL}/brand/rakazo-mark.png`,
@@ -270,7 +271,6 @@ export function homeStructuredData(input: HomeStructuredDataInput) {
       name: SITE_NAME,
       description: input.siteDescription,
       inLanguage: input.defaultInLanguage,
-      publisher: ORGANIZATION,
     },
     {
       "@type": "WebPage",

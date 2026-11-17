@@ -7,5 +7,5 @@ Mac packaging requires Xcode 26 or newer. Electron builder compiles `Rakazo.icon
 into `Assets.car` for Tahoe and generates `icon.icns` for older macOS versions.
 `icon-macos.png` is the matching development export with Dock margins.
 
-`icon.png` and `icon.ico` are matching orange exports for Linux and Windows.
+`icon.png` and `icon.ico` are matching RunTars exports for Linux and Windows.
 Refresh them with `pnpm --filter @rakazo/ui-tokens export:brand`.

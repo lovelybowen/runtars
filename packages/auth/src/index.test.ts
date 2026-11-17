@@ -10,6 +10,25 @@ import {
 } from "./index.js";
 
 describe("auth policy", () => {
+  it.each([
+    ["http://localhost:3100", "better-auth.session_token"],
+    ["https://api.example.test", "__Secure-better-auth.session_token"],
+  ])(
+    "keeps existing session cookies when the display brand changes at %s",
+    async (baseURL, cookieName) => {
+      const auth = createAuth({} as never, {
+        secret: "offline-auth-secret-at-least-32-characters",
+        baseURL,
+        webOrigin: baseURL,
+        signupsEnabled: "true",
+        signupAllowlist: "",
+      });
+      const context = await auth.$context;
+      expect(context.appName).toBe("RunTars");
+      expect(context.authCookies.sessionToken.name).toBe(cookieName);
+    },
+  );
+
   it("closes every organization plugin route", () => {
     for (const path of [
       "/organization/delete",
@@ -211,7 +230,7 @@ describe("passwordResetEmail", () => {
 
     expect(message).toMatchObject({
       to: "ada@example.test",
-      subject: "Reset your Rakazo password",
+      subject: "Reset your RunTars password",
     });
     expect(message.text).toContain("https://rakazo.test/reset-password?token=secret&next=1");
     expect(message.html).toContain("&lt;Ada &amp; &quot;team&quot;&gt;");
@@ -223,7 +242,7 @@ describe("passwordResetEmail", () => {
 describe("signInCodeEmail", () => {
   it("puts the code in plain text and HTML without links", async () => {
     const message = await signInCodeEmail("ada@example.test", "042517");
-    expect(message).toMatchObject({ to: "ada@example.test", subject: "Your Rakazo sign-in code" });
+    expect(message).toMatchObject({ to: "ada@example.test", subject: "Your RunTars sign-in code" });
     expect(message.text).toContain("042517");
     expect(message.html).toContain("042517");
     expect(message.text).not.toMatch(/https?:/);

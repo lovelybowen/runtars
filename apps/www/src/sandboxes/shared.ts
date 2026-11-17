@@ -25,12 +25,12 @@ export function homepage(slug: string, provider: string, alt: string): SandboxIm
 }
 
 export const PROVIDERS_DOC: SourceLink = {
-  label: "Rakazo, computer providers",
+  label: "RunTars, computer providers",
   href: `${GITHUB_URL}/blob/main/docs/self-host-sandbox-providers.md`,
 };
 
 export const RUNTIME_DOC: SourceLink = {
-  label: "Rakazo, computer runtime and isolation",
+  label: "RunTars, computer runtime and isolation",
   href: `${GITHUB_URL}/blob/main/docs/computer-runtime.md`,
 };
 
@@ -140,7 +140,7 @@ export const BOAT = {
  */
 export const BOAT_SIZES = [
   {
-    plan: "Rakazo Cloud's Standard plan and Rakazo credits, and every self-hosted install",
+    plan: "Rakazo Cloud's Standard plan and RunTars credits, and every self-hosted install",
     machine: "default",
     ...BOAT.default,
   },
@@ -296,5 +296,5 @@ export const PRICING = {
     label: "DigitalOcean Droplet pricing",
     href: "https://www.digitalocean.com/pricing/droplets",
   },
-  rakazo: { label: "Rakazo pricing", href: `${SITE_URL}/pricing/` },
+  rakazo: { label: "RunTars pricing", href: `${SITE_URL}/pricing/` },
 } satisfies Record<string, SourceLink>;

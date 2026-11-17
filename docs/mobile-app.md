@@ -52,7 +52,7 @@ working status while a bot runs.
 
 ## Shortcuts and Siri
 
-On iPhone, Rakazo adds actions to Shortcuts, Siri and the Action button:
+On iPhone, RunTars adds actions to Shortcuts, Siri and the Action button:
 
 - **Message Bot** and **Ask Bot**: send a message. Ask Bot also returns the reply.
 - **Record Message**: talk, then pause or press again to send it to the bot whose chat you opened last.
@@ -61,5 +61,5 @@ On iPhone, Rakazo adds actions to Shortcuts, Siri and the Action button:
 
 ## Share to a bot
 
-On Android, share text, images, audio, video, PDFs or files from another app to Rakazo and pick the
+On Android, share text, images, audio, video, PDFs or files from another app to RunTars and pick the
 bot to send them to.

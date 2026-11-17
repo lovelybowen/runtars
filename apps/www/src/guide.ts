@@ -42,7 +42,7 @@ export const CADDY_SNIPPET = `app.example.com {
 }`;
 
 export const RUN_ON_YOUR_MAC =
-  "Run on your Mac with the desktop app. This computer installs Rakazo on that Mac. A Mac Mini can stay on as the always-on box.";
+  "Run on your Mac with the desktop app. This computer installs RunTars on that Mac. A Mac Mini can stay on as the always-on box.";
 
 export type FaqItem = {
   question: string;
@@ -55,9 +55,9 @@ export type ComparisonRow = {
   openclaw: string;
 };
 
-export const SELF_HOST_TITLE = "Self-Hosted AI Agent (Open Source) – Rakazo";
+export const SELF_HOST_TITLE = "Self-Hosted AI Agent (Open Source) – RunTars";
 export const SELF_HOST_DESCRIPTION =
-  "A self-hosted AI agent runs its app, data, and tools on a machine you control. Run Rakazo, an open source one, with Docker: your data, your model, your costs.";
+  "A self-hosted AI agent runs its app, data, and tools on a machine you control. Run RunTars, an open source one, with Docker: your data, your model, your costs.";
 
 export const SELF_HOST_DEFINITION =
   "A self-hosted AI agent is an AI agent whose app, data, and tools run on a machine you control, such as a laptop, a home server, or a VPS, instead of on a vendor's cloud. It still needs a model: a hosted one through your own API key, or a local one on your hardware.";
@@ -82,7 +82,7 @@ export type SelfHostOption = {
 
 export const SELF_HOST_OPTIONS: readonly SelfHostOption[] = [
   {
-    name: "Rakazo",
+    name: "RunTars",
     href: GITHUB_URL,
     license: "Apache-2.0",
     run: "Docker images, then the web, desktop, and mobile apps",
@@ -140,14 +140,14 @@ export const SELF_HOST_OPTIONS: readonly SelfHostOption[] = [
 ];
 
 export const OPENCLAW_H1 = "Open source OpenClaw alternative";
-export const OPENCLAW_TITLE = "Open Source OpenClaw Alternative – Rakazo";
+export const OPENCLAW_TITLE = "Open Source OpenClaw Alternative – RunTars";
 export const OPENCLAW_UPDATED = "October 7, 2026";
 export const OPENCLAW_DESCRIPTION =
-  "Rakazo and OpenClaw are both open source, self-hosted AI agents. Rakazo keeps setup and daily use in chat. OpenClaw's docs add a gateway, a config file, and a background service you can install.";
+  "RunTars and OpenClaw are both open source, self-hosted AI agents. RunTars keeps setup and daily use in chat. OpenClaw's docs add a gateway, a config file, and a background service you can install.";
 
 export const SELF_HOST_FAQS: readonly FaqItem[] = [
   {
-    question: "What do I need to self-host Rakazo?",
+    question: "What do I need to self-host RunTars?",
     answer:
       "Published images need Docker Engine 26 or newer, the Compose plugin, curl, and OpenSSL. You do not need Node.js for that path. A source checkout needs Node.js 24.15.0 or newer on the 24.x line, or Node.js 26 or newer, plus pnpm 12 and Docker. Node.js 25.x is not supported.",
   },
@@ -162,18 +162,18 @@ export const SELF_HOST_FAQS: readonly FaqItem[] = [
       "You connect your own model keys, or a local or OpenAI-compatible model server, and you can pick a different model per bot. The open source software has no seat fee. You pay the model and computer providers you use. Local Docker computers are the default and do not need a hosted sandbox account.",
   },
   {
-    question: "Is hosted Rakazo available?",
+    question: "Is hosted RunTars available?",
     answer: "Yes. Rakazo Cloud is in beta at app.rakazo.com. Self-hosting is available too.",
   },
   {
     question: "How does this compare with OpenClaw?",
     answer:
-      "Both are open source and run on hardware you control. After a Docker or desktop install, Rakazo is a chat for persistent teammates. OpenClaw's getting-started guide adds a wizard, a Gateway you run in the terminal or install as a background service, and a separate step to connect a chat app.",
+      "Both are open source and run on hardware you control. After a Docker or desktop install, RunTars is a chat for persistent teammates. OpenClaw's getting-started guide adds a wizard, a Gateway you run in the terminal or install as a background service, and a separate step to connect a chat app.",
   },
   {
     question: "Can a self-hosted AI agent run entirely on my own hardware?",
     answer:
-      "Yes, when every model it uses is local. Rakazo with local models, including the approval model, and the default local Docker computer keeps prompts, data, and tool work on your machines. Tools that browse the web or call an integration still reach those sites.",
+      "Yes, when every model it uses is local. RunTars with local models, including the approval model, and the default local Docker computer keeps prompts, data, and tool work on your machines. Tools that browse the web or call an integration still reach those sites.",
   },
   {
     question: "Should I self-host or use a hosted AI agent?",
@@ -183,65 +183,65 @@ export const SELF_HOST_FAQS: readonly FaqItem[] = [
   {
     question: "How do I build my own AI agent?",
     answer:
-      "Write one with a library such as LangGraph or CrewAI and host the program yourself, or run an agent app. In Rakazo, a new bot interviews you about the job, then keeps its routines as Markdown you can edit.",
+      "Write one with a library such as LangGraph or CrewAI and host the program yourself, or run an agent app. In RunTars, a new bot interviews you about the job, then keeps its routines as Markdown you can edit.",
   },
 ];
 
 export const OPENCLAW_SETUP_PARAGRAPHS = [
-  "Rakazo's self-host path is the published Docker installer, or the desktop app starting that stack on this computer. You create an account and connect a model. From there it is just chat, on the web, desktop, and mobile apps. A new bot interviews you about the work, and you manage the bot from that chat. Routines are readable Markdown.",
+  "RunTars's self-host path is the published Docker installer, or the desktop app starting that stack on this computer. You create an account and connect a model. From there it is just chat, on the web, desktop, and mobile apps. A new bot interviews you about the work, and you manage the bot from that chat. Routines are readable Markdown.",
   "OpenClaw's getting-started guide installs the CLI, then runs a wizard. Quick start is the short path when a Claude Code or Codex login, or an API key, is already on the machine. Custom setup walks through the full flow, and `openclaw onboard --classic` is the step-by-step wizard. Quick start leaves the Gateway in that terminal until you stop it, so you can chat before installing a service. `openclaw gateway install` is the later step that keeps it in the background: a LaunchAgent on macOS, a systemd user unit on Linux, or a Scheduled Task on Windows. You check `openclaw gateway status` (the guide says port 18789) and open `openclaw dashboard`. Messaging from a phone, such as Telegram, is a separate Channels step.",
 ] as const;
 
 export const OPENCLAW_DAY_TO_DAY_PARAGRAPHS = [
-  "Day to day, you manage Rakazo from the same chat. Schedules, memory, and approval boundaries stay with that bot, on the web, desktop, and mobile apps. Optional connectors can attach Slack, WhatsApp, Telegram, iMessage via Sendblue, and Feishu/Lark. They are not required to use the product.",
+  "Day to day, you manage RunTars from the same chat. Schedules, memory, and approval boundaries stay with that bot, on the web, desktop, and mobile apps. Optional connectors can attach Slack, WhatsApp, Telegram, iMessage via Sendblue, and Feishu/Lark. They are not required to use the product.",
   "OpenClaw's docs send later changes through `openclaw configure` and a JSON config file, `~/.openclaw/openclaw.json` unless you override the path. `openclaw doctor` and `openclaw triage` diagnose the install. The Gateway is the process you keep running, in a terminal or as the installed background service, and chat apps are the main way you message the assistant, alongside the Control UI.",
 ] as const;
 
 export const OPENCLAW_FAQS: readonly FaqItem[] = [
   {
-    question: "Is Rakazo simpler to set up than OpenClaw?",
+    question: "Is RunTars simpler to set up than OpenClaw?",
     answer:
-      "The documented paths are different. Rakazo's self-host guide is a Docker installer, or the desktop app starting that stack, then an account and a model. After that Rakazo is just chat, and you manage the bot from that chat. OpenClaw's getting-started guide is an installer and a wizard (Quick start or Custom setup). You can chat while the Gateway runs in that terminal. `openclaw gateway install` keeps it running in the background, then `openclaw gateway status` and `openclaw dashboard`. Connecting a chat app is another step. OpenClaw can be short when a model login is already detected. The ongoing surface is still the Gateway and the config file.",
+      "The documented paths are different. RunTars's self-host guide is a Docker installer, or the desktop app starting that stack, then an account and a model. After that RunTars is just chat, and you manage the bot from that chat. OpenClaw's getting-started guide is an installer and a wizard (Quick start or Custom setup). You can chat while the Gateway runs in that terminal. `openclaw gateway install` keeps it running in the background, then `openclaw gateway status` and `openclaw dashboard`. Connecting a chat app is another step. OpenClaw can be short when a model login is already detected. The ongoing surface is still the Gateway and the config file.",
   },
   {
     question: "Can I chat with OpenClaw before installing a background service?",
     answer:
-      "Yes. Quick start leaves the Gateway in that terminal until you stop it, so you can send a message before `openclaw gateway install`. That command is the later step that keeps the Gateway in the background: a LaunchAgent on macOS, a systemd user unit on Linux, or a Scheduled Task on Windows. Rakazo does not add a gateway service. After Docker or the desktop app, the product is the chat.",
+      "Yes. Quick start leaves the Gateway in that terminal until you stop it, so you can send a message before `openclaw gateway install`. That command is the later step that keeps the Gateway in the background: a LaunchAgent on macOS, a systemd user unit on Linux, or a Scheduled Task on Windows. RunTars does not add a gateway service. After Docker or the desktop app, the product is the chat.",
   },
   {
     question: "Do I manage OpenClaw from the chat?",
     answer:
-      "You message the assistant from chat apps or the Control UI. The docs send later changes through `openclaw configure` and `~/.openclaw/openclaw.json`. `openclaw doctor` and `openclaw gateway status` are separate commands. Rakazo keeps schedules, memory, and approval boundaries in the same chat, the way Grok Bot does.",
+      "You message the assistant from chat apps or the Control UI. The docs send later changes through `openclaw configure` and `~/.openclaw/openclaw.json`. `openclaw doctor` and `openclaw gateway status` are separate commands. RunTars keeps schedules, memory, and approval boundaries in the same chat, the way Grok Bot does.",
   },
   {
-    question: "Is Rakazo just chat, like Grok Bot?",
+    question: "Is RunTars just chat, like Grok Bot?",
     answer:
-      "After the install, yes. You set up the bot and manage it from that chat on the web, desktop, and mobile apps. OpenClaw is also a conversation, and its docs add a Gateway you keep running and a config file for later changes. The two are not interchangeable. Rakazo does not import an OpenClaw setup.",
+      "After the install, yes. You set up the bot and manage it from that chat on the web, desktop, and mobile apps. OpenClaw is also a conversation, and its docs add a Gateway you keep running and a config file for later changes. The two are not interchangeable. RunTars does not import an OpenClaw setup.",
   },
   {
-    question: "Is Rakazo a drop-in replacement for OpenClaw?",
+    question: "Is RunTars a drop-in replacement for OpenClaw?",
     answer:
-      "No. Rakazo does not import OpenClaw configuration, skills, or channel sessions. It is a separate open source agent you self-host.",
+      "No. RunTars does not import OpenClaw configuration, skills, or channel sessions. It is a separate open source agent you self-host.",
   },
   {
     question: "How do the licenses differ?",
     answer:
-      "Rakazo is released under the Apache-2.0 license. OpenClaw is released under the MIT license and is stewarded by the OpenClaw Foundation, an independent 501(c)(3).",
+      "RunTars is released under the Apache-2.0 license. OpenClaw is released under the MIT license and is stewarded by the OpenClaw Foundation, an independent 501(c)(3).",
   },
   {
     question: "Do both keep data on my machine?",
     answer:
-      "Yes for the software you run. OpenClaw's documentation says state, memory, and credentials live on your hardware, and that there is no hosted service in the middle. A Rakazo deployment stores its database and bot data on your host. In both cases, prompts go to the model provider you configure, and to any chat service you connect.",
+      "Yes for the software you run. OpenClaw's documentation says state, memory, and credentials live on your hardware, and that there is no hosted service in the middle. A RunTars deployment stores its database and bot data on your host. In both cases, prompts go to the model provider you configure, and to any chat service you connect.",
   },
   {
     question: "Can I choose my own model with either one?",
     answer:
-      "Yes. Rakazo supports OpenAI, Anthropic, Google, OpenRouter, Vercel AI Gateway, an OpenAI-compatible endpoint, and a local model server, with a choice per bot. OpenClaw documents Anthropic, OpenAI, Google, and other providers, including self-hosted OpenAI-compatible and Anthropic-compatible endpoints, plus failover.",
+      "Yes. RunTars supports OpenAI, Anthropic, Google, OpenRouter, Vercel AI Gateway, an OpenAI-compatible endpoint, and a local model server, with a choice per bot. OpenClaw documents Anthropic, OpenAI, Google, and other providers, including self-hosted OpenAI-compatible and Anthropic-compatible endpoints, plus failover.",
   },
   {
     question: "Does either project charge for the software?",
     answer:
-      "Rakazo is free to self-host. Hosted Rakazo Cloud is in beta. OpenClaw's documentation says the project has no paid tier and no hosted service. You still pay for models, machines, and any optional computer providers you use.",
+      "RunTars is free to self-host. Hosted Rakazo Cloud is in beta. OpenClaw's documentation says the project has no paid tier and no hosted service. You still pay for models, machines, and any optional computer providers you use.",
   },
 ];
 
@@ -249,7 +249,7 @@ export const COMPARISON_ROWS: readonly ComparisonRow[] = [
   {
     aspect: "Setup",
     rakazo:
-      "Docker installer or the desktop app's local stack, then an account and a model. After that Rakazo is just chat: a new bot interviews you, and you manage it from the chat.",
+      "Docker installer or the desktop app's local stack, then an account and a model. After that RunTars is just chat: a new bot interviews you, and you manage it from the chat.",
     openclaw:
       "CLI install, then Quick start or Custom setup. The Gateway can stay in that terminal for a first chat. `openclaw gateway install` is the background service (LaunchAgent, systemd user unit, or Windows Scheduled Task). Then `openclaw gateway status` and `openclaw dashboard`. A phone channel is a separate step.",
   },
@@ -269,7 +269,7 @@ export const COMPARISON_ROWS: readonly ComparisonRow[] = [
   },
   {
     aspect: "License",
-    rakazo: "Apache-2.0. Maintained in the open by Inbox Zero Inc.",
+    rakazo: "Apache-2.0. Based on the upstream Rakazo project maintained by Inbox Zero Inc.",
     openclaw: "MIT. Stewarded by the OpenClaw Foundation, an independent 501(c)(3).",
   },
   {
@@ -282,7 +282,7 @@ export const COMPARISON_ROWS: readonly ComparisonRow[] = [
   {
     aspect: "How you talk to it",
     rakazo:
-      "The Rakazo web app, Electron desktop app, and Expo mobile app. Optional connectors can attach Slack, WhatsApp, Telegram, iMessage via Sendblue, and Feishu/Lark.",
+      "The RunTars web app, Electron desktop app, and Expo mobile app. Optional connectors can attach Slack, WhatsApp, Telegram, iMessage via Sendblue, and Feishu/Lark.",
     openclaw:
       "Chat apps are the primary surface. Documented channels include Discord, Google Chat, iMessage, Matrix, Microsoft Teams, Signal, Slack, Telegram, WhatsApp, Zalo, and others via plugins, plus WebChat.",
   },
@@ -340,7 +340,7 @@ function selfHostOptionsMarkdown(): string {
 }
 
 function comparisonMarkdown(): string {
-  const header = "| | Rakazo | OpenClaw |\n| --- | --- | --- |";
+  const header = "| | RunTars | OpenClaw |\n| --- | --- | --- |";
   const rows = COMPARISON_ROWS.map((row) => `| ${row.aspect} | ${row.rakazo} | ${row.openclaw} |`);
   return [header, ...rows].join("\n");
 }
@@ -350,7 +350,7 @@ export const BEST_OPEN_SOURCE_AGENTS_PATH = "/blog/best-open-source-ai-agents-20
 export const SELF_HOST_RELATED = [
   { href: BEST_OPEN_SOURCE_AGENTS_PATH, label: "Best open source AI agents in 2026" },
   { href: "/blog/self-host-an-ai-agent/", label: "How to self-host an AI agent with Docker" },
-  { href: "/blog/openclaw-vs-hermes-vs-rakazo/", label: "OpenClaw vs Hermes Agent vs Rakazo" },
+  { href: "/blog/openclaw-vs-hermes-vs-rakazo/", label: "OpenClaw vs Hermes Agent vs RunTars" },
   { href: "/alternatives/", label: "All comparisons" },
 ] as const;
 
@@ -360,7 +360,7 @@ export const SELF_HOST_MARKDOWN = `# Self-hosted AI agent
 
 ${SELF_HOST_DEFINITION}
 
-Rakazo is an open source AI agent for persistent teammates. Each bot can use a browser and a shell, keep routines as Markdown, and pause for approval when work crosses a boundary you set. Self-hosting means that stack runs on infrastructure you operate.
+RunTars is an open source AI agent for persistent teammates. Each bot can use a browser and a shell, keep routines as Markdown, and pause for approval when work crosses a boundary you set. Self-hosting means that stack runs on infrastructure you operate.
 
 The software is [Apache-2.0](${GITHUB_URL}/blob/main/LICENSE). Hosted Rakazo Cloud is in beta. This page is the essential setup. The [full self-hosting guide](${DOCS_URL}) on GitHub covers backups, upgrades, secrets, restricted networks, and production Compose.
 
@@ -416,7 +416,7 @@ Hardware: ${SELF_HOST_HARDWARE}
 ${PUBLISHED_IMAGES_INSTALL}
 \`\`\`
 
-The installer downloads the Compose file and \`.env.images.example\`, creates \`.env\` with random secrets, and starts Rakazo. It keeps an existing \`.env\` when you run it again. The default image tag is \`edge\` (builds from the main branch, \`linux/amd64\` and \`linux/arm64\`).
+The installer downloads the Compose file and \`.env.images.example\`, creates \`.env\` with random secrets, and starts RunTars. It keeps an existing \`.env\` when you run it again. The default image tag is \`edge\` (builds from the main branch, \`linux/amd64\` and \`linux/arm64\`).
 
 Open [http://127.0.0.1:5173](http://127.0.0.1:5173) and create an account. The first registered user becomes the deployment owner. Connect a model in the app, or set \`OPENROUTER_API_KEY\` before startup. Local Docker computers are on by default.
 
@@ -498,11 +498,11 @@ export const OPENCLAW_MARKDOWN = `# Open source OpenClaw alternative
 
 Updated ${OPENCLAW_UPDATED}.
 
-> A fair comparison of Rakazo and OpenClaw, two open source ways to run an AI agent you control.
+> A fair comparison of RunTars and OpenClaw, two open source ways to run an AI agent you control.
 
-The main difference is simplicity. Like Grok Bot, Rakazo is just chat: you set up the bot and manage it from that chat. OpenClaw is also open source and self-hosted. Its [getting-started guide](${OPENCLAW_GETTING_STARTED_URL}) is a longer path: a CLI installer, an onboarding wizard, a Gateway you run in the terminal or install as a background service, and a config file.
+The main difference is simplicity. Like Grok Bot, RunTars is just chat: you set up the bot and manage it from that chat. OpenClaw is also open source and self-hosted. Its [getting-started guide](${OPENCLAW_GETTING_STARTED_URL}) is a longer path: a CLI installer, an onboarding wizard, a Gateway you run in the terminal or install as a background service, and a config file.
 
-They are not the same product, and Rakazo does not import an OpenClaw setup. This comparison follows [OpenClaw's documentation](${OPENCLAW_DOCS_URL}) and this repository. Details change. Those docs are the full source for OpenClaw.
+They are not the same product, and RunTars does not import an OpenClaw setup. This comparison follows [OpenClaw's documentation](${OPENCLAW_DOCS_URL}) and this repository. Details change. Those docs are the full source for OpenClaw.
 
 ## Setup
 
@@ -518,17 +518,17 @@ ${comparisonMarkdown()}
 
 ## Key differences
 
-Rakazo is a web, desktop, and mobile app for persistent teammates: a bot has a job, a computer, and routines saved as Markdown. OpenClaw is a Gateway you message from chat apps, with a browser Control UI and mobile nodes.
+RunTars is a web, desktop, and mobile app for persistent teammates: a bot has a job, a computer, and routines saved as Markdown. OpenClaw is a Gateway you message from chat apps, with a browser Control UI and mobile nodes.
 
-Rakazo runs bot work on a computer. Local Docker is the default. OpenClaw can sandbox tool execution, and its docs say sandboxing is off by default. The Gateway process stays on the host.
+RunTars runs bot work on a computer. Local Docker is the default. OpenClaw can sandbox tool execution, and its docs say sandboxing is off by default. The Gateway process stays on the host.
 
-Both let you bring a model provider, including a server you run. Neither charges a seat fee for the software. OpenClaw's docs say it has no paid tier and no hosted service. Rakazo is free to self-host. Hosted Rakazo Cloud is in beta.
+Both let you bring a model provider, including a server you run. Neither charges a seat fee for the software. OpenClaw's docs say it has no paid tier and no hosted service. RunTars is free to self-host. Hosted Rakazo Cloud is in beta.
 
-Rakazo is Apache-2.0, maintained by Inbox Zero Inc. OpenClaw is MIT, stewarded by the OpenClaw Foundation.
+RunTars is based on Rakazo, an Apache-2.0 project maintained by Inbox Zero Inc. OpenClaw is MIT, stewarded by the OpenClaw Foundation.
 
 ## Which shape fits
 
-Choose Rakazo for repeated browser and shell work, scheduled operational routines, an audit log, and approval boundaries, shared across the web, desktop, and mobile clients.
+Choose RunTars for repeated browser and shell work, scheduled operational routines, an audit log, and approval boundaries, shared across the web, desktop, and mobile clients.
 
 Choose OpenClaw when the assistant should live in chat apps you already use, with channel plugins, skills, and a gateway on your machine.
 
@@ -539,8 +539,8 @@ Choose OpenClaw when the assistant should live in chat apps you already use, wit
 - [OpenClaw features](${OPENCLAW_FEATURES_URL})
 - [OpenClaw sandboxing](${OPENCLAW_SANDBOX_URL})
 - [OpenClaw source](${OPENCLAW_GITHUB_URL})
-- [Rakazo self-host guide](${SITE_URL}${SELF_HOST_GUIDE_PATH})
-- [Rakazo source](${GITHUB_URL})
+- [RunTars self-host guide](${SITE_URL}${SELF_HOST_GUIDE_PATH})
+- [Upstream Rakazo source](${GITHUB_URL})
 
 ## FAQ
 

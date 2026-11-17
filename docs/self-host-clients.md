@@ -12,7 +12,7 @@ The app accepts plain `http://` only for a private IP, `localhost`, or a `.local
 If a domain login gate redirects the server probe to a browser sign-in page, use the
 app's **Server → Headers** with a dedicated access-proxy credential. See
 [connecting through a login gate](./self-host-kubernetes.md#connect-the-mobile-app-through-the-same-gate)
-for the configuration and checks; an entry key does not replace the Rakazo account login.
+for the configuration and checks; an entry key does not replace the RunTars account login.
 
 Native apps need a setting on the server before they can use its [passkeys](./self-host-accounts.md#passkeys).
 
@@ -186,7 +186,7 @@ base file, or the web service won't find the theme and serves the default look.
 ## Menu links
 
 `RAKAZO_NAV_LINKS` adds items to the account menu that open a page from the same domain inside the
-web app, such as an internal tool your reverse proxy serves next to Rakazo. Set it on the API:
+web app, such as an internal tool your reverse proxy serves next to RunTars. Set it on the API:
 
 ```bash
 RAKAZO_NAV_LINKS='[{"id":"clients","label":"Clients","path":"/ext/clients/"}]'
@@ -197,7 +197,7 @@ single `/` and must not be under `/app`, `/api`, `/rpc`, `/novnc` or `/health`. 
 catch-all in your proxy, for example `handle /ext/* { reverse_proxy office:8080 }` in
 `Caddyfile.prod`. A malformed value stops the API from starting.
 
-Pages open sandboxed with an opaque origin, so they cannot read Rakazo's pages or act with the
+Pages open sandboxed with an opaque origin, so they cannot read RunTars's pages or act with the
 signed-in user's session; that also blocks their own cookies and storage. Add `"trusted": true` to a
 link only for a service you control: a trusted page runs with the signed-in user's access, like a
 script allowed by `RAKAZO_CSP_SCRIPT_SRC`. The page must allow framing by the app

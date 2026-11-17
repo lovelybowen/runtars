@@ -484,7 +484,7 @@ export function CreditChoice({
         <AccountMenu disabled={pending} signingOut={signingOut} onLogOut={() => void logOut()} />
       )}
       <h1 className={cn("text-heading1 font-medium", tiers.length > 1 && "text-center")}>
-        <Trans>Choose how to use Rakazo</Trans>
+        <Trans>Choose how to use RunTars</Trans>
       </h1>
       {tiers.length > 1 ? (
         <TierPlans
@@ -1060,7 +1060,7 @@ export function ModelCreditsSettings({
             })
           }
         >
-          <Trans>Use Rakazo credits</Trans>
+          <Trans>Use RunTars credits</Trans>
         </Button>
       ) : null}
       {status.canManage && status.funding !== "byok" && (!recurring || status.cancelAtPeriodEnd) ? (
