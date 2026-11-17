@@ -11865,3 +11865,117 @@ msgstr "Tu proveedor de voz rechazó la clave."
 #: apps/web/src/components/vault/VaultItemEditor.tsx
 msgid "ZIP or postal code"
 msgstr "Código postal"
+
+#: apps/web/src/components/ModelCredits.tsx
+#: apps/web/src/components/SubscriptionGate.tsx
+msgid "Choose how to use RunTars"
+msgstr "Elige cómo usar RunTars"
+
+#. js-lingui-explicit-id
+#: packages/i18n/src/run-error.ts
+msgid "Connect your own API key in Models or choose RunTars credits in Billing."
+msgstr "Conecta tu propia clave de API en Modelos o elige créditos de RunTars en Facturación."
+
+#: apps/web/src/components/GitHubStarPrompt.tsx
+msgid "Enjoying RunTars?"
+msgstr "¿Te gusta RunTars?"
+
+#: apps/mobile/app/(settings)/signup-survey.tsx
+#: apps/web/src/components/SignupSurvey.tsx
+msgid "How will you use RunTars?"
+msgstr "¿Cómo usarás RunTars?"
+
+#: apps/web/src/pages/shell/import-status.ts
+msgid "Not in RunTars's catalog"
+msgstr "No está en el catálogo de RunTars"
+
+#: apps/web/src/pages/shell/agent-import-plan.tsx
+#: apps/web/src/pages/shell/import-status.ts
+msgid "Not supported in RunTars"
+msgstr "No compatible con RunTars"
+
+#: apps/web/src/pages/shell/agent-import-plan.tsx
+msgid "Not used by RunTars"
+msgstr "RunTars no lo usa"
+
+#: apps/web/src/components/pages/PublicPageShell.tsx
+#: apps/web/src/pages/Invite.tsx
+#: apps/web/src/pages/SharedPage.tsx
+msgid "Open RunTars"
+msgstr "Abrir RunTars"
+
+#: apps/mobile/components/compatible-endpoint-form.tsx
+#: apps/web/src/pages/model-settings/compatible-model-fields.tsx
+msgid "Paste the OpenAI-compatible address from your server. RunTars adds /v1 if needed."
+msgstr "Pega la dirección compatible con OpenAI de tu servidor. RunTars agrega /v1 si es necesario."
+
+#: apps/mobile/app/(settings)/ai-data-sharing.tsx
+#: apps/mobile/app/(settings)/general.tsx
+#: apps/mobile/app/bot-settings.tsx
+#: apps/web/src/pages/AccountSettingsOverlay.tsx
+#: apps/web/src/pages/shell/avatar-studio-popover.tsx
+msgid "RunTars"
+msgstr "RunTars"
+
+#: apps/mobile/app/(settings)/billing.tsx
+#: apps/web/src/pages/onboarding/use-onboarding-model.ts
+msgid "RunTars credits"
+msgstr "Créditos de RunTars"
+
+#: apps/web/src/components/ProviderSettingsForm.tsx
+msgid "rakazo-shared and IDs starting with bot- are reserved for RunTars."
+msgstr "rakazo-shared y los ID que empiezan con bot- están reservados para RunTars."
+
+#: apps/web/src/components/ProviderSettingsForm.tsx
+msgid "Recall from this peer; save to RunTars’s own peers."
+msgstr "Consultar este peer; guardar en los propios peers de RunTars."
+
+#: apps/web/src/pages/McpOAuthCallback.tsx
+#: apps/web/src/pages/SlackInstallCallback.tsx
+msgid "Return to RunTars"
+msgstr "Volver a RunTars"
+
+#: apps/mobile/app/sign-in.tsx
+msgid "Sign in to continue to RunTars"
+msgstr "Inicia sesión para continuar en RunTars"
+
+#: apps/mobile/app/sign-in.tsx
+#: apps/web/src/pages/Auth.tsx
+msgid "Sign in to RunTars"
+msgstr "Inicia sesión en RunTars"
+
+#: apps/mobile/app/sign-in.tsx
+msgid "Sign up for RunTars"
+msgstr "Regístrate en RunTars"
+
+#: apps/mobile/app/paywall.tsx
+msgid "Start using RunTars"
+msgstr "Empieza a usar RunTars"
+
+#: apps/mobile/lib/endpoint.ts
+msgid "That URL did not look like a RunTars server"
+msgstr "Esa URL no parece ser de un servidor de RunTars"
+
+#: apps/web/src/lib/agent-import-errors.ts
+msgid "This export is newer than RunTars can read. Update RunTars and try again."
+msgstr "Esta exportación es más reciente de lo que RunTars puede leer. Actualiza RunTars y vuelve a intentarlo."
+
+#: apps/mobile/app/(settings)/model-connection.tsx
+#: apps/web/src/pages/model-settings/connection-controls.tsx
+msgid "This subscription sign-in is not available in RunTars yet. Use a deployment credential or choose another provider."
+msgstr "Este inicio de sesión por suscripción aún no está disponible en RunTars. Usa una credencial de despliegue o elige otro proveedor."
+
+#: apps/mobile/app/(settings)/billing.tsx
+#: apps/web/src/components/ModelCredits.tsx
+msgid "Use RunTars credits"
+msgstr "Usar créditos de RunTars"
+
+#: apps/mobile/app/(settings)/_layout.tsx
+#: apps/web/src/components/SignupSurvey.tsx
+msgid "Welcome to RunTars"
+msgstr "Te damos la bienvenida a RunTars"
+
+#: apps/mobile/app/(settings)/signup-survey.tsx
+#: apps/web/src/components/SignupSurvey.tsx
+msgid "What do you most want RunTars to help with?"
+msgstr "¿Con qué quieres que RunTars te ayude más?"
