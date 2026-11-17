@@ -1,4 +1,3 @@
-import { readFile } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 import { BOT_COLORS } from "@rakazo/contracts";
 import { captureScreenshot } from "./helpers";
@@ -16,7 +15,7 @@ test("renders the real logo in every requested pose in both themes", async ({ pa
   page.on("pageerror", (error) => errors.push(error.message));
   for (const theme of ["dark", "light"]) {
     await page.goto(`/e2e/fixtures/logo-avatars.html?theme=${theme}`);
-    await expect(page.getByRole("img", { name: "Official Rakazo logo" })).toBeVisible();
+    await expect(page.getByRole("img", { name: "Official RunTars logo" })).toBeVisible();
     const cards = page.getByRole("region", { name: "Requested expressions" });
     for (const label of ["Idle", "Reading", "Writing", "Thinking", "Computer use"]) {
       await expect(cards.getByRole("img", { name: label, exact: true })).toBeVisible();
@@ -732,19 +731,22 @@ test("native small-size indicators keep one-pixel strokes and omit fine detail i
 test("directional vector rim follows the source edge falloff without whitening the face", async ({
   page,
 }) => {
-  const original = await readFile(
-    new URL(
-      "../../../packages/ui-tokens/assets/Rakazo.icon/Assets/orange-bot.png",
-      import.meta.url,
-    ),
-  );
+  // Freeze the original animated character's raster samples. The independently
+  // branded app icon is no longer the reference for this unchanged vector art.
+  const reference = {
+    left: 157,
+    right: 867,
+    sourceLeft: [207, 107, 48, 252],
+    sourceRight: [249, 149, 70, 252],
+    sourceHotspot: [252, 163, 75, 253],
+  };
   await page.goto("/e2e/fixtures/logo-avatars.html?compare=1&theme=light");
   const art = await page
     .getByRole("img", { name: "Idle", exact: true })
     .locator(".logo-avatar-art")
     .evaluate((node) => node.outerHTML);
   const proof = await page.evaluate(
-    async ({ art, original }) => {
+    async ({ art, reference }) => {
       const pixels = async (src: string) => {
         const image = new Image();
         image.src = src;
@@ -755,33 +757,28 @@ test("directional vector rim follows the source edge falloff without whitening t
         context.drawImage(image, 0, 0, 1024, 1024);
         return context.getImageData(0, 0, 1024, 1024).data;
       };
-      const source = await pixels(original);
       const vector = await pixels(
         `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 100 100">${art}</svg>`)}`,
       );
       const rgba = (data: Uint8ClampedArray, x: number, y: number) =>
         Array.from(data.slice((y * 1024 + x) * 4, (y * 1024 + x) * 4 + 4));
       const y = 420;
-      const opaque = Array.from({ length: 1024 }, (_, x) => x).filter(
-        (x) => rgba(source, x, y)[3]! > 245,
-      );
-      const left = opaque[0]!,
-        right = opaque[opaque.length - 1]!;
+      const { left, right } = reference;
       const sample = (data: Uint8ClampedArray, side: "left" | "right", inset: number) =>
         rgba(data, side === "left" ? left + inset : right - inset, y);
       return {
-        sourceLeft: sample(source, "left", 4),
+        sourceLeft: reference.sourceLeft,
         vectorLeft: sample(vector, "left", 4),
-        sourceRight: sample(source, "right", 4),
+        sourceRight: reference.sourceRight,
         vectorRight: sample(vector, "right", 4),
         leftInside: sample(vector, "left", 40),
         rightInside: sample(vector, "right", 40),
-        sourceHotspot: rgba(source, 580, 220),
+        sourceHotspot: reference.sourceHotspot,
         vectorHotspot: rgba(vector, 580, 220),
         outsideAlpha: rgba(vector, 512, 20)[3],
       };
     },
-    { art, original: `data:image/png;base64,${original.toString("base64")}` },
+    { art, reference },
   );
   expect(proof.vectorRight[2]! - proof.rightInside[2]!).toBeGreaterThan(25);
   expect(proof.vectorLeft[2]! - proof.leftInside[2]!).toBeGreaterThan(15);

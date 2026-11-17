@@ -1,6 +1,6 @@
 # Model subscriptions
 
-Can you use the AI plan you already pay for? It depends on the plan: some support a Rakazo
+Can you use the AI plan you already pay for? It depends on the plan: some support a RunTars
 connection, while others cover only the provider's own apps. Subscription allowances and API
 billing are often separate.
 
@@ -16,19 +16,19 @@ See the [official OpenAI authentication documentation](https://learn.chatgpt.com
 ## Claude
 
 **Yes, through the official Claude Code CLI when you self-host from a source checkout for yourself.**
-Sign in to Claude Code with your own account. Run Rakazo's API and worker on the same machine as
+Sign in to Claude Code with your own account. Run RunTars's API and worker on the same machine as
 the CLI, as the same OS user. The official Docker images and desktop app's local stack do not
 support this integration. See [Claude Code CLI](./self-host-models.md#claude-code-cli) for setup.
 
-Rakazo invokes the installed CLI without reading or storing your Claude credentials. CLI usage
+RunTars invokes the installed CLI without reading or storing your Claude credentials. CLI usage
 counts against your subscription limits. Anthropic confirms this in its
 [subscription usage guidance](https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan).
 
-**For Rakazo's hosted plan and shared servers, use an Anthropic API key.** Rakazo currently limits
-its CLI integration to a server with one account and no model-usage billing. This is a Rakazo
+**For RunTars's hosted plan and shared servers, use an Anthropic API key.** RunTars currently limits
+its CLI integration to a server with one account and no model-usage billing. This is a RunTars
 restriction; it does not mean Anthropic prohibits every hosted Claude Code setup.
 
-Rakazo's separate in-app Claude sign-in option is not this CLI integration. Anthropic prohibits
+RunTars's separate in-app Claude sign-in option is not this CLI integration. Anthropic prohibits
 third-party apps from collecting Claude credentials or offering their own Claude account login.
 Sign in through the official CLI instead. Your use remains subject to Anthropic's
 [authentication and credential rules](https://code.claude.com/docs/en/legal-and-compliance#authentication-and-credential-use).
@@ -44,7 +44,7 @@ bot's workflow.
 
 **OpenCode Zen / pay-as-you-go** uses the **OpenCode** provider instead. Connect its API key;
 usage comes from your OpenCode credit balance rather than Go's allowance. Its free-tier chat
-models require the OpenCode app and are not offered in Rakazo. See [OpenCode's model documentation](https://opencode.ai/docs/console/models/).
+models require the OpenCode app and are not offered in RunTars. See [OpenCode's model documentation](https://opencode.ai/docs/console/models/).
 
 ## Other subscriptions
 
@@ -55,15 +55,15 @@ Check the exact plan before connecting or buying it:
 - **Kimi:** Code membership and Moonshot's general API have different keys, endpoints, and billing.
   Check the [Kimi account documentation](https://www.kimi.ai/help/kimi-code/faq) for your plan.
 - **Copilot, Grok, and other coding plans:** check the provider's current terms, eligible clients,
-  and included models. A sign-in option alone does not establish permission for every Rakazo workload.
+  and included models. A sign-in option alone does not establish permission for every RunTars workload.
 
-You need both a connection Rakazo supports and permission from the provider for your intended use.
+You need both a connection RunTars supports and permission from the provider for your intended use.
 For compatible APIs, see [Models](./models.md) for custom server connections.
 
 ## Billing and limits
 
 Your provider's allowance, charges, and rate limits apply when you connect your own account.
-This does not add Rakazo model credits or change your Rakazo hosting plan.
+This does not add RunTars model credits or change your RunTars hosting plan.
 
 A [fallback model](./models.md#main-model-and-fallbacks) can use a separately billed connection
 when your subscription reaches a limit. See [Account and billing](./account.md).

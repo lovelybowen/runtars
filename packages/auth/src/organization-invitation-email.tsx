@@ -16,9 +16,9 @@ export function organizationInvitationEmail(
   return message(
     to,
     locale,
-    say("{inviter} invited you to {organization} on Rakazo", values),
+    say("{inviter} invited you to {organization} on RunTars", values),
     <>
-      <Text>{say("{inviter} invited you to join {organization} on Rakazo.", values)}</Text>
+      <Text>{say("{inviter} invited you to join {organization} on RunTars.", values)}</Text>
       <Button href={invitation.url}>{say("Join {organization}", values)}</Button>
       <FinePrint>
         {say("This invitation expires in 7 days. Sign in with this email address to accept it.")}

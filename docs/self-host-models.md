@@ -49,7 +49,7 @@ unattended runs that cannot request approval refuse them.
 
 In **Settings → Models → Approval model**, each user can select a model
 from an existing connection and add ordered backups, independently of their main model. Personal
-connections use their own credentials; hosted calls follow the same Rakazo credit rules as chat.
+connections use their own credentials; hosted calls follow the same RunTars credit rules as chat.
 Backups are tried only when a checker fails. An explicit ask, including an uncertain decision,
 still requires a person.
 
@@ -104,21 +104,21 @@ prompt, so long chats are compacted sooner.
 
 A server behind a rate-limited key (a free tier, an organisation token quota) often answers `429`
 with a fixed `Retry-After` of a minute, so each rejected call costs a minute. Set
-`RAKAZO_LOCAL_TOKENS_PER_MINUTE` to the server's prompt-token limit and Rakazo paces calls to the
+`RAKAZO_LOCAL_TOKENS_PER_MINUTE` to the server's prompt-token limit and RunTars paces calls to the
 local provider under it with a sliding one-minute window, waiting only as long as the window needs.
 The estimate is calibrated against the prompt tokens the server reports. Leave some headroom if
 other clients share the key; a `429` that still happens keeps the usual `Retry-After` handling.
 Unset, calls are sent as soon as they are ready. Like the other token limits, a value that is not
 a positive integer is rejected when the local provider is configured.
 
-Rakazo keeps a run's earlier messages unchanged between calls so a server's prompt cache keeps
+RunTars keeps a run's earlier messages unchanged between calls so a server's prompt cache keeps
 hitting, and trims old page state only when that saves more than the cache would. A server without
 prompt caching (several hosted gateways and confidential-compute endpoints report no cached
 tokens) gets nothing from that, and old page snapshots are only sent again on every call. Set
 `RAKAZO_LOCAL_PROMPT_CACHE=off` to declare this: stale page state is then trimmed once about 3,000
 tokens of it have built up. Unset, behaviour is unchanged.
 
-The loopback default is suitable when running Rakazo from a source checkout. From containers,
+The loopback default is suitable when running RunTars from a source checkout. From containers,
 prefer a stable LAN RFC1918 address (not Compose service DNS alone). On Docker Desktop,
 `host.docker.internal` also works.
 On Docker Desktop, a bot computer shell can often reach services bound to host `127.0.0.1`
@@ -126,14 +126,14 @@ through that same hostname. Do not run sensitive unauthenticated services on loo
 bots run, or firewall / block that path. Linux does not get `host.docker.internal` the same
 way by default.
 Only configure an endpoint you control: prompts, attachments, and tool results sent to that model
-leave Rakazo through this URL. Leave `RAKAZO_LOCAL_MODELS` blank to disable the provider.
+leave RunTars through this URL. Leave `RAKAZO_LOCAL_MODELS` blank to disable the provider.
 
 ## Claude Code CLI
 
 With a Claude subscription, a server that only you use can run its deployment model through the
-official Claude Code CLI, signed in with your own account. For each model turn Rakazo starts the
-`claude` command installed on the server and reads its reply. Rakazo never reads, stores, forwards
-or refreshes your Claude sign-in, and every request to Anthropic is the CLI's own. Rakazo keeps the
+official Claude Code CLI, signed in with your own account. For each model turn RunTars starts the
+`claude` command installed on the server and reads its reply. RunTars never reads, stores, forwards
+or refreshes your Claude sign-in, and every request to Anthropic is the CLI's own. RunTars keeps the
 conversation, tools, memory and approvals: the CLI only answers as the model, with its own tools,
 settings, project files and saved sessions turned off.
 
@@ -143,9 +143,9 @@ What it needs:
   OS user. The official Docker images and the desktop app's local stack do not include Claude
   Code, and adding it to them is not supported.
 - Claude Code 2.1.280 or newer on that user's `PATH`, signed in once in a terminal as that user
-  with `claude auth login`. This route uses no Claude sign-in inside Rakazo and no Claude token,
+  with `claude auth login`. This route uses no Claude sign-in inside RunTars and no Claude token,
   so `claude setup-token` is not needed.
-- One account on the server. A Claude sign-in belongs to one person, so Rakazo refuses Claude Code
+- One account on the server. A Claude sign-in belongs to one person, so RunTars refuses Claude Code
   runs while the server has more than one account (people who only message bots from chat apps do
   not count) or bills for model usage.
 
@@ -155,9 +155,9 @@ PI_DEFAULT_CREDENTIALS=host
 PI_DEFAULT_MODEL=claude-sonnet-5
 ```
 
-Use a full model id the CLI accepts with `claude --model`, so Rakazo knows the model's context
+Use a full model id the CLI accepts with `claude --model`, so RunTars knows the model's context
 and output limits. Usage counts against your own Claude plan and its limits, which assume
-ordinary individual use; Rakazo shows no cost for these runs, and once the plan's limit is reached
+ordinary individual use; RunTars shows no cost for these runs, and once the plan's limit is reached
 runs fail with a rate-limit error until it resets. Your use of Claude Code is covered by
 Anthropic's terms; see [Legal and compliance](https://code.claude.com/docs/en/legal-and-compliance).
 
@@ -210,7 +210,7 @@ Existing connections default to disabled. Deployment-local models opt in through
 connection.
 
 Enabled connections default to medium thinking. Web and desktop expose **Thinking** in a bot's
-advanced settings; mobile inherits the same backend policy. Rakazo sends standard
+advanced settings; mobile inherits the same backend policy. RunTars sends standard
 `reasoning_effort` (`minimal`, `low`, `medium`, `high`, or `none` when off); the server owns
 model-specific translation. Leave **Supports thinking** off when the server lacks standard effort
 support. Existing token limits still apply; effort is not a separate reasoning-token budget.

@@ -29,7 +29,7 @@ export const BRAND_LOGOS = [
 ] as const;
 
 export const BRAND_COLORS = [
-  { name: "Orange", hex: "#F97D16" },
+  { name: "Green", hex: "#00EF96" },
   { name: "Black", hex: "#141414" },
   { name: "White", hex: "#FFFFFF" },
 ] as const;

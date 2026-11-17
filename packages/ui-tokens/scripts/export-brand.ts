@@ -7,12 +7,12 @@ const root = new URL("../../../", import.meta.url);
 const path = (name: string) => fileURLToPath(new URL(name, root));
 const source = path("packages/ui-tokens/assets/Rakazo.icon/Assets/orange-bot.png");
 
-// Match the Icon Composer portrait: the character sits 90 points below center.
+// Match the centered RunTars foreground in Icon Composer. Keep the source path
+// stable so existing native packaging and upstream imports still resolve it.
 const portrait = await sharp(source).resize(1024, 1024).png().toBuffer();
 async function framed(background: string) {
-  return sharp({ create: { width: 1024, height: 1114, channels: 4, background } })
-    .composite([{ input: portrait, top: 90, left: 0 }])
-    .extract({ left: 0, top: 0, width: 1024, height: 1024 })
+  return sharp({ create: { width: 1024, height: 1024, channels: 4, background } })
+    .composite([{ input: portrait, top: 0, left: 0 }])
     .png()
     .toBuffer();
 }
@@ -64,6 +64,11 @@ for (const app of ["web", "www"]) {
 }
 await mkdir(path("apps/www/public/brand"), { recursive: true });
 await png(rounded, "apps/www/public/brand/rakazo-mark.png", 256);
+await png(square, "apps/www/public/brand/kit/rakazo-icon.png", 1024);
+await sharp(square)
+  .resize(400, 400)
+  .webp({ quality: 90 })
+  .toFile(path("apps/www/public/brand/kit/rakazo-icon-preview.webp"));
 // The site header shows the mark at 36px; 72px covers 2x screens.
 await sharp(rounded)
   .resize(72, 72)
@@ -72,6 +77,20 @@ await sharp(rounded)
 await png(rounded, "apps/mobile/assets/favicon.png", 128);
 await png(square, "apps/desktop/assets/icon.png", 1024);
 await ico(rounded, "apps/desktop/assets/icon.ico", [16, 32, 48, 64, 128, 256]);
+await png(square, "apps/mobile/assets/icon.png", 1024);
+
+// Android masks its own icon. Keep the entire foreground inside the launcher's
+// safe area instead of carrying over the old character's bottom-aligned crop.
+await sharp(portrait)
+  .resize(716, 716)
+  .extend({ top: 154, bottom: 154, left: 154, right: 154, background: "transparent" })
+  .png()
+  .toFile(path("apps/mobile/assets/adaptive-icon.png"));
+await sharp({
+  create: { width: 1024, height: 1024, channels: 4, background: darkTokens.background },
+})
+  .png()
+  .toFile(path("apps/mobile/assets/icon-background.png"));
 
 // The splash shows the character alone, with no plate, so it sits on either splash colour.
 // Keep the existing transparent padding so its visual size stays stable.
@@ -81,7 +100,8 @@ await sharp(await roundedCorners(await framed("transparent")))
   .png()
   .toFile(path("apps/mobile/assets/splash-icon.png"));
 
-// Android notification icons must be white alpha silhouettes, with transparent eyes.
+// Android notification icons must be white alpha silhouettes. The monochrome
+// RunTars artwork has a transparent visor and positive eye strokes.
 const silhouette = await sharp(path("apps/mobile/assets/monochrome-icon.png"))
   .resize(72, 72)
   .extractChannel("alpha")

@@ -58,10 +58,10 @@
   const PHASE_LABELS = {
     "checking-docker": t("Getting ready…"),
     preparing: t("Getting ready…"),
-    pulling: t("Downloading Rakazo…"),
-    starting: t("Starting Rakazo…"),
+    pulling: t("Downloading RunTars…"),
+    starting: t("Starting RunTars…"),
     "waiting-healthy": t("Almost ready…"),
-    ready: t("Rakazo is ready."),
+    ready: t("RunTars is ready."),
   };
   const TERMINAL_PHASES = new Set([
     "idle",
@@ -236,7 +236,7 @@
     stackHint.hidden = phase !== "docker-missing";
     stackHint.textContent = dockerDesktop
       ? t(
-          "Docker Desktop is a free app that runs Rakazo in the background. Install it and open it once.",
+          "Docker Desktop is a free app that runs RunTars in the background. Install it and open it once.",
         )
       : t("Install Docker Engine and start it.");
   }
@@ -389,7 +389,7 @@
       if (generation !== requestGeneration) return result;
       if (result.ok) {
         serverUrl.value = result.url;
-        setStatus(t("Rakazo answered at {url}.", { url: result.url }), "ok");
+        setStatus(t("RunTars answered at {url}.", { url: result.url }), "ok");
       } else {
         setStatus(result.error ?? t("Could not reach that address."), "error");
       }
@@ -529,7 +529,7 @@
         continueButton.focus();
       }
     } catch {
-      setStatus(t("Setup could not start. Quit Rakazo and try again."), "error");
+      setStatus(t("Setup could not start. Quit RunTars and try again."), "error");
       setBusy(true);
     }
   }

@@ -349,9 +349,9 @@ export default function SignIn() {
                       : presented && mode === "up"
                         ? t`Create your account`
                         : mode === "in"
-                          ? t`Sign in to Rakazo`
+                          ? t`Sign in to RunTars`
                           : mode === "up"
-                            ? t`Sign up for Rakazo`
+                            ? t`Sign up for RunTars`
                             : t`Reset your password`}
                 </Text>
                 {presented ? (
@@ -364,7 +364,7 @@ export default function SignIn() {
                     }}
                   >
                     {mode === "in"
-                      ? t`Sign in to continue to Rakazo`
+                      ? t`Sign in to continue to RunTars`
                       : t`Persistent AI teammates that do real work`}
                   </Text>
                 ) : null}
