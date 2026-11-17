@@ -63,7 +63,7 @@ plan:
 
 Both plans come in monthly or yearly, and include monthly hours on your bots' computers.
 **Settings → Billing** shows your plan, when it renews and the computer hours left. Choose
-**Manage** to change it. See [pricing](https://rakazo.com/pricing) for current plans.
+**Manage** to change it. See [pricing](https://runtars.com/pricing) for current plans.
 
 **Invite friends** in the account menu gives you a link. You get a free month for each friend who
 starts a trial.

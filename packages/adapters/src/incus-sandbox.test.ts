@@ -109,7 +109,7 @@ describe("IncusSandboxProvider", () => {
     const fake = new FakeIncus();
     await providerFor(fake).provision({ botId: "bot-a", homePath: "/unused" }, context);
     expect(fake.requests.find((entry) => entry.method === "POST")?.body).toMatchObject({
-      source: { server: "https://ghcr.io", alias: "elie222/rakazo/computer:edge" },
+      source: { server: "https://ghcr.io", alias: "lovelybowen/runtars/computer:edge" },
       config: { "limits.cpu": "2", "limits.memory": "2GiB", "limits.processes": "2048" },
     });
   });
@@ -796,7 +796,11 @@ describe("IncusSandboxProvider", () => {
 
 describe("ociImageSource", () => {
   it.each([
-    ["ghcr.io/elie222/rakazo/computer:edge", "https://ghcr.io", "elie222/rakazo/computer:edge"],
+    [
+      "ghcr.io/lovelybowen/runtars/computer:edge",
+      "https://ghcr.io",
+      "lovelybowen/runtars/computer:edge",
+    ],
     [
       "registry.example.test:5000/computer@sha256:abc",
       "https://registry.example.test:5000",

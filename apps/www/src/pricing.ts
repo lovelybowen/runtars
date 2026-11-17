@@ -265,7 +265,7 @@ ${plan.price}${plan.note ? ` (${plan.note})` : ""}
 
 ${plan.features.map((feature) => `- ${feature}`).join("\n")}
 
-[${plan.action.label}](${new URL(plan.action.href, "https://rakazo.com").href})`;
+[${plan.action.label}](${new URL(plan.action.href, "https://runtars.com").href})`;
 }
 
 export const PRICING_MARKDOWN = `# RunTars pricing

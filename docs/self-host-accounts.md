@@ -337,14 +337,15 @@ deletes an account or its content.
 Passkeys are on whenever `WEB_ORIGIN` is an HTTPS domain (or `localhost` in development); the
 relying party is that origin's host, so existing passkeys keep working only while `WEB_ORIGIN`
 stays on the same domain. They are off when password sign-in is disabled for SSO-only
-deployments. On web, a browser offers them where it has a platform authenticator. The macOS
-desktop app uses the system passkey sheet, which only serves the domain the release is
-associated with (`app.rakazo.com`), so it hides passkeys for other servers.
+deployments. On web, a browser offers them where it has a platform authenticator. The downloaded
+upstream macOS desktop app uses the system passkey sheet, which only serves the domain the release
+is associated with (`app.rakazo.com`), so it hides passkeys for other servers, including `app.runtars.com`.
 
 Native apps can use a domain's passkeys only when the domain vouches for them and the app was
 built for that domain. The iOS app's associated domain comes from `EXPO_PUBLIC_API_URL` at build
-time. A macOS desktop build takes it from `RAKAZO_PASSKEY_RP_ID` (default `app.rakazo.com`): set
-it to the same domain for `pnpm build` and for `scripts/passkey-entitlements.ts`, then package with
+time. A macOS desktop build takes it from `RAKAZO_PASSKEY_RP_ID` (default `app.rakazo.com`): for a
+RunTars build, explicitly set `RAKAZO_PASSKEY_RP_ID=app.runtars.com` for both `pnpm build` and
+`scripts/passkey-entitlements.ts` (use your own domain for other self-hosted builds), then package with
 electron-builder's `-c.mac.entitlements` set to that script's output and `-c.mac.provisioningProfile`
 set to a profile for your App ID with the Associated Domains capability, as the release workflow
 does. Without both, macOS ignores the association and the app hides passkeys. When Apple's CDN

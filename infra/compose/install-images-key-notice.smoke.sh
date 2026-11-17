@@ -51,4 +51,20 @@ supplied="$(run_install)" || fail "supplied-key run failed: $supplied"
 [[ "$supplied" != *"Back up ENCRYPTION_KEY"* ]] || fail "notice for a key the installer did not generate"
 [[ "$supplied" != *"operator-supplied-key-value"* ]] || fail "the installer printed a supplied key"
 
+# A release pin survives the initial shell and applies to both first-party images.
+rm "$tmp/cwd/.env"
+(export RAKAZO_IMAGE_TAG=v1.2.3; run_install) >/dev/null || fail "pinned install failed"
+grep -qx 'RAKAZO_IMAGE_TAG=v1.2.3' "$tmp/cwd/.env" || fail "app pin was not persisted"
+grep -qx 'RAKAZO_COMPUTER_IMAGE_TAG=v1.2.3' "$tmp/cwd/.env" || fail "computer pin does not match"
+before="$(cat "$tmp/cwd/.env")"
+(export RAKAZO_IMAGE_TAG=v1.2.4; run_install) >/dev/null || fail "pinned rerun failed"
+[[ "$(cat "$tmp/cwd/.env")" == "$before" ]] || fail "rerun changed existing configuration"
+
+rm "$tmp/cwd/.env"
+(export RAKAZO_IMAGE_TAG=v1.2.3 RAKAZO_COMPUTER_IMAGE_TAG=v1.2.2; run_install) >/dev/null || fail "custom computer pin failed"
+grep -qx 'RAKAZO_COMPUTER_IMAGE_TAG=v1.2.2' "$tmp/cwd/.env" || fail "explicit computer pin was lost"
+if (export RAKAZO_IMAGE_TAG=$'v1.2.3\nOTHER=value'; run_install) >/dev/null 2>&1; then
+  fail "accepted an invalid image tag"
+fi
+
 echo "ok"

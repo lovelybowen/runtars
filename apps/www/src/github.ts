@@ -1,6 +1,6 @@
 // Relative source path: Vercel functions cannot resolve the TypeScript exports of @rakazo/core.
 import { readBoundedJsonResponse } from "../../../packages/core/src/http-response.js";
-import { GITHUB_API_REPO } from "./site";
+import { DESKTOP_DOWNLOAD_API_REPO, GITHUB_API_REPO } from "./site";
 
 export const GITHUB_STARS_TIMEOUT_MS = 5_000;
 export const MAX_GITHUB_STARS_RESPONSE_BYTES = 64 * 1024;
@@ -25,14 +25,13 @@ async function fetchGithubStars(fetchImpl: typeof fetch = fetch): Promise<number
   return typeof payload?.stargazers_count === "number" ? payload.stargazers_count : null;
 }
 
-// Last known count, shown when the build cannot reach GitHub.
-const GITHUB_STARS_FALLBACK = 8_000;
-let githubStars: Promise<number> | undefined;
+let githubStars: Promise<number | null> | undefined;
 
 /** One lookup per build: anonymous requests share a 60/hour limit, and every page shows the count. */
 export async function githubStarsLabel(): Promise<string> {
-  githubStars ??= fetchGithubStars().then((count) => count ?? GITHUB_STARS_FALLBACK);
-  return formatStarCount(await githubStars);
+  githubStars ??= fetchGithubStars();
+  const count = await githubStars;
+  return count === null ? "GitHub" : formatStarCount(count);
 }
 
 export const DESKTOP_PLATFORMS = ["mac", "windows", "linux"] as const;
@@ -46,7 +45,7 @@ export async function fetchDesktopDownloads(
   fetchImpl: typeof fetch = fetch,
 ): Promise<DesktopDownloads> {
   const payload = await fetchGithubJson<{ assets?: unknown }>(
-    `${GITHUB_API_REPO}/releases/latest`,
+    `${DESKTOP_DOWNLOAD_API_REPO}/releases/latest`,
     MAX_GITHUB_RELEASE_RESPONSE_BYTES,
     fetchImpl,
   );

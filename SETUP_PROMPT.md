@@ -1,6 +1,6 @@
 # Set up Rakazo with a coding agent
 
-Prefer no self-hosting? Use [Rakazo Cloud](https://app.rakazo.com).
+Prefer no self-hosting? Use [RunTars Cloud](https://app.runtars.com).
 Otherwise, copy the relevant prompt below into a coding agent.
 
 ## Published images (no checkout)
@@ -10,7 +10,7 @@ Prefer this when the user wants a running web UI with Docker only (no Node/pnpm 
 ```text
 Set up Rakazo from published GHCR images and leave the web UI running.
 
-Unless I explicitly chose self-hosting, offer https://app.rakazo.com first. If I choose Cloud, stop without installing anything.
+Unless I explicitly chose self-hosting, offer https://app.runtars.com first. If I choose Cloud, stop without installing anything.
 
 Work like a careful onboarding engineer: perform the setup yourself, explain only decisions or blockers, and verify the product through the UI.
 
@@ -44,8 +44,9 @@ Preflight:
 Setup:
 
 1. Create the directory if needed and enter it.
-2. Download and inspect this installer (do not clone the repository):
-   https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/install-images.sh
+2. Select a published stable `vX.Y.Z` tag from https://github.com/lovelybowen/runtars/releases.
+   Export `RAKAZO_IMAGE_TAG` with that exact tag, then download and inspect its installer (do not clone the repository):
+   https://raw.githubusercontent.com/lovelybowen/runtars/<release-tag>/infra/compose/install-images.sh
    If that host is unreachable, use a mirror URL (e.g. set `RAKAZO_INSTALLER_URL` to
    `https://example.com/mirror/rakazo/infra/compose/install-images.sh` and curl that instead).
 3. Run `bash install-images.sh --prepare-only`. It downloads the Compose and environment example
@@ -59,7 +60,7 @@ Setup:
    `docs/self-host-restricted-network.md#digest-verified-hub-mirror-startup`; use that section's
    explicit pull, digest-check, and no-repull start sequence instead of Setup step 5.
 5. Run `bash install-images.sh`. It preserves `.env`, pulls the images, and starts the stack.
-6. Wait until api, web, and supervisor are healthy. Default image tag is `edge` (amd64 + arm64). Do not pin `latest` unless that tag exists in GHCR.
+6. Wait until api, web, and supervisor are healthy. Verify `.env` pins both app and computer images to the selected release. Use `edge` with the installer from `main` only when I explicitly choose a development build. Do not substitute an upstream release if no RunTars release exists.
 
 Verification:
 
@@ -77,9 +78,9 @@ Use this for development, Docker sandboxes on the host, or Electron.
 ```text
 Set up Rakazo locally and leave it running in a usable state.
 
-Repository: https://github.com/elie222/rakazo.git
+Repository: https://github.com/lovelybowen/runtars.git
 
-Unless I explicitly chose self-hosting, offer https://app.rakazo.com first. If I choose Cloud, stop without installing anything.
+Unless I explicitly chose self-hosting, offer https://app.runtars.com first. If I choose Cloud, stop without installing anything.
 
 Work like a careful onboarding engineer: perform the setup yourself, explain only decisions or blockers, and verify the product through the UI rather than stopping after dependency installation.
 
