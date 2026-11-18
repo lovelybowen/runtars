@@ -80,11 +80,10 @@ separate build and validation. Historical benchmark records also retain their te
 
 ## Before the first release
 
-- Choose the first RunTars version and prepare its release notes separately. Do not reuse an
-  upstream tag or publish upstream history as RunTars releases.
-- Adjust the release workflow before pushing a `v*` tag: the inherited tag currently starts
-  `release-desktop`, and GitHub release creation is part of that workflow. The server-only release
-  needs its own release-note publication without requiring desktop signing or producing installers.
+- Review the versioned notes in `docs/releases/vX.Y.Z.md` and link them from the changelog.
+  After the release PR merges and main CI passes, tag its merge commit. The server release
+  workflow checks the tag against main and the published versions, publishes the three images,
+  then creates the GitHub Release. Desktop releases use a separate manual workflow.
 - Confirm Actions and package publication are enabled, then verify all three image manifests and
   public pulls for the intended architectures before advertising the release.
 - Configure and verify DNS, HTTPS, the website alias redirect, and the application reverse proxy.

@@ -1,6 +1,12 @@
 # Changelog
 
-Notable product changes in Rakazo. See GitHub Releases for tagged builds.
+RunTars server releases have their own version history.
+
+- [RunTars v0.1.0](docs/releases/v0.1.0.md) — first web and Compose release.
+
+## Upstream Rakazo history
+
+The entries below describe releases of Rakazo.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 

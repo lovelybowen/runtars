@@ -1,8 +1,6 @@
 name: release-desktop
 
 on:
-  push:
-    tags: ["v*"]
   workflow_dispatch:
 
 permissions:
