@@ -1,7 +1,8 @@
 # Changelog
 
-RunTars server releases have their own version history.
+RunTars releases have their own version history.
 
+- [RunTars v0.1.1](docs/releases/v0.1.1.md) — Windows installer, Android APK and updated web sign-in and setup.
 - [RunTars v0.1.0](docs/releases/v0.1.0.md) — first web and Compose release.
 
 ## Upstream Rakazo history
