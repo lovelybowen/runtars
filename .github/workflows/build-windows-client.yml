@@ -66,7 +66,8 @@ jobs:
         run: |
           if (!$env:WIN_CSC_LINK -or !$env:WIN_CSC_KEY_PASSWORD) { throw "Missing Windows release key" }
           pnpm --filter @rakazo/desktop exec electron-builder --win nsis --x64 --publish never
-      - name: Verify signatures and exercise the installer
+      - name: Verify timestamped Authenticode signatures
+        timeout-minutes: 4
         run: |
           $ErrorActionPreference = 'Stop'
           $installer = (Resolve-Path "apps/desktop/out/RunTars-Setup-$env:RELEASE_VERSION.exe").Path
@@ -78,16 +79,24 @@ jobs:
           # Trust only the pinned public certificate on this ephemeral runner for WinVerifyTrust.
           $publicCert = Join-Path $env:RUNNER_TEMP 'signer.cer'
           [IO.File]::WriteAllBytes($publicCert, $cert.RawData)
-          Import-Certificate -FilePath $publicCert -CertStoreLocation Cert:\CurrentUser\Root | Out-Null
+          Import-Certificate -FilePath $publicCert -CertStoreLocation Cert:\LocalMachine\Root | Out-Null
           foreach ($file in $installer, $app) {
             $sig = Get-AuthenticodeSignature $file
             if ($sig.Status -ne 'Valid' -or !$sig.TimeStamperCertificate -or $sig.SignerCertificate.Thumbprint -ne $cert.Thumbprint) {
               throw "Invalid signature or timestamp on $file"
             }
           }
+      - name: Install, reinstall and launch RunTars
+        timeout-minutes: 4
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $installer = (Resolve-Path "apps/desktop/out/RunTars-Setup-$env:RELEASE_VERSION.exe").Path
+          $app = (Resolve-Path 'apps/desktop/out/win-unpacked/RunTars.exe').Path
           $dest = Join-Path $env:RUNNER_TEMP 'installed-runtars'
           foreach ($install in 1..2) {
-            $result = Start-Process $installer -ArgumentList '/S', "/D=$dest" -Wait -PassThru
+            Write-Host "Starting silent installation $install"
+            $result = Start-Process $installer -ArgumentList '/S', "/D=$dest" -PassThru
+            if (!$result.WaitForExit(90000)) { throw 'Installer did not exit in 90 seconds' }
             if ($result.ExitCode -ne 0) { throw "Installer exited with $($result.ExitCode)" }
             if ((Get-FileHash "$dest/RunTars.exe").Hash -ne (Get-FileHash $app).Hash) { throw 'Installed binary mismatch' }
           }
