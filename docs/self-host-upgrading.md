@@ -140,13 +140,12 @@ For production, select a published RunTars `vX.Y.Z` release and pin both `RAKAZO
 preserves an existing `.env`, so change both pins there deliberately when upgrading. Never use
 a Rakazo upstream tag as a substitute for a RunTars release.
 
-
 `.github/workflows/publish-server-image.yml` publishes to `ghcr.io/<owner>/<repo>/…`, derived from
 `${{ github.repository }}` rather than hardcoded, so a fork's CI fills the fork's own namespace. For
 this repository that is:
 
-| Image                             | Contents                                                                |
-| --------------------------------- | ----------------------------------------------------------------------- |
+| Image                                  | Contents                                                                |
+| -------------------------------------- | ----------------------------------------------------------------------- |
 | `ghcr.io/lovelybowen/runtars/app`      | api, worker, web, and sandbox supervisor — one image, multiple commands |
 | `ghcr.io/lovelybowen/runtars/computer` | Linux desktop used as each bot computer                                 |
 | `ghcr.io/lovelybowen/runtars/updater`  | the updater sidecar, plus the Docker CLI                                |
@@ -200,10 +199,9 @@ so a later tag move cannot change rollback content. Do not prune the previous ap
 until the next update has been accepted. If it is missing, rollback fails closed instead of pulling
 new content under an old tag.
 
-To populate the registry the first time, run the workflow manually (`workflow_dispatch`) or push a
-`v*` tag. A manual run produces `sha-<full-commit>`; only a stable `vX.Y.Z` tag (no prerelease
-suffix) produces `latest`, and any `v*` tag produces semver tags. The updater ignores prereleases
-and refuses the official path until a stable `vX.Y.Z` exists.
+Run the image workflow manually on `main` to publish development images. For a stable release,
+push the reviewed `vX.Y.Z` tag. The server release workflow publishes the version, major/minor
+and `latest` image tags before creating the GitHub Release. The updater selects stable tags.
 
 ## Updater sidecar
 
