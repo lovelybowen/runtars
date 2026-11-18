@@ -16,11 +16,11 @@ const starsLabel = await githubStarsLabel();
     <Header starsLabel={starsLabel} />
     <main id="main" class="privacy-copy">
       <h1>Terms of Service</h1>
-      <p><strong>Last updated: November 11, 2026</strong></p>
+      <p><strong>Last updated: November 17, 2026</strong></p>
       <p>
-        These terms are an agreement between you and Inbox Zero Inc. (“Inbox Zero,” “we,” or “us”) for
-        your use of the RunTars service that we host, the RunTars web, desktop, and mobile apps, and
-        runtars.com (together, the “Service”). By using the Service, you agree to these terms. If you
+        These terms are an agreement between you and the individual operating as RunTars Lab (“we” or
+        “us”). They cover runtars.com and the hosted application at app.runtars.com (the “Service”),
+        including when you connect through a desktop or mobile client. By using the Service, you agree to these terms. If you
         use the Service on behalf of an organization, you confirm that you can bind that organization
         to these terms, and “you” includes it.
       </p>
@@ -38,8 +38,8 @@ const starsLabel = await githubStarsLabel();
       <h2>Your account</h2>
       <p>
         You must be at least 13 years old, and old enough to form a binding contract where you live,
-        to use the Service. You may not use the Service if you are barred from doing so under US
-        sanctions or export laws. Keep your sign-in details and connected credentials secure. You are
+        to use the Service. Hosted signup is limited to approved email addresses. You must comply with
+        applicable sanctions and export laws. Keep your sign-in details and connected credentials secure. You are
         responsible for activity in your account.
       </p>
 
@@ -94,7 +94,8 @@ const starsLabel = await githubStarsLabel();
 
       <h2>Paid plans and billing</h2>
       <p>
-        Some features require a paid plan. Prices are shown before you subscribe. Subscriptions renew
+        Hosted checkout currently runs in Stripe test mode. Test transactions do not move money.
+        For live subscriptions, prices are shown before you subscribe. Subscriptions renew
         automatically at the end of each billing period until you cancel, and we charge the payment
         method on file, which is processed by Stripe. Prices exclude taxes unless stated otherwise.
         If your plan starts with a free trial, we collect a payment method at signup and charge it
@@ -203,14 +204,6 @@ const starsLabel = await githubStarsLabel();
         responsible for the Service or its support.
       </p>
 
-      <h2>Governing law</h2>
-      <p>
-        These terms are governed by the laws of the State of Delaware, without regard to its conflict
-        of law rules. Disputes will be resolved in the state or federal courts located in Delaware,
-        except where your local law gives you the right to bring a claim where you live. To the extent
-        permitted by law, you and we each waive any right to a jury trial.
-      </p>
-
       <h2>General</h2>
       <p>
         These terms, together with any terms shown when you buy a plan, are the entire agreement
@@ -223,9 +216,7 @@ const starsLabel = await githubStarsLabel();
 
       <h2>Contact us</h2>
       <p>
-        Inbox Zero Inc.<br />
-        131 Continental Dr, Suite 305<br />
-        Newark, Delaware 19713, United States<br />
+        RunTars Lab<br />
         <a href="mailto:support@runtars.com">support@runtars.com</a>
       </p>
     </main>

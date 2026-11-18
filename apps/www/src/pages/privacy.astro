@@ -9,17 +9,18 @@ const starsLabel = await githubStarsLabel();
 
 <BaseLayout
   title="Privacy · RunTars"
-  description="How Inbox Zero Inc. collects, uses, and protects information when you use RunTars."
+  description="How RunTars Lab handles personal information on the RunTars website and hosted service."
 >
   <div class="container">
     <Header starsLabel={starsLabel} />
     <main id="main" class="privacy-copy">
       <h1>Privacy</h1>
-      <p><strong>Last updated: November 13, 2026</strong></p>
+      <p><strong>Last updated: November 17, 2026</strong></p>
       <p>
-        This policy explains how Inbox Zero Inc. (“Inbox Zero,” “we,” or “us”) handles personal information
-        when you use the RunTars mobile app, a RunTars service that we host, or runtars.com. A third party that
-        operates a self-hosted RunTars deployment is responsible for its own privacy practices.
+        RunTars Lab is the name the individual operator of RunTars uses to provide runtars.com and
+        app.runtars.com. This policy explains how we handle information when you visit the website or
+        connect to the hosted service from a browser or another client. If you use a self-hosted
+        server, its operator is responsible for that deployment’s privacy practices.
       </p>
 
       <h2>Information we collect</h2>
@@ -129,10 +130,17 @@ const starsLabel = await githubStarsLabel();
         terms and privacy policies.
       </p>
 
+      <h2>Billing</h2>
+      <p>
+        When you use hosted checkout, Stripe processes the billing details you enter. We use billing
+        identifiers and subscription and payment status to manage your plan and respond to billing
+        requests. See <a href="https://stripe.com/privacy">Stripe’s privacy policy</a>.
+      </p>
+
       <h2>Self-hosted deployments</h2>
       <p>
         The RunTars mobile app can connect to a server that you or another organization operates. In that case,
-        the server operator, not Inbox Zero, controls the information sent to that deployment. The app stores the
+        the server operator controls the information sent to that deployment. The app stores the
         selected server address and session token securely on your device.
       </p>
 
@@ -166,9 +174,7 @@ const starsLabel = await githubStarsLabel();
 
       <h2>Contact us</h2>
       <p>
-        Inbox Zero Inc.<br />
-        131 Continental Dr, Suite 305<br />
-        Newark, Delaware 19713, United States<br />
+        RunTars Lab<br />
         <a href="mailto:support@runtars.com">support@runtars.com</a>
       </p>
     </main>

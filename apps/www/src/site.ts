@@ -25,7 +25,5 @@ export const PLUGIN_SUBMIT_PATH = "/plugins/submit/";
 export const OPENCLAW_ALTERNATIVE_PATH = "/openclaw-alternative/";
 export const AFFILIATE_PROGRAM_URL = "https://partners.dub.co/inboxzero/rakazo";
 export const CHANGELOG_URL = "https://github.com/lovelybowen/runtars/releases";
-export const INBOX_ZERO_URL =
-  "https://www.getinboxzero.com/?utm_source=rakazo&utm_medium=website&utm_campaign=footer";
 export const X_URL = "https://x.com/rakazobot";
 export const DISCORD_URL = "https://discord.gg/RWwKa2Sn7h";
