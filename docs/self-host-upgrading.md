@@ -140,13 +140,12 @@ For production, select a published RunTars `vX.Y.Z` release and pin both `RAKAZO
 preserves an existing `.env`, so change both pins there deliberately when upgrading. Never use
 a Rakazo upstream tag as a substitute for a RunTars release.
 
-
 `.github/workflows/publish-server-image.yml` publishes to `ghcr.io/<owner>/<repo>/…`, derived from
 `${{ github.repository }}` rather than hardcoded, so a fork's CI fills the fork's own namespace. For
 this repository that is:
 
-| Image                             | Contents                                                                |
-| --------------------------------- | ----------------------------------------------------------------------- |
+| Image                                  | Contents                                                                |
+| -------------------------------------- | ----------------------------------------------------------------------- |
 | `ghcr.io/lovelybowen/runtars/app`      | api, worker, web, and sandbox supervisor — one image, multiple commands |
 | `ghcr.io/lovelybowen/runtars/computer` | Linux desktop used as each bot computer                                 |
 | `ghcr.io/lovelybowen/runtars/updater`  | the updater sidecar, plus the Docker CLI                                |
