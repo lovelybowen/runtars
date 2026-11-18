@@ -55,6 +55,7 @@ jobs:
           pnpm --filter @rakazo/desktop build
           node apps/desktop/scripts/release-feed.mjs apps/desktop/package.json
           cd apps/desktop
+          npm pkg set --json build.forceCodeSigning=true
           npm pkg set productName=RunTars author.name=RunTars version="$RELEASE_VERSION" \
             build.appId=com.runtars.desktop build.extraMetadata.name=runtars \
             'build.win.signtoolOptions.signingHashAlgorithms[0]=sha256'
@@ -64,7 +65,7 @@ jobs:
           WIN_CSC_KEY_PASSWORD: ${{ secrets.WINDOWS_RELEASE_PFX_PASSWORD }}
         run: |
           if (!$env:WIN_CSC_LINK -or !$env:WIN_CSC_KEY_PASSWORD) { throw "Missing Windows release key" }
-          pnpm --filter @rakazo/desktop exec electron-builder --win nsis --x64 --publish never -c.forceCodeSigning=true
+          pnpm --filter @rakazo/desktop exec electron-builder --win nsis --x64 --publish never
       - name: Verify signatures and exercise the installer
         run: |
           $ErrorActionPreference = 'Stop'
