@@ -8,6 +8,11 @@ on:
       version:
         type: string
         required: true
+    secrets:
+      WINDOWS_RELEASE_PFX:
+        required: true
+      WINDOWS_RELEASE_PFX_PASSWORD:
+        required: true
 
 permissions:
   contents: read

@@ -48,12 +48,20 @@ jobs:
   windows:
     needs: validate
     uses: ./.github/workflows/build-windows-client.yml
+    secrets:
+      WINDOWS_RELEASE_PFX: ${{ secrets.WINDOWS_RELEASE_PFX }}
+      WINDOWS_RELEASE_PFX_PASSWORD: ${{ secrets.WINDOWS_RELEASE_PFX_PASSWORD }}
     with:
       version: ${{ needs.validate.outputs.version }}
 
   android:
     needs: validate
     uses: ./.github/workflows/build-android-client.yml
+    secrets:
+      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+      ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+      ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
     with:
       version: ${{ needs.validate.outputs.version }}
 

@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { parse } from "yaml";
 
 const workflow = readFileSync(
   path.resolve(import.meta.dirname, "../../../.github/workflows/release-desktop.yml"),
@@ -164,3 +165,23 @@ describe("desktop release workflow", () => {
     expect(workflow).toContain("--draft=false --latest");
   });
 });
+
+it.each(["windows", "android"])(
+  "forwards each %s signing credential on stable tags",
+  (platform) => {
+    const readWorkflow = (name: string) =>
+      parse(
+        readFileSync(path.resolve(import.meta.dirname, "../../../.github/workflows", name), "utf8"),
+      );
+    const build = readWorkflow(`build-${platform}-client.yml`);
+    const release = readWorkflow("release-server.yml");
+    const signingSecrets = Object.values(build.jobs[platform].steps)
+      .flatMap((step) => Object.values((step as { env?: Record<string, string> }).env ?? {}))
+      .flatMap((value) => /^\$\{\{ secrets\.(\w+) \}\}$/.exec(value)?.[1] ?? []);
+    expect(signingSecrets.length).toBeGreaterThan(0);
+    for (const name of signingSecrets) {
+      expect(build.on.workflow_call.secrets[name]).toEqual({ required: true });
+      expect(release.jobs[platform].secrets[name]).toBe(expression(`secrets.${name}`));
+    }
+  },
+);
