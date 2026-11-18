@@ -454,7 +454,7 @@ export function userTurnInstructions(parts: {
       offeredBuiltinClause(
         parts.disabledBuiltinTools,
         "skill_read",
-        "When asked how Rakazo or you work, or how to set something up (apps, the user's own computer, billing), read the Rakazo skill before answering or acting.",
+        "When asked how RunTars or you work, or how to set something up (apps, the user's own computer, billing), read the RunTars skill before answering or acting.",
       ),
     parts.taughtSkillsLine,
     offeredBuiltinClause(
