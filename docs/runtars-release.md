@@ -4,21 +4,24 @@ The first release covers the website, web application, and Compose self-hosted s
 continue to use the upstream Rakazo distribution. Internal package names, environment variable
 names, protocols, database names, and native application identities remain unchanged.
 
+The individual operator of the RunTars website and hosted application uses the public name RunTars Lab. Hosted
+registration is limited to the operator's approved email addresses.
+
 ## Public addresses
 
-| Purpose | Address |
-| --- | --- |
-| Website | https://runtars.com |
-| Website alias | https://www.runtars.com redirects to the apex, retaining path and query |
-| Application | https://app.runtars.com |
-| Support and security reports | support@runtars.com |
-| System sender | RunTars &lt;no-reply@notify.runtars.com&gt; |
-| System reply address | support@runtars.com |
-| Source | https://github.com/lovelybowen/runtars |
-| Issues | https://github.com/lovelybowen/runtars/issues |
-| Releases | https://github.com/lovelybowen/runtars/releases |
-| Installation guide | https://runtars.com/self-hosted-ai-agent/ |
-| Full installation reference | https://github.com/lovelybowen/runtars/blob/main/docs/self-host.md |
+| Purpose                      | Address                                                                 |
+| ---------------------------- | ----------------------------------------------------------------------- |
+| Website                      | https://runtars.com                                                     |
+| Website alias                | https://www.runtars.com redirects to the apex, retaining path and query |
+| Application                  | https://app.runtars.com                                                 |
+| Support and security reports | support@runtars.com                                                     |
+| System sender                | RunTars &lt;no-reply@notify.runtars.com&gt;                             |
+| System reply address         | support@runtars.com                                                     |
+| Source                       | https://github.com/lovelybowen/runtars                                  |
+| Issues                       | https://github.com/lovelybowen/runtars/issues                           |
+| Releases                     | https://github.com/lovelybowen/runtars/releases                         |
+| Installation guide           | https://runtars.com/self-hosted-ai-agent/                               |
+| Full installation reference  | https://github.com/lovelybowen/runtars/blob/main/docs/self-host.md      |
 
 For the RunTars hosted deployment only, configure these existing settings outside the repository:
 
@@ -29,19 +32,27 @@ WEB_ORIGIN=https://app.runtars.com
 EMAIL_FROM="RunTars <no-reply@notify.runtars.com>"
 EMAIL_REPLY_TO=support@runtars.com
 PRIVACY_POLICY_URL=https://runtars.com/privacy/
+SIGNUPS_ENABLED=true
+SIGNUP_ALLOWLIST=approved-user@example.invalid
+MESSAGING_OPEN_SIGNUP=false
+OIDC_ALLOW_SIGNUP_BYPASS=false
 ```
 
 Keep credentials in the deployment's secret configuration. Configure the email provider separately.
 Self-hosters use their own origins, sender, and privacy policy; the local examples retain loopback
 defaults. `API_URL` depends on the selected deployment topology and is not a second public domain.
 
+Replace the example allowlist with the approved addresses in the private deployment
+configuration. The release rehearsal uses the existing Stripe sandbox and its matching
+webhook secret. Verify the public billing capability and that an unlisted email is refused.
+
 ## Installation and updates
 
-| Image | Purpose |
-| --- | --- |
-| `ghcr.io/lovelybowen/runtars/app` | API, worker, web and supervisor |
-| `ghcr.io/lovelybowen/runtars/computer` | Docker bot computers |
-| `ghcr.io/lovelybowen/runtars/updater` | Optional update sidecar |
+| Image                                  | Purpose                         |
+| -------------------------------------- | ------------------------------- |
+| `ghcr.io/lovelybowen/runtars/app`      | API, worker, web and supervisor |
+| `ghcr.io/lovelybowen/runtars/computer` | Docker bot computers            |
+| `ghcr.io/lovelybowen/runtars/updater`  | Optional update sidecar         |
 
 Production installs pin a published `vX.Y.Z` tag for both app and computer, with the installer and
 Compose files taken from that tag. `vX.Y.Z` in setup examples is a placeholder, not an available
@@ -60,8 +71,8 @@ and the integration catalog also retain their upstream targets. These are separa
 RunTars application and source links. Upstream publisher attribution and historical evidence remain
 upstream attribution, not RunTars operating claims.
 
-Privacy and terms pages change only the product name, site addresses, and contact email. The
-existing legal entity and terms are retained; this does not finalize RunTars's legal policies.
+Verify both HTML and Markdown versions of the privacy policy and terms on the public domain.
+Review the test-mode billing disclosure before enabling live payments.
 
 The separate Kubernetes recipe still contains explicitly pinned upstream image digests. It is not
 the first-release installation path; do not relabel those digests as RunTars images without a
@@ -81,7 +92,7 @@ separate build and validation. Historical benchmark records also retain their te
   and reply routing. Verify support receives security reports.
 - Update enabled sign-in providers' callback registrations and validate sign-in and recovery links
   against the application origin. Changing a source URL does not update a provider's dashboard.
-- Review the retained legal entity and terms before launch. Verify the release in a disposable
+- Verify the release in a disposable
   deployment, including health, version, upgrade, and rollback, before production rollout.
 
 This checklist records work still required at release time. Address changes alone do not establish

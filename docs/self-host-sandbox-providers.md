@@ -143,14 +143,14 @@ Each computer is one pod in a namespace you choose, created from the published c
 The API and worker talk to the Kubernetes API with their own service account (or the kubeconfig in
 `KUBECONFIG`), so they normally run in the same cluster. No supervisor or Docker socket is involved.
 
-| Variable                                             | Default                                | Notes                                                                 |
-| ---------------------------------------------------- | -------------------------------------- | --------------------------------------------------------------------- |
-| `KUBERNETES_SANDBOX_NAMESPACE`                       | `rakazo-sandboxes`                     | Namespace for computer pods; it must exist                            |
+| Variable                                             | Default                                     | Notes                                                                 |
+| ---------------------------------------------------- | ------------------------------------------- | --------------------------------------------------------------------- |
+| `KUBERNETES_SANDBOX_NAMESPACE`                       | `rakazo-sandboxes`                          | Namespace for computer pods; it must exist                            |
 | `KUBERNETES_SANDBOX_COMPUTER_IMAGE`                  | `ghcr.io/lovelybowen/runtars/computer:edge` | Pin a digest in production                                            |
-| `KUBERNETES_SANDBOX_RUNTIME_CLASS_NAME`              | unset                                  | For example `kata` or `gvisor` for a VM or user-space kernel boundary |
-| `KUBERNETES_SANDBOX_CPU_LIMIT` / `_MEMORY_LIMIT`     | unset                                  | Container limits, such as `2` and `4Gi`                               |
-| `KUBERNETES_SANDBOX_POD_LABELS` / `_POD_ANNOTATIONS` | unset                                  | JSON objects of strings, merged into every pod                        |
-| `KUBERNETES_SANDBOX_READY_TIMEOUT_MS`                | `120000`                               | How long a new pod has to become ready                                |
+| `KUBERNETES_SANDBOX_RUNTIME_CLASS_NAME`              | unset                                       | For example `kata` or `gvisor` for a VM or user-space kernel boundary |
+| `KUBERNETES_SANDBOX_CPU_LIMIT` / `_MEMORY_LIMIT`     | unset                                       | Container limits, such as `2` and `4Gi`                               |
+| `KUBERNETES_SANDBOX_POD_LABELS` / `_POD_ANNOTATIONS` | unset                                       | JSON objects of strings, merged into every pod                        |
+| `KUBERNETES_SANDBOX_READY_TIMEOUT_MS`                | `120000`                                    | How long a new pod has to become ready                                |
 
 Each pod runs the image's own user (uid 1000) with no service account token and no service links,
 with all Linux capabilities dropped, privilege escalation off and the runtime's default seccomp
@@ -309,14 +309,14 @@ command's uid needs the `oci.uid` and `oci.gid` keys). The API and
 worker call the Incus REST API with a client certificate; no supervisor or Docker socket is
 involved.
 
-| Variable                                                       | Default                                | Notes                                                                                                                    |
-| -------------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `INCUS_SANDBOX_URL`                                            | none                                   | The Incus API, such as `https://incus.example.test:8443`                                                                 |
-| `INCUS_SANDBOX_CLIENT_CERT` / `_CLIENT_KEY`                    | none                                   | PEM client certificate and key; `\n` escapes are accepted. API and worker only                                           |
-| `INCUS_SANDBOX_SERVER_CERT`                                    | unset                                  | The server's own certificate (`incus info` shows it), trusted exactly. Unset uses the system CAs and the URL's host name |
-| `INCUS_SANDBOX_PROJECT`                                        | `default`                              | Use a project of its own, below                                                                                          |
+| Variable                                                       | Default                                     | Notes                                                                                                                    |
+| -------------------------------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `INCUS_SANDBOX_URL`                                            | none                                        | The Incus API, such as `https://incus.example.test:8443`                                                                 |
+| `INCUS_SANDBOX_CLIENT_CERT` / `_CLIENT_KEY`                    | none                                        | PEM client certificate and key; `\n` escapes are accepted. API and worker only                                           |
+| `INCUS_SANDBOX_SERVER_CERT`                                    | unset                                       | The server's own certificate (`incus info` shows it), trusted exactly. Unset uses the system CAs and the URL's host name |
+| `INCUS_SANDBOX_PROJECT`                                        | `default`                                   | Use a project of its own, below                                                                                          |
 | `INCUS_SANDBOX_COMPUTER_IMAGE`                                 | `ghcr.io/lovelybowen/runtars/computer:edge` | Pin a release tag or digest in production                                                                                |
-| `INCUS_SANDBOX_CPU_LIMIT` / `_MEMORY_LIMIT` / `_PROCESS_LIMIT` | `2` / `2GiB` / `2048`                  | Incus `limits.cpu`, `limits.memory` and `limits.processes` of each computer                                              |
+| `INCUS_SANDBOX_CPU_LIMIT` / `_MEMORY_LIMIT` / `_PROCESS_LIMIT` | `2` / `2GiB` / `2048`                       | Incus `limits.cpu`, `limits.memory` and `limits.processes` of each computer                                              |
 
 Computers without the URL, certificate or key fall back to `none`.
 
@@ -388,12 +388,12 @@ computer image by Apple's [`container`](https://github.com/apple/container) runt
 (Virtualization.framework). It needs Apple silicon and macOS 26 or newer, with the `container`
 system service started; no Docker, supervisor or socket is involved.
 
-| Variable                  | Default                                | Notes                                        |
-| ------------------------- | -------------------------------------- | -------------------------------------------- |
-| `LOCAL_VM_CLI`            | `container`                            | Path to the `container` CLI                  |
+| Variable                  | Default                                     | Notes                                        |
+| ------------------------- | ------------------------------------------- | -------------------------------------------- |
+| `LOCAL_VM_CLI`            | `container`                                 | Path to the `container` CLI                  |
 | `LOCAL_VM_COMPUTER_IMAGE` | `ghcr.io/lovelybowen/runtars/computer:edge` | Must include `nft`; older images are refused |
-| `LOCAL_VM_CPUS`           | `2`                                    | CPUs of each VM                              |
-| `LOCAL_VM_MEMORY`         | `2g`                                   | Memory of each VM                            |
+| `LOCAL_VM_CPUS`           | `2`                                         | CPUs of each VM                              |
+| `LOCAL_VM_MEMORY`         | `2g`                                        | Memory of each VM                            |
 
 Each start creates a VM and a network of its own, both named `rakazo-<uuid>`, labelled
 `rakazo.bot-id=<bot id>`; one carrying another bot's id is never reused or removed. The image's
