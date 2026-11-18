@@ -19,7 +19,7 @@ When raw GitHub is unreachable, download the installer from your mirror:
 ```bash
 export RAKAZO_INSTALLER_URL=https://example.com/mirror/rakazo/infra/compose/install-images.sh
 export RAKAZO_DOWNLOAD_BASE=https://example.com/mirror/rakazo/infra/compose
-mkdir -p rakazo && cd rakazo &&
+mkdir -p runtars && cd runtars &&
 curl -fsSL -o install-images.sh "${RAKAZO_INSTALLER_URL}" &&
 bash install-images.sh --prepare-only
 ```

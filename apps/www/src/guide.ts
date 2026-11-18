@@ -16,7 +16,7 @@ export const OPENCLAW_SANDBOX_URL = "https://docs.openclaw.ai/gateway/sandboxing
 export const OPENCLAW_GITHUB_URL = "https://github.com/openclaw/openclaw";
 
 export const PUBLISHED_IMAGES_INSTALL = `export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
-mkdir -p rakazo && cd rakazo &&
+mkdir -p runtars && cd runtars &&
 curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/\${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh`;
 
@@ -24,8 +24,8 @@ export const PUBLISHED_IMAGES_SERVER = `bash install-images.sh --prepare-only
 # Edit .env, then:
 bash install-images.sh`;
 
-export const SOURCE_CHECKOUT = `git clone https://github.com/lovelybowen/runtars.git rakazo
-cd rakazo
+export const SOURCE_CHECKOUT = `git clone https://github.com/lovelybowen/runtars.git
+cd runtars
 cp .env.example .env`;
 
 export const SOURCE_DEV = `docker compose --env-file .env \\

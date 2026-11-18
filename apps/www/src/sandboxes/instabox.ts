@@ -181,7 +181,7 @@ export const instabox: Sandbox = {
       heading: "When to choose InstaBox",
       paragraphs: [
         "Choose InstaBox when you want hosted computers that pause with their memory at a low hourly price, or want to try a bot computer on a free plan before you pay anything. Each computer is a microVM with its own kernel, and the `agent-browser` template already has a desktop and Chromium, so there is no template to build first.",
-        "[Novita](/sandboxes/novita/) and [E2B](/sandboxes/e2b/) also pause with memory and bill by the second, at higher rates. [Boat](/sandboxes/boat/) is what Rakazo Cloud uses, with a separate Chrome profile for each bot, but it keeps the disk, not running programs. If you don't want a cloud account at all, [Docker](/sandboxes/docker/) runs computers on your own server. The [sandbox comparison](/sandboxes/) puts them side by side.",
+        "[Novita](/sandboxes/novita/) and [E2B](/sandboxes/e2b/) also pause with memory and bill by the second, at higher rates. [Boat](/sandboxes/boat/) is what RunTars Cloud uses, with a separate Chrome profile for each bot, but it keeps the disk, not running programs. If you don't want a cloud account at all, [Docker](/sandboxes/docker/) runs computers on your own server. The [sandbox comparison](/sandboxes/) puts them side by side.",
       ],
     },
     {
@@ -194,7 +194,7 @@ export const instabox: Sandbox = {
         "RunTars creates every InstaBox computer without your account's vault, so secrets saved on that InstaBox account never reach a bot's computer. Anything a bot needs has to come through RunTars.",
         "The desktop is served on the computer's public HTTPS address, and every screen and terminal needs its own token.",
         "All the computers on one API key share that account's limits on requests at once, for commands, files, screens and terminals. Many busy computers at the same moment can slow each other down.",
-        "InstaBox computers are for self-hosted RunTars. Rakazo Cloud runs its computers on Boat.",
+        "InstaBox computers are for self-hosted RunTars. RunTars Cloud runs its computers on Boat.",
       ],
     },
     {

@@ -28,7 +28,7 @@ export const apiConnectors: IntegrationPlatform = {
   h1: "Turn any OpenAPI or GraphQL API into tools for your AI agents",
   intro: [
     "Many apps have an API but no MCP server and no ready-made integration. An API connector closes that gap: point it at the API's [OpenAPI](https://www.openapis.org) description or GraphQL endpoint, and each operation becomes a tool an AI agent can call. There is no platform fee in the middle: you pay only what the API itself charges. [integrations.sh](https://integrations.sh) is an open source catalog that helps you find those descriptions.",
-    "[RunTars](/) is an open source app for AI teammates that do real work. You talk to each bot in chat, bots use tools in your apps, and each bot also has its own computer. You can use it on Rakazo Cloud or host it yourself. API connectors let your bots use apps that aren't in the [integrations catalog](/integrations/), with only an API key.",
+    "[RunTars](/) is an open source app for AI teammates that do real work. You talk to each bot in chat, bots use tools in your apps, and each bot also has its own computer. You can use it on RunTars Cloud or host it yourself. API connectors let your bots use apps that aren't in the [integrations catalog](/integrations/), with only an API key.",
   ],
   scene: {
     bot: "Account Manager",
@@ -65,7 +65,7 @@ export const apiConnectors: IntegrationPlatform = {
     {
       heading: "What API connectors cost",
       paragraphs: [
-        "RunTars adds nothing per call: API connectors are part of every plan on Rakazo Cloud and free when you host RunTars yourself. integrations.sh is free and open source. The cost is whatever the API's owner charges for the calls your bot makes, under your own account and key, and it comes in three shapes.",
+        "RunTars adds nothing per call: API connectors are part of every plan on RunTars Cloud and free when you host RunTars yourself. integrations.sh is free and open source. The cost is whatever the API's owner charges for the calls your bot makes, under your own account and key, and it comes in three shapes.",
         "Many business apps include API access in the plan you already pay for and limit how fast you can call it. Some services charge for each request or for what the request does, such as sending a text message. And your own company's APIs cost only the servers they run on. Either way the bill comes from the API's owner, on the terms of your account with them.",
       ],
       table: {
@@ -172,7 +172,7 @@ export const apiConnectors: IntegrationPlatform = {
     {
       heading: "How to set it up",
       paragraphs: [
-        "Anyone with an account can add an API connector, on Rakazo Cloud or a self-hosted server. The catalog search is an optional setting for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/). See [Connect apps](/docs/integrations/) and the [tools and integrations guide](/docs/self-host-integrations/).",
+        "Anyone with an account can add an API connector, on RunTars Cloud or a self-hosted server. The catalog search is an optional setting for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/). See [Connect apps](/docs/integrations/) and the [tools and integrations guide](/docs/self-host-integrations/).",
       ],
       steps: [
         "Find the API's OpenAPI document or GraphQL endpoint in its developer docs or on [integrations.sh](https://integrations.sh).",

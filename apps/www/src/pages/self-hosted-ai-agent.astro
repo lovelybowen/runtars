@@ -66,7 +66,7 @@ const structuredData = pageArticleStructuredData({
         Self-hosting means that stack runs on a machine you control.
       </p>
       <p>
-        The software is <a href={`${GITHUB_URL}/blob/main/LICENSE`}>Apache-2.0</a>. Hosted Rakazo Cloud is in beta. This page is the setup you need
+        The software is <a href={`${GITHUB_URL}/blob/main/LICENSE`}>Apache-2.0</a>. Hosted RunTars Cloud is in beta. This page is the setup you need
         to run it. The <a href={DOCS_URL}>full self-hosting guide</a> on GitHub covers backups, upgrades,
         secrets, restricted networks, and production Compose.
       </p>
@@ -97,7 +97,7 @@ const structuredData = pageArticleStructuredData({
       {SELF_HOST_MODEL_PARAGRAPHS.map((paragraph) => <p>{paragraph}</p>)}
 
       <h2 id="self-host-only">Self-host only, for now</h2>
-      <p>These work on your own deployment and are not yet on Rakazo Cloud. Each turns on from <code>.env</code>.</p>
+      <p>These work on your own deployment and are not yet on RunTars Cloud. Each turns on from <code>.env</code>.</p>
       <ul>
         <li><strong>Telegram, WhatsApp, iMessage and SMS, Feishu and Lark.</strong> Add the platform's credentials: <code>TELEGRAM_BOT_TOKEN</code>, <code>WHATSAPP_*</code>, <code>SENDBLUE_*</code> (iMessage and SMS), or <code>LARK_*</code>.</li>
         <li><strong>Image and video generation.</strong> <code>MEDIA_GENERATION_PROVIDER=fal</code>, <code>MEDIA_GENERATION_API_KEY</code>, and an image or video model (<code>MEDIA_GENERATION_IMAGE_MODEL</code>, <code>MEDIA_GENERATION_VIDEO_MODEL</code>).</li>
@@ -266,9 +266,9 @@ const structuredData = pageArticleStructuredData({
       </ul>
 
       <h2>Get started</h2>
-      <p>Self-host with the steps above, or start on Rakazo Cloud.</p>
+      <p>Self-host with the steps above, or start on RunTars Cloud.</p>
       <div class="cta-actions">
-        <Button href={APP_URL}>Rakazo Cloud</Button>
+        <Button href={APP_URL}>RunTars Cloud</Button>
         <Button href={GITHUB_URL} variant="secondary" external>View on GitHub</Button>
       </div>
     </main>

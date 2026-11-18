@@ -1,4 +1,4 @@
-# Rakazo
+# RunTars
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md)
 
@@ -7,9 +7,9 @@
 [![App Store で iPhone 版をダウンロード](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
 [![Google Play で Android 版をダウンロード](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.rakazo.app)
 
-![Rakazo：本当に自分のものにできる AI チームメイト](./docs/readme-hero.png)
+![RunTars：本当に自分のものにできる AI チームメイト](./docs/readme-hero.png)
 
-Rakazo は、Grok Bot のオープンソースかつセルフホスト可能な代替ツールです。
+RunTars は、Grok Bot のオープンソースかつセルフホスト可能な代替ツールです。
 
 メモリ、ルーティン、アプリ、コンピューターを持つ常駐型の AI チームメイト。自分のマシンで、自分のモデルを使って動かせます。
 
@@ -105,12 +105,12 @@ Docker Engine、Compose プラグイン、curl、OpenSSL が必要です。リ�
 
 ```bash
 export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
-mkdir -p rakazo && cd rakazo &&
+mkdir -p runtars && cd runtars &&
 curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh
 ```
 
-インストーラーは Compose ファイルをダウンロードし、ランダムなシークレットを含む `.env` を作成して Rakazo を起動します。
+インストーラーは Compose ファイルをダウンロードし、ランダムなシークレットを含む `.env` を作成して RunTars を起動します。
 再実行時は既存の `.env` をそのまま残します。
 
 [http://127.0.0.1:5173](http://127.0.0.1:5173) を開き、アカウントを作成してモデルを接続します。
@@ -150,8 +150,8 @@ Node.js 24.x 系の 24.15.0 以降、または Node.js 26 以降と、
 pnpm 12、Docker が必要です。Node.js 25.x はサポートしていません。
 
 ```bash
-git clone https://github.com/lovelybowen/runtars.git rakazo
-cd rakazo
+git clone https://github.com/lovelybowen/runtars.git
+cd runtars
 cp .env.example .env
 ```
 
@@ -231,7 +231,7 @@ Railway のサンドボックス利用は従量課金です。
 
 ## デスクトップとモバイル
 
-Electron アプリと Expo アプリは、Web アプリと同じ Rakazo API を使うクライアントです。
+Electron アプリと Expo アプリは、Web アプリと同じ RunTars API を使うクライアントです。
 
 開発用スタックを起動した状態で、次のコマンドで Electron を起動します。
 
@@ -252,7 +252,7 @@ OrbStack、Docker Engine のいずれかが必要です。未インストール�
 
 `pnpm dev` を実行している開発者は、代わりに **Existing instance**（既存のインスタンス）を選び `http://127.0.0.1:5173` を指定してください。公開サーバーは
 HTTPS を使う必要があります。HTTP はループバックとプライベート LAN のアドレスでのみ受け付けます（リンクローカルは除く）。
-アプリは保存前に Rakazo のヘルスチェックエンドポイントを確認し、以降の起動ではそのインスタンスに直接接続します。
+アプリは保存前に RunTars のヘルスチェックエンドポイントを確認し、以降の起動ではそのインスタンスに直接接続します。
 Docker スタックはアプリを終了しても動き続けますが、Docker を使わないサーバーはアプリとともに停止します。
 アプリを終了せずに管理対象のスタックを停止するには、アプリケーションメニューの **Stop Local Stack**（ローカルスタックを停止）を使います。
 
@@ -319,7 +319,7 @@ pnpm test:e2e
 - [パフォーマンステスト](./docs/performance.md)
 - [ボットを管理するボット](./docs/fleet-management.md)
 
-## Rakazo と他製品の比較
+## RunTars と他製品の比較
 
 - [Grok Bot](https://runtars.com/grok-bot-alternative/)
 - [Muse](https://runtars.com/muse-alternative/)
@@ -356,6 +356,6 @@ pnpm test:e2e
 コントリビューションを歓迎します。プルリクエストを作成する前に [CONTRIBUTING.md](./CONTRIBUTING.md) をお読みください。
 セキュリティ上の脆弱性は、公開の Issue を作成せず、[SECURITY.md](./SECURITY.md) の手順に従って報告してください。
 
-Rakazo は [Apache License 2.0](./LICENSE) のもとでライセンスされています。
+RunTars は [Apache License 2.0](./LICENSE) のもとでライセンスされています。
 
 質問やアイデアは [Rakazo Discord コミュニティ](https://discord.gg/RWwKa2Sn7h)でお気軽にどうぞ。

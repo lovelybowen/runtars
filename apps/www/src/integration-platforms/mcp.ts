@@ -26,7 +26,7 @@ export const mcp: IntegrationPlatform = {
   h1: "What is MCP? Connect MCP servers to your AI agents",
   intro: [
     "The [Model Context Protocol](https://modelcontextprotocol.io) (MCP) is an open standard for connecting AI applications to outside tools and data. An app publishes an MCP server, and any agent that speaks MCP can list its tools and call them. Many apps now host a remote MCP server, so giving an agent their tools takes a URL and a sign-in. The protocol itself is free; what you pay for is the app or service behind the server.",
-    "[RunTars](/) is an open source app for AI teammates that do real work. You talk to each bot in chat, bots use tools in your apps, and each bot also has its own computer. You can use it on Rakazo Cloud or host it yourself. Every MCP server you add becomes tools your bots can use, alongside the apps in the [integrations catalog](/integrations/).",
+    "[RunTars](/) is an open source app for AI teammates that do real work. You talk to each bot in chat, bots use tools in your apps, and each bot also has its own computer. You can use it on RunTars Cloud or host it yourself. Every MCP server you add becomes tools your bots can use, alongside the apps in the [integrations catalog](/integrations/).",
   ],
   scene: {
     bot: "Bug Triage",
@@ -161,7 +161,7 @@ export const mcp: IntegrationPlatform = {
             ],
           },
         ],
-        note: `Gateway prices from [Zapier](${ZAPIER_PRICING}), [Composio](${COMPOSIO_PRICING}) and [Pipedream](${PIPEDREAM_PRICING}), checked ${PRICES_CHECKED}. In RunTars, MCP servers are included in every plan, on Rakazo Cloud and self-hosted.`,
+        note: `Gateway prices from [Zapier](${ZAPIER_PRICING}), [Composio](${COMPOSIO_PRICING}) and [Pipedream](${PIPEDREAM_PRICING}), checked ${PRICES_CHECKED}. In RunTars, MCP servers are included in every plan, on RunTars Cloud and self-hosted.`,
       },
       bullets: [
         "The hidden cost is usually tokens, not fees. A server with 40 tools can add thousands of input tokens to every model call. RunTars counts tools by source, not per server: the MCP servers and OpenAPI and GraphQL connectors installed from **Integrations** share one count, so a few small servers and one large API can add up together. Up to 20 tools, a bot gets them all directly; past that, it searches for the tools it needs and loads only those.",
@@ -214,7 +214,7 @@ export const mcp: IntegrationPlatform = {
     {
       heading: "How to set it up",
       paragraphs: [
-        "Anyone with an account can add a remote server, on Rakazo Cloud or a self-hosted server. Stdio servers are for admins of a [self-hosted RunTars](/self-hosted-ai-agent/). See [Connect apps](/docs/integrations/) and the [tools and integrations guide](/docs/self-host-integrations/).",
+        "Anyone with an account can add a remote server, on RunTars Cloud or a self-hosted server. Stdio servers are for admins of a [self-hosted RunTars](/self-hosted-ai-agent/). See [Connect apps](/docs/integrations/) and the [tools and integrations guide](/docs/self-host-integrations/).",
       ],
       steps: [
         "Open **Integrations** from **Connect apps** at the bottom of the sidebar and choose **+**.",

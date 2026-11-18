@@ -6,7 +6,7 @@ export const ROUNDUP_UPDATED = "October 24, 2026";
 
 export const GET_STARTED = {
   heading: "Get started",
-  copy: "Start on Rakazo Cloud, in beta, or self-host.",
+  copy: "Start on RunTars Cloud, in beta, or self-host.",
   docsLabel: "Self-hosting guide",
   githubLabel: "View on GitHub",
 } as const;
@@ -196,7 +196,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         topic: "Who runs it",
         rakazo:
-          "You do when you self-host with Docker or point the desktop and mobile apps at a server you operate. Rakazo Cloud, in beta, runs it for you.",
+          "You do when you self-host with Docker or point the desktop and mobile apps at a server you operate. RunTars Cloud, in beta, runs it for you.",
         other:
           "Meta. Muse runs on Muse Secure VM, a dedicated cloud virtual machine for the agent and for data from services you connect. Meta's September 29, 2026 post describes Muse as available in the US and Canada.",
       },
@@ -256,7 +256,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         question: "Can I self-host RunTars?",
         answer:
-          "Yes. Self-hosting is available now with published Docker images or a source checkout. Hosted Rakazo Cloud is in beta.",
+          "Yes. Self-hosting is available now with published Docker images or a source checkout. Hosted RunTars Cloud is in beta.",
       },
       {
         question: "Does RunTars include Muse on WhatsApp, shopping checkout, or AI glasses?",
@@ -295,7 +295,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         topic: "Who runs it",
         rakazo:
-          "You do when you self-host with Docker or point the desktop and mobile apps at a server you operate. Rakazo Cloud, in beta, runs it for you.",
+          "You do when you self-host with Docker or point the desktop and mobile apps at a server you operate. RunTars Cloud, in beta, runs it for you.",
         other: "OpenAI. The announcement says each dot has its own cloud computer.",
       },
       {
@@ -375,7 +375,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         topic: "Who runs it",
         rakazo:
-          "You do when you self-host with Docker or point the desktop and mobile apps at a server you operate. Rakazo Cloud, in beta, runs it for you.",
+          "You do when you self-host with Docker or point the desktop and mobile apps at a server you operate. RunTars Cloud, in beta, runs it for you.",
         other:
           "Spear Street Technology, Inc., under the Instinct name. The privacy policy describes a hosted service, including third-party hosting. It does not describe installing Instinct on a server you operate.",
       },
@@ -437,7 +437,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         question: "Can I self-host RunTars?",
         answer:
-          "Yes. Self-hosting is available now with published Docker images or a source checkout. Hosted Rakazo Cloud is in beta.",
+          "Yes. Self-hosting is available now with published Docker images or a source checkout. Hosted RunTars Cloud is in beta.",
       },
       {
         question: "Does RunTars text, call, or buy things the way Instinct describes?",
@@ -602,7 +602,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         topic: "Who runs it",
         rakazo:
-          "You do when you self-host with Docker or point the desktop and mobile apps at a server you operate. Rakazo Cloud, in beta, runs it for you.",
+          "You do when you self-host with Docker or point the desktop and mobile apps at a server you operate. RunTars Cloud, in beta, runs it for you.",
         other:
           "Anthropic. Duet works on its own cloud virtual machine with a browser. The help center says you cannot watch or take over that browser.",
       },
@@ -683,7 +683,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         topic: "Who runs it",
         rakazo:
-          "You do when you self-host with Docker or point the desktop and mobile apps at a server you operate. Rakazo Cloud, in beta, runs it for you.",
+          "You do when you self-host with Docker or point the desktop and mobile apps at a server you operate. RunTars Cloud, in beta, runs it for you.",
         other:
           "The terms name Hark Labs, Inc. as the operator of the hosted service. They do not describe a self-host install, and they restrict reverse engineering the service.",
       },
@@ -753,7 +753,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         question: "Can I self-host RunTars?",
         answer:
-          "Yes. Self-hosting is available now with published Docker images or a source checkout. Hosted Rakazo Cloud is in beta.",
+          "Yes. Self-hosting is available now with published Docker images or a source checkout. Hosted RunTars Cloud is in beta.",
       },
       {
         question: "How do you manage each one day to day?",

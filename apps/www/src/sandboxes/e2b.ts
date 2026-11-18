@@ -132,7 +132,7 @@ export const e2b: Sandbox = {
       },
       bullets: [
         `If you skip the template build, RunTars falls back to E2B's stock desktop template, which reserves ${E2B_STOCK_SIZE.vcpus} vCPU and ${E2B_STOCK_SIZE.gb} GB. That is about ${usd(stockHour)} an hour, more than three times as much.`,
-        "On Rakazo Cloud you don't pay E2B at all. Cloud computers run on [Boat](/sandboxes/boat/) and are included in the [plan](/pricing/).",
+        "On RunTars Cloud you don't pay E2B at all. Cloud computers run on [Boat](/sandboxes/boat/) and are included in the [plan](/pricing/).",
       ],
     },
     {
@@ -166,7 +166,7 @@ export const e2b: Sandbox = {
       heading: "When to choose E2B",
       paragraphs: [
         "Choose E2B when you self-host RunTars for other people, such as a team or a public instance, and you don't want bots running on the same server as RunTars. RunTars's own setup docs suggest it for that case, and RunTars's live computer acceptance test runs on E2B. It is also the safest bet if open source matters to you: if E2B the company disappeared, the code would not.",
-        `Look elsewhere if your bots run long jobs and you don't want the $${E2B_PRO_FEE} Pro fee, or if your team is small and price matters more than the microVM boundary. [Boat](/sandboxes/boat/) is what Rakazo Cloud runs on: long-lived VMs that keep their disk when stopped. [Novita](/sandboxes/novita/) uses a similar sandbox model and keeps open programs in memory when it pauses. [Daytona](/sandboxes/daytona/) suits teams already on it. For no cloud account at all, use [Docker](/sandboxes/docker/) on your own machine, or [Kubernetes](/sandboxes/kubernetes/) on a cluster you run. The [sandbox comparison](/sandboxes/) has them all side by side.`,
+        `Look elsewhere if your bots run long jobs and you don't want the $${E2B_PRO_FEE} Pro fee, or if your team is small and price matters more than the microVM boundary. [Boat](/sandboxes/boat/) is what RunTars Cloud runs on: long-lived VMs that keep their disk when stopped. [Novita](/sandboxes/novita/) uses a similar sandbox model and keeps open programs in memory when it pauses. [Daytona](/sandboxes/daytona/) suits teams already on it. For no cloud account at all, use [Docker](/sandboxes/docker/) on your own machine, or [Kubernetes](/sandboxes/kubernetes/) on a cluster you run. The [sandbox comparison](/sandboxes/) has them all side by side.`,
       ],
     },
     {
@@ -188,7 +188,7 @@ export const e2b: Sandbox = {
     {
       heading: "How to set it up",
       paragraphs: [
-        "These steps are for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/). Rakazo Cloud users don't need an E2B account.",
+        "These steps are for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/). RunTars Cloud users don't need an E2B account.",
       ],
       steps: [
         "Create an account at [e2b.dev](https://e2b.dev) and copy an API key.",

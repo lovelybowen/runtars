@@ -89,7 +89,7 @@ const HUB_SECTIONS: readonly ArticleSection[] = [
     id: "pricing",
     paragraphs: [
       `Every price on these pages is for one person's bots, which share one computer by default: 2 vCPU and 4 GB of memory, enough for a Linux desktop, Chromium and a terminal, running 4 hours a workday (${WORKDAY_HOURS} hours a month) or around the clock (${MONTH_HOURS} hours). RunTars gives each person one team computer per space, plus one for each bot you give a computer of its own, so for a space where N people use bots, multiply by N. RunTars stops or pauses a hosted computer after 10 minutes without use, so you pay for roughly the hours bots work. Where a provider or RunTars can't use that size, the row says which size it prices.`,
-      `On Rakazo Cloud you don't pay a sandbox provider: computers run on Boat and come with the plan, and the [pricing page](/pricing/) lists the computer hours each plan includes. The table is for a self-hosted RunTars, where you bring your own provider.`,
+      `On RunTars Cloud you don't pay a sandbox provider: computers run on Boat and come with the plan, and the [pricing page](/pricing/) lists the computer hours each plan includes. The table is for a self-hosted RunTars, where you bring your own provider.`,
     ],
     table: {
       caption: "What a bot computer costs on each option RunTars supports",
@@ -190,7 +190,7 @@ const HUB_SECTIONS: readonly ArticleSection[] = [
           ],
         },
       ],
-      note: `${PRICES_NOTE} Usage before free credits. RunTars can't run Boat at 2 vCPU / 4 GB: self-hosted installs use ${BOAT_RAKAZO.vcpus} vCPU / ${BOAT_RAKAZO.gb} GB machines, which cost ${usd(boatMonthly(BOAT_RAKAZO.hour, WORKDAY_HOURS))} and ${usd(boatMonthly(BOAT_RAKAZO.hour, MONTH_HOURS))}, and larger Rakazo Cloud plans use [larger ones](/sandboxes/boat/). Each option's page shows the rates and assumptions behind its numbers.`,
+      note: `${PRICES_NOTE} Usage before free credits. RunTars can't run Boat at 2 vCPU / 4 GB: self-hosted installs use ${BOAT_RAKAZO.vcpus} vCPU / ${BOAT_RAKAZO.gb} GB machines, which cost ${usd(boatMonthly(BOAT_RAKAZO.hour, WORKDAY_HOURS))} and ${usd(boatMonthly(BOAT_RAKAZO.hour, MONTH_HOURS))}, and larger RunTars Cloud plans use [larger ones](/sandboxes/boat/). Each option's page shows the rates and assumptions behind its numbers.`,
     },
     bullets: [
       "For a few hours a day, per-second providers are cheapest. InstaBox has the lowest hourly rates here, just under Boat's, and a free plan for one computer, but more computers need its Pro plan. Of the providers with no plan fee, Novita has the lowest rate, and E2B and Daytona charge the same as each other.",
@@ -316,7 +316,7 @@ export const SANDBOXES_HUB = {
   choose: [
     {
       heading: "You want it hosted",
-      text: `[Boat](/sandboxes/boat/) is what Rakazo Cloud runs its own bot computers on: full Linux VMs where every bot keeps its own Chrome logins, for a $${BOAT.minimum} monthly minimum. [E2B](/sandboxes/e2b/) is the option RunTars's live computer tests run on, gives every computer its own microVM, and pauses idle computers instead of deleting them. [Novita](/sandboxes/novita/) pauses with memory, so a bot comes back to the same open programs, with no plan fee. [InstaBox](/sandboxes/instabox/) also pauses with memory, at low hourly rates, with a free plan for one computer. [Daytona](/sandboxes/daytona/) keeps each computer's disk, has no session cap, and suits teams already using it.`,
+      text: `[Boat](/sandboxes/boat/) is what RunTars Cloud runs its own bot computers on: full Linux VMs where every bot keeps its own Chrome logins, for a $${BOAT.minimum} monthly minimum. [E2B](/sandboxes/e2b/) is the option RunTars's live computer tests run on, gives every computer its own microVM, and pauses idle computers instead of deleting them. [Novita](/sandboxes/novita/) pauses with memory, so a bot comes back to the same open programs, with no plan fee. [InstaBox](/sandboxes/instabox/) also pauses with memory, at low hourly rates, with a free plan for one computer. [Daytona](/sandboxes/daytona/) keeps each computer's disk, has no session cap, and suits teams already using it.`,
     },
     {
       heading: "You want the smallest bill",

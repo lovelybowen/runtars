@@ -197,7 +197,7 @@ export const GROK_ALTERNATIVE_FAQ = [
   {
     question: "How is RunTars different from Grok Bot?",
     answer:
-      "Both are persistent bots that can use a computer, sign in to tools, keep context, and run routines. Grok Bot hosts that computer for you and comes with paid Cursor plans and SuperGrok subscriptions. RunTars is open source: you host it or use Rakazo Cloud, in beta, you choose the model, and team computers and private computers stay separate.",
+      "Both are persistent bots that can use a computer, sign in to tools, keep context, and run routines. Grok Bot hosts that computer for you and comes with paid Cursor plans and SuperGrok subscriptions. RunTars is open source: you host it or use RunTars Cloud, in beta, you choose the model, and team computers and private computers stay separate.",
   },
   {
     question: "Is RunTars just chat, like Grok Bot?",

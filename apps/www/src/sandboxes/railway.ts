@@ -147,7 +147,7 @@ export const railway: Sandbox = {
       bullets: [
         "Memory dominates: Railway counts the operating system and file cache as memory in use, so a browser with many tabs costs more than its CPU suggests.",
         "RunTars stops idle computers, and the template allows each user up to three, which keeps the bill bounded.",
-        "On Rakazo Cloud you don't need Railway at all; computers are included in the [plan](/pricing/).",
+        "On RunTars Cloud you don't need Railway at all; computers are included in the [plan](/pricing/).",
       ],
     },
     {
@@ -166,7 +166,7 @@ export const railway: Sandbox = {
       heading: "When to choose Railway",
       paragraphs: [
         "Choose Railway when you want a personal RunTars with nothing to run yourself and only one account to manage. It suits bots that browse, research and edit files, where a restart from saved files is fine.",
-        "If bots need to come back to the same open programs, [Novita](/sandboxes/novita/) and [E2B](/sandboxes/e2b/) pause computers with their memory instead. [Boat](/sandboxes/boat/), which Rakazo Cloud uses, keeps each computer's disk and a Chrome profile per bot. If you'd rather use a server you already have, [Docker](/sandboxes/docker/) is the default when you self-host. The [sandbox comparison](/sandboxes/) covers every option.",
+        "If bots need to come back to the same open programs, [Novita](/sandboxes/novita/) and [E2B](/sandboxes/e2b/) pause computers with their memory instead. [Boat](/sandboxes/boat/), which RunTars Cloud uses, keeps each computer's disk and a Chrome profile per bot. If you'd rather use a server you already have, [Docker](/sandboxes/docker/) is the default when you self-host. The [sandbox comparison](/sandboxes/) covers every option.",
       ],
     },
     {
