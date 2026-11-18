@@ -1,8 +1,8 @@
 # Desktop releases
 
-The `release-desktop` workflow builds, signs, notarizes, attests, and publishes
-the Electron app from a `vMAJOR.MINOR.PATCH` tag on `main`. Publishing the
-Docker images triggers from the same tag.
+Stable RunTars tags publish the Windows installer alongside the Android APK and server images.
+See [RunTars releases](./runtars-release.md#windows-and-android-release-assets) for that workflow.
+The separate manual `release-desktop` workflow handles the multi-platform Electron distribution.
 
 ## Repository secrets
 
@@ -19,7 +19,7 @@ macOS (required):
 The API key needs the Developer role. The workflow writes it to a mode 600 file
 in the runner's temp directory for the packaging step and deletes it afterwards.
 
-Windows signs through Azure Artifact Signing once it is configured, logging in
+The manual multi-platform workflow signs Windows through Azure Artifact Signing once it is configured, logging in
 with GitHub OIDC instead of a stored secret. Create a Public Trust certificate
 profile, then an app registration with the Artifact Signing Certificate Profile
 Signer role on the signing account, and a `desktop-release` environment in the
@@ -41,11 +41,8 @@ form does not match.
 | `DESKTOP_WIN_SIGNING_PROFILE`  | The certificate profile name                                            |
 | `DESKTOP_WIN_PUBLISHER`        | The certificate's common name, exactly as validated                     |
 
-When `DESKTOP_WIN_AZURE_CLIENT_ID` is unset the Windows installer ships
-unsigned, and Windows shows a SmartScreen warning on first launch. Unsigned
-builds carry no publisher in their update config, so they accept the first
-signed update; from then on updates must match the publisher. The release is
-only published when every platform produced its installer and update feed.
+Missing Windows signing credentials stop the build. Each Windows release checks the installer
+and the packaged application signatures, their timestamps and the update feed publisher.
 
 Set a secret from a file without echoing it:
 

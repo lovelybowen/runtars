@@ -126,7 +126,8 @@ const updaterEnvironment = {
   // A `--dir` build has no update feed to read.
   packaged: app.isPackaged && existsSync(path.join(process.resourcesPath, "app-update.yml")),
   version: app.getVersion(),
-  disabled: process.env.RAKAZO_DISABLE_AUTO_UPDATE === "1",
+  disabled:
+    process.env.RUNTARS_MANUAL_UPDATES === "1" || process.env.RAKAZO_DISABLE_AUTO_UPDATE === "1",
 };
 let requestingComputerAccess = false;
 let hostScreen: HostScreen | undefined;
