@@ -1,4 +1,4 @@
-# Rakazo
+# RunTars
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md)
 
@@ -7,9 +7,9 @@
 [![Download on the App Store](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
 [![Get Android on Google Play](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.rakazo.app)
 
-![Rakazo — AI teammates you actually own](./docs/readme-hero.png)
+![RunTars — AI teammates you actually own](./docs/readme-hero.png)
 
-Rakazo is an open source, self-hosted alternative to Grok Bot.
+RunTars is an open source, self-hosted alternative to Grok Bot.
 
 Persistent AI teammates with their own memory, routines, apps, and computer. Run it on your own
 machine, with your own model.
@@ -105,12 +105,12 @@ You need Docker Engine, the Compose plugin, curl, and OpenSSL. No clone or Node 
 
 ```bash
 export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
-mkdir -p rakazo && cd rakazo &&
+mkdir -p runtars && cd runtars &&
 curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh
 ```
 
-The installer downloads the Compose files, creates `.env` with random secrets, and starts Rakazo.
+The installer downloads the Compose files, creates `.env` with random secrets, and starts RunTars.
 It preserves an existing `.env` when rerun.
 
 Open [http://127.0.0.1:5173](http://127.0.0.1:5173), create an account, and connect a model.
@@ -150,8 +150,8 @@ You need Node.js 24.15.0 or newer in the 24.x line, or Node.js 26+; pnpm 12;
 and Docker. Node.js 25.x is not supported.
 
 ```bash
-git clone https://github.com/lovelybowen/runtars.git rakazo
-cd rakazo
+git clone https://github.com/lovelybowen/runtars.git
+cd runtars
 cp .env.example .env
 ```
 
@@ -254,7 +254,7 @@ Workspace exports reject files above 64 MiB without truncating them. Set `RAILWA
 
 ## Desktop and mobile
 
-The Electron and Expo apps are clients of the same Rakazo API used by the web app.
+The Electron and Expo apps are clients of the same RunTars API used by the web app.
 
 With the development stack running, launch Electron with:
 
@@ -275,7 +275,7 @@ an installed Docker app that is not running, and continues on its own once Docke
 builds pin the image tag to their own version; unpackaged builds pull `edge`. Developers running
 `pnpm dev` should pick **Existing instance** with `http://127.0.0.1:5173` instead. Public servers
 must use HTTPS; HTTP is accepted only for loopback and private LAN addresses (not link-local). The
-app verifies Rakazo's health endpoint before saving, and later launches go straight to that
+app verifies RunTars's health endpoint before saving, and later launches go straight to that
 instance. The Docker stack keeps running after the app quits; the Docker-free server stops with the app.
 **Stop Local Stack** in the application menu stops the managed stack without quitting.
 
@@ -363,7 +363,7 @@ Chinese guides cover [self-hosting](./docs/zh-CN/self-host.md), [models](./docs/
 - [Performance testing](./docs/performance.md)
 - [Bots that manage bots](./docs/fleet-management.md)
 
-## How Rakazo compares
+## How RunTars compares
 
 - [Grok Bot](https://runtars.com/grok-bot-alternative/)
 - [Muse](https://runtars.com/muse-alternative/)
@@ -402,6 +402,6 @@ Contributions are welcome. Please read [CONTRIBUTING.md](./CONTRIBUTING.md) befo
 request. For security vulnerabilities, follow [SECURITY.md](./SECURITY.md) instead of filing a public
 issue.
 
-Rakazo is licensed under the [Apache License 2.0](./LICENSE).
+RunTars is licensed under the [Apache License 2.0](./LICENSE).
 
 Questions and ideas are welcome in the [Rakazo Discord community](https://discord.gg/RWwKa2Sn7h).

@@ -1,13 +1,13 @@
-# Rakazo
+# RunTars
 
 [![GitHub stars](https://img.shields.io/github/stars/lovelybowen/runtars?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/lovelybowen/runtars/stargazers)
 [![Discord](https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?labelColor=black&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RWwKa2Sn7h)
 [![Download on the App Store](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
 [![Get Android on Google Play](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.rakazo.app)
 
-![Rakazo — AI teammates you actually own](./docs/readme-hero.png)
+![RunTars — AI teammates you actually own](./docs/readme-hero.png)
 
-Rakazo เป็น AI agent โอเพนซอร์สสำหรับ bot ที่ทำงานต่อเนื่องและผู้ช่วยที่ self-host บนเครื่องคุณ มีบนเว็บ เดสก์ท็อป Electron และมือถือ นำโมเดลและ computer provider มาเองหรือรันทั้งสแต็ก local ได้
+RunTars เป็น AI agent โอเพนซอร์สสำหรับ bot ที่ทำงานต่อเนื่องและผู้ช่วยที่ self-host บนเครื่องคุณ มีบนเว็บ เดสก์ท็อป Electron และมือถือ นำโมเดลและ computer provider มาเองหรือรันทั้งสแต็ก local ได้
 
 รายละเอียดเพิ่มที่ [runtars.com](https://runtars.com)
 
@@ -17,12 +17,12 @@ Rakazo เป็น AI agent โอเพนซอร์สสำหรับ bo
 
 ```bash
 export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
-mkdir -p rakazo && cd rakazo &&
+mkdir -p runtars && cd runtars &&
 curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh
 ```
 
-สคริปต์ดาวน์โหลด Compose สร้าง `.env` พร้อม secret แบบสุ่ม แล้วสตาร์ท Rakazo รันซ้ำจะเก็บ `.env` เดิมไว้
+สคริปต์ดาวน์โหลด Compose สร้าง `.env` พร้อม secret แบบสุ่ม แล้วสตาร์ท RunTars รันซ้ำจะเก็บ `.env` เดิมไว้
 
 เปิด [http://127.0.0.1:5173](http://127.0.0.1:5173) สมัครบัญชี แล้วเชื่อมโมเดล Docker computers เปิดอยู่ตามค่าเริ่มต้น
 

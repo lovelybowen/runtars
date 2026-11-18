@@ -35,7 +35,7 @@ export const boat: Sandbox = {
   h1: "Boat for AI agents: a cloud computer for every bot",
   intro: [
     "[Boat](https://boat.dev) rents out persistent Ubuntu virtual machines built for AI agents. Each one is a full Linux computer in the cloud that keeps its disk when it stops, so an agent can come back to the same files and installed tools later.",
-    "[RunTars](/) is an open source app for AI teammates that do real work. You talk to each bot in chat, and each one gets its own computer with a desktop, browser, terminal and files that you can watch and take over. Rakazo Cloud runs those computers on Boat, and if you host RunTars yourself you can point it at your own Boat account. Boat supplies the machine. RunTars puts the desktop on it, gives each bot its own screen and browser, and decides when to start and stop it.",
+    "[RunTars](/) is an open source app for AI teammates that do real work. You talk to each bot in chat, and each one gets its own computer with a desktop, browser, terminal and files that you can watch and take over. RunTars Cloud runs those computers on Boat, and if you host RunTars yourself you can point it at your own Boat account. Boat supplies the machine. RunTars puts the desktop on it, gives each bot its own screen and browser, and decides when to start and stop it.",
   ],
   scene: {
     bot: "Sales Outbound",
@@ -165,7 +165,7 @@ export const boat: Sandbox = {
     {
       heading: "Which Boat size RunTars uses",
       paragraphs: [
-        "RunTars picks a computer's size from its organization's Rakazo Cloud plan. A self-hosted install has no size setting, so its computers always use Boat's default machine. When the plan changes, a running computer keeps its size and moves to the new one the next time RunTars starts it after a stop; if Boat refuses that size, it starts at the size it had.",
+        "RunTars picks a computer's size from its organization's RunTars Cloud plan. A self-hosted install has no size setting, so its computers always use Boat's default machine. When the plan changes, a running computer keeps its size and moves to the new one the next time RunTars starts it after a stop; if Boat refuses that size, it starts at the size it had.",
       ],
       table: {
         caption: "Boat machines by RunTars computer size",
@@ -178,7 +178,7 @@ export const boat: Sandbox = {
             usd(boatMonthly(size.hour, MONTH_HOURS)),
           ],
         })),
-        note: "What Boat charges for one machine, from its rates checked November 2026, with the monthly minimum applied. Boat offers xlarge only on plans of $100 or more. On Rakazo Cloud you pay RunTars, not Boat; the [pricing page](/pricing/) lists the computer hours each plan includes.",
+        note: "What Boat charges for one machine, from its rates checked November 2026, with the monthly minimum applied. Boat offers xlarge only on plans of $100 or more. On RunTars Cloud you pay RunTars, not Boat; the [pricing page](/pricing/) lists the computer hours each plan includes.",
       },
     },
     {
@@ -197,7 +197,7 @@ export const boat: Sandbox = {
     {
       heading: "When to choose Boat",
       paragraphs: [
-        "Choose Boat when you want hosted computers that behave like long-lived machines, and your bots sign in to many different sites. It is what Rakazo Cloud uses, so it is the most exercised path for that kind of work.",
+        "Choose Boat when you want hosted computers that behave like long-lived machines, and your bots sign in to many different sites. It is what RunTars Cloud uses, so it is the most exercised path for that kind of work.",
         "[E2B](/sandboxes/e2b/) is the other well-tested hosted option. It pauses idle computers, and RunTars's live computer test runs on it. [Novita](/sandboxes/novita/) pauses with memory, so open programs survive a stop. [Daytona](/sandboxes/daytona/) suits teams that already have an account there. If you don't want a cloud account at all, [Docker](/sandboxes/docker/) runs computers on your own server. The [sandbox comparison](/sandboxes/) puts them all side by side.",
       ],
     },
@@ -215,7 +215,7 @@ export const boat: Sandbox = {
     {
       heading: "How to set it up",
       paragraphs: [
-        "On Rakazo Cloud there is nothing to set up: bot computers already run on Boat. These steps are for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/).",
+        "On RunTars Cloud there is nothing to set up: bot computers already run on Boat. These steps are for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/).",
       ],
       steps: [
         "Create a Boat account at [boat.dev](https://boat.dev) and make an API key.",
@@ -233,7 +233,7 @@ export const boat: Sandbox = {
   faq: [
     {
       question: "Boat vs E2B for AI agents?",
-      answer: `Both give RunTars bots a Linux desktop, terminal and files. Boat machines are long-lived VMs that keep their disk when stopped, cost a flat $${BOAT.minimum} minimum for most small teams, and Rakazo Cloud runs on them. [E2B](/sandboxes/e2b/) bills every second at a higher rate, pauses idle sandboxes with their memory, runs in the US, and is open source. RunTars keeps its own copy of each bot's workspace on both.`,
+      answer: `Both give RunTars bots a Linux desktop, terminal and files. Boat machines are long-lived VMs that keep their disk when stopped, cost a flat $${BOAT.minimum} minimum for most small teams, and RunTars Cloud runs on them. [E2B](/sandboxes/e2b/) bills every second at a higher rate, pauses idle sandboxes with their memory, runs in the US, and is open source. RunTars keeps its own copy of each bot's workspace on both.`,
     },
     {
       question: "Do I need Boat to self-host RunTars?",

@@ -9,7 +9,7 @@ You can give this page, the error code, and the app version to an AI assistant f
 applying the instructions to your setup. Copy this prompt and fill in the placeholders:
 
 ```text
-Help me troubleshoot Rakazo using this guide:
+Help me troubleshoot RunTars using this guide:
 https://runtars.com/docs/troubleshooting/
 
 Error code: <code from the relevant section below>

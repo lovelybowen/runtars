@@ -39,7 +39,7 @@ export const HOSTED_SANDBOXES_TABLE: ArticleTable = {
     {
       topic: "[Boat](/sandboxes/boat/)",
       cells: [
-        "Yes. Rakazo Cloud runs on it",
+        "Yes. RunTars Cloud runs on it",
         "Full VM per machine",
         `${usd(boatMonthly(BOAT.small.hour, WORKDAY_HOURS))}, the monthly minimum. RunTars's smallest Boat size is ${BOAT_RAKAZO.vcpus} vCPU / ${BOAT_RAKAZO.gb} GB, which is also ${usd(boatMonthly(BOAT_RAKAZO.hour, WORKDAY_HOURS))}`,
         "No fixed cap. RunTars renews a 2-hour lease while in use",

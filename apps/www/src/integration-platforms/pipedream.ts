@@ -262,7 +262,7 @@ export const pipedream: IntegrationPlatform = {
       heading: "When to choose Pipedream",
       paragraphs: [
         "Choose Pipedream when you self-host RunTars and already use Pipedream Connect, need an app only Pipedream covers, or want SOC 2 coverage without an enterprise contract. Its tools reach RunTars through Pipedream's own MCP server, one connection per account.",
-        "[Composio](/integration-platforms/composio/) is the other managed option and the simpler one to set up: a single API key. You can run both, and the Apps list shows apps from each. On [Rakazo Cloud](/pricing/) you don't need a Pipedream account: connecting apps is part of every plan. For an app that publishes its own [MCP server](/integration-platforms/mcp/), or one you can reach with an [API connector](/integration-platforms/api-connectors/), you don't need a hosted middleman at all. The [comparison](/integration-platforms/) puts them side by side.",
+        "[Composio](/integration-platforms/composio/) is the other managed option and the simpler one to set up: a single API key. You can run both, and the Apps list shows apps from each. On [RunTars Cloud](/pricing/) you don't need a Pipedream account: connecting apps is part of every plan. For an app that publishes its own [MCP server](/integration-platforms/mcp/), or one you can reach with an [API connector](/integration-platforms/api-connectors/), you don't need a hosted middleman at all. The [comparison](/integration-platforms/) puts them side by side.",
       ],
     },
     {
@@ -278,7 +278,7 @@ export const pipedream: IntegrationPlatform = {
     {
       heading: "How to set it up",
       paragraphs: [
-        "These steps are for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/). Rakazo Cloud users don't need a Pipedream account; they [connect apps](/docs/integrations/) from Integrations.",
+        "These steps are for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/). RunTars Cloud users don't need a Pipedream account; they [connect apps](/docs/integrations/) from Integrations.",
       ],
       steps: [
         "In [Pipedream](https://pipedream.com), create a project and an OAuth client for its API. Copy the client ID, client secret and project ID.",

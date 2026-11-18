@@ -135,7 +135,7 @@ export const macos: VoiceProvider = {
     {
       question: "How do I get better macOS voices?",
       answer:
-        "Download Enhanced or Premium voices on the server's Mac: in **System Settings → Accessibility → Read & Speak**, click the Info button next to **System voice**, pick a language and click a voice. Rakazo lists them first.",
+        "Download Enhanced or Premium voices on the server's Mac: in **System Settings → Accessibility → Read & Speak**, click the Info button next to **System voice**, pick a language and click a voice. RunTars lists them first.",
     },
     {
       question: "Are macOS voices as good as ElevenLabs?",

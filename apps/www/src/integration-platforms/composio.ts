@@ -294,7 +294,7 @@ export const composio: IntegrationPlatform = {
       heading: "When to choose Composio",
       paragraphs: [
         "Choose Composio when you self-host RunTars and want a broad app catalog that works with a single API key, without registering an OAuth app with Google, Slack or anyone else. For a small team its free tier covers real use, which no other managed option here matches.",
-        "Choose something else when you need production-grade sign-in for many people on apps billed at the top managed rate, when you can't send app tokens to a third party at all, or when the apps you need publish their own [MCP servers](/integration-platforms/mcp/). On [Rakazo Cloud](/pricing/) you don't need a Composio account: connecting apps is part of every plan. The [comparison](/integration-platforms/) puts every option side by side.",
+        "Choose something else when you need production-grade sign-in for many people on apps billed at the top managed rate, when you can't send app tokens to a third party at all, or when the apps you need publish their own [MCP servers](/integration-platforms/mcp/). On [RunTars Cloud](/pricing/) you don't need a Composio account: connecting apps is part of every plan. The [comparison](/integration-platforms/) puts every option side by side.",
       ],
     },
     {
@@ -311,7 +311,7 @@ export const composio: IntegrationPlatform = {
     {
       heading: "How to set it up",
       paragraphs: [
-        "These steps are for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/). Rakazo Cloud users don't need a Composio account; they [connect apps](/docs/integrations/) from Integrations.",
+        "These steps are for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/). RunTars Cloud users don't need a Composio account; they [connect apps](/docs/integrations/) from Integrations.",
       ],
       steps: [
         "Create an account at [composio.dev](https://composio.dev) and copy an API key.",

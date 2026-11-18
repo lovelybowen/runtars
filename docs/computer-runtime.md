@@ -3,11 +3,11 @@
 RunTars keeps the agent runtime and the computer runtime separate:
 
 ```text
-chat/API -> one Pi agent session -> Rakazo computer tools -> SandboxProvider -> E2B / Daytona / Boat
+chat/API -> one Pi agent session -> RunTars computer tools -> SandboxProvider -> E2B / Daytona / Boat
                                                    |-> Docker
                                                    |-> desktop/fake
 
-SandboxProvider workspace <-> AgentHomeStore <-> Rakazo-owned DATA_DIR
+SandboxProvider workspace <-> AgentHomeStore <-> RunTars-owned DATA_DIR
 ```
 
 Pi runs in the RunTars API/worker process. It is not installed in, or executed by, E2B. The built-in tools are ordinary Pi tools, not Claude- or MCP-specific tools, so any model exposed through Pi can call them. Screen operation still requires a model that can accept image tool results and reason about screenshots.

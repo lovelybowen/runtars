@@ -113,7 +113,7 @@ export const daytona: Sandbox = {
       },
       bullets: [
         "Tier 1's 10 GiB limit fits only two 2 vCPU / 4 GiB computers at once. Top up once to lift it.",
-        "On Rakazo Cloud you don't pay Daytona at all. Cloud computers run on [Boat](/sandboxes/boat/) and are included in the [plan](/pricing/).",
+        "On RunTars Cloud you don't pay Daytona at all. Cloud computers run on [Boat](/sandboxes/boat/) and are included in the [plan](/pricing/).",
       ],
     },
     {
@@ -152,7 +152,7 @@ export const daytona: Sandbox = {
       heading: "When to choose Daytona",
       paragraphs: [
         "Choose Daytona when your team already has a Daytona account, billing or targets you want to reuse, or when you want hosted sandboxes with no monthly fee and no session cap.",
-        "If you are picking a hosted provider from scratch, [E2B](/sandboxes/e2b/) starts from a ready desktop template and pauses idle computers, and [Boat](/sandboxes/boat/) is what Rakazo Cloud runs on. [Novita](/sandboxes/novita/) keeps open programs in memory when it pauses. To avoid a cloud account, use [Docker](/sandboxes/docker/) or [Kubernetes](/sandboxes/kubernetes/). The [sandbox comparison](/sandboxes/) has them all side by side.",
+        "If you are picking a hosted provider from scratch, [E2B](/sandboxes/e2b/) starts from a ready desktop template and pauses idle computers, and [Boat](/sandboxes/boat/) is what RunTars Cloud runs on. [Novita](/sandboxes/novita/) keeps open programs in memory when it pauses. To avoid a cloud account, use [Docker](/sandboxes/docker/) or [Kubernetes](/sandboxes/kubernetes/). The [sandbox comparison](/sandboxes/) has them all side by side.",
       ],
     },
     {
@@ -169,7 +169,7 @@ export const daytona: Sandbox = {
     {
       heading: "How to set it up",
       paragraphs: [
-        "These steps are for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/). Rakazo Cloud users don't need a Daytona account.",
+        "These steps are for the admin of a [self-hosted RunTars](/self-hosted-ai-agent/). RunTars Cloud users don't need a Daytona account.",
       ],
       steps: [
         "Create an API key in your Daytona account.",

@@ -148,6 +148,8 @@ it("opens integrations and keeps the existing account actions and links", async 
     "Docs",
     "Log out",
   ]);
+  const docs = [...menu.querySelectorAll("a")].find((link) => link.textContent === "Docs");
+  expect(docs?.href).toBe("https://runtars.com/docs/");
   expect(host.querySelector('[data-testid="user-menu-trigger"]')?.getAttribute("aria-label")).toBe(
     "Account menu for Demo User",
   );

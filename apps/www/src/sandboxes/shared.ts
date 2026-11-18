@@ -135,17 +135,17 @@ export const BOAT = {
 
 /**
  * The Boat machine Rakazo starts for each computer size. A computer gets the size of its
- * organization's Rakazo Cloud plan; everything else, including every self-hosted install, uses
+ * organization's RunTars Cloud plan; everything else, including every self-hosted install, uses
  * the standard size, which is Boat's default machine.
  */
 export const BOAT_SIZES = [
   {
-    plan: "Rakazo Cloud's Standard plan and RunTars credits, and every self-hosted install",
+    plan: "RunTars Cloud's Standard plan and RunTars credits, and every self-hosted install",
     machine: "default",
     ...BOAT.default,
   },
-  { plan: "The Rakazo Cloud Pro plan", machine: "large", ...BOAT.large },
-  { plan: "The Rakazo Cloud Max plan", machine: "xlarge", ...BOAT.xlarge },
+  { plan: "The RunTars Cloud Pro plan", machine: "large", ...BOAT.large },
+  { plan: "The RunTars Cloud Max plan", machine: "xlarge", ...BOAT.xlarge },
 ] as const;
 
 /** The standard size, which the worked examples price. */

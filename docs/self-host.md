@@ -24,7 +24,7 @@ Requires Docker Engine 26+ (API 1.45+ for bot home volume subpaths), the Compose
 
 ```bash
 export RAKAZO_IMAGE_TAG=vX.Y.Z # Replace with a published RunTars release tag.
-mkdir -p rakazo && cd rakazo &&
+mkdir -p runtars && cd runtars &&
 curl -fsSLO https://raw.githubusercontent.com/lovelybowen/runtars/${RAKAZO_IMAGE_TAG}/infra/compose/install-images.sh &&
 bash install-images.sh
 ```

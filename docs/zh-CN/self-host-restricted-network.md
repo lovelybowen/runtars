@@ -19,7 +19,7 @@ raw GitHub 不可用时，将以下示例地址替换为自己的可信 HTTPS �
 ```bash
 export RAKAZO_INSTALLER_URL=https://example.com/mirror/rakazo/infra/compose/install-images.sh
 export RAKAZO_DOWNLOAD_BASE=https://example.com/mirror/rakazo/infra/compose
-mkdir -p rakazo && cd rakazo &&
+mkdir -p runtars && cd runtars &&
 curl -fsSL -o install-images.sh "${RAKAZO_INSTALLER_URL}" &&
 bash install-images.sh --prepare-only
 ```

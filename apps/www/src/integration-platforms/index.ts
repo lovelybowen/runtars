@@ -67,7 +67,7 @@ const HUB_SECTIONS: readonly ArticleSection[] = [
   {
     heading: "Pricing compared",
     paragraphs: [
-      "On [Rakazo Cloud](/pricing/), connecting apps and MCP servers is part of every plan, and you don't need an account with any of these platforms. When you host RunTars yourself, RunTars is free and you pay any platform you turn on directly, on its own terms. The units differ, so the next table works out a real workload.",
+      "On [RunTars Cloud](/pricing/), connecting apps and MCP servers is part of every plan, and you don't need an account with any of these platforms. When you host RunTars yourself, RunTars is free and you pay any platform you turn on directly, on its own terms. The units differ, so the next table works out a real workload.",
     ],
     table: {
       caption: `Integration platforms for AI agents: prices as of ${PRICES_CHECKED}`,
@@ -261,12 +261,12 @@ export const INTEGRATION_PLATFORMS_HUB = {
   sections: HUB_SECTIONS,
   choose: [
     {
-      heading: "You use Rakazo Cloud",
+      heading: "You use RunTars Cloud",
       text: "Connect apps from **Integrations** and add any MCP server or API you like. It is part of every [plan](/pricing/), and you don't need a Composio or Pipedream account. The choices below matter when you host RunTars yourself.",
     },
     {
       heading: "The app has its own MCP server",
-      text: "If the app publishes an MCP server, [connect it directly](/integration-platforms/mcp/): paste its URL or find it with Browse MCP servers, and sign in with OAuth. It costs nothing beyond the app, and no integration platform sits in between. On Rakazo Cloud, RunTars stores the sign-in encrypted; when you host RunTars yourself, it stays on your server. Anyone can add remote servers. Admins of a [self-hosted RunTars](/self-hosted-ai-agent/) can also run local servers and reach internal ones.",
+      text: "If the app publishes an MCP server, [connect it directly](/integration-platforms/mcp/): paste its URL or find it with Browse MCP servers, and sign in with OAuth. It costs nothing beyond the app, and no integration platform sits in between. On RunTars Cloud, RunTars stores the sign-in encrypted; when you host RunTars yourself, it stays on your server. Anyone can add remote servers. Admins of a [self-hosted RunTars](/self-hosted-ai-agent/) can also run local servers and reach internal ones.",
     },
     {
       heading: "The app only has an API",
@@ -317,7 +317,7 @@ export const INTEGRATION_PLATFORMS_HUB = {
     {
       question: "Do I need Composio or Pipedream to use RunTars?",
       answer:
-        "No. Both are optional. Without them, bots can still use [MCP servers](/integration-platforms/mcp/), [API connectors](/integration-platforms/api-connectors/) and plugins you add. On a self-hosted server, the built-in app catalog appears once one of them is set up. On Rakazo Cloud, the catalog is there already.",
+        "No. Both are optional. Without them, bots can still use [MCP servers](/integration-platforms/mcp/), [API connectors](/integration-platforms/api-connectors/) and plugins you add. On a self-hosted server, the built-in app catalog appears once one of them is set up. On RunTars Cloud, the catalog is there already.",
     },
     {
       question: "Can I use more than one?",

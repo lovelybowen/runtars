@@ -73,7 +73,7 @@ to that domain, then configure:
 ```env
 EMAIL_PROVIDER=resend
 EMAIL_API_KEY=replace-with-sending-api-key
-EMAIL_FROM=Rakazo <hello@mail.example.com>
+EMAIL_FROM=RunTars <hello@mail.example.com>
 ```
 
 Disable click and open tracking for account email in the provider's domain settings. Resend delivery
@@ -84,7 +84,7 @@ For Amazon SES or another SMTP server, use:
 
 ```env
 SMTP_URL=smtps://smtp-user:replace-with-password@smtp.example.com:465
-EMAIL_FROM=Rakazo <no-reply@example.com>
+EMAIL_FROM=RunTars <no-reply@example.com>
 ```
 
 Set `EMAIL_REPLY_TO` to send replies somewhere other than `EMAIL_FROM`.
