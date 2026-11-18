@@ -1,6 +1,6 @@
-# Contributing to Rakazo
+# Contributing to RunTars
 
-Thanks for helping improve Rakazo. Keep changes focused and testable.
+Thanks for helping improve RunTars. Keep changes focused and testable.
 
 ## Run locally
 
@@ -130,8 +130,8 @@ capability config, fixtures, logs, or snapshots; use the encrypted secret store 
 
 ## Contact
 
-| Address                                           | Use for                                               |
-| ------------------------------------------------- | ----------------------------------------------------- |
-| [security@rakazo.com](mailto:security@rakazo.com) | Vulnerabilities only — see [SECURITY.md](SECURITY.md) |
-| [support@rakazo.com](mailto:support@rakazo.com)   | User and support questions                            |
-| [elie@rakazo.com](mailto:elie@rakazo.com)         | Maintainer                                            |
+| Address                                             | Use for                                               |
+| --------------------------------------------------- | ----------------------------------------------------- |
+| [security@runtars.com](mailto:security@runtars.com) | Vulnerabilities only — see [SECURITY.md](SECURITY.md) |
+| [support@runtars.com](mailto:support@runtars.com)   | User and support questions                            |
+| [admin@runtars.com](mailto:admin@runtars.com)       | Maintainer                                            |
