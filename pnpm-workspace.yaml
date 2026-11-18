@@ -11,6 +11,14 @@ saveExact: true
 # pnpm 11+ reinstalls stale dependencies before `pnpm exec` and `pnpm run`. Tests that start
 # nested pnpm commands could then relink node_modules under the running suite.
 verifyDepsBeforeRun: false
+
+audit:
+  ignore:
+    # picomatch 2.3.2 and 4.0.7 have no upstream fix. Page compilation uses Sucrase's transform
+    # API, and sandbox creation uses snapshots. Neither path accepts user-supplied glob patterns.
+    # Recheck by 2026-12-01 or when either path changes. Remove once both versions are clear.
+    - GHSA-fc5q-39xc-vjpf
+
 # astro2tsx pins @emnapi/core 1.x but takes @emnapi/runtime as a peer, which otherwise resolves to
 # the 2.0 beta that rolldown's wasm binding brings in and breaks `astro check`.
 packageExtensions:
