@@ -3082,13 +3082,13 @@ describe("outbound destinations", () => {
     f.setCalls([
       {
         name: "web_fetch",
-        args: { url: "https://rakazo.com/docs/routines.md" },
+        args: { url: "https://runtars.com/docs/routines.md" },
         executionId: "call-1",
       },
-      { name: "web_fetch", args: { url: "https://rakazo.com/?q=secret" }, executionId: "call-2" },
+      { name: "web_fetch", args: { url: "https://runtars.com/?q=secret" }, executionId: "call-2" },
     ]);
     await f.run();
-    expect(f.fetchedUrls).toEqual(["https://rakazo.com/docs/routines.md"]);
+    expect(f.fetchedUrls).toEqual(["https://runtars.com/docs/routines.md"]);
     expect(isApprovalPausedResult(f.results[1])).toBe(true);
   });
 
