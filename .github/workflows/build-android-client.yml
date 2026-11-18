@@ -1,0 +1,109 @@
+name: Build RunTars Android APK
+
+on:
+  push:
+    tags: ["v[0-9]+.[0-9]+.[0-9]+-android.[0-9]+"]
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    environment: android-release
+    env:
+      EXPO_PUBLIC_API_URL: https://app.runtars.com
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Resolve Android release version
+        env:
+          STABLE_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          if [[ -n "$STABLE_VERSION" ]]; then
+            version="$STABLE_VERSION"
+          elif [[ "$GITHUB_REF_NAME" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)-android\.[1-9][0-9]*$ ]]; then
+            version="${BASH_REMATCH[1]}"
+          else
+            exit 1
+          fi
+          echo "RELEASE_VERSION=$version" >> "$GITHUB_ENV"
+          # Both tag workflows use the same increasing clock, including manual rebuilds.
+          echo "ANDROID_VERSION_CODE=$(( $(date +%s) - 1577836800 ))" >> "$GITHUB_ENV"
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+      - uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
+        with:
+          distribution: temurin
+          java-version: 17
+      - run: pnpm --filter @rakazo/mobile... install --frozen-lockfile
+      - name: Generate the RunTars Android project
+        working-directory: apps/mobile
+        run: |
+          node --input-type=module <<'JS'
+          import { readFileSync, writeFileSync } from "node:fs";
+          const manifest = JSON.parse(readFileSync("app.json", "utf8"));
+          const app = manifest.expo;
+          app.name = "RunTars";
+          app.slug = "runtars";
+          app.version = process.env.RELEASE_VERSION;
+          app.android.package = "com.runtars.app";
+          app.android.versionCode = Number(process.env.ANDROID_VERSION_CODE);
+          app.updates = { enabled: false };
+          delete app.owner;
+          delete app.extra.eas;
+          writeFileSync("app.json", JSON.stringify(manifest));
+          JS
+          pnpm exec expo prebuild --platform android --no-install
+          sed -i 's/MaxMetaspaceSize=512m/MaxMetaspaceSize=1g/' android/gradle.properties
+          # Expo's template uses its debug key even for release builds.
+          echo 'android.buildTypes.release.signingConfig = null' >> android/app/build.gradle
+      - name: Build the universal APK
+        working-directory: apps/mobile/android
+        run: ./gradlew :app:assembleRelease --no-daemon
+      - name: Sign the APK
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          umask 077
+          key="$(mktemp)"
+          trap 'rm -f "$key"' EXIT
+          printf '%s' "${KEYSTORE_BASE64:?}" | base64 --decode > "$key"
+          build_tools="$ANDROID_HOME/build-tools/37.0.0"
+          apk="RunTars-$RELEASE_VERSION.apk"
+          "$build_tools/zipalign" -P 16 -f 4 \
+            apps/mobile/android/app/build/outputs/apk/release/app-release-unsigned.apk "$RUNNER_TEMP/aligned.apk"
+          "$build_tools/apksigner" sign --ks "$key" --ks-key-alias "${KEY_ALIAS:?}" \
+            --ks-pass env:STORE_PASSWORD --key-pass env:KEY_PASSWORD --out "$apk" "$RUNNER_TEMP/aligned.apk"
+      - name: Verify release certificate and application metadata
+        run: |
+          set -euo pipefail
+          build_tools="$ANDROID_HOME/build-tools/37.0.0"
+          apk="RunTars-$RELEASE_VERSION.apk"
+          "$build_tools/apksigner" verify --verbose --print-certs --print-certs-pem "$apk" | tee "$RUNNER_TEMP/apk-signers"
+          openssl x509 -in "$RUNNER_TEMP/apk-signers" -outform DER -out "$RUNNER_TEMP/signer.der"
+          echo "a7ed4ab0ff9d971bbf138ffe7e124c92a24a14f6abd6626614cdc8865c2ddda6  $RUNNER_TEMP/signer.der" | sha256sum --check
+          "$build_tools/aapt" dump badging "$apk" > "$RUNNER_TEMP/badging"
+          grep '^package:' "$RUNNER_TEMP/badging"
+          grep -F "package: name='com.runtars.app' versionCode='$ANDROID_VERSION_CODE' versionName='$RELEASE_VERSION'" "$RUNNER_TEMP/badging"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: android-${{ github.sha }}
+          path: RunTars-${{ env.RELEASE_VERSION }}.apk
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7

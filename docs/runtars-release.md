@@ -1,8 +1,7 @@
 # RunTars release addresses
 
-The first release covers the website, web application, and Compose self-hosted server. Native downloads
-continue to use the upstream Rakazo distribution. Internal package names, environment variable
-names, protocols, database names, and native application identities remain unchanged.
+RunTars v0.1.0 shipped the website, web application, and Compose server. Subsequent stable
+releases built with this workflow also distribute Windows and Android clients on GitHub Releases.
 
 The individual operator of the RunTars website and hosted application uses the public name RunTars Lab. Hosted
 registration is limited to the operator's approved email addresses.
@@ -63,10 +62,42 @@ The official update source is the RunTars repository alone. Its stable Git tags 
 cached-image rollback and does not replace itself; upgrade the updater deliberately. See
 [upgrading](./self-host-upgrading.md) for the deployment-specific commands and limits.
 
+## Windows and Android release assets
+
+After merging the version notes at `docs/releases/vX.Y.Z.md` and passing main CI, tag that commit
+`vX.Y.Z`. The tag builds all three images, a signed x64 NSIS installer (`RunTars-Setup-X.Y.Z.exe`)
+and a signed universal APK (`RunTars-X.Y.Z.apk`). Both clients default to the RunTars hosted
+application. The GitHub Release includes both installers and
+`SHA256SUMS`. Check the downloaded assets with `sha256sum -c SHA256SUMS` from their directory.
+
+To build just the APK, push a dedicated tag such as `v0.1.0-android.1`. The **Build RunTars
+Android APK** workflow retains the signed APK as a run artifact for seven days. The stable
+`vX.Y.Z` tag is the separate trigger for publishing the GitHub Release.
+
+Configure signing before tagging:
+
+- **Windows** uses a fixed self-signed certificate. Store the base64 PFX and its password as
+  `WINDOWS_RELEASE_PFX` and `WINDOWS_RELEASE_PFX_PASSWORD` in the tag-restricted
+  `windows-release` environment. The workflow checks the certificate SHA-256 fingerprint,
+  Authenticode signatures and timestamps. SmartScreen may warn on download and managed devices
+  may block installation. Install a newer EXE manually to upgrade. A tag such as
+  `v0.1.1-windows.1` rehearses the same installer build and retains an Actions artifact.
+- **Android** uses the `android-release` environment. Set `ANDROID_KEYSTORE_BASE64` to the
+  base64-encoded release keystore and set `ANDROID_KEY_ALIAS`, `ANDROID_KEYSTORE_PASSWORD`
+  and `ANDROID_KEY_PASSWORD`. Keep an independent secure backup of the key. Installs of
+  `com.runtars.app` upgrade by installing a newer APK signed with the same key. The tag sets the
+  visible version. Both build paths use UTC seconds since 2020-01-01 for Android’s version code.
+
+The APK uses embedded JavaScript and manual APK updates. This distribution has no Expo project
+or Firebase push credentials, so push notifications and background incoming-call alerts are
+unavailable. Android passkeys require a domain association for the RunTars package and its
+signing certificate. The existing server association targets the upstream Android package.
+
 ## Retained upstream services
 
-Desktop downloads, their failure fallback, mobile stores and APKs still point to Rakazo. Native
-update feeds are unchanged. Social links, affiliate links, plugin submissions, integration claims,
+The website’s native download buttons, fallback links and mobile store links still lead to
+Rakazo. Get the RunTars Windows installer and APK from the versioned GitHub Release. Social links,
+affiliate links, plugin submissions, integration claims,
 and the integration catalog also retain their upstream targets. These are separate from the
 RunTars application and source links. Upstream publisher attribution and historical evidence remain
 upstream attribution, not RunTars operating claims.
@@ -78,12 +109,11 @@ The separate Kubernetes recipe still contains explicitly pinned upstream image d
 the first-release installation path; do not relabel those digests as RunTars images without a
 separate build and validation. Historical benchmark records also retain their tested upstream images.
 
-## Before the first release
+## Release verification
 
 - Review the versioned notes in `docs/releases/vX.Y.Z.md` and link them from the changelog.
-  After the release PR merges and main CI passes, tag its merge commit. The server release
-  workflow checks the tag against main and the published versions, publishes the three images,
-  then creates the GitHub Release. Desktop releases use a separate manual workflow.
+  Verify both clients install and connect to the intended server on real devices. On the next
+  release, check a Windows update and an Android APK upgrade over the previous installation.
 - Confirm Actions and package publication are enabled, then verify all three image manifests and
   public pulls for the intended architectures before advertising the release.
 - Configure and verify DNS, HTTPS, the website alias redirect, and the application reverse proxy.

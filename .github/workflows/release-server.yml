@@ -1,4 +1,4 @@
-name: Release RunTars server
+name: Release RunTars
 
 on:
   push:
@@ -15,17 +15,21 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Validate stable tag, release notes and ancestry
+      - id: version
+        name: Validate stable tag, release notes and ancestry
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           [[ "$GITHUB_REF_NAME" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]
+          echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
           test -s "docs/releases/$GITHUB_REF_NAME.md"
           git merge-base --is-ancestor "$GITHUB_SHA" origin/main
           gh api --paginate "repos/$GITHUB_REPOSITORY/releases" \
@@ -41,8 +45,20 @@ jobs:
       id-token: write
       attestations: write
 
+  windows:
+    needs: validate
+    uses: ./.github/workflows/build-windows-client.yml
+    with:
+      version: ${{ needs.validate.outputs.version }}
+
+  android:
+    needs: validate
+    uses: ./.github/workflows/build-android-client.yml
+    with:
+      version: ${{ needs.validate.outputs.version }}
+
   release:
-    needs: images
+    needs: [validate, images, windows, android]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -59,9 +75,26 @@ jobs:
             [[ "$digest" =~ ^sha256:[0-9a-f]{64}$ ]]
             test "$digest" = "$(docker buildx imagetools inspect "$image:sha-$GITHUB_SHA" --format '{{.Manifest.Digest}}')"
           done
-      - name: Publish the release notes
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: desktop-windows-${{ github.sha }}
+          path: clients
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: android-${{ github.sha }}
+          path: clients
+      - name: Verify client assets and publish the release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" --verify-tag \
-            --title "RunTars $GITHUB_REF_NAME" --notes-file "docs/releases/$GITHUB_REF_NAME.md"
+          set -euo pipefail
+          version="${GITHUB_REF_NAME#v}"
+          installer="RunTars-Setup-$version.exe"
+          apk="RunTars-$version.apk"
+          cd clients
+          test -s "$installer"
+          test -s "$apk"
+          sha256sum "$installer" "$apk" > SHA256SUMS
+          test "$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_REF_NAME" --jq .sha)" = "$GITHUB_SHA"
+          gh release create "$GITHUB_REF_NAME" "$installer" "$apk" SHA256SUMS --verify-tag \
+            --title "RunTars $GITHUB_REF_NAME" --notes-file "../docs/releases/$GITHUB_REF_NAME.md"
