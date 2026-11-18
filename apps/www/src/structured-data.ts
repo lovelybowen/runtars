@@ -2,17 +2,13 @@ import type { FaqItem } from "./alternatives";
 import { BLOG_AUTHOR_PERSON } from "./blog/format";
 import { pageDate } from "./page-dates";
 import { PRICE_OFFERS } from "./pricing";
-import { DISCORD_URL, GITHUB_URL, SITE_NAME, SITE_URL, X_URL } from "./site";
+import { GITHUB_URL, SITE_NAME, SITE_URL } from "./site";
 
-const LEGAL_NAME = "Inbox Zero Inc.";
-
-export const ORGANIZATION_ID = "https://rakazo.com/#organization";
-/** Original publisher attribution. A display-brand change does not change the legal operator. */
-const ORGANIZATION = {
-  "@type": "Organization",
-  "@id": ORGANIZATION_ID,
-  name: "Rakazo",
-  url: "https://rakazo.com/",
+const PUBLISHER = {
+  "@type": "Person",
+  "@id": `${SITE_URL}/#operator`,
+  name: "RunTars Lab",
+  url: `${SITE_URL}/`,
 };
 const SOFTWARE_ID = `${SITE_URL}/#software`;
 
@@ -76,7 +72,7 @@ export type ArticleInput = {
 
 /**
  * An article page: the Article, its breadcrumbs, and any nodes the page already had, such as
- * its FAQPage or ItemList. The publisher is the Organization the home page describes.
+ * its FAQPage or ItemList. The publisher is the operator identified on the home page.
  */
 export function articleStructuredData(input: ArticleInput, ...nodes: readonly object[]) {
   return graph([
@@ -87,8 +83,12 @@ export function articleStructuredData(input: ArticleInput, ...nodes: readonly ob
       description: input.description,
       ...(input.published ? { datePublished: input.published } : {}),
       ...(input.modified ? { dateModified: input.modified } : {}),
-      author: input.author ?? ORGANIZATION,
-      publisher: ORGANIZATION,
+      author: input.author ?? {
+        "@type": "Organization",
+        name: "Rakazo",
+        "@id": "https://rakazo.com/#organization",
+      },
+      publisher: PUBLISHER,
       ...(input.image ? { image: [new URL(input.image, SITE_URL).toString()] } : {}),
       mainEntityOfPage: input.pageUrl,
       url: input.pageUrl,
@@ -239,39 +239,11 @@ export type HomeStructuredDataInput = {
 
 export function homeStructuredData(input: HomeStructuredDataInput) {
   return graph([
-    {
-      "@type": "Organization",
-      "@id": ORGANIZATION_ID,
-      name: ORGANIZATION.name,
-      legalName: LEGAL_NAME,
-      url: `https://rakazo.com/`,
-      logo: `https://rakazo.com/brand/rakazo-mark.png`,
-      email: "hello@rakazo.com",
-      contactPoint: {
-        "@type": "ContactPoint",
-        contactType: "customer support",
-        email: "hello@rakazo.com",
-        url: `https://rakazo.com/support/`,
-        availableLanguage: input.availableLanguages,
-      },
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "131 Continental Dr, Suite 305",
-        addressLocality: "Newark",
-        addressRegion: "DE",
-        postalCode: "19713",
-        addressCountry: "US",
-      },
-      sameAs: [
-        "https://github.com/elie222/rakazo",
-        X_URL,
-        DISCORD_URL,
-        "https://www.getinboxzero.com/",
-      ],
-    },
+    { ...PUBLISHER, email: "support@runtars.com" },
     {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
+      publisher: { "@id": PUBLISHER["@id"] },
       url: `${SITE_URL}/`,
       name: SITE_NAME,
       description: input.siteDescription,

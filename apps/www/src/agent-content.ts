@@ -147,9 +147,9 @@ Hosted users can permanently delete their account and associated personal Space 
 
 export const PRIVACY_MARKDOWN = `# RunTars privacy
 
-Last updated: November 12, 2026
+Last updated: November 17, 2026
 
-RunTars processes account details, user-provided bot content, connection information, and technical records needed to operate and secure the service. Content comes from what you enter, upload, record, or authorize your bots to access. RunTars does not sell personal information or use RunTars content for third-party advertising.
+The individual operating as RunTars Lab provides runtars.com and the hosted service at app.runtars.com. RunTars processes account details, user-provided bot content, connection information, and technical records needed to operate and secure the service. Content comes from what you enter, upload, record, or authorize your bots to access. RunTars does not sell personal information or use RunTars content for third-party advertising.
 
 Before submitting content or starting AI work, the RunTars mobile app names the configured recipients, explains the data and purpose, and asks permission. Messages, relevant history, instructions, memories, attachments, screenshots, and connected-app content may be sent to model services for responses and tasks, including scheduled tasks. Recorded audio may be sent for transcription and text for speech generation. Conversations, names of people and bots, memories, queries, and bot and Space identifiers may be sent to a configured memory service.
 
@@ -159,6 +159,8 @@ Permission records include the recipient, Space, disclosure version, and time. C
 
 Services we select must provide protection equal to or greater than the safeguards in our complete policy, including limited processing purposes, security, retention, and deletion protections. We review provider terms and safeguards before enabling a provider. Self-hosted operators are responsible for the services they select and their agreements. Provider terms govern processing and retention after receipt; provider policy links are available in AI data sharing and in the complete policy.
 
+Stripe processes billing details entered at hosted checkout. RunTars Lab uses billing identifiers and subscription and payment status to manage plans and answer billing requests. See [Stripe’s privacy policy](https://stripe.com/privacy).
+
 Hosted users can delete their account and associated personal Space data from Account. In self-hosted deployments, the server operator controls information sent to that deployment. For privacy requests, email [support@runtars.com](mailto:support@runtars.com).
 
 Read the [complete privacy policy](https://runtars.com/privacy/) for account information, other service providers, retention, deletion, security, international transfers, children, and your rights.
@@ -166,15 +168,15 @@ Read the [complete privacy policy](https://runtars.com/privacy/) for account inf
 
 export const TERMS_MARKDOWN = `# RunTars terms
 
-Last updated: November 11, 2026
+Last updated: November 17, 2026
 
-These terms are an agreement between you and Inbox Zero Inc. for the RunTars service we host, the RunTars apps, and runtars.com. The RunTars source code is governed by the Apache License 2.0, which does not grant rights to the RunTars name or logo, and self-hosted deployments are the operator's responsibility.
+These terms are an agreement between you and the individual operating as RunTars Lab. They cover runtars.com and the hosted application at app.runtars.com, including access from desktop and mobile clients. Hosted signup is limited to approved email addresses. The RunTars source code is governed by the Apache License 2.0, which does not grant rights to the RunTars name or logo, and self-hosted deployments are the operator's responsibility.
 
 You are responsible for your account and for actions your bots take on your behalf, including in scheduled routines; give bots only the access they need and require approval for actions that are hard to undo. AI output can be wrong, so review it before relying on it, and do not use the Service where an error could cause serious harm. Do not use the Service to break the law, send spam or malware, access systems without authorization, abuse its computers, or violate the terms of connected providers. You keep ownership of your content and bot output, and you pay any fees charged by third-party services, including usage on your own API keys.
 
-Free trials convert to a paid plan when they end unless cancelled before then. Fair use on hosted plans is the computer-hours a month listed for your plan on the [pricing page](https://runtars.com/pricing/) and 5 computers running at once per account; computers sleep when idle, there are no charges for computer use beyond the plan, and we may slow or pause usage beyond these limits. Self-hosted deployments have no such limits. Paid plans renew automatically until cancelled and are charged through Stripe. Cancel at any time from billing settings or by emailing [support@runtars.com](mailto:support@runtars.com); access continues until the end of the paid period. Payments are non-refundable and not prorated except where required by law. Credits, including top-ups, are used up by the work your bots do, whatever its outcome, and used credits are not refunded. If we close your account or stop offering the Service for reasons other than a violation of these terms, we refund prepaid fees for the unused period. Consumers in the EU and UK can withdraw from a new subscription within 14 days and are refunded less the value of the Service already provided. For credits, that means a refund of the credits not yet used.
+Hosted checkout currently runs in Stripe test mode. Test transactions do not move money. For live subscriptions, free trials convert to a paid plan when they end unless cancelled before then. Fair use on hosted plans is the computer-hours a month listed for your plan on the [pricing page](https://runtars.com/pricing/) and 5 computers running at once per account; computers sleep when idle, there are no charges for computer use beyond the plan, and we may slow or pause usage beyond these limits. Self-hosted deployments have no such limits. Paid plans renew automatically until cancelled and are charged through Stripe. Cancel at any time from billing settings or by emailing [support@runtars.com](mailto:support@runtars.com); access continues until the end of the paid period. Payments are non-refundable and not prorated except where required by law. Credits, including top-ups, are used up by the work your bots do, whatever its outcome, and used credits are not refunded. If we close your account or stop offering the Service for reasons other than a violation of these terms, we refund prepaid fees for the unused period. Consumers in the EU and UK can withdraw from a new subscription within 14 days and are refunded less the value of the Service already provided. For credits, that means a refund of the credits not yet used.
 
-The Service is provided as is. Our liability is limited to the greater of what you paid us in the previous 12 months or US$100, except where the law does not allow a limit. Delaware law governs these terms.
+The Service is provided as is. Our liability is limited to the greater of what you paid us in the previous 12 months or US$100, except where the law does not allow a limit.
 
 Read the [complete terms](https://runtars.com/terms/) for acceptable use, termination and data deletion, disclaimers, indemnity, app store terms, changes, and contact details.
 `;
