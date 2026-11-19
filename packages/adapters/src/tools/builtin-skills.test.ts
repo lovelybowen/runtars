@@ -32,7 +32,7 @@ describe("built-in skills", () => {
       },
       {
         name: "RunTars",
-        description: "What RunTars is and how to use it: chat apps, computers, billing, hosting",
+        description: "RunTars basics and setup: chat apps, computers, billing, hosting",
       },
     ]);
   });

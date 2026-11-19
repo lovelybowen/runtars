@@ -3,12 +3,13 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { parse } from "yaml";
 
+const repoRoot = path.resolve(import.meta.dirname, "../../../../..");
 const workflow = readFileSync(
-  path.resolve(import.meta.dirname, "../../../../../.github/workflows/release-desktop.yml"),
+  path.resolve(repoRoot, ".github/workflows/release-desktop.yml"),
   "utf8",
 );
 const releaseScript = readFileSync(
-  path.resolve(import.meta.dirname, "../../../../../scripts/release/desktop-release.mjs"),
+  path.resolve(repoRoot, "scripts/release/desktop-release.mjs"),
   "utf8",
 );
 
@@ -170,9 +171,7 @@ it.each(["windows", "android"])(
   "forwards each %s signing credential on stable tags",
   (platform) => {
     const readWorkflow = (name: string) =>
-      parse(
-        readFileSync(path.resolve(import.meta.dirname, "../../../.github/workflows", name), "utf8"),
-      );
+      parse(readFileSync(path.resolve(repoRoot, ".github/workflows", name), "utf8"));
     const build = readWorkflow(`build-${platform}-client.yml`);
     const release = readWorkflow("release-server.yml");
     const signingSecrets = Object.values(build.jobs[platform].steps)
