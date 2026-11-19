@@ -153,6 +153,21 @@ describe("KubernetesSandboxProvider", () => {
     expect(script).toContain("computer image is missing required desktop tools");
   });
 
+  it.each([
+    ["--Team__Bot--", "rakazo-team-bot-aa718282c749"],
+    ["---", "rakazo-bot-cb3f91d54eee"],
+    [
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--b",
+      "rakazo-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--b6dedf2d1fe5",
+    ],
+  ])("keeps the existing pod name for %s", async (botId, name) => {
+    const pod = { ...readyPod, metadata: { name, labels: { "rakazo-bot-id": botId } } };
+    const readNamespacedPod = vi.fn().mockResolvedValue(pod);
+    const provider = providerFor({ readNamespacedPod });
+    await provider.provision({ botId, homePath: "/home/test" }, context);
+    expect(readNamespacedPod.mock.calls[0]?.[0].name).toBe(name);
+  });
+
   it("creates a ready pod with required isolation metadata", async () => {
     const readNamespacedPod = vi
       .fn()

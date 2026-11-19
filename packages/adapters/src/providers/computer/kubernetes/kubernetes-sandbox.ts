@@ -507,10 +507,12 @@ function podNameForBot(botId: string): string {
   const normalized = botId
     .toLowerCase()
     .replaceAll(/[^a-z0-9-]+/g, "-")
-    .replaceAll(/^-+|-+$/g, "")
-    .slice(0, 40);
+    .replace(/^-+/, "");
+  let end = normalized.length;
+  while (end > 0 && normalized[end - 1] === "-") end--;
+  const prefix = normalized.slice(0, Math.min(end, 40));
   const hash = createHash("sha256").update(botId).digest("hex").slice(0, 12);
-  return `rakazo-${normalized || "bot"}-${hash}`;
+  return `rakazo-${prefix || "bot"}-${hash}`;
 }
 
 /** The data directory holds `homes/<bot id>`; a bot id must name exactly one folder. */

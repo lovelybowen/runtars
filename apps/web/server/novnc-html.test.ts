@@ -14,6 +14,15 @@ import {
 
 const html = { "content-type": "text/html; charset=utf-8" };
 
+// The injector emits one inline script into the empty test page.
+function injectedScript(markup: string): string {
+  const open = markup.indexOf("<script>");
+  const close = markup.indexOf("</script>", open);
+  expect(open).toBeGreaterThanOrEqual(0);
+  expect(close).toBeGreaterThan(open);
+  return markup.slice(open + "<script>".length, close);
+}
+
 describe("noVNC storage shim gate", () => {
   it("matches noVNC pages on any provider path", () => {
     expect(isNovncPage("/vnc.html")).toBe(true);
@@ -72,7 +81,7 @@ describe("noVNC storage shim gate", () => {
   });
 
   function runShim() {
-    const script = injectNovncStorageShim("<head>").match(/<script>([\s\S]*)<\/script>/)?.[1] ?? "";
+    const script = injectedScript(injectNovncStorageShim("<head>"));
     const listeners: ((event: unknown) => void)[] = [];
     const window = {
       addEventListener: (type: string, listener: (event: unknown) => void) => {
@@ -92,7 +101,7 @@ describe("noVNC storage shim gate", () => {
   }
 
   it("hides WebCodecs from the page so noVNC's H.264 probe cannot stall startup", () => {
-    const script = injectNovncStorageShim("<head>").match(/<script>([\s\S]*)<\/script>/)?.[1] ?? "";
+    const script = injectedScript(injectNovncStorageShim("<head>"));
     const window: Record<string, unknown> = {
       addEventListener() {},
       parent: { postMessage() {} },
@@ -188,8 +197,7 @@ describe("noVNC key bridge", () => {
       addEventListener() {},
     };
     const install = (html: string) => {
-      const start = html.indexOf("<script>") + "<script>".length;
-      const script = html.slice(start, html.lastIndexOf("</script>"));
+      const script = injectedScript(html);
       new Function("window", "document", "MutationObserver", script)(
         window,
         document,
@@ -431,7 +439,7 @@ describe("noVNC frame state report", () => {
       }
       observe() {}
     }
-    const script = injectNovncStorageShim("<head>").match(/<script>([\s\S]*)<\/script>/)?.[1] ?? "";
+    const script = injectedScript(injectNovncStorageShim("<head>"));
     new Function("window", "document", "MutationObserver", "Object", script)(
       window,
       document,
