@@ -44,7 +44,7 @@ function markup(provider: Provider, sent: string): string {
   const prose = sent.replace(FENCED, "\n").replace(/^> ?/gm, "");
   return provider === "telegram"
     ? prose.replace(TELEGRAM_LINK, "$1")
-    : prose.replace(WHATSAPP_LINK, (_, url: string) => url.replace(/[*_~]/g, "\\$&"));
+    : prose.replace(WHATSAPP_LINK, (_, url: string) => url.replace(/[\\*_~]/g, "\\$&"));
 }
 
 /** What a person sees of a sent message: its text once the platform renders it, and its code. */

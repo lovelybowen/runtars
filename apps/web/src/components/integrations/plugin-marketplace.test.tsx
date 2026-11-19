@@ -165,6 +165,21 @@ afterEach(() => {
 });
 
 describe("plugin detail", () => {
+  it("links to the pinned repository subdirectory", async () => {
+    await render({ pasted: `${source}#skills/notes` });
+    expect(container.querySelector("a[title]")?.getAttribute("href")).toBe(
+      `${source}/tree/${preview.resolvedSha}/skills/notes`,
+    );
+  });
+
+  it.each(["mailto:owner@example.test", "https://name:pass@example.test/notes"])(
+    "omits the source link for an unsupported repository URL %s",
+    async (pasted) => {
+      await render({ pasted });
+      expect(container.textContent).not.toContain("View source");
+    },
+  );
+
   it("previews what a plugin adds and confirms the previewed digest", async () => {
     await render();
     expect(api.preview).toHaveBeenCalledWith({ source });

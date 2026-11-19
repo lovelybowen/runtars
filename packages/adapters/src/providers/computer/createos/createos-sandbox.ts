@@ -18,6 +18,7 @@ import type {
   UnreferencedMachineRecords,
 } from "@rakazo/adapter-kit";
 import { SandboxFileTooLargeError } from "@rakazo/adapter-kit";
+import { trimEndChars } from "@rakazo/contracts";
 import { cancelResponseBody, ResponseTooLargeError } from "@rakazo/core";
 import {
   browserProfilePathForScreen,
@@ -393,7 +394,7 @@ export class CreateOSSandboxProvider implements SandboxProvider {
   private readonly activeScreenConnections = new Map<string, Set<Promise<void>>>();
 
   constructor(private readonly options: CreateOSSandboxProviderOptions) {
-    this.baseUrl = (options.baseUrl?.trim() || DEFAULT_CREATEOS_BASE_URL).replace(/\/+$/, "");
+    this.baseUrl = trimEndChars(options.baseUrl?.trim() || DEFAULT_CREATEOS_BASE_URL, "/");
     assertSecureCreateOSBaseUrl(this.baseUrl);
     this.shape = options.shape?.trim() || DEFAULT_CREATEOS_SHAPE;
     this.rootfs = options.rootfs?.trim() || DEFAULT_CREATEOS_ROOTFS;
