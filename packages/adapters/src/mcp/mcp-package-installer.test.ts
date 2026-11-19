@@ -173,7 +173,8 @@ describe("ensureMcpPackage", () => {
     const controller = new AbortController();
     const pending = ensureMcpPackage("race-pkg", { ...options(), signal: controller.signal });
     try {
-      await vi.waitFor(() => expect(spy).toHaveBeenCalled(), WAIT);
+      // The replacement owner is visible both before quarantine and after restoration.
+      await vi.waitFor(() => expect(spy).toHaveBeenCalledWith(expect.any(String), lock), WAIT);
       await vi.waitFor(
         async () => expect(JSON.parse(await readFile(join(lock, "owner"), "utf8"))).toEqual(fresh),
         WAIT,
