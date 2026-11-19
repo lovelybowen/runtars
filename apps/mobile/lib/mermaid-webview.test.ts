@@ -1,3 +1,5 @@
+// @vitest-environment jsdom
+
 import { chatMermaidConfig } from "@rakazo/chat-ui/mermaid";
 import { flush } from "@rakazo/core/test-async";
 import { darkTokens } from "@rakazo/ui-tokens";
@@ -13,11 +15,10 @@ import {
 const config = chatMermaidConfig(darkTokens, "dark", { surface: darkTokens.background });
 
 function policyOf(html: string) {
-  const content = /http-equiv="Content-Security-Policy" content="([^"]+)"/.exec(html)?.[1] ?? "";
-  return content
-    .replace(/&quot;/g, '"')
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<");
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  return (
+    doc.querySelector('meta[http-equiv="Content-Security-Policy"]')?.getAttribute("content") ?? ""
+  );
 }
 
 describe("diagram WebView document", () => {

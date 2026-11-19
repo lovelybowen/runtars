@@ -71,8 +71,7 @@ export class FakeBrowserProvider implements BrowserProvider {
     const session = this.sessions.get(pageBrowserSessionKey(computer, context));
     const seeded = this.pages[url] ?? this.pages[stripHash(url)];
     if (seeded) {
-      const html = seeded.title ? ensureTitle(seeded.html, seeded.title) : seeded.html;
-      return session.load(url, html);
+      return session.load(url, seeded.html, seeded.title);
     }
     try {
       const { url: finalUrl, body } = await fetchSafeWebText(url, {
@@ -147,22 +146,4 @@ function stripHash(url: string): string {
   } catch {
     return url;
   }
-}
-
-function ensureTitle(html: string, title: string): string {
-  if (/<title[\s>]/i.test(html)) {
-    return html.replace(/<title[^>]*>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
-  }
-  if (/<head[\s>]/i.test(html)) {
-    return html.replace(/<head([^>]*)>/i, `<head$1><title>${escapeHtml(title)}</title>`);
-  }
-  return `<!doctype html><html><head><title>${escapeHtml(title)}</title></head><body>${html}</body></html>`;
-}
-
-function escapeHtml(value: string): string {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
 }

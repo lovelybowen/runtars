@@ -189,14 +189,14 @@ test("live page helper waits for a site's sign-in check, or says the page is sti
           res.setHeader("content-type", "application/json");
           res.end('{"name":"test-user"}');
         },
-        Number(url.searchParams.get("delay")),
+        url.searchParams.get("slow") === "1" ? 20_000 : 500,
       );
       return;
     }
     res.setHeader("content-type", "text/html");
     res.end(`<!doctype html><title>Example</title><header><a href="/login">Sign in</a></header>
       <main id="m">Loading</main>
-      <script>fetch('/api/me?delay=${Number(url.searchParams.get("check"))}').then((r) => r.json())
+      <script>fetch('/api/me?slow=${url.searchParams.get("slow") === "1" ? "1" : "0"}').then((r) => r.json())
         .then((u) => { document.querySelector('header').textContent = 'Signed in as ' + u.name;
           document.getElementById('m').textContent = 'Your account'; });</script>`);
   });
@@ -225,7 +225,7 @@ test("live page helper waits for a site's sign-in check, or says the page is sti
 
     // The check answers within the wait: the snapshot shows the signed-in page. The helper first
     // reads it after it began loading, as when the person opened it.
-    await page.goto(`http://127.0.0.1:${address.port}/?check=500`);
+    await page.goto(`http://127.0.0.1:${address.port}/?slow=0`);
     const settled = await snapshot();
     expect(settled).toMatchObject({ ok: true, title: "Example" });
     expect(settled.tree).toContain("Signed in as test-user");
@@ -233,7 +233,7 @@ test("live page helper waits for a site's sign-in check, or says the page is sti
     expect(settled).not.toHaveProperty("loading");
 
     // The check outlasts the wait: the snapshot still shows the shell, and says it is loading.
-    await page.goto(`http://127.0.0.1:${address.port}/?check=20000`);
+    await page.goto(`http://127.0.0.1:${address.port}/?slow=1`);
     const loading = await snapshot();
     expect(loading).toMatchObject({ ok: true, title: "Example", loading: true });
     expect(loading.tree).toContain('link "Sign in"');
