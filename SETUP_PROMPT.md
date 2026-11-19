@@ -60,7 +60,7 @@ Setup:
    `docs/self-host-restricted-network.md#digest-verified-hub-mirror-startup`; use that section's
    explicit pull, digest-check, and no-repull start sequence instead of Setup step 5.
 5. Run `bash install-images.sh`. It preserves `.env`, pulls the images, and starts the stack.
-6. Wait until api, web, and supervisor are healthy. Verify `.env` pins both app and computer images to the selected release. Use `edge` with the installer from `main` only when I explicitly choose a development build. Do not substitute an upstream release if no RunTars release exists.
+6. Wait until api, web, and supervisor are healthy. Verify `.env` pins both app and computer images to the selected release. Use `edge` with the installer from `main` only when I explicitly choose a development build. Do not substitute an upstream release if no RunTars release exists. Preserve existing pins and leave scheduled updates disabled unless I request them.
 
 Verification:
 
