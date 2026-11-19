@@ -27,7 +27,9 @@ export default function middleware(request: Request): Response {
   const url = new URL(request.url);
 
   if (url.hostname.toLowerCase() === WWW_HOST) {
-    const destination = new URL(`${url.pathname}${url.search}`, APEX_ORIGIN);
+    const destination = new URL(APEX_ORIGIN);
+    destination.pathname = url.pathname;
+    destination.search = url.search;
     return permanentRedirect(destination.toString());
   }
 
@@ -43,7 +45,9 @@ export default function middleware(request: Request): Response {
     if (markdown) return markdownResponse(markdown, request.method);
     const staticMarkdown = getStaticMarkdownPath(url.pathname);
     if (staticMarkdown) {
-      return rewrite(new URL(staticMarkdown, url), {
+      const destination = new URL(url);
+      destination.pathname = staticMarkdown;
+      return rewrite(destination, {
         headers: {
           "Content-Language": "en",
           "Content-Type": "text/markdown; charset=utf-8",

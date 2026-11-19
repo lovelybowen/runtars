@@ -1,7 +1,7 @@
 import { build } from "esbuild";
 
 await build({
-  entryPoints: ["src/main.ts"],
+  entryPoints: ["src/main/main.ts"],
   outfile: "dist/main.js",
   bundle: true,
   platform: "node",
@@ -16,7 +16,7 @@ await build({
   define: {
     "process.env.RAKAZO_DESKTOP_RELEASE": JSON.stringify(process.env.RAKAZO_DESKTOP_RELEASE ?? ""),
     "process.env.RUNTARS_MANUAL_UPDATES": JSON.stringify(process.env.RUNTARS_MANUAL_UPDATES ?? ""),
-    // Self-hosted builds associated with their own passkey domain (see src/passkeys.ts).
+    // Self-hosted builds associated with their own passkey domain (see src/main/auth/passkeys.ts).
     "process.env.RAKAZO_PASSKEY_RP_ID": JSON.stringify(process.env.RAKAZO_PASSKEY_RP_ID ?? ""),
   },
 });
