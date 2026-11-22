@@ -9,8 +9,8 @@ const APPS: Readonly<Record<string, string>> = {
   iPhone: IOS_APP_STORE_URL,
   Android: ANDROID_APK_URL,
   Mac: "https://rakazo.com/api/download?platform=mac",
-  Windows: "https://rakazo.com/api/download?platform=windows",
-  Linux: "https://rakazo.com/api/download?platform=linux",
+  Windows: "https://runtars.com/api/download?platform=windows",
+  Linux: "https://runtars.com/api/download?platform=linux",
 };
 
 const stepStyle = { margin: "20px 0 4px" };

@@ -127,8 +127,8 @@ RunTars is based on Rakazo. Rakazo targets the web, macOS, Windows, Linux, iOS, 
 export const DOWNLOAD_MARKDOWN = `# Download Rakazo
 
 - [macOS](https://rakazo.com/api/download?platform=mac)
-- [Windows](https://rakazo.com/api/download?platform=windows)
-- [Linux](https://rakazo.com/api/download?platform=linux)
+- [Windows](https://runtars.com/api/download?platform=windows)
+- [Linux](https://runtars.com/api/download?platform=linux)
 - [iPhone, iPhone Duo, and iPad](${IOS_APP_URL})
 - [Android](${ANDROID_APK_URL})
 - [Web](${APP_URL})
