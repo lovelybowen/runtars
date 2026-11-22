@@ -111,8 +111,9 @@ jobs:
             exit 1
           fi
           echo "EAS build $(jq -r '.id' "$metadata"), versionCode $version_code, APK SHA-256 $sha256" >> "$GITHUB_STEP_SUMMARY"
-          "$build_tools/apksigner" verify --print-certs "$apk" > "$RUNNER_TEMP/apk-cert.txt"
-          grep -Fx 'Signer #1 certificate SHA-256 digest: 6269be0c2195e6c1571eaedfde7fe6262162a63662e89df57e66c7839fa4915b' "$RUNNER_TEMP/apk-cert.txt"
+          "$build_tools/apksigner" verify --print-certs --print-certs-pem "$apk" > "$RUNNER_TEMP/apk-cert.txt"
+          openssl x509 -in "$RUNNER_TEMP/apk-cert.txt" -outform DER -out "$RUNNER_TEMP/signer.der"
+          echo "6269be0c2195e6c1571eaedfde7fe6262162a63662e89df57e66c7839fa4915b  $RUNNER_TEMP/signer.der" | sha256sum --check
           "$build_tools/aapt" dump badging "$apk" > "$RUNNER_TEMP/apk-badging.txt"
           grep -F "package: name='com.runtars.app' versionCode='$version_code' versionName='$version'" "$RUNNER_TEMP/apk-badging.txt"
           source_commit="$(jq -er '.gitCommitHash | select(test("^[0-9a-f]{40}$"))' "$metadata")"
