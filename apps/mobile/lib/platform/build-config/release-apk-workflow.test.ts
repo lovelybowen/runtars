@@ -23,6 +23,26 @@ describe("Android APK release workflow", () => {
     expect(workflow).not.toContain("cache: pnpm");
   });
 
+  it("retrieves the accepted build for publication and checks both APK downloads", () => {
+    const publishBranch = workflow
+      .split('if [[ "$PUBLISH" == "true" ]]; then')[1]
+      ?.split("else")[0];
+    expect(publishBranch).toContain('eas build:view "$ACCEPTED_ID"');
+    expect(publishBranch).not.toContain("eas build --platform");
+    expect(workflow).toContain(`"$sha256" != "\${ACCEPTED_SHA256,,}"`);
+    expect(workflow).toContain('gh release download "$RELEASE_TAG" --pattern runtars.apk');
+    expect(workflow).toContain(
+      `"\${ACCEPTED_SHA256,,}  $RUNNER_TEMP/published.apk" | sha256sum --check`,
+    );
+    const caller = readFileSync(
+      path.resolve(import.meta.dirname, "../../../../../.github/workflows/release-mobile.yml"),
+      "utf8",
+    );
+    for (const input of ["apk_build_id", "apk_sha256"]) {
+      expect(caller).toContain(`${input}: \${{ inputs.${input} }}`);
+    }
+  });
+
   it("pins every third-party action to an immutable commit", () => {
     const actionReferences = [...workflow.matchAll(/uses:\s+([^\s#]+)/g)].map((match) => match[1]);
     expect(actionReferences.length).toBeGreaterThan(0);

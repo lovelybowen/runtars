@@ -9,6 +9,12 @@ on:
         description: What's New on the App Store
         required: true
         type: string
+      apk_build_id:
+        description: EAS build ID of the accepted APK (required to publish)
+        type: string
+      apk_sha256:
+        description: File SHA-256 recorded during installation acceptance (required to publish)
+        type: string
       ios_build_id:
         description: Retry App Review for an already uploaded EAS iOS build; skips all builds and uploads
         required: false
@@ -114,6 +120,9 @@ jobs:
     name: Android APK
     if: inputs.ios_build_id == ''
     uses: ./.github/workflows/release-android-apk.yml
+    with:
+      apk_build_id: ${{ inputs.apk_build_id }}
+      apk_sha256: ${{ inputs.apk_sha256 }}
     permissions:
       contents: write
     secrets: inherit
