@@ -17,13 +17,11 @@ import {
 } from "@rakazo/core";
 import { useFocusEffect, useIsFocused, useLocalSearchParams, useRouter } from "expo-router";
 import { useHeaderHeight } from "expo-router/react-navigation";
-import { useCallback, useContext, useMemo, useRef, useState } from "react";
-import { I18nManager, Platform, View } from "react-native";
-import { KeyboardAvoidingView } from "react-native-keyboard-controller";
+import { useCallback, useMemo, useRef, useState } from "react";
+import { I18nManager, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { mobileTokens } from "../../lib/appearance/appearance";
 import type { MobileArtifactTarget } from "../../lib/artifacts/artifact-open";
-import { CallKeyboardContext } from "../../lib/calls/call-keyboard-context";
 import { useCallSession } from "../../lib/calls/call-session";
 import { composerDraftScope } from "../../lib/composer/composer-draft";
 import { useComposerModel } from "../../lib/composer/composer-model";
@@ -45,7 +43,6 @@ import {
   threadHeaderClearance,
   threadHeaderFloats,
 } from "../../lib/thread/scroll/thread-edges";
-import { threadKeyboardAvoidance } from "../../lib/thread/scroll/thread-keyboard-offset";
 import { useThreadListScroll } from "../../lib/thread/scroll/thread-list-scroll";
 import {
   isOwnThreadMessage,
@@ -84,6 +81,7 @@ import { ThreadComposerDock } from "./thread-composer-dock";
 import { ThreadEdgeFade } from "./thread-edge-fade";
 import { ThreadErrorNotice, ThreadFetchErrorNotice } from "./thread-error-notice";
 import { useThreadHeader } from "./thread-header";
+import { ThreadKeyboardView } from "./thread-keyboard-view";
 import { LoadEarlierButton, ThreadWorkingFooter } from "./thread-list-controls";
 import { ThreadMessageList } from "./thread-message-list";
 import { useLatestRowActions, useThreadRows } from "./thread-rows";
@@ -143,7 +141,6 @@ export function Thread({ sessionEpoch, userId }: { sessionEpoch: number; userId:
   const requestedThreadId = typeof threadId === "string" && threadId ? threadId : undefined;
   const inGroup = Boolean(groupId);
   const call = useCallSession();
-  const rootAvoidsKeyboard = useContext(CallKeyboardContext);
   const contentBottomInset = useContentBottomInset();
   const onCall = Boolean(botId) && call?.botId === botId;
   // The composer floats over the list, which scrolls underneath; this keeps the newest message
@@ -579,16 +576,8 @@ export function Thread({ sessionEpoch, userId }: { sessionEpoch: number; userId:
 
   return (
     <View style={{ flex: 1 }}>
-      <KeyboardAvoidingView
-        enabled={!rootAvoidsKeyboard}
-        // Padding always settles to zero. "height" stays shrunk when the keyboard hides without
-        // move frames, such as when a pushed screen closes with its own keyboard up.
-        behavior="padding"
-        {...threadKeyboardAvoidance({
-          os: Platform.OS,
-          floatingHeader: threadHeaderFloats(),
-          nativeHeaderHeight,
-        })}
+      <ThreadKeyboardView
+        nativeHeaderHeight={nativeHeaderHeight}
         style={{
           flex: 1,
           backgroundColor: tokens.background,
@@ -700,7 +689,7 @@ export function Thread({ sessionEpoch, userId }: { sessionEpoch: number; userId:
             }}
           />
         ) : null}
-      </KeyboardAvoidingView>
+      </ThreadKeyboardView>
     </View>
   );
 }

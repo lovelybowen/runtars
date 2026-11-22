@@ -63,7 +63,7 @@ import { capTextScaling } from "../lib/appearance/text-scale";
 import { replaceWithSignIn } from "../lib/auth/auth-routing";
 import { useReferral } from "../lib/billing/referral";
 import { AvatarScreenFocus } from "../lib/bots/avatar-life";
-import { CallKeyboardContext } from "../lib/calls/call-keyboard-context";
+import { CallKeyboardContext, RootControlsHeightContext } from "../lib/calls/call-keyboard-context";
 import { useCallActive } from "../lib/calls/call-session";
 import { startIncomingCalls } from "../lib/calls/incoming-calls";
 import { loadComposerModelPickerPreference } from "../lib/composer/composer-model-picker-preference";
@@ -286,6 +286,7 @@ export const unstable_settings = { anchor: "index" };
 
 function LayoutContent() {
   const call = useCallActive();
+  const controlsHeight = useSharedValue(0);
   const { t } = useLingui();
   const insets = useSafeAreaInsets();
   // Beside the list a chat swaps in place, the way it does when picked from a sidebar.
@@ -444,7 +445,9 @@ function LayoutContent() {
                               </CallKeyboardContext.Provider>
                             </InboxBesideContext.Provider>
                           ) : (
-                            children
+                            <RootControlsHeightContext.Provider value={controlsHeight}>
+                              {children}
+                            </RootControlsHeightContext.Provider>
                           )}
                         </AvatarScreenFocus>
                       )}
@@ -646,6 +649,9 @@ function LayoutContent() {
                     </Stack>
                   </SplitFrame>
                   <ScrollView
+                    onLayout={(event) => {
+                      controlsHeight.value = event.nativeEvent.layout.height;
+                    }}
                     keyboardShouldPersistTaps="handled"
                     style={{ flexGrow: 0, flexShrink: 1, maxHeight: "50%" }}
                   >
