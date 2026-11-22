@@ -90,15 +90,14 @@ scores once processed. Managed publishing can delay release after approval.
 
 ## Android APK
 
-Android users should install [Rakazo from Google Play](https://play.google.com/store/apps/details?id=com.rakazo.app).
-For manual installation, an APK remains available.
+RunTars distributes its Android APK through GitHub Releases.
 `release-mobile` publishes it, or run the `release-android-apk` workflow from
 `main` on its own. It builds the `android-apk` EAS profile, signed with the
-project's managed keystore, and replaces the rolling `android` GitHub release,
-so the download link stays the same:
+project's managed keystore. A manual run saves a verified APK as a workflow artifact.
+Select `publish` to update the rolling `android` release at the fixed download URL:
 
 ```text
-https://github.com/elie222/rakazo/releases/download/android/rakazo.apk
+https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk
 ```
 
 The APK uses the production update channel, so JavaScript changes reach it

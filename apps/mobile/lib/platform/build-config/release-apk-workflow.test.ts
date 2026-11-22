@@ -12,7 +12,11 @@ const easConfig = JSON.parse(
 
 describe("Android APK release workflow", () => {
   it("only runs on demand or from release-mobile, from main with release credentials", () => {
-    expect(workflow).toMatch(/^on:\n {2}workflow_dispatch:\n {2}workflow_call:\n\n/m);
+    expect(workflow).toMatch(/^ {2}workflow_dispatch:/m);
+    expect(workflow).toMatch(/^ {2}workflow_call:/m);
+    expect(workflow).toContain("if: inputs.publish");
+    expect(workflow).toContain("runtars.apk");
+    expect(workflow).not.toContain("Require Firebase config");
     expect(workflow).toContain("permissions:\n  contents: read");
     expect(workflow).toContain("if: github.ref == 'refs/heads/main'");
     expect(workflow).toContain("persist-credentials: false");

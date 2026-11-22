@@ -161,13 +161,15 @@ it("omits Board when unavailable", async () => {
   );
 });
 
-it("offers Google Play on Android", async () => {
+it("offers the RunTars APK on Android", async () => {
   vi.spyOn(navigator, "userAgent", "get").mockReturnValue("Android");
   await render();
   const mobile = [...document.querySelectorAll("a")].find(
     (link) => link.textContent === "Get the mobile app",
   )!;
-  expect(mobile.href).toBe("https://play.google.com/store/apps/details?id=com.rakazo.app");
+  expect(mobile.href).toBe(
+    "https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk",
+  );
 });
 
 it("falls back when app artwork fails and accepts replacement artwork", async () => {

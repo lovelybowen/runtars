@@ -1,5 +1,5 @@
 // Relative source path: the edge middleware bundles this file and cannot resolve workspace packages.
-import { ANDROID_APP_STORE_URL } from "../../../packages/contracts/src/clients/client-build.js";
+import { ANDROID_APK_URL } from "../../../packages/contracts/src/clients/client-build.js";
 import { ALTERNATIVES, alternativeMarkdown } from "./alternatives";
 import { BLOG_CATEGORIES } from "./blog/categories";
 import { BRAND_COLORS, BRAND_LOGOS } from "./brand";
@@ -130,7 +130,7 @@ export const DOWNLOAD_MARKDOWN = `# Download Rakazo
 - [Windows](https://rakazo.com/api/download?platform=windows)
 - [Linux](https://rakazo.com/api/download?platform=linux)
 - [iPhone, iPhone Duo, and iPad](${IOS_APP_URL})
-- [Android](${ANDROID_APP_STORE_URL})
+- [Android](${ANDROID_APK_URL})
 - [Web](${APP_URL})
 
 The apps also connect to a self-hosted server. See the [self-hosting guide](https://runtars.com/self-hosted-ai-agent/).

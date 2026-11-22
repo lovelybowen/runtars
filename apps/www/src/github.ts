@@ -1,6 +1,6 @@
 // Relative source path: Vercel functions cannot resolve the TypeScript exports of @rakazo/core.
 import { readBoundedJsonResponse } from "../../../packages/core/src/primitives/http-response.js";
-import { DESKTOP_DOWNLOAD_API_REPO, GITHUB_API_REPO } from "./site";
+import { GITHUB_API_REPO } from "./site";
 
 export const GITHUB_STARS_TIMEOUT_MS = 5_000;
 export const MAX_GITHUB_STARS_RESPONSE_BYTES = 64 * 1024;
@@ -45,7 +45,7 @@ export async function fetchDesktopDownloads(
   fetchImpl: typeof fetch = fetch,
 ): Promise<DesktopDownloads> {
   const payload = await fetchGithubJson<{ assets?: unknown }>(
-    `${DESKTOP_DOWNLOAD_API_REPO}/releases/latest`,
+    `${GITHUB_API_REPO}/releases/latest`,
     MAX_GITHUB_RELEASE_RESPONSE_BYTES,
     fetchImpl,
   );

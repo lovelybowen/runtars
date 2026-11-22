@@ -1,13 +1,13 @@
 /** @jsxRuntime automatic */
 import type { TransactionalEmail } from "@rakazo/adapter-kit";
-import { ANDROID_APP_STORE_URL, IOS_APP_STORE_URL } from "@rakazo/contracts";
+import { ANDROID_APK_URL, IOS_APP_STORE_URL } from "@rakazo/contracts";
 import { Link, Text } from "react-email";
 import { emailText, greeting, linkStyle, message, withNodes } from "./email.js";
 import { emailCopy } from "./email-copy/deployment-copy.js";
 
 const APPS: Readonly<Record<string, string>> = {
   iPhone: IOS_APP_STORE_URL,
-  Android: ANDROID_APP_STORE_URL,
+  Android: ANDROID_APK_URL,
   Mac: "https://rakazo.com/api/download?platform=mac",
   Windows: "https://rakazo.com/api/download?platform=windows",
   Linux: "https://rakazo.com/api/download?platform=linux",
