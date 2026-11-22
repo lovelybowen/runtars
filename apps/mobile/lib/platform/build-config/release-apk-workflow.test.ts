@@ -12,11 +12,35 @@ const easConfig = JSON.parse(
 
 describe("Android APK release workflow", () => {
   it("only runs on demand or from release-mobile, from main with release credentials", () => {
-    expect(workflow).toMatch(/^on:\n {2}workflow_dispatch:\n {2}workflow_call:\n\n/m);
+    expect(workflow).toMatch(/^ {2}workflow_dispatch:/m);
+    expect(workflow).toMatch(/^ {2}workflow_call:/m);
+    expect(workflow).toContain("if: inputs.publish");
+    expect(workflow).toContain("runtars.apk");
+    expect(workflow).not.toContain("Require Firebase config");
     expect(workflow).toContain("permissions:\n  contents: read");
     expect(workflow).toContain("if: github.ref == 'refs/heads/main'");
     expect(workflow).toContain("persist-credentials: false");
     expect(workflow).not.toContain("cache: pnpm");
+  });
+
+  it("retrieves the accepted build for publication and checks both APK downloads", () => {
+    const publishBranch = workflow
+      .split('if [[ "$PUBLISH" == "true" ]]; then')[1]
+      ?.split("else")[0];
+    expect(publishBranch).toContain('eas build:view "$ACCEPTED_ID"');
+    expect(publishBranch).not.toContain("eas build --platform");
+    expect(workflow).toContain(`"$sha256" != "\${ACCEPTED_SHA256,,}"`);
+    expect(workflow).toContain('gh release download "$RELEASE_TAG" --pattern runtars.apk');
+    expect(workflow).toContain(
+      `"\${ACCEPTED_SHA256,,}  $RUNNER_TEMP/published.apk" | sha256sum --check`,
+    );
+    const caller = readFileSync(
+      path.resolve(import.meta.dirname, "../../../../../.github/workflows/release-mobile.yml"),
+      "utf8",
+    );
+    for (const input of ["apk_build_id", "apk_sha256"]) {
+      expect(caller).toContain(`${input}: \${{ inputs.${input} }}`);
+    }
   });
 
   it("pins every third-party action to an immutable commit", () => {

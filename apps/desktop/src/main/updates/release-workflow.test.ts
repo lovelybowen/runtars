@@ -167,20 +167,19 @@ describe("desktop release workflow", () => {
   });
 });
 
-it.each(["windows", "android"])(
-  "forwards each %s signing credential on stable tags",
-  (platform) => {
-    const readWorkflow = (name: string) =>
-      parse(readFileSync(path.resolve(repoRoot, ".github/workflows", name), "utf8"));
-    const build = readWorkflow(`build-${platform}-client.yml`);
-    const release = readWorkflow("release-server.yml");
-    const signingSecrets = Object.values(build.jobs[platform].steps)
-      .flatMap((step) => Object.values((step as { env?: Record<string, string> }).env ?? {}))
-      .flatMap((value) => /^\$\{\{ secrets\.(\w+) \}\}$/.exec(value)?.[1] ?? []);
-    expect(signingSecrets.length).toBeGreaterThan(0);
-    for (const name of signingSecrets) {
-      expect(build.on.workflow_call.secrets[name]).toEqual({ required: true });
-      expect(release.jobs[platform].secrets[name]).toBe(expression(`secrets.${name}`));
-    }
-  },
-);
+it("forwards Windows signing credentials on stable tags", () => {
+  const platform = "windows";
+  const readWorkflow = (name: string) =>
+    parse(readFileSync(path.resolve(repoRoot, ".github/workflows", name), "utf8"));
+  const build = readWorkflow(`build-${platform}-client.yml`);
+  const release = readWorkflow("release-server.yml");
+  expect(release.jobs.release.needs).toEqual(["validate", "images", "windows", "linux"]);
+  const signingSecrets = Object.values(build.jobs[platform].steps)
+    .flatMap((step) => Object.values((step as { env?: Record<string, string> }).env ?? {}))
+    .flatMap((value) => /^\$\{\{ secrets\.(\w+) \}\}$/.exec(value)?.[1] ?? []);
+  expect(signingSecrets.length).toBeGreaterThan(0);
+  for (const name of signingSecrets) {
+    expect(build.on.workflow_call.secrets[name]).toEqual({ required: true });
+    expect(release.jobs[platform].secrets[name]).toBe(expression(`secrets.${name}`));
+  }
+});

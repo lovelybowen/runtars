@@ -42,7 +42,7 @@ and review account on a physical device.
 
 Bump `expo.version` in `apps/mobile/app.json` when native code changes (see
 Over-the-air updates below), then run the `release-mobile` workflow from `main`
-with the App Store "What's New" text. It builds iOS on EAS, uploads it to App
+with the App Store "What's New" text and the accepted APK build ID and SHA-256. It builds iOS on EAS, uploads it to App
 Store Connect, puts the build on that App Store version with the notes, and
 submits it for review; Apple releases it once approved. The same run submits a
 production Android App Bundle to Google Play for review and publishes the
@@ -90,15 +90,18 @@ scores once processed. Managed publishing can delay release after approval.
 
 ## Android APK
 
-Android users should install [Rakazo from Google Play](https://play.google.com/store/apps/details?id=com.rakazo.app).
-For manual installation, an APK remains available.
+RunTars distributes its Android APK through GitHub Releases.
 `release-mobile` publishes it, or run the `release-android-apk` workflow from
 `main` on its own. It builds the `android-apk` EAS profile, signed with the
-project's managed keystore, and replaces the rolling `android` GitHub release,
-so the download link stays the same:
+project's managed keystore. A manual run saves a verified APK as a workflow artifact.
+Install the candidate, verify cold startup, and record the EAS build ID and the
+output of `sha256sum runtars.apk`. To publish that binary, select `publish`
+and supply `apk_build_id` and `apk_sha256`. The workflow retrieves that
+finished build, verifies the file before upload, and checks the download from
+the rolling `android` release:
 
 ```text
-https://github.com/elie222/rakazo/releases/download/android/rakazo.apk
+https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk
 ```
 
 The APK uses the production update channel, so JavaScript changes reach it

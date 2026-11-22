@@ -2,7 +2,28 @@ name: release-android-apk
 
 on:
   workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the verified APK to the rolling Android release
+        type: boolean
+        default: false
+      apk_build_id:
+        description: EAS build ID of the accepted APK (required to publish)
+        type: string
+      apk_sha256:
+        description: File SHA-256 recorded during installation acceptance (required to publish)
+        type: string
   workflow_call:
+    inputs:
+      publish:
+        type: boolean
+        default: true
+      apk_build_id:
+        description: EAS build ID of the accepted APK (required to publish)
+        type: string
+      apk_sha256:
+        description: File SHA-256 recorded during installation acceptance (required to publish)
+        type: string
 
 permissions:
   contents: read
@@ -33,7 +54,7 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
           if [[ -z "$EXPO_TOKEN" ]]; then
-            echo "Add an EXPO_TOKEN repository secret with access to the inbox-zero/rakazo Expo project." >&2
+            echo "Add an EXPO_TOKEN repository secret with access to the @runtars/runtars Expo project." >&2
             exit 1
           fi
 
@@ -46,92 +67,140 @@ jobs:
       - name: Verify mobile project
         run: pnpm --filter @rakazo/mobile check
 
-      # Without Firebase config the APK never registers for push, and an OTA update can't add it.
-      - name: Require Firebase config
-        working-directory: apps/mobile
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: |
-          set -euo pipefail
-          vars="$(pnpm exec eas env:list production --format short)"
-          if ! grep -q '^GOOGLE_SERVICES_JSON=' <<< "$vars"; then
-            echo "Set the GOOGLE_SERVICES_JSON file variable in the EAS production environment (see docs/mobile-release.md)." >&2
-            exit 1
-          fi
-
       # EAS signs with the project's managed Android keystore and bakes in the production update
       # channel, so installed APKs receive the same OTA updates as store builds.
-      - name: Build APK on EAS
+      - name: Build or retrieve the accepted EAS APK
         id: build
         working-directory: apps/mobile
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          PUBLISH: ${{ inputs.publish }}
+          ACCEPTED_ID: ${{ inputs.apk_build_id }}
+          ACCEPTED_SHA256: ${{ inputs.apk_sha256 }}
         run: |
           set -euo pipefail
-          pnpm exec eas build --platform android --profile android-apk --non-interactive --wait --json > "$RUNNER_TEMP/build.json"
-          url="$(jq -r '.[0].artifacts.applicationArchiveUrl // .[0].artifacts.buildUrl' "$RUNNER_TEMP/build.json")"
-          version="$(jq -r '.[0].appVersion' "$RUNNER_TEMP/build.json")"
-          version_code="$(jq -r '.[0].appBuildVersion' "$RUNNER_TEMP/build.json")"
+          metadata="$RUNNER_TEMP/build.json"
+          if [[ "$PUBLISH" == "true" ]]; then
+            [[ "$ACCEPTED_ID" =~ ^[0-9a-fA-F-]{36}$ && "$ACCEPTED_SHA256" =~ ^[0-9a-fA-F]{64}$ ]] || {
+              echo "Publishing requires the accepted EAS build ID and APK SHA-256." >&2
+              exit 1
+            }
+            pnpm exec eas build:view "$ACCEPTED_ID" --json > "$metadata"
+            jq -e --arg id "$ACCEPTED_ID" '.id == $id' "$metadata" > /dev/null
+          else
+            pnpm exec eas build --platform android --profile android-apk --non-interactive --wait --json | jq '.[0]' > "$metadata"
+          fi
+          jq -e --arg project "$(jq -r '.expo.extra.eas.projectId' app.json)" '
+            .app.id == $project and .status == "FINISHED" and .platform == "ANDROID" and
+            .buildProfile == "android-apk" and .updateChannel.name == "production" and
+            .appIdentifier == "com.runtars.app"
+          ' "$metadata" > /dev/null
+          url="$(jq -r '.artifacts.applicationArchiveUrl // .artifacts.buildUrl' "$metadata")"
+          version="$(jq -er '.appVersion' "$metadata")"
+          version_code="$(jq -er '.appBuildVersion' "$metadata")"
           if [[ -z "$url" || "$url" == "null" || "$url" != https://* ]]; then
             echo "EAS did not return an APK download URL." >&2
             exit 1
           fi
-          curl --fail --location --silent --show-error --output "$RUNNER_TEMP/rakazo.apk" "$url"
-          if [[ "$(head -c 2 "$RUNNER_TEMP/rakazo.apk")" != "PK" ]]; then
-            echo "The downloaded artifact is not an APK." >&2
+          curl --fail --location --silent --show-error --output "$RUNNER_TEMP/runtars.apk" "$url"
+          build_tools="$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -1)"
+          apk="$RUNNER_TEMP/runtars.apk"
+          sha256="$(sha256sum "$apk" | cut -d' ' -f1)"
+          if [[ "$PUBLISH" == "true" && "$sha256" != "${ACCEPTED_SHA256,,}" ]]; then
+            echo "The downloaded APK differs from the accepted file." >&2
             exit 1
           fi
+          echo "EAS build $(jq -r '.id' "$metadata"), versionCode $version_code, APK SHA-256 $sha256" >> "$GITHUB_STEP_SUMMARY"
+          "$build_tools/apksigner" verify --print-certs "$apk" > "$RUNNER_TEMP/apk-cert.txt"
+          grep -Fx 'Signer #1 certificate SHA-256 digest: 6269be0c2195e6c1571eaedfde7fe6262162a63662e89df57e66c7839fa4915b' "$RUNNER_TEMP/apk-cert.txt"
+          "$build_tools/aapt" dump badging "$apk" > "$RUNNER_TEMP/apk-badging.txt"
+          grep -F "package: name='com.runtars.app' versionCode='$version_code' versionName='$version'" "$RUNNER_TEMP/apk-badging.txt"
+          source_commit="$(jq -er '.gitCommitHash | select(test("^[0-9a-f]{40}$"))' "$metadata")"
+          echo "source_commit=$source_commit" >> "$GITHUB_OUTPUT"
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "version_code=$version_code" >> "$GITHUB_OUTPUT"
 
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: runtars-android-${{ steps.build.outputs.version_code }}
+          path: ${{ runner.temp }}/runtars.apk
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+
       # One rolling release keeps a stable download URL:
-      # https://github.com/<owner>/<repo>/releases/download/android/rakazo.apk
+      # https://github.com/<owner>/<repo>/releases/download/android/runtars.apk
       # It never becomes GitHub's "latest" release, which the desktop updater reads. An existing
       # release is updated in place: the new APK is uploaded under a temporary name before the old
-      # one is removed, so a failed run leaves the previous download working.
+      # one is renamed. Keep the old asset available for rollback until the new name is live.
       - name: Publish rolling release
+        if: inputs.publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOURCE_COMMIT: ${{ steps.build.outputs.source_commit }}
           VERSION: ${{ steps.build.outputs.version }}
           VERSION_CODE: ${{ steps.build.outputs.version_code }}
+          ACCEPTED_SHA256: ${{ inputs.apk_sha256 }}
         run: |
           set -euo pipefail
-          title="Rakazo for Android $VERSION ($VERSION_CODE)"
+          test "$(gh api "repos/$GITHUB_REPOSITORY/commits/$SOURCE_COMMIT" --jq .sha)" = "$SOURCE_COMMIT"
+          title="RunTars for Android $VERSION ($VERSION_CODE)"
           if ! gh release view "$RELEASE_TAG" --json tagName > /dev/null 2> "$RUNNER_TEMP/view.err"; then
             if ! grep -q "release not found" "$RUNNER_TEMP/view.err"; then
               cat "$RUNNER_TEMP/view.err" >&2
               exit 1
             fi
-            gh release create "$RELEASE_TAG" "$RUNNER_TEMP/rakazo.apk" \
-              --target "$GITHUB_SHA" \
+            gh release create "$RELEASE_TAG" "$RUNNER_TEMP/runtars.apk" \
+              --target "$SOURCE_COMMIT" \
               --title "$title" \
-              --notes "Install rakazo.apk on your Android phone. It updates itself over the air." \
+              --notes "Install runtars.apk on your Android phone. It updates itself over the air." \
               --latest=false
             exit 0
           fi
 
-          staged="rakazo-$VERSION_CODE.apk"
-          cp "$RUNNER_TEMP/rakazo.apk" "$RUNNER_TEMP/$staged"
+          staged="runtars-$VERSION_CODE.apk"
+          cp "$RUNNER_TEMP/runtars.apk" "$RUNNER_TEMP/$staged"
           gh release upload "$RELEASE_TAG" "$RUNNER_TEMP/$staged" --clobber
           assets="$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" --jq '.assets')"
           staged_id="$(jq -r --arg name "$staged" '.[] | select(.name == $name) | .id' <<< "$assets")"
-          old_id="$(jq -r '.[] | select(.name == "rakazo.apk") | .id' <<< "$assets")"
+          old_id="$(jq -r '.[] | select(.name == "runtars.apk") | .id' <<< "$assets")"
+          staged_digest="$(jq -r --arg name "$staged" '.[] | select(.name == $name) | .digest' <<< "$assets")"
+          if [[ "$staged_digest" != "sha256:${ACCEPTED_SHA256,,}" ]]; then
+            echo "GitHub did not confirm the accepted SHA-256 for the staged APK." >&2
+            exit 1
+          fi
           if [[ -z "$staged_id" ]]; then
             echo "The uploaded $staged is missing from the release; leaving the previous APK in place." >&2
             exit 1
           fi
           if [[ -n "$old_id" ]]; then
-            gh api -X DELETE "repos/$GITHUB_REPOSITORY/releases/assets/$old_id"
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/releases/assets/$old_id" -f name="previous-$old_id.apk" > /dev/null
           fi
           for attempt in 1 2 3; do
-            if gh api -X PATCH "repos/$GITHUB_REPOSITORY/releases/assets/$staged_id" -f name=rakazo.apk > /dev/null; then
+            if gh api -X PATCH "repos/$GITHUB_REPOSITORY/releases/assets/$staged_id" -f name=runtars.apk > /dev/null; then
               break
             fi
             if [[ "$attempt" == 3 ]]; then
-              echo "Could not rename $staged to rakazo.apk; rename it on the release page." >&2
+              if [[ -n "$old_id" ]]; then
+                gh api -X PATCH "repos/$GITHUB_REPOSITORY/releases/assets/$old_id" -f name=runtars.apk > /dev/null
+              fi
+              echo "Could not rename $staged to runtars.apk." >&2
               exit 1
             fi
             sleep 5
           done
-          gh api -X PATCH "repos/$GITHUB_REPOSITORY/git/refs/tags/$RELEASE_TAG" -f sha="$GITHUB_SHA" -F force=true > /dev/null
+          if [[ -n "$old_id" ]]; then
+            gh api -X DELETE "repos/$GITHUB_REPOSITORY/releases/assets/$old_id"
+          fi
+          gh api -X PATCH "repos/$GITHUB_REPOSITORY/git/refs/tags/$RELEASE_TAG" -f sha="$SOURCE_COMMIT" -F force=true > /dev/null
           gh release edit "$RELEASE_TAG" --title "$title" --latest=false
+
+      - name: Verify the final rolling APK
+        if: inputs.publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACCEPTED_SHA256: ${{ inputs.apk_sha256 }}
+        run: |
+          set -euo pipefail
+          gh release download "$RELEASE_TAG" --pattern runtars.apk --output "$RUNNER_TEMP/published.apk"
+          echo "${ACCEPTED_SHA256,,}  $RUNNER_TEMP/published.apk" | sha256sum --check

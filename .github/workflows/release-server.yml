@@ -54,19 +54,47 @@ jobs:
     with:
       version: ${{ needs.validate.outputs.version }}
 
-  android:
+  linux:
     needs: validate
-    uses: ./.github/workflows/build-android-client.yml
-    secrets:
-      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-      ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
-      ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-      ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-    with:
-      version: ${{ needs.validate.outputs.version }}
+    runs-on: ubuntu-24.04
+    env:
+      RELEASE_VERSION: ${{ needs.validate.outputs.version }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+      - run: pnpm --filter @rakazo/desktop... --filter @rakazo/web... --filter rakazo install --frozen-lockfile
+      - run: pnpm db:generate
+        env:
+          DATABASE_URL: postgres://rakazo:rakazo@127.0.0.1:5433/rakazo
+      - name: Build renderer and desktop app
+        shell: bash
+        env:
+          RAKAZO_ALLOW_DEV_SECRETS: "1"
+          RAKAZO_DESKTOP_RELEASE: "1"
+          RUNTARS_MANUAL_UPDATES: "1"
+        run: |
+          set -euo pipefail
+          pnpm --filter @rakazo/web build
+          pnpm --filter @rakazo/desktop build
+          node apps/desktop/scripts/release-feed.mjs apps/desktop/package.json
+          cd apps/desktop
+          npm pkg set productName=RunTars author.name=RunTars version="$RELEASE_VERSION" \
+            build.appId=com.runtars.desktop build.extraMetadata.name=runtars \
+            build.linux.executableName=runtars 'build.linux.artifactName=RunTars-${version}-x64.AppImage'
+          pnpm exec electron-builder --linux AppImage --x64 --publish never
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: desktop-linux-${{ github.sha }}
+          path: apps/desktop/out/RunTars-${{ env.RELEASE_VERSION }}-x64.AppImage
+          if-no-files-found: error
 
   release:
-    needs: [validate, images, windows, android]
+    needs: [validate, images, windows, linux]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -89,7 +117,7 @@ jobs:
           path: clients
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
-          name: android-${{ github.sha }}
+          name: desktop-linux-${{ github.sha }}
           path: clients
       - name: Verify client assets and publish the release
         env:
@@ -98,11 +126,11 @@ jobs:
           set -euo pipefail
           version="${GITHUB_REF_NAME#v}"
           installer="RunTars-Setup-$version.exe"
-          apk="RunTars-$version.apk"
+          appimage="RunTars-$version-x64.AppImage"
           cd clients
           test -s "$installer"
-          test -s "$apk"
-          sha256sum "$installer" "$apk" > SHA256SUMS
+          test -s "$appimage"
+          sha256sum "$installer" "$appimage" > SHA256SUMS
           test "$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_REF_NAME" --jq .sha)" = "$GITHUB_SHA"
-          gh release create "$GITHUB_REF_NAME" "$installer" "$apk" SHA256SUMS --verify-tag \
+          gh release create "$GITHUB_REF_NAME" "$installer" "$appimage" SHA256SUMS --latest --verify-tag \
             --title "RunTars $GITHUB_REF_NAME" --notes-file "../docs/releases/$GITHUB_REF_NAME.md"

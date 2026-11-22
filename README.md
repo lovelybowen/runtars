@@ -5,7 +5,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/lovelybowen/runtars?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/lovelybowen/runtars/stargazers)
 [![Discord](https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?labelColor=black&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RWwKa2Sn7h)
 [![Download on the App Store](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
-[![Get Android on Google Play](https://img.shields.io/badge/Google%20Play-Get%20the%20app-black?labelColor=black&style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.rakazo.app)
+[![Android APK](https://img.shields.io/badge/Android-APK-black?style=for-the-badge&logo=android&logoColor=white)](https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk)
 
 ![RunTars — AI teammates you actually own](./docs/readme-hero.png)
 
@@ -14,8 +14,8 @@ RunTars is an open source, self-hosted alternative to Grok Bot.
 Persistent AI teammates with their own memory, routines, apps, and computer. Run it on your own
 machine, with your own model.
 
-Use it on the [web](https://app.runtars.com), [desktop](https://rakazo.com/download/), [iPhone](https://apps.apple.com/app/rakazo/id6801531099), and
-[Android](https://play.google.com/store/apps/details?id=com.rakazo.app).
+Use it on the [web](https://app.runtars.com), [desktop](https://runtars.com/download/), [iPhone](https://apps.apple.com/app/rakazo/id6801531099), and
+[Android](https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk).
 
 It is also an alternative to Meta Muse, OpenAI Dots, Instinct, OpenClaw, Hermes Agent, and Claude
 Duet.
