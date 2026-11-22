@@ -88,6 +88,16 @@ def refresh(path: str):
     save(path, auth)
 
 
+FIELD_NAME = re.compile(r"[!#$%&'*+.^_`|~0-9A-Za-z-]+")
+FIELD_VALUE = re.compile(r"[\t\x20-\x7e\x80-\xff]*")
+
+
+def single_line_field(raw: str, grammar: re.Pattern[str]) -> str | None:
+    """Return a single-line HTTP field, dropping any field that would need to be repaired."""
+    line = raw.replace("\r", "").replace("\n", "")
+    return line if line == raw and grammar.fullmatch(line) else None
+
+
 def handler(path: str):
     class Forward(http.server.BaseHTTPRequestHandler):
         protocol_version = "HTTP/1.1"
@@ -116,14 +126,12 @@ def handler(path: str):
             upstream.request(self.command, self.path, body=body, headers=headers)
             response = upstream.getresponse()
             self.send_response(response.status)
-            for name, value in response.getheaders():
-                if name.lower() in ("connection", "content-length", "transfer-encoding"):
+            for raw_name, raw_value in response.getheaders():
+                name = single_line_field(raw_name, FIELD_NAME)
+                value = single_line_field(raw_value, FIELD_VALUE)
+                if name is None or value is None or name.lower() in ("connection", "content-length", "transfer-encoding"):
                     continue
-                # Only HTTP field-name tokens and single-line Latin-1 field values can be forwarded.
-                if re.fullmatch(r"[!#$%&'*+.^_`|~0-9A-Za-z-]+", name) and re.fullmatch(
-                    r"[\t\x20-\x7e\x80-\xff]*", value
-                ):
-                    self.send_header(name, value)
+                self.send_header(name, value)
             self.send_header("transfer-encoding", "chunked")
             self.end_headers()
             while chunk := response.read1(65536):

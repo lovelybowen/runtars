@@ -71,6 +71,16 @@ class AccountTest(unittest.TestCase):
         self.assertEqual(proxy.account_id({"id_token": id_token, "account_id": "stored"}), "stored")
 
 
+class ResponseFieldTest(unittest.TestCase):
+    def test_preserves_valid_field_text_and_rejects_controls(self):
+        for field, text in ((proxy.FIELD_NAME, "Content-Type"), (proxy.FIELD_VALUE, "text/event-stream")):
+            self.assertEqual(proxy.single_line_field(text, field), text)
+            for control in ("\r", "\n", "\x00", "\x7f"):
+                self.assertIsNone(proxy.single_line_field(text + control, field))
+        self.assertEqual(proxy.single_line_field("", proxy.FIELD_VALUE), "")
+        self.assertIsNone(proxy.single_line_field("", proxy.FIELD_NAME))
+
+
 class ServeTest(unittest.TestCase):
     def test_refuses_paths_outside_the_codex_api(self):
         server = proxy.Server(("127.0.0.1", 0), proxy.handler("/nonexistent"))
