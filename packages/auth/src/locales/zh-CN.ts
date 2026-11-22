@@ -24,7 +24,8 @@ export const ZH_CN_MESSAGES: Record<string, string> = {
   Unsubscribe: "退订",
   "Open RunTars": "打开 RunTars",
   "We received your RunTars plugin": "我们已收到你的 RunTars 插件",
-  "Thanks for submitting a plugin to the RunTars marketplace.": "感谢你向 RunTars 插件市场提交插件。",
+  "Thanks for submitting a plugin to the RunTars marketplace.":
+    "感谢你向 RunTars 插件市场提交插件。",
   "We review every submission and will email you when it's done.":
     "我们会审核每一份提交，完成后会给你发邮件。",
   "If you did not submit a plugin, ignore this email.": "如果你没有提交插件，请忽略此邮件。",

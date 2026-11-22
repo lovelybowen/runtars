@@ -24,7 +24,8 @@ export const ZH_TW_MESSAGES: Record<string, string> = {
   Unsubscribe: "取消訂閱",
   "Open RunTars": "開啟 RunTars",
   "We received your RunTars plugin": "我們已收到你的 RunTars 外掛",
-  "Thanks for submitting a plugin to the RunTars marketplace.": "感謝你向 RunTars 外掛市集提交外掛。",
+  "Thanks for submitting a plugin to the RunTars marketplace.":
+    "感謝你向 RunTars 外掛市集提交外掛。",
   "We review every submission and will email you when it's done.":
     "我們會審查每一份提交，完成後會寄電子郵件通知你。",
   "If you did not submit a plugin, ignore this email.": "如果你沒有提交外掛，請忽略這封郵件。",

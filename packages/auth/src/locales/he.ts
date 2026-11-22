@@ -26,7 +26,8 @@ export const HE_MESSAGES: Record<string, string> = {
   Unsubscribe: "ביטול המינוי",
   "Open RunTars": "פתיחת RunTars",
   "We received your RunTars plugin": "קיבלנו את הפלאגין שלך ל-RunTars",
-  "Thanks for submitting a plugin to the RunTars marketplace.": "תודה ששלחת פלאגין לחנות של RunTars.",
+  "Thanks for submitting a plugin to the RunTars marketplace.":
+    "תודה ששלחת פלאגין לחנות של RunTars.",
   "We review every submission and will email you when it's done.":
     "אנחנו בודקים כל הגשה ונשלח לך אימייל כשנסיים.",
   "If you did not submit a plugin, ignore this email.":
