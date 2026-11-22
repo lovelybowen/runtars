@@ -12,6 +12,7 @@ import http.client
 import http.server
 import json
 import os
+import re
 import socketserver
 import ssl
 import sys
@@ -116,8 +117,11 @@ def handler(path: str):
             response = upstream.getresponse()
             self.send_response(response.status)
             for name, value in response.getheaders():
-                if name.lower() not in ("connection", "content-length", "transfer-encoding") and not any(
-                    c in name + value for c in "\r\n"
+                if name.lower() in ("connection", "content-length", "transfer-encoding"):
+                    continue
+                # Only HTTP field-name tokens and single-line Latin-1 field values can be forwarded.
+                if re.fullmatch(r"[!#$%&'*+.^_`|~0-9A-Za-z-]+", name) and re.fullmatch(
+                    r"[\t\x20-\x7e\x80-\xff]*", value
                 ):
                     self.send_header(name, value)
             self.send_header("transfer-encoding", "chunked")
