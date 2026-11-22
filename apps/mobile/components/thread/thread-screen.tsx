@@ -18,8 +18,9 @@ import {
 import { useFocusEffect, useIsFocused, useLocalSearchParams, useRouter } from "expo-router";
 import { useHeaderHeight } from "expo-router/react-navigation";
 import { useCallback, useContext, useMemo, useRef, useState } from "react";
-import { I18nManager, Platform, View } from "react-native";
-import { KeyboardAvoidingView } from "react-native-keyboard-controller";
+import { I18nManager, View } from "react-native";
+import { useReanimatedKeyboardAnimation } from "react-native-keyboard-controller";
+import Animated, { useAnimatedStyle } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { mobileTokens } from "../../lib/appearance/appearance";
 import type { MobileArtifactTarget } from "../../lib/artifacts/artifact-open";
@@ -45,7 +46,6 @@ import {
   threadHeaderClearance,
   threadHeaderFloats,
 } from "../../lib/thread/scroll/thread-edges";
-import { threadKeyboardAvoidance } from "../../lib/thread/scroll/thread-keyboard-offset";
 import { useThreadListScroll } from "../../lib/thread/scroll/thread-list-scroll";
 import {
   isOwnThreadMessage,
@@ -144,6 +144,13 @@ export function Thread({ sessionEpoch, userId }: { sessionEpoch: number; userId:
   const inGroup = Boolean(groupId);
   const call = useCallSession();
   const rootAvoidsKeyboard = useContext(CallKeyboardContext);
+  // Padding from the keyboard's own height needs no window measurements, so translucent system
+  // bars, a tablet column or a split screen cannot shift the composer. It also follows the
+  // keyboard growing a candidate bar while it is already open.
+  const { height: keyboardHeight } = useReanimatedKeyboardAnimation();
+  const keyboardPadding = useAnimatedStyle(() => ({
+    paddingBottom: rootAvoidsKeyboard ? 0 : Math.max(-keyboardHeight.value, 0),
+  }));
   const contentBottomInset = useContentBottomInset();
   const onCall = Boolean(botId) && call?.botId === botId;
   // The composer floats over the list, which scrolls underneath; this keeps the newest message
@@ -579,20 +586,14 @@ export function Thread({ sessionEpoch, userId }: { sessionEpoch: number; userId:
 
   return (
     <View style={{ flex: 1 }}>
-      <KeyboardAvoidingView
-        enabled={!rootAvoidsKeyboard}
-        // Padding always settles to zero. "height" stays shrunk when the keyboard hides without
-        // move frames, such as when a pushed screen closes with its own keyboard up.
-        behavior="padding"
-        {...threadKeyboardAvoidance({
-          os: Platform.OS,
-          floatingHeader: threadHeaderFloats(),
-          nativeHeaderHeight,
-        })}
-        style={{
-          flex: 1,
-          backgroundColor: tokens.background,
-        }}
+      <Animated.View
+        style={[
+          {
+            flex: 1,
+            backgroundColor: tokens.background,
+          },
+          keyboardPadding,
+        ]}
       >
         {/* The keyboard's padding shrinks this, so the floating composer rides above it. */}
         <View style={{ flex: 1 }}>
@@ -700,7 +701,7 @@ export function Thread({ sessionEpoch, userId }: { sessionEpoch: number; userId:
             }}
           />
         ) : null}
-      </KeyboardAvoidingView>
+      </Animated.View>
     </View>
   );
 }
