@@ -38,6 +38,10 @@ OIDC_ALLOW_SIGNUP_BYPASS=false
 ```
 
 Keep credentials in the deployment's secret configuration. Configure the email provider separately.
+From the Rakazo 0.14.0 sync, deployments that send lifecycle emails also supply their translated
+wording through `EMAIL_COPY_DIR` on the API and worker. Each email is enabled when its English
+template is valid. In the welcome template, `{discord}` links to the RunTars GitHub community.
+See [account email configuration](./self-host-accounts.md) for the file format.
 Self-hosters use their own origins, sender, and privacy policy; the local examples retain loopback
 defaults. `API_URL` depends on the selected deployment topology and is not a second public domain.
 

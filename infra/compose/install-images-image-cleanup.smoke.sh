@@ -15,25 +15,12 @@ setup_work() {
 set -euo pipefail
 log="${STUB_DOCKER_LOG:?}"
 printf 'docker %s\n' "$*" >> "$log"
-if [[ "${1:-}" == image ]]; then
-  case "${2:-}" in
-    ls)
-      cat <<'EOF'
-sha256:app-current ghcr.io/lovelybowen/runtars/app edge
-sha256:app-old ghcr.io/lovelybowen/runtars/app <none>
-sha256:computer-old ghcr.io/lovelybowen/runtars/computer <none>
-sha256:computer-in-use ghcr.io/lovelybowen/runtars/computer <none>
-sha256:app-pinned ghcr.io/lovelybowen/runtars/app sha-0123
-sha256:postgres-old postgres <none>
-sha256:mirror-old registry.example.com:5000/busybox <none>
-sha256:other-old example/other-project <none>
-sha256:other-current example/other-project latest
-sha256:prefix-old ghcr.io/lovelybowen/runtars/app-fork <none>
-EOF
-      ;;
-    rm)
-      [[ "${3:-}" != sha256:computer-in-use ]] || { echo "image is being used by a container" >&2; exit 1; }
-      ;;
+if [[ "${1:-}" == image && "${2:-}" == inspect ]]; then
+  case "${!#}" in
+    ghcr.io/lovelybowen/runtars/*) echo https://github.com/lovelybowen/runtars ;;
+    registry.example.com:5000/rakazo-fork/*) echo https://github.com/example/rakazo-fork ;;
+    missing:*) echo "No such image" >&2; exit 1 ;;
+    *) echo ;;
   esac
   exit 0
 fi
@@ -48,7 +35,8 @@ for a in "$@"; do
           ghcr.io/lovelybowen/runtars/app:edge \
           ghcr.io/lovelybowen/runtars/computer:edge \
           'postgres:16@sha256:e17e86066e5ef83e0952a9347f5c792b7ece00972e2aa787a6986f471b3dd3d5' \
-          registry.example.com:5000/busybox
+          registry.example.com:5000/rakazo-fork/app:edge \
+          missing:1
         exit 0
       fi
       cat >/dev/null || true
@@ -79,12 +67,13 @@ run_install() {
 
 setup_work "$tmp/ok"
 run_install "$tmp/ok" >/dev/null 2>&1 || fail "install failed"
-removed="$(sed -n 's/^docker image rm //p' "$tmp/ok/docker.log" | sort | tr '\n' ' ')"
-expected="sha256:app-old sha256:computer-in-use sha256:computer-old sha256:mirror-old sha256:postgres-old "
-[[ "$removed" == "$expected" ]] || fail "removed [$removed], expected [$expected]"
+pruned="$(sed -n 's/^docker image prune //p' "$tmp/ok/docker.log" | sort | tr '\n' ' ')"
+expected="--force --filter label=org.opencontainers.image.source=https://github.com/example/rakazo-fork --force --filter label=org.opencontainers.image.source=https://github.com/lovelybowen/runtars "
+[[ "$pruned" == "$expected" ]] || fail "pruned [$pruned], expected [$expected]"
+! grep -q '^docker image rm' "$tmp/ok/docker.log" || fail "images were removed one by one instead of pruned by origin"
 
 setup_work "$tmp/up-fails"
 (export STUB_UP_FAILS=1; run_install "$tmp/up-fails" >/dev/null 2>&1) && fail "install should fail when up fails"
-! grep -q '^docker image rm' "$tmp/up-fails/docker.log" || fail "images were removed after a failed up"
+! grep -qE '^docker image (rm|prune)' "$tmp/up-fails/docker.log" || fail "images were removed after a failed up"
 
 echo "ok"

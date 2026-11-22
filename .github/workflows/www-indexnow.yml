@@ -1,6 +1,6 @@
 name: www-indexnow
 
-# After a production deploy of rakazo.com, tells IndexNow which pages changed since the previous one.
+# After a production deploy of runtars.com, tells IndexNow which pages changed since the previous one.
 # Vercel reports www deploys as "Production" deployments; the API's own "production" deployments
 # come from a workflow, so the creator tells them apart (environment names compare case-insensitively).
 on:

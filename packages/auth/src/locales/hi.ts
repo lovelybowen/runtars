@@ -23,26 +23,8 @@ export const HI_MESSAGES: Record<string, string> = {
   "Your RunTars confirmation code": "आपका RunTars पुष्टि कोड",
   "Enter this code in RunTars to confirm it's you:":
     "यह पुष्टि करने के लिए कि यह आप ही हैं, RunTars में यह कोड डालें:",
-  "Welcome to RunTars": "RunTars में आपका स्वागत है",
-  "Welcome to RunTars. The people who get the most out of it do three things:":
-    "RunTars में आपका स्वागत है। जो लोग इसका सबसे ज़्यादा फ़ायदा उठाते हैं, वे तीन काम करते हैं:",
-  "Get the apps": "ऐप डाउनलोड करें",
-  "RunTars runs on {platforms}, so your bots can reach you wherever you are.":
-    "RunTars {platforms} पर चलता है, ताकि आपके बॉट आप तक कहीं भी पहुँच सकें।",
-  "Join the community": "कम्युनिटी से जुड़ें",
-  "See what others are building, get help fast, and tell us what to build next on {discord}.":
-    "देखें दूसरे क्या बना रहे हैं, जल्दी मदद पाएँ, और {discord} पर हमें बताएँ कि आगे क्या बनाएँ।",
-  "Star us on GitHub": "GitHub पर हमें स्टार दें",
-  "RunTars is open source. {star} helps more people find it.":
-    "RunTars ओपन सोर्स है। {star} से ज़्यादा लोग इसे ढूँढ पाते हैं।",
-  "A star on GitHub": "GitHub पर एक स्टार",
-  "Questions? Just reply. I read every one.": "कोई सवाल? बस जवाब दें। मैं हर ईमेल पढ़ता हूँ।",
   Unsubscribe: "सदस्यता छोड़ें",
-  "Invite a friend": "किसी दोस्त को आमंत्रित करें",
-  "Invite a friend to RunTars: they get {weeks} weeks free, and you earn a free month when they start a qualifying subscription with a new card.":
-    "किसी दोस्त को RunTars पर बुलाएँ: उन्हें {weeks} हफ़्ते मुफ़्त मिलते हैं, और जब वे नए कार्ड से योग्य सदस्यता शुरू करते हैं तो आपको एक महीना मुफ़्त मिलता है।",
   "Open RunTars": "RunTars खोलें",
-  "and choose Invite friends for your link.": "और अपना लिंक पाने के लिए दोस्तों को आमंत्रित करें चुनें।",
   "We received your RunTars plugin": "हमें आपका RunTars प्लगइन मिल गया है",
   "Thanks for submitting a plugin to the RunTars marketplace.":
     "RunTars मार्केटप्लेस में प्लगइन भेजने के लिए धन्यवाद।",
@@ -83,10 +65,4 @@ export const HI_MESSAGES: Record<string, string> = {
     "{inviter} ने आपको Rakazo पर {space} से जुड़ने के लिए आमंत्रित किया है।",
   "Join {space}": "{space} से जुड़ें",
   "This invitation expires in 7 days.": "यह आमंत्रण 7 दिनों में समाप्त हो जाएगा।",
-  "Connect a model to start using Rakazo": "Rakazo का उपयोग शुरू करने के लिए एक मॉडल कनेक्ट करें",
-  "Your Rakazo plan has started, but your bots can't reply until a model is connected.":
-    "आपका Rakazo प्लान शुरू हो गया है, लेकिन जब तक कोई मॉडल कनेक्ट नहीं होता, आपके बॉट जवाब नहीं दे सकते।",
-  "Sign in with your {subscriptions} subscription, or paste an API key.":
-    "अपने {subscriptions} सब्सक्रिप्शन से साइन इन करें, या API कुंजी पेस्ट करें।",
-  "Connect a model": "मॉडल कनेक्ट करें",
 };

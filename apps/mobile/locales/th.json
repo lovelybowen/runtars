@@ -1,0 +1,10 @@
+{
+  "ios": {
+    "NSCameraUsageDescription": "RunTars ใช้กล้องเพื่อให้คุณแนบรูปภาพกับข้อความถึงบอทได้",
+    "NSPhotoLibraryUsageDescription": "RunTars ใช้คลังรูปภาพของคุณเพื่อให้แนบรูปภาพกับข้อความถึงบอทได้",
+    "NSLocalNetworkUsageDescription": "RunTars เชื่อมต่อกับเซิร์ฟเวอร์ RunTars ที่ติดตั้งเองบนเครือข่ายภายในของคุณ",
+    "NSMicrophoneUsageDescription": "RunTars ใช้ไมโครโฟนระหว่างการแชทด้วยเสียงกับบอท",
+    "NSSpeechRecognitionUsageDescription": "RunTars แปลงเสียงพูดของคุณเป็นข้อความระหว่างการแชทด้วยเสียง",
+    "NSFaceIDUsageDescription": "อนุญาตให้ RunTars ใช้ Face ID"
+  }
+}

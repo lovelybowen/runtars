@@ -11,6 +11,7 @@ import {
   SettingsInputRow,
   SettingsRow,
 } from "../components/settings/settings-group";
+import { LoadFailure } from "../components/ui/load-failure";
 import { useSpaceChanges } from "../lib/api/roster-signals";
 import { errorText } from "../lib/api/user-error";
 import { mobileTokens } from "../lib/appearance/appearance";
@@ -41,7 +42,7 @@ export default function MeetingsScreen() {
   );
 
   const join = useSave({
-    save: (url: string, send) => send("meetings/join", { botId, url }),
+    save: (url: string, send) => send("meetings/join", { botId, url, shareTranscript: true }),
     stale: [read.queryKey],
     onSaved: () => setUrl(""),
   });
@@ -51,6 +52,7 @@ export default function MeetingsScreen() {
   });
   const busy = join.pending || leave.pending;
   const error = join.error ?? leave.error ?? list.error;
+  const errorMessage = error ? errorText(error, t`Could not update meetings`) : "";
   useScreenHeader({ title: t`Meetings` });
 
   return (
@@ -65,11 +67,10 @@ export default function MeetingsScreen() {
         <>
           <SettingsGroup
             label={t`Meeting link`}
-            footer={t`Only send the bot if you have permission to record and transcribe the meeting.`}
+            footer={t`Get permission to record and share the transcript with this Space.`}
           >
             <SettingsInputRow
               accessibilityLabel={t`Meeting link`}
-              placeholder={t`Zoom or Google Meet link`}
               keyboardType="url"
               autoCorrect={false}
               autoCapitalize="none"
@@ -93,9 +94,14 @@ export default function MeetingsScreen() {
       ) : list.data || !botId ? (
         <Text style={styles.note}>{t`Meeting joins are unavailable.`}</Text>
       ) : null}
-      {error ? (
+      {list.error && !list.data ? (
+        <LoadFailure
+          message={errorMessage}
+          onRetry={() => void list.refetch({ cancelRefetch: false })}
+        />
+      ) : errorMessage ? (
         <Text accessibilityRole="alert" style={styles.error}>
-          {errorText(error, t`Could not update meetings`)}
+          {errorMessage}
         </Text>
       ) : null}
       {!list.error && list.data?.meetings.length ? (
