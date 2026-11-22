@@ -23,27 +23,8 @@ export const PL_MESSAGES: Record<string, string> = {
   "Your RunTars confirmation code": "Twój kod potwierdzający RunTars",
   "Enter this code in RunTars to confirm it's you:":
     "Wpisz ten kod w RunTars, aby potwierdzić tożsamość:",
-  "Welcome to RunTars": "Witaj w RunTars",
-  "Welcome to RunTars. The people who get the most out of it do three things:":
-    "Witamy w RunTars. Osoby, które korzystają z niego najlepiej, robią trzy rzeczy:",
-  "Get the apps": "Pobierz aplikacje",
-  "RunTars runs on {platforms}, so your bots can reach you wherever you are.":
-    "RunTars działa na {platforms}, więc Twoje boty mogą skontaktować się z Tobą wszędzie.",
-  "Join the community": "Dołącz do społeczności",
-  "See what others are building, get help fast, and tell us what to build next on {discord}.":
-    "Zobacz, co budują inni, szybko uzyskaj pomoc i powiedz nam na {discord}, co zbudować dalej.",
-  "Star us on GitHub": "Daj nam gwiazdkę na GitHubie",
-  "RunTars is open source. {star} helps more people find it.":
-    "RunTars jest open source. {star} pomaga innym go znaleźć.",
-  "A star on GitHub": "Gwiazdka na GitHubie",
-  "Questions? Just reply. I read every one.":
-    "Masz pytania? Po prostu odpowiedz. Czytam każdą wiadomość.",
   Unsubscribe: "Zrezygnuj z otrzymywania wiadomości",
-  "Invite a friend": "Zaproś znajomego",
-  "Invite a friend to RunTars: they get {weeks} weeks free, and you earn a free month when they start a qualifying subscription with a new card.":
-    "Zaproś znajomego do RunTars: otrzyma {weeks} tyg. za darmo, a Ty zyskasz bezpłatny miesiąc, gdy rozpocznie subskrypcję spełniającą warunki z użyciem nowej karty.",
   "Open RunTars": "Otwórz RunTars",
-  "and choose Invite friends for your link.": "i wybierz Zaproś znajomych, aby otrzymać swój link.",
   "We received your RunTars plugin": "Otrzymaliśmy Twoją wtyczkę do RunTars",
   "Thanks for submitting a plugin to the RunTars marketplace.":
     "Dziękujemy za zgłoszenie wtyczki do katalogu RunTars.",
@@ -85,10 +66,4 @@ export const PL_MESSAGES: Record<string, string> = {
     "{inviter} zaprasza Cię do dołączenia do {space} w Rakazo.",
   "Join {space}": "Dołącz do {space}",
   "This invitation expires in 7 days.": "To zaproszenie wygaśnie za 7 dni.",
-  "Connect a model to start using Rakazo": "Połącz model, aby zacząć korzystać z Rakazo",
-  "Your Rakazo plan has started, but your bots can't reply until a model is connected.":
-    "Twój plan Rakazo już działa, ale Twoje boty nie mogą odpowiadać, dopóki nie połączysz modelu.",
-  "Sign in with your {subscriptions} subscription, or paste an API key.":
-    "Zaloguj się, używając subskrypcji {subscriptions}, albo wklej klucz API.",
-  "Connect a model": "Połącz model",
 };

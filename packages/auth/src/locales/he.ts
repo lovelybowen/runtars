@@ -23,26 +23,8 @@ export const HE_MESSAGES: Record<string, string> = {
   "Your RunTars confirmation code": "קוד האישור שלך ל-RunTars",
   "Enter this code in RunTars to confirm it's you:":
     "יש להזין את הקוד הזה ב-RunTars כדי לאשר שזה באמת את/ה:",
-  "Welcome to RunTars": "ברוכים הבאים ל-RunTars",
-  "Welcome to RunTars. The people who get the most out of it do three things:":
-    "ברוכים הבאים ל-RunTars. מי שמפיקים ממנו הכי הרבה עושים שלושה דברים:",
-  "Get the apps": "להוריד את האפליקציות",
-  "RunTars runs on {platforms}, so your bots can reach you wherever you are.":
-    "RunTars זמין ל-{platforms}, כדי שהבוטים שלך יוכלו להשיג אותך בכל מקום.",
-  "Join the community": "להצטרף לקהילה",
-  "See what others are building, get help fast, and tell us what to build next on {discord}.":
-    "לראות מה אחרים בונים, לקבל עזרה מהר ולספר לנו ב-{discord} מה לבנות בהמשך.",
-  "Star us on GitHub": "לתת לנו כוכב ב-GitHub",
-  "RunTars is open source. {star} helps more people find it.":
-    "RunTars הוא קוד פתוח. {star} עוזר ליותר אנשים למצוא אותו.",
-  "A star on GitHub": "כוכב ב-GitHub",
-  "Questions? Just reply. I read every one.": "שאלות? פשוט להשיב לאימייל. אני קורא כל תשובה.",
   Unsubscribe: "ביטול המינוי",
-  "Invite a friend": "הזמנת חבר",
-  "Invite a friend to RunTars: they get {weeks} weeks free, and you earn a free month when they start a qualifying subscription with a new card.":
-    "אפשר להזמין חבר ל-RunTars: הוא מקבל {weeks} שבועות בחינם, ואתם מקבלים חודש חינם כשהוא מתחיל מינוי מתאים עם כרטיס חדש.",
   "Open RunTars": "פתיחת RunTars",
-  "and choose Invite friends for your link.": "ובחירה ב״הזמנת חברים״ כדי לקבל את הקישור שלך.",
   "We received your RunTars plugin": "קיבלנו את הפלאגין שלך ל-RunTars",
   "Thanks for submitting a plugin to the RunTars marketplace.":
     "תודה ששלחת פלאגין לחנות של RunTars.",
@@ -83,10 +65,4 @@ export const HE_MESSAGES: Record<string, string> = {
     "{inviter} הזמין/ה אותך להצטרף ל-{space} ב-Rakazo.",
   "Join {space}": "הצטרפות ל-{space}",
   "This invitation expires in 7 days.": "ההזמנה תפוג בעוד 7 ימים.",
-  "Connect a model to start using Rakazo": "חיבור מודל כדי להתחיל להשתמש ב-Rakazo",
-  "Your Rakazo plan has started, but your bots can't reply until a model is connected.":
-    "התוכנית שלך ב-Rakazo התחילה, אבל הבוטים שלך לא יוכלו לענות עד שיחובר מודל.",
-  "Sign in with your {subscriptions} subscription, or paste an API key.":
-    "אפשר להתחבר עם המינוי שלך ל-{subscriptions} או להדביק מפתח API.",
-  "Connect a model": "חיבור מודל",
 };
