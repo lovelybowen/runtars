@@ -8,7 +8,7 @@ import {
   githubStarsLabel,
 } from "../github";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { APP_URL, IOS_APP_URL, SELF_HOST_GUIDE_PATH } from "../site";
+import { APP_URL, SELF_HOST_GUIDE_PATH } from "../site";
 import { downloadStructuredData } from "../structured-data";
 
 const starsLabel = await githubStarsLabel();
@@ -22,13 +22,6 @@ const platforms = [
     attr: platform,
     operatingSystem: DESKTOP_NAMES[platform],
   })),
-  {
-    name: "iPhone, iPhone Duo, and iPad",
-    action: "App Store",
-    href: IOS_APP_URL,
-    attr: "ios",
-    operatingSystem: "iOS, iPadOS",
-  },
   {
     name: "Android",
     action: "Download APK",
@@ -45,7 +38,7 @@ const structuredData = downloadStructuredData(
 );
 ---
 
-<BaseLayout {structuredData} title="Download · RunTars" description="Get Rakazo for macOS, Windows, Linux, iPhone, iPhone Duo, iPad, Android, and the web.">
+<BaseLayout {structuredData} title="Download · RunTars" description="Get Rakazo for Windows, Linux, Android, and the web.">
   <div class="container">
     <Header starsLabel={starsLabel} />
     <main id="main" class="privacy-copy">

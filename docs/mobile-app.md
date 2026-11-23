@@ -4,8 +4,7 @@ Chat with your bots, answer their questions, watch their computers and take call
 
 ## Install
 
-- iPhone, iPhone Duo and iPad: [App Store](https://apps.apple.com/app/rakazo/id6801531099).
-- Android: [Android APK](https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk).
+On Android, download the [Android APK](https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk).
 
 You can also choose **Get the mobile app** from the account menu in the web or desktop app.
 

@@ -261,7 +261,7 @@ export function homeStructuredData(input: HomeStructuredDataInput) {
     },
     softwareApplicationNode({
       description: input.siteDescription,
-      operatingSystem: "Web, macOS, Windows, Linux, iOS, Android",
+      operatingSystem: "Web, Windows, Linux, Android",
       inLanguage: input.availableLanguages,
     }),
     ...(input.faq && input.faq.length > 0 ? [faqPageNode(input.faq, input.pageUrl)] : []),
