@@ -17,6 +17,15 @@ fi
 APP_DIR="${RAKAZO_DEPLOY_DIR:-/srv/rakazo}"
 [[ "${APP_DIR}" == /* ]] || { echo "RAKAZO_DEPLOY_DIR must be an absolute path" >&2; exit 1; }
 COMPOSE_FILE="infra/compose/docker-compose.prod.yml"
+ENV_FILE="${RAKAZO_DEPLOY_ENV_FILE:-.env}"
+compose_files=(-f "${COMPOSE_FILE}")
+# One additional Compose file per line, in merge order. Paths may contain spaces.
+while IFS= read -r overlay; do
+  [[ -z "${overlay}" ]] || compose_files+=(-f "${overlay}")
+done <<<"${RAKAZO_DEPLOY_COMPOSE_OVERLAYS:-}"
+# On a shared daemon the operator manages infrastructure services and Docker cleanup separately.
+app_only="${RAKAZO_DEPLOY_APP_ONLY:-false}"
+[[ "${app_only}" == true || "${app_only}" == false ]] || { echo "Invalid RAKAZO_DEPLOY_APP_ONLY" >&2; exit 1; }
 # CI allows 140 minutes: 5m pull + 15m fallback build + 5m start + ~1m of health retries + 8m
 # rollback, which only pulls or builds when the previous image is gone, + up to 50m (the worker's
 # stop_grace_period) twice: for a worker an earlier deploy left draining, then for this one's. The
@@ -45,7 +54,7 @@ if [[ -z "${RAKAZO_DEPLOY_IMAGE+set}" ]]; then
   fi
 fi
 if [[ -z "${RAKAZO_HEALTH_URL:-}" ]]; then
-  host="$(sed -n 's/^RAKAZO_HOST=//p' .env | tail -n 1)"
+  host="$(sed -n 's/^RAKAZO_HOST=//p' "${ENV_FILE}" | tail -n 1)"
   [[ -n "${host}" ]] || { echo "Set RAKAZO_HOST in .env or RAKAZO_HEALTH_URL" >&2; exit 1; }
   RAKAZO_HEALTH_URL="https://${host}/health"
 fi
@@ -53,7 +62,7 @@ fi
 # How many API and worker containers to run, the same .env settings Compose reads.
 replicas() {
   local count
-  count="$(sed -n "s/^$1=//p" .env | tail -n 1)"
+  count="$(sed -n "s/^$1=//p" "${ENV_FILE}" | tail -n 1)"
   echo "${count:-1}"
 }
 API_REPLICAS="$(replicas RAKAZO_API_REPLICAS)"
@@ -65,7 +74,7 @@ done
 compose() {
   local limit="$1"
   shift
-  timeout --kill-after=30s "${limit}" sudo docker compose --env-file .env -f "${COMPOSE_FILE}" "$@"
+  timeout --kill-after=30s "${limit}" sudo docker compose --env-file "${ENV_FILE}" "${compose_files[@]}" "$@"
 }
 
 healthy() {
@@ -97,7 +106,11 @@ use_revision_image() {
     fi
     echo "::warning::Could not pull ${published}; building ${revision} on this host instead, with the default email copy." >&2
   fi
-  compose "${limit}" build --build-arg "GIT_SHA=${revision}"
+  if [[ "${app_only}" == true ]]; then
+    compose "${limit}" build --build-arg "GIT_SHA=${revision}" api
+  else
+    compose "${limit}" build --build-arg "GIT_SHA=${revision}"
+  fi
 }
 
 # Waits for a container's own health check, or for it to run when its revision has none (a
@@ -242,7 +255,12 @@ roll_out() {
   # grep -q would exit at the first match and SIGPIPE compose, which pipefail reads as no match.
   services="$(compose 1m config --services)"
   if grep -qx migrate <<<"${services}"; then
-    compose "${UP_TIMEOUT}" run --rm -T -e "RAKAZO_DEPLOYED_MIGRATIONS=${deployed_migrations}" migrate
+    local migration_args=()
+    if [[ "${app_only}" == true ]]; then migration_args+=(--no-deps); fi
+    compose "${UP_TIMEOUT}" run --rm "${migration_args[@]}" -T -e "RAKAZO_DEPLOYED_MIGRATIONS=${deployed_migrations}" migrate
+  elif [[ "${app_only}" == true ]]; then
+    echo "App-only deployment requires the migrate service." >&2
+    return 1
   else
     compose "${UP_TIMEOUT}" up -d --wait postgres
   fi
@@ -268,6 +286,7 @@ roll_out() {
     fi
   done
   replace_worker
+  if [[ "${app_only}" == true ]]; then return 0; fi
   # A second migration run would consume a deferred drop before the old worker has drained.
   others="$(grep -Ev '^(api|worker|migrate)$' <<<"${services}" || true)"
   # Without services, Compose would reconcile all of them, the draining ones too.
@@ -278,7 +297,7 @@ roll_out() {
 # Caddy mounts its config as a single file, which keeps the old inode after a git checkout, so a
 # changed Caddyfile only applies when the container is recreated.
 apply_caddyfile() {
-  if ! git diff --quiet "$1" "$2" -- infra/compose/Caddyfile.prod; then
+  if [[ "${app_only}" == false ]] && ! git diff --quiet "$1" "$2" -- infra/compose/Caddyfile.prod; then
     compose "${UP_TIMEOUT}" up -d --no-deps --force-recreate caddy
   fi
 }
@@ -342,9 +361,7 @@ rollback() {
   app_image="$(compose_app_image)"
   # The image the previous containers ran is still here, so restoring it is a retag. Without a
   # running API to read it from, pull or build the previous revision instead.
-  if [[ -n "${previous_app_image}" ]]; then
-    sudo docker tag "${previous_app_image}" "${app_image}"
-  else
+  if [[ -z "${previous_app_image}" ]] || ! sudo docker tag "${previous_app_image}" "${app_image}"; then
     use_revision_image "${previous_revision}" "${ROLLBACK_TIMEOUT}"
   fi
   roll_out
@@ -385,8 +402,8 @@ prune_docker() {
 git reset --hard "${target_revision}"
 # The app's own database login (subject to row-level security) needs a password
 # that older .env files do not have. Appending one leaves existing lines alone.
-if ! grep -Eq '^POSTGRES_APP_PASSWORD=[^[:space:]]' .env; then
-  printf '\nPOSTGRES_APP_PASSWORD=%s\n' "$(openssl rand -hex 16)" >>.env
+if ! grep -Eq '^POSTGRES_APP_PASSWORD=[^[:space:]]' "${ENV_FILE}"; then
+  printf '\nPOSTGRES_APP_PASSWORD=%s\n' "$(openssl rand -hex 16)" >>"${ENV_FILE}"
   echo "Added POSTGRES_APP_PASSWORD to .env."
 fi
 compose 1m config --quiet
@@ -414,7 +431,7 @@ for _ in {1..30}; do
   if healthy; then
     printf '%s\n' "${target_revision}" >"${APP_DIR}/.last-deployed-revision"
     trap - ERR
-    prune_docker
+    if [[ "${app_only}" == false ]]; then prune_docker; fi
     # Production already runs the new release; this only holds the next deploy until the
     # replaced worker has finished its jobs.
     finish_draining || echo "Could not remove the replaced worker; the next deploy will." >&2
