@@ -68,7 +68,7 @@ export default {
       body: message.raw,
     });
     if (response.status === 413) message.setReject("Message too large");
-    else if (!response.ok) throw new Error(`Rakazo answered ${response.status}`);
+    else if (!response.ok) throw new Error(`RunTars answered ${response.status}`);
   },
 };
 ```

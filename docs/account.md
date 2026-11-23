@@ -46,14 +46,16 @@ organization you're in; open it to switch to another or choose **New organizatio
 In **Settings → General**:
 
 - **Export data** downloads a zip of your account: every space's chats, files and bot workspaces.
-- **Import data** loads an export, for example to move between rakazo.com and your own server.
+- **Import data** loads an export, for example to move between runtars.com and your own server.
 - **Import an agent** brings in an OpenClaw, Hermes or ChatGPT assistant. See
   [Import an agent](./import-an-agent.md).
 - **Delete account** emails you a code, then permanently deletes your account and data.
 
-## Billing on rakazo.com
+<a id="billing-on-rakazocom"></a>
 
-rakazo.com is free to try; the sidebar shows when your free period ends. To keep going, choose a
+## Billing on runtars.com
+
+runtars.com is free to try; the sidebar shows when your free period ends. To keep going, choose a
 plan:
 
 - **Use my subscription or API key**: connect a supported [model subscription](./model-subscriptions.md)

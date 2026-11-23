@@ -5,13 +5,13 @@ everything on your own computer.
 
 ## Install
 
-Download it from [rakazo.com](https://rakazo.com). The Linux AppImage needs FUSE 2.
+Download it from the [RunTars download page](https://runtars.com/download/). The Linux AppImage needs FUSE 2.
 
 ## Choose a server
 
 The first time it opens, the app asks which server to use:
 
-- **Rakazo Cloud**: sign in to your rakazo.com account.
+- **Cloud**: sign in with your RunTars account.
 - **This computer**: run your own RunTars locally in Docker. If Docker isn't installed, the app offers
   the Docker Desktop download (Docker Engine on Linux) and carries on by itself once Docker is
   installed and open; if Docker is installed but stopped, the app opens it. Everything, including
@@ -58,7 +58,7 @@ The app checks for updates and downloads them in the background. When one is rea
 ## Dictation
 
 On a Mac, dictation uses the Mac's own speech recognition, so it works without a
-[voice provider](./voice-and-calls.md). If you declined the permission prompt, allow Rakazo under
+[voice provider](./voice-and-calls.md). If you declined the permission prompt, allow the desktop app under
 **Speech Recognition** and **Microphone** in System Settings.
 
 ## Shortcuts

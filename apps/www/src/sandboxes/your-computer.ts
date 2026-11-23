@@ -133,7 +133,7 @@ export const yourComputer: Sandbox = {
       ],
       steps: [
         "To use Let bots use this computer, sign in to RunTars Cloud or another server in the desktop app, open Settings → General, and turn on Let bots use this computer under Computers. Confirm when the app asks Allow bots to use this computer?",
-        "On a Mac, allow Rakazo in System Settings → Privacy & Security → Accessibility and Screen Recording if you want bots to use apps on screen, then reopen the app.",
+        "On a Mac, allow the desktop app in System Settings → Privacy & Security → Accessibility and Screen Recording if you want bots to use apps on screen, then reopen the app.",
         "Ask a bot to do something on your computer, and choose Allow in this space when it asks.",
         "To use Use this Mac instead, choose This computer when the app asks which server to use. It runs RunTars locally in Docker. When it asks Where should bots run?, choose Use this Mac.",
         "To stop, turn off Let bots use this computer in Settings, or choose Revoke Local Computer Access in the app menu for Use this Mac.",
@@ -152,7 +152,7 @@ export const yourComputer: Sandbox = {
     {
       question: "Can an AI agent control my Mac?",
       answer:
-        "Yes, with the Rakazo desktop app and Let bots use this computer turned on. After you grant Accessibility and Screen Recording permission, a bot can see and use apps on your screen, and it asks before it first uses each app in a space.",
+        "Yes, with the RunTars desktop app and Let bots use this computer turned on. After you grant Accessibility and Screen Recording permission, a bot can see and use apps on your screen, and it asks before it first uses each app in a space.",
     },
     {
       question: "Is it safe to let an AI agent use my computer?",
