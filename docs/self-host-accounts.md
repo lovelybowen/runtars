@@ -112,7 +112,7 @@ loopback host. In `NODE_ENV=development`, captured messages are available from
 `http://127.0.0.1:3100/api/dev/emails` with cache disabled; the API logs only delivery
 metadata, never reset tokens. The inbox route is not registered in test, staging, or production.
 
-Rakazo can also send product emails, each with an unsubscribe link: a welcome email after a new
+RunTars can also send product emails, each with an unsubscribe link: a welcome email after a new
 account first signs in, a referral email when billing referrals are on, and, with billing
 configured, reminders after a plan starts (connect a model, import an agent). This repository
 holds no wording for them, so each one goes out only when you supply its copy, and only with one

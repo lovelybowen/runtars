@@ -218,8 +218,6 @@ export function downloadStructuredData(
 ) {
   return graph([
     softwareApplicationNode({
-      // These links still download upstream releases, not renamed native builds.
-      name: "Rakazo",
       operatingSystem: platforms.map((platform) => platform.operatingSystem).join(", "),
       downloadUrl: platforms.map((platform) => new URL(platform.href, SITE_URL).toString()),
     }),

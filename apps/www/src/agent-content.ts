@@ -124,7 +124,7 @@ RunTars is based on Rakazo. Rakazo targets the web, macOS, Windows, Linux, iOS, 
 - [Support](https://runtars.com/support/)
 `;
 
-export const DOWNLOAD_MARKDOWN = `# Download Rakazo
+export const DOWNLOAD_MARKDOWN = `# Download RunTars
 
 - [Windows](https://runtars.com/api/download?platform=windows)
 - [Linux](https://runtars.com/api/download?platform=linux)
@@ -198,9 +198,9 @@ Write RunTars with a capital R and T. The wordmark uses the same capitalization.
 For RunTars press enquiries, email support@runtars.com.
 `;
 
-export const PLUGIN_SUBMIT_MARKDOWN = `# Submit a plugin to Rakazo
+export const PLUGIN_SUBMIT_MARKDOWN = `# Submit a plugin to RunTars
 
-List a plugin in the Rakazo marketplace. We review every submission and email the result.
+List a plugin in the shared plugin marketplace. The catalog maintainers review each submission and email the result.
 
 The plugin must be a public GitHub repository with a plugin manifest (\`plugin.json\` following [Agent Plugins](https://agent-plugins.org), \`.cursor-plugin/plugin.json\`, or \`.grok-plugin/plugin.json\`) and skills, a hosted MCP server, or both.
 
@@ -212,19 +212,19 @@ The plugin must be a public GitHub repository with a plugin manifest (\`plugin.j
 
 | Field | Required | Notes |
 | --- | --- | --- |
-| \`email\` | Yes | Where we send the review result |
+| \`email\` | Yes | Where the catalog maintainers send the review result |
 | \`name\` | Yes | Plugin name, up to 80 characters |
 | \`website\` | No | https URL |
 | \`logo\` | Yes | https URL of a square SVG or PNG |
 | \`source\` | Yes | Public GitHub repository URL; add \`/tree/main/<folder>\` for a plugin in a folder |
 | \`description\` | Yes | What the plugin does, up to 2000 characters |
-| \`testing\` | Yes | How to try it in Rakazo, up to 4000 characters. Never include real credentials |
-| \`tested\` | Yes | \`true\`: you tested the plugin in Rakazo |
+| \`testing\` | Yes | How to try it in RunTars, up to 4000 characters. Never include real credentials |
+| \`tested\` | Yes | \`true\`: you tested the plugin in RunTars |
 
 \`\`\`sh
 curl -X POST ${PLUGIN_SUBMISSIONS_URL} \\
   -H 'content-type: application/json' \\
-  -d '{"email":"you@example.com","name":"Acme","logo":"https://example.com/logo.svg","source":"https://github.com/acme/rakazo-plugin","description":"Search Acme tickets.","testing":"Install it and ask a bot to find ticket 42.","tested":true}'
+  -d '{"email":"you@example.com","name":"Acme","logo":"https://example.com/logo.svg","source":"https://github.com/acme/example-plugin","description":"Search Acme tickets.","testing":"Install it and ask a bot to find ticket 42.","tested":true}'
 \`\`\`
 
 A new submission returns \`201\` with \`{"id","status":"pending"}\`. Resubmitting the same source URL with the same email while it waits updates it and returns \`200\`. Invalid input returns \`400\` with an \`issues\` list naming each field.

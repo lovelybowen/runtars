@@ -124,7 +124,7 @@ callbacks.
 
 ## Chat history retention
 
-Rakazo keeps chat history until someone clears the chat or deletes the bot. To delete it
+RunTars keeps chat history until someone clears the chat or deletes the bot. To delete it
 automatically, set `CHAT_HISTORY_RETENTION_DAYS` on the API and worker to a whole number of days:
 
 ```env

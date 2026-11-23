@@ -59,7 +59,7 @@ RunTars Cloud at https://app.runtars.com is in beta. Self-hosting is also availa
 - [Sandboxes for AI agents](https://runtars.com/sandboxes/): where bot computers can run, compared, with a page per provider. Each page has a Markdown version.
 - [Integration platforms for AI agents](https://runtars.com/integration-platforms/): Composio, Pipedream, MCP servers and API connectors compared, with a page for each. Each page has a Markdown version.
 - [Voice providers for AI agents](https://runtars.com/voice-providers/): ElevenLabs, OpenAI, Cartesia, Fish Audio, xAI, self-hosted speech servers and macOS voices compared, most with a page of their own. Each page has a Markdown version.
-- [Submit a plugin](https://rakazo.com/plugins/submit/): list a plugin in the Rakazo marketplace. [Markdown with the API](https://runtars.com/plugins/submit.md).
+- [Submit a plugin](https://runtars.com/plugins/submit/): list a plugin in the shared plugin marketplace. [Markdown with the API](https://runtars.com/plugins/submit.md).
 - [Blog](https://runtars.com/blog/)
 - [Releases](https://github.com/lovelybowen/runtars/releases)
 - [Support](https://runtars.com/support/)
