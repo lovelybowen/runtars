@@ -1,13 +1,11 @@
 # RunTars
 
 [![GitHub stars](https://img.shields.io/github/stars/lovelybowen/runtars?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/lovelybowen/runtars/stargazers)
-[![Discord](https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?labelColor=black&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RWwKa2Sn7h)
-[![Download on the App Store](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
 [![Android APK](https://img.shields.io/badge/Android-APK-black?style=for-the-badge&logo=android&logoColor=white)](https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk)
 
-![RunTars — AI teammates you actually own](./docs/readme-hero.png)
+![หน้าแรกของ RunTars และตัวอย่างบอตจัดการกล่องจดหมาย](./docs/readme-hero.png)
 
-RunTars เป็น AI agent โอเพนซอร์สสำหรับ bot ที่ทำงานต่อเนื่องและผู้ช่วยที่ self-host บนเครื่องคุณ มีบนเว็บ เดสก์ท็อป Electron และมือถือ นำโมเดลและ computer provider มาเองหรือรันทั้งสแต็ก local ได้
+RunTars เป็น AI agent โอเพนซอร์สสำหรับ bot ที่ทำงานต่อเนื่องและผู้ช่วยที่ self-host บนเครื่องคุณ มีบนเว็บ เดสก์ท็อป Electron และ Android นำโมเดลและ computer provider มาเองหรือรันทั้งสแต็ก local ได้
 
 รายละเอียดเพิ่มที่ [runtars.com](https://runtars.com)
 
@@ -62,5 +60,3 @@ bash install-images.sh
 - [การอนุมัติ](./docs/th-TH/approvals.md)
 - [คอมพิวเตอร์ของ bot](./docs/th-TH/computer.md)
 - [ความจำ](./docs/th-TH/memory.md)
-
-คำถามและไอเดียพูดคุยได้ใน [ชุมชน Discord ของ Rakazo](https://discord.gg/RWwKa2Sn7h)
