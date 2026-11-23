@@ -3,17 +3,15 @@
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md)
 
 [![GitHub stars](https://img.shields.io/github/stars/lovelybowen/runtars?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/lovelybowen/runtars/stargazers)
-[![Discord コミュニティに参加](https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?labelColor=black&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RWwKa2Sn7h)
-[![App Store で iPhone 版をダウンロード](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
 [![Android APK](https://img.shields.io/badge/Android-APK-black?style=for-the-badge&logo=android&logoColor=white)](https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk)
 
-![RunTars：本当に自分のものにできる AI チームメイト](./docs/readme-hero.png)
+![RunTars のホームページと受信トレイ管理ボットのデモ](./docs/readme-hero.png)
 
 RunTars は、Grok Bot のオープンソースかつセルフホスト可能な代替ツールです。
 
 メモリ、ルーティン、アプリ、コンピューターを持つ常駐型の AI チームメイト。自分のマシンで、自分のモデルを使って動かせます。
 
-[Web](https://app.runtars.com)、[デスクトップ](https://runtars.com/download/)、[iPhone](https://apps.apple.com/app/rakazo/id6801531099)、
+[Web](https://app.runtars.com)、[デスクトップ](https://runtars.com/download/)、
 [Android](https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk) で利用できます。
 
 Meta Muse、OpenAI Dots、Instinct、OpenClaw、Hermes Agent、Claude Duet の代替ツールでもあります。
@@ -44,7 +42,7 @@ Meta Muse、OpenAI Dots、Instinct、OpenClaw、Hermes Agent、Claude Duet の�
 
 ブラウザー、ターミナル、ファイル、フルデスクトップ。作業を見守り、サインインが必要なときは操作を代わり、また任せられます。
 
-<img src="./docs/screenshots/readme/computer.png" alt="ブラウザーを開いたボットのチームコンピューター" width="100%">
+<img src="./docs/screenshots/web-computer.png" alt="ボットとのチャットとコンピューターパネルに表示されたブラウザー" width="100%">
 
 </td>
 <td width="50%" valign="top">
@@ -64,7 +62,7 @@ Meta Muse、OpenAI Dots、Instinct、OpenClaw、Hermes Agent、Claude Duet の�
 
 スケジュール、メール、Webhook でボットを実行し、すべての実行履歴を確認できます。
 
-<img src="./docs/screenshots/readme/routines.png" alt="平日のルーティンと実行履歴、横にボットとのチャット" width="100%">
+<img src="./apps/www/public/graphics/chat/routine.png" alt="平日の受信トレイルーティンの指示とスケジュール" width="100%">
 
 </td>
 <td width="50%" valign="top">
@@ -78,22 +76,13 @@ Meta Muse、OpenAI Dots、Instinct、OpenClaw、Hermes Agent、Claude Duet の�
 </td>
 </tr>
 <tr>
-<td width="50%" valign="top">
+<td colspan="2" valign="top">
 
 ### アプリ連携
 
 Gmail、Slack、GitHub、Notion、Linear など数千のアプリに加え、自分の MCP サーバーや OpenAPI ツールも使えます。
 
 <img src="./docs/screenshots/readme/integrations.png" alt="アプリ連携のカタログ" width="100%">
-
-</td>
-<td width="50%" valign="top">
-
-### すべてのデバイスで
-
-Web、デスクトップ、iPhone、iPad、Android が同じサーバーにつながります。
-
-<img src="./docs/screenshots/readme/mobile.png" alt="iPhone のボット一覧とチャット" width="100%">
 
 </td>
 </tr>
@@ -239,7 +228,7 @@ Electron アプリと Expo アプリは、Web アプリと同じ RunTars API を
 pnpm --filter @rakazo/desktop dev
 ```
 
-初回起動時、デスクトップアプリは Rakazo をこのコンピューターで動かすか、既存のサーバーに接続するかを
+初回起動時、デスクトップアプリは RunTars をこのコンピューターで動かすか、既存のサーバーに接続するかを
 尋ねます。**This computer**（このコンピューター）は、macOS 26 以降の Apple シリコン搭載 Mac で、
 ビルドにサーバーバンドルが含まれていれば Docker なしで動作します。新規セットアップではこの方式を使い、
 必要なサーバーとコンピューターランタイムをアプリがダウンロードします。既存の Docker スタックがある場合は、
@@ -263,14 +252,14 @@ Ubuntu 24.04 では `libfuse2t64`、それ以前の Ubuntu や Debian では `li
 AppImage を実行してください。
 
 ```bash
-chmod +x Rakazo-*.AppImage
-./Rakazo-*.AppImage --appimage-extract-and-run
+chmod +x RunTars-*.AppImage
+./RunTars-*.AppImage --appimage-extract-and-run
 ```
 
 **This computer** の Docker 方式は `docker` CLI を探し、Podman は検出しません。`compose` コマンドに対応した別の
 Docker 互換 CLI を試すには、アプリを起動する前に `RAKAZO_DOCKER_BINARY` にそのパスを設定してください。
 
-接続先を変えるには、アプリケーションメニューの **Change Rakazo Server…**（Rakazo サーバーを変更）を使います。保存せずに
+接続先を変えるには、アプリケーションメニューの **Change RunTars Server…**（RunTars サーバーを変更）を使います。保存せずに
 そのウィンドウを閉じると、以前のインスタンスに戻ります。開発の自動化では、`RAKAZO_WEB_URL` を設定すると
 保存済みのインスタンスを変えずにシェルの接続先を変更でき、`RAKAZO_FORCE_SETUP=1` を設定するとセットアップを
 再実行できます。
@@ -356,5 +345,3 @@ pnpm test:e2e
 セキュリティ上の脆弱性は、公開の Issue を作成せず、[SECURITY.md](./SECURITY.md) の手順に従って報告してください。
 
 RunTars は [Apache License 2.0](./LICENSE) のもとでライセンスされています。
-
-質問やアイデアは [Rakazo Discord コミュニティ](https://discord.gg/RWwKa2Sn7h)でお気軽にどうぞ。

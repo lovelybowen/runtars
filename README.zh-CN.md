@@ -3,17 +3,15 @@
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md)
 
 [![GitHub stars](https://img.shields.io/github/stars/lovelybowen/runtars?labelColor=black&style=for-the-badge&color=2563EB)](https://github.com/lovelybowen/runtars/stargazers)
-[![加入 Discord 社区](https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?labelColor=black&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RWwKa2Sn7h)
-[![在 App Store 下载 iPhone 版](https://img.shields.io/badge/App%20Store-Download%20for%20iPhone-black?labelColor=black&style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/rakazo/id6801531099)
 [![Android APK](https://img.shields.io/badge/Android-APK-black?style=for-the-badge&logo=android&logoColor=white)](https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk)
 
-![RunTars：由你掌控的 AI 队友](./docs/readme-hero.png)
+![RunTars 官网首页和收件箱管理机器人的演示](./docs/readme-hero.png)
 
 RunTars 是 Grok Bot 的开源、自托管替代方案。
 
 长期在线的 AI 队友，各自拥有记忆、例行任务、应用和计算机。在自己的机器上运行，使用自己的模型。
 
-可在[网页](https://app.runtars.com)、[桌面端](https://runtars.com/download/)、[iPhone](https://apps.apple.com/app/rakazo/id6801531099) 和
+可在[网页](https://app.runtars.com)、[桌面端](https://runtars.com/download/) 和
 [Android](https://github.com/lovelybowen/runtars/releases/download/android/runtars.apk) 上使用。
 
 它也是 Meta Muse、OpenAI Dots、Instinct、OpenClaw、Hermes Agent 和 Claude Duet 的替代方案。
@@ -44,7 +42,7 @@ RunTars 是 Grok Bot 的开源、自托管替代方案。
 
 浏览器、终端、文件和完整桌面。看着它工作，需要登录时接管，再交还给它。
 
-<img src="./docs/screenshots/readme/computer.png" alt="机器人的团队计算机，打开着浏览器" width="100%">
+<img src="./docs/screenshots/web-computer.png" alt="机器人聊天和计算机面板中打开的浏览器" width="100%">
 
 </td>
 <td width="50%" valign="top">
@@ -64,7 +62,7 @@ RunTars 是 Grok Bot 的开源、自托管替代方案。
 
 按计划、收到邮件或 Webhook 时运行机器人，并查看每一次运行。
 
-<img src="./docs/screenshots/readme/routines.png" alt="工作日例行任务及其运行记录，旁边是机器人的聊天" width="100%">
+<img src="./apps/www/public/graphics/chat/routine.png" alt="工作日收件箱例行任务的指令和运行时间" width="100%">
 
 </td>
 <td width="50%" valign="top">
@@ -78,22 +76,13 @@ RunTars 是 Grok Bot 的开源、自托管替代方案。
 </td>
 </tr>
 <tr>
-<td width="50%" valign="top">
+<td colspan="2" valign="top">
 
 ### 连接应用
 
 Gmail、Slack、GitHub、Notion、Linear 等数千个应用，以及你自己的 MCP 服务器和 OpenAPI 工具。
 
 <img src="./docs/screenshots/readme/integrations.png" alt="应用集成目录" width="100%">
-
-</td>
-<td width="50%" valign="top">
-
-### 全平台可用
-
-网页、桌面端、iPhone、iPad 和 Android，连接同一台服务器。
-
-<img src="./docs/screenshots/readme/mobile.png" alt="iPhone 上的机器人列表和聊天" width="100%">
 
 </td>
 </tr>
@@ -244,7 +233,7 @@ Electron 和 Expo 应用都是 RunTars API 的客户端，与网页版使用同�
 pnpm --filter @rakazo/desktop dev
 ```
 
-首次运行时，桌面应用会询问是在这台电脑上运行 Rakazo，还是连接现有服务器。
+首次运行时，桌面应用会询问是在这台电脑上运行 RunTars，还是连接现有服务器。
 选择 **This computer**（这台电脑）时，搭载 Apple 芯片、运行 macOS 26 或更高版本且构建包含服务器包的 Mac
 可以不使用 Docker。全新设置默认采用此方式，由应用按需下载服务器和计算机运行时。
 已有 Docker 服务栈且 Docker 正在运行时，应用会询问是否迁移；选择 **Keep Docker** 会继续使用 Docker。
@@ -263,14 +252,14 @@ pnpm --filter @rakazo/desktop dev
 `dlopen(): error loading libfuse.so.2`。请安装 FUSE 2 库（Fedora 上为 `fuse-libs`，Ubuntu 24.04 上为 `libfuse2t64`，较早的 Ubuntu 和 Debian 上为 `libfuse2`），或者不借助 FUSE 运行 AppImage：
 
 ```bash
-chmod +x Rakazo-*.AppImage
-./Rakazo-*.AppImage --appimage-extract-and-run
+chmod +x RunTars-*.AppImage
+./RunTars-*.AppImage --appimage-extract-and-run
 ```
 
 **This computer** 的 Docker 路径会查找 `docker` CLI，但不会自动识别 Podman。若要尝试另一个支持 `compose` 命令的
 Docker 兼容 CLI，请在启动应用前把 `RAKAZO_DOCKER_BINARY` 设为该 CLI 的路径。
 
-使用应用菜单中的 **Change Rakazo Server…**（更换 Rakazo 服务器）重新选择服务器。
+使用应用菜单中的 **Change RunTars Server…**（更换 RunTars 服务器）重新选择服务器。
 关闭该窗口且不保存时，会返回之前的实例。
 开发自动化中，可以设置 `RAKAZO_WEB_URL`，让桌面应用连接其他地址而不改变已保存的实例；
 也可以设置 `RAKAZO_FORCE_SETUP=1`，再次运行设置流程。
@@ -383,5 +372,3 @@ Muse、Dots、Instinct 和 Claude Duet 是托管式助手；OpenClaw 和 Hermes 
 发现安全漏洞时，请按照 [SECURITY.md](./SECURITY.md) 的说明报告，勿提交公开 Issue。
 
 RunTars 采用 [Apache License 2.0](./LICENSE) 许可证。
-
-欢迎在 [Rakazo Discord 社区](https://discord.gg/RWwKa2Sn7h)交流问题与想法。
