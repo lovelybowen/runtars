@@ -38,6 +38,7 @@ import { MessageMenuHost } from "../components/messages/message-action-menu";
 import { MessageActionSheetHost } from "../components/messages/message-action-sheet-host";
 import { floatingHeaderOptions, glassHeaderOptions } from "../components/native/glass-title";
 import { NativeSymbol } from "../components/native/native-symbol";
+import { ChatStackPane } from "../components/thread/chat-stack-pane";
 import { chatRouteHeader } from "../components/thread/header/chat-route-header";
 import { AppErrorBoundary } from "../components/ui/app-error-boundary";
 import {
@@ -189,9 +190,9 @@ function SplitFrame({ children }: { children: ReactNode }) {
         </Animated.View>
       ) : null}
       {/* Keeps its place among the children so the navigation stack survives folding. */}
-      <View style={{ flex: 1, marginLeft: showsInbox ? foldGap : 0 }}>
+      <ChatStackPane pathname={pathname} style={{ flex: 1, marginLeft: showsInbox ? foldGap : 0 }}>
         <InboxBesideContext.Provider value={showsInbox}>{children}</InboxBesideContext.Provider>
-      </View>
+      </ChatStackPane>
       {showsInbox && !foldActive ? (
         <GestureDetector gesture={resize}>
           {/* The divider line resizes the list: drawn last, with a grab area wider than the line
