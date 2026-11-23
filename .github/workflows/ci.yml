@@ -290,7 +290,7 @@ jobs:
       queue: max
     environment:
       name: production
-      url: https://app.rakazo.com
+      url: https://app.runtars.com
     permissions:
       contents: read
       id-token: write
@@ -322,10 +322,11 @@ jobs:
         env:
           SSH_HOST: ${{ secrets.PRODUCTION_SSH_HOST }}
           SSH_USER: ${{ secrets.PRODUCTION_SSH_USER }}
+          SSH_PORT: ${{ secrets.PRODUCTION_SSH_PORT || '22' }}
         run: |
           test -n "$SSH_HOST"
           test -n "$SSH_USER"
-          ssh -F /dev/null \
+          ssh -F /dev/null -p "$SSH_PORT" \
             -i "$HOME/.ssh/rakazo-production" \
             -o BatchMode=yes \
             -o ConnectTimeout=15 \

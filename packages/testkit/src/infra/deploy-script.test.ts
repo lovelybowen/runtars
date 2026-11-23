@@ -262,6 +262,34 @@ echo "/dev/fake 104857600 0 \${FREE_KB:-52428800} 0% /"
 }
 
 describe("production deploy script", () => {
+  it("rolls only the application with the operator's environment and ordered overlays", () => {
+    const deploy = fixture();
+    const envFile = path.join(deploy.checkout, "deployment settings.env");
+    write(envFile, "RAKAZO_HOST=private.example.test\n");
+    const result = deploy.run({
+      RAKAZO_DEPLOY_APP_ONLY: "true",
+      RAKAZO_DEPLOY_ENV_FILE: envFile,
+      RAKAZO_DEPLOY_COMPOSE_OVERLAYS: "optional.yml\nprivate settings.yml",
+    });
+    expect(result.status).toBe(0);
+    const commands = deploy.commands();
+    const compose = commands.filter((line) => line.startsWith("docker compose "));
+    expect(compose.length).toBeGreaterThan(0);
+    for (const line of compose) {
+      expect(line).toContain(
+        `--env-file ${envFile} -f infra/compose/docker-compose.prod.yml -f optional.yml -f private settings.yml`,
+      );
+    }
+    expect(commands.join("\n")).toContain("run --rm --no-deps -T -e RAKAZO_DEPLOYED_MIGRATIONS=");
+    expect(commands.join("\n")).toContain("curl https://private.example.test/health");
+    expect(commands.join("\n")).not.toMatch(
+      /--remove-orphans|force-recreate caddy|docker (?:image|builder) prune/,
+    );
+    expect(readFileSync(path.join(deploy.checkout, ".env"), "utf8")).not.toContain(
+      "POSTGRES_APP_PASSWORD",
+    );
+  });
+
   it("fails instead of reporting success while another deploy holds the lock", () => {
     const deploy = fixture();
     const next = commit(deploy.upstream, "next");
