@@ -47,7 +47,6 @@ import {
   threadHeaderFloats,
 } from "../../lib/thread/scroll/thread-edges";
 import { useThreadKeyboard } from "../../lib/thread/scroll/thread-keyboard";
-import { threadKeyboardAvoidance } from "../../lib/thread/scroll/thread-keyboard-offset";
 import { useThreadListScroll } from "../../lib/thread/scroll/thread-list-scroll";
 import {
   isOwnThreadMessage,
@@ -96,6 +95,9 @@ import { useThreadRunError } from "./thread-run-error";
 function isActiveStatus(status: string | undefined): boolean {
   return isRunWorking(status) || isRunWaitingOnUser(status);
 }
+
+// Android reserves keyboard space around the navigation stack.
+const ThreadKeyboardView = Platform.OS === "android" ? View : KeyboardAvoidingView;
 
 const noAgentSkills: AgentSkillCatalogEntry[] = [];
 
@@ -589,15 +591,12 @@ export function Thread({ sessionEpoch, userId }: { sessionEpoch: number; userId:
 
   return (
     <View style={{ flex: 1 }}>
-      <KeyboardAvoidingView
-        enabled={!rootAvoidsKeyboard && keyboard.avoiding}
-        // Padding always settles to zero. "height" stays shrunk when the keyboard hides without
-        // move frames, such as when a pushed screen closes with its own keyboard up.
-        behavior="padding"
-        {...threadKeyboardAvoidance({
-          os: Platform.OS,
-          floatingHeader: threadHeaderFloats(),
-          nativeHeaderHeight,
+      <ThreadKeyboardView
+        {...(Platform.OS !== "android" && {
+          enabled: !rootAvoidsKeyboard && keyboard.avoiding,
+          behavior: "padding" as const,
+          keyboardVerticalOffset:
+            Platform.OS === "ios" && !threadHeaderFloats() ? nativeHeaderHeight : 0,
         })}
         style={{
           flex: 1,
@@ -720,7 +719,7 @@ export function Thread({ sessionEpoch, userId }: { sessionEpoch: number; userId:
             }}
           />
         ) : null}
-      </KeyboardAvoidingView>
+      </ThreadKeyboardView>
     </View>
   );
 }
