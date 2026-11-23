@@ -10,7 +10,6 @@ export const INTEGRATION_CLAIMS_URL = "https://app.rakazo.com/api/v1/integration
 export const CATALOG_URL =
   "https://rakazo-public.fsn1.your-objectstorage.com/integrations/catalog.json";
 export const GITHUB_URL = "https://github.com/lovelybowen/runtars";
-export const IOS_APP_URL = "https://apps.apple.com/app/rakazo/id6801531099";
 export const GITHUB_API_REPO = "https://api.github.com/repos/lovelybowen/runtars";
 export const DESKTOP_DOWNLOAD_RELEASE_URL = `${GITHUB_URL}/releases/latest`;
 export const DOCS_URL = "https://github.com/lovelybowen/runtars/blob/main/docs/self-host.md";

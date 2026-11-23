@@ -34,7 +34,8 @@ export async function githubStarsLabel(): Promise<string> {
   return count === null ? "GitHub" : formatStarCount(count);
 }
 
-export const DESKTOP_PLATFORMS = ["mac", "windows", "linux"] as const;
+// Desktop installers currently offered on the website.
+export const DESKTOP_PLATFORMS = ["windows", "linux"] as const;
 
 /** The redirect resolves the newest installer per request, so releases need no site rebuild. */
 export function desktopDownloadHref(platform: keyof DesktopDownloads) {
