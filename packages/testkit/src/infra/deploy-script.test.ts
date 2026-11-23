@@ -432,6 +432,21 @@ describe("production deploy script", () => {
     ]);
   });
 
+  it("rebuilds the previous revision if Docker can no longer tag the old image ID", () => {
+    const deploy = fixture();
+    commit(deploy.upstream, "broken");
+    const result = deploy.run({
+      RAKAZO_DEPLOY_APP_ONLY: "true",
+      FAIL_BUILD: "broken",
+      FAIL_TAG: "1",
+    });
+    expect(result.status).toBe(1);
+    expect(deploy.head()).toBe(deploy.first);
+    expect(deploy.commands()).toContain(
+      `${COMPOSE} build --build-arg GIT_SHA=${deploy.first} api @ first`,
+    );
+  });
+
   it("rebuilds the previous revision when the running image is unknown", () => {
     const deploy = fixture();
     const broken = commit(deploy.upstream, "broken");

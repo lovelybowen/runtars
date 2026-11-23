@@ -361,9 +361,7 @@ rollback() {
   app_image="$(compose_app_image)"
   # The image the previous containers ran is still here, so restoring it is a retag. Without a
   # running API to read it from, pull or build the previous revision instead.
-  if [[ -n "${previous_app_image}" ]]; then
-    sudo docker tag "${previous_app_image}" "${app_image}"
-  else
+  if [[ -z "${previous_app_image}" ]] || ! sudo docker tag "${previous_app_image}" "${app_image}"; then
     use_revision_image "${previous_revision}" "${ROLLBACK_TIMEOUT}"
   fi
   roll_out
