@@ -15,6 +15,7 @@ import { INTEGRATION_PLATFORMS_PATH } from "../integration-platforms/shared";
 import { SANDBOXES_PATH } from "../sandboxes";
 import { VOICE_PROVIDERS_PATH } from "../voice-providers/shared";
 import { getHomeCopy } from "../i18n/home";
+import { localizedHref, pageVersions } from "../i18n/translations";
 import type { HomeCopy } from "../i18n/home";
 import {
   CHANGELOG_URL,
@@ -47,6 +48,12 @@ const {
 } = Astro.props;
 
 const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const versions = pageVersions(Astro.url.pathname);
+
+/** The current page in `locale` when it is translated, otherwise that locale's home page. */
+function languageHref(locale: Locale): string {
+  return versions.find((version) => version.locale === locale)?.path ?? localeHomePath(locale);
+}
 
 function isCurrentPage(href: string): boolean {
   return (href.replace(/\/+$/, "") || "/") === currentPath;
@@ -106,7 +113,7 @@ const columns: Array<{ heading: string; links: FooterLink[] }> = [
             LOCALES.map((locale) => (
               <li>
                 <a
-                  href={localeHomePath(locale)}
+                  href={languageHref(locale)}
                   hreflang={LOCALE_HREFLANG[locale]}
                   lang={LOCALE_HTML_LANG[locale]}
                   aria-current={locale === currentLocale ? "true" : undefined}
@@ -133,8 +140,12 @@ const columns: Array<{ heading: string; links: FooterLink[] }> = [
             {column.links.map((link) => (
               <li>
                 <a
-                  href={link.href}
-                  aria-current={!link.external && isCurrentPage(link.href) ? "page" : undefined}
+                  href={link.external ? link.href : localizedHref(link.href, currentLocale)}
+                  aria-current={
+                    !link.external && isCurrentPage(localizedHref(link.href, currentLocale))
+                      ? "page"
+                      : undefined
+                  }
                   {...(link.external ? { target: "_blank", rel: "noopener" } : {})}
                 >
                   {link.label}

@@ -39,3 +39,18 @@ export function pageVersions(pathname: string): PageVersion[] {
     path: localizedPath(english, locale),
   }));
 }
+
+/**
+ * Where a site link should go for a reader of `locale`: the translation of `href` when one exists,
+ * otherwise `href` unchanged. Keeps any `#hash` or `?query`.
+ */
+export function localizedHref(href: string, locale: Locale): string {
+  if (locale === DEFAULT_LOCALE || !href.startsWith("/") || href.startsWith("//")) return href;
+  const match = /^([^?#]*)(.*)$/.exec(href);
+  const path = match?.[1] ?? href;
+  const rest = match?.[2] ?? "";
+  const english = englishPath(path);
+  return TRANSLATED_PAGES[english]?.includes(locale)
+    ? `${localizedPath(english, locale)}${rest}`
+    : href;
+}

@@ -15,23 +15,17 @@ See the [official OpenAI authentication documentation](https://learn.chatgpt.com
 
 ## Claude
 
-**Yes, through the official Claude Code CLI when you self-host from a source checkout for yourself.**
-Sign in to Claude Code with your own account. Run RunTars's API and worker on the same machine as
-the CLI, as the same OS user. The official Docker images and desktop app's local stack do not
-support this integration. See [Claude Code CLI](./self-host-models.md#claude-code-cli) for setup.
+**Yes, through Claude sign-in.** Open **Settings → Models**, find **Anthropic**, and choose
+**Sign in with Claude**. You need a Claude Pro or Max plan. Usage counts against your plan's
+limits.
 
-RunTars invokes the installed CLI without reading or storing your Claude credentials. CLI usage
-counts against your subscription limits. Anthropic confirms this in its
-[subscription usage guidance](https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan).
+Connecting an **Anthropic API key** instead uses separate API billing, not your subscription allowance.
 
-**For RunTars's hosted plan and shared servers, use an Anthropic API key.** RunTars currently limits
-its CLI integration to a server with one account and no model-usage billing. This is a RunTars
-restriction; it does not mean Anthropic prohibits every hosted Claude Code setup.
-
-RunTars's separate in-app Claude sign-in option is not this CLI integration. Anthropic prohibits
-third-party apps from collecting Claude credentials or offering their own Claude account login.
-Sign in through the official CLI instead. Your use remains subject to Anthropic's
+Your use remains subject to Anthropic's terms, including its
 [authentication and credential rules](https://code.claude.com/docs/en/legal-and-compliance#authentication-and-credential-use).
+
+If you self-host from a source checkout for yourself, you can also run models through the official
+[Claude Code CLI](./self-host-models.md#claude-code-cli), signed in on the host with your own account.
 
 ## OpenCode
 

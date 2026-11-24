@@ -1,0 +1,11 @@
+{
+  "ios": {
+    "NSCameraUsageDescription": "RunTars कैमरे का उपयोग करता है ताकि आप बॉट को भेजे जाने वाले संदेश में फ़ोटो जोड़ सकें।",
+    "NSPhotoLibraryUsageDescription": "RunTars आपकी फ़ोटो लाइब्रेरी का उपयोग करता है ताकि आप बॉट को भेजे जाने वाले संदेश में इमेज जोड़ सकें।",
+    "NSPhotoLibraryAddUsageDescription": "RunTars आर्टिफ़ैक्ट से डाउनलोड की गई फ़ोटो और वीडियो को आपकी फ़ोटो लाइब्रेरी में सहेजता है।",
+    "NSLocalNetworkUsageDescription": "RunTars आपके लोकल नेटवर्क पर सेल्फ़-होस्टेड RunTars सर्वर से कनेक्ट होता है।",
+    "NSMicrophoneUsageDescription": "RunTars आपके बॉट्स के साथ वॉइस कॉल के लिए माइक्रोफ़ोन का उपयोग करता है।",
+    "NSSpeechRecognitionUsageDescription": "RunTars वॉइस कॉल के दौरान आपकी आवाज़ को संदेशों में बदलता है।",
+    "NSFaceIDUsageDescription": "RunTars को Face ID का उपयोग करने दें।"
+  }
+}

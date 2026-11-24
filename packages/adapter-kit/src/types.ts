@@ -1463,6 +1463,8 @@ export interface WebFetchResult {
   title: string;
   text: string;
   truncated: boolean;
+  /** The URL served a picture rather than a page: its raw bytes, with `text` left empty. */
+  image?: Uint8Array;
 }
 
 /** Page-level browser on the bot computer (DOM refs), not a hosted browser vendor. */
@@ -1844,6 +1846,14 @@ export interface BillingPlanPayment {
   createdAt: Date;
   /** Every payment on it refunded in full, or lost to a dispute. */
   reversed: boolean;
+}
+
+export interface BillingInvoiceRefund {
+  invoiceId: string;
+  amountMinor: number;
+  currency: string;
+  state: "refundable" | "pending" | "succeeded";
+  refundId?: string;
 }
 
 export interface BillingCreditCheckoutRequest {

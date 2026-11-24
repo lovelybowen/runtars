@@ -1,0 +1,11 @@
+{
+  "ios": {
+    "NSCameraUsageDescription": "RunTars использует камеру, чтобы вы могли прикреплять фото к сообщению для бота.",
+    "NSPhotoLibraryUsageDescription": "RunTars использует медиатеку, чтобы вы могли прикреплять изображения к сообщению для бота.",
+    "NSPhotoLibraryAddUsageDescription": "RunTars сохраняет в медиатеку фото и видео, которые вы скачиваете из артефактов.",
+    "NSLocalNetworkUsageDescription": "RunTars подключается к собственному серверу RunTars в вашей локальной сети.",
+    "NSMicrophoneUsageDescription": "RunTars использует микрофон для голосовых звонков с вашими ботами.",
+    "NSSpeechRecognitionUsageDescription": "RunTars превращает вашу речь в сообщения во время голосовых звонков.",
+    "NSFaceIDUsageDescription": "Разрешите RunTars использовать Face ID."
+  }
+}

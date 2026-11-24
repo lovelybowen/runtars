@@ -418,6 +418,7 @@ function browserLauncherCommand(
   env: DesktopEnvironment,
 ) {
   const layout = commandLayout(index, env);
+  const profile = shellQuote(browserProfilePathForScreen(screenId, env));
   return [
     "#!/bin/bash",
     "set -eu",
@@ -427,8 +428,8 @@ function browserLauncherCommand(
       : []),
     "browser=$(command -v rakazo-browser || command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)",
     `export DISPLAY=${layout.display} HOME=${shellQuote(env.homeDir)}`,
-    // Docker exec does not inherit the session bus exported by container startup.
-    // The boot portal draws on displayStart; other screens must source their own bus.
+    // The boot portal draws on displayStart; other screens use their own portal bus
+    // and must not fall back to the image's boot bus.
     ...browserSessionBusLines(index, env),
     // The image preloads libnss_wrapper so arbitrary UIDs resolve. Chromium's
     // process stays up with these flags while that library is loaded, and the
@@ -452,7 +453,13 @@ function browserLauncherCommand(
     '  if [ -n "$_kept" ]; then export LD_PRELOAD="$_kept"; else unset LD_PRELOAD; fi',
     "  unset _kept _rest _entry",
     "fi",
-    `exec "$browser" --test-type --no-sandbox --disable-dev-shm-usage --disable-gpu --enable-unsafe-swiftshader --no-first-run --no-default-browser-check --disable-session-crashed-bubble --hide-crash-restore-bubble --password-store=basic --restore-last-session --start-maximized --remote-debugging-address=127.0.0.1 --remote-debugging-port=${layout.debugPort} --user-data-dir=${shellQuote(browserProfilePathForScreen(screenId, env))} "$@"`,
+    // rakazo-browser owns the full Chromium flag set (and derives the debugger port from DISPLAY);
+    // passing those flags here too duplicates every flag in Chromium's argv.
+    // biome-ignore lint/suspicious/noTemplateCurlyInString: generated shell parameter expansion
+    'case "${browser##*/}" in',
+    `  rakazo-browser) exec "$browser" --user-data-dir=${profile} "$@" ;;`,
+    `  *) exec "$browser" --test-type --no-sandbox --disable-dev-shm-usage --disable-gpu --enable-unsafe-swiftshader --no-first-run --no-default-browser-check --disable-session-crashed-bubble --hide-crash-restore-bubble --password-store=basic --restore-last-session --start-maximized --remote-debugging-address=127.0.0.1 --remote-debugging-port=${layout.debugPort} --user-data-dir=${profile} "$@" ;;`,
+    "esac",
   ].join("\n");
 }
 

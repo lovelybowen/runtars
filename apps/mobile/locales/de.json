@@ -1,0 +1,11 @@
+{
+  "ios": {
+    "NSCameraUsageDescription": "RunTars verwendet die Kamera, damit du Fotos an eine Nachricht an einen Bot anhängen kannst.",
+    "NSPhotoLibraryUsageDescription": "RunTars verwendet deine Fotomediathek, damit du Bilder an eine Nachricht an einen Bot anhängen kannst.",
+    "NSPhotoLibraryAddUsageDescription": "RunTars speichert Fotos und Videos, die du aus Artefakten herunterlädst, in deiner Fotomediathek.",
+    "NSLocalNetworkUsageDescription": "RunTars verbindet sich mit einem selbst gehosteten RunTars-Server in deinem lokalen Netzwerk.",
+    "NSMicrophoneUsageDescription": "RunTars verwendet das Mikrofon für Sprachanrufe mit deinen Bots.",
+    "NSSpeechRecognitionUsageDescription": "RunTars wandelt deine Sprache während Sprachanrufen in Nachrichten um.",
+    "NSFaceIDUsageDescription": "Erlaube RunTars den Zugriff auf deine Face ID-Daten."
+  }
+}
