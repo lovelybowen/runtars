@@ -1,0 +1,45 @@
+name: Verify signed Android upgrade
+on:
+  push:
+    branches: [verify/android-14-cold-launch]
+permissions:
+  actions: read
+  contents: read
+jobs:
+  acceptance:
+    name: Install and cold-launch the candidate on Android 35
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: runtars-android-14
+          github-token: ${{ github.token }}
+          run-id: 45391610252
+          path: candidate
+      - name: Check the candidate and fetch the current public APK
+        env:
+          APK_SHA256: 94cb16285dc7c9be4b9890c736ab81efb70d84ce41885d97bdc2c5f9923158cf
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "$APK_SHA256  candidate/runtars.apk" | sha256sum --check
+          gh release list -R "$GITHUB_REPOSITORY" --limit 1000 --json tagName --jq '.[].tagName' > tags
+          if grep -Fxq android tags; then
+            gh release download android -R "$GITHUB_REPOSITORY" --pattern runtars.apk --dir previous
+          fi
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm",GROUP="kvm",MODE="0666",OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: reactivecircus/android-emulator-runner@c9c93e6ba9c4194322e114c40970d5983d9a07cc # v2.38.0
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          script: |
+            adb install previous/runtars.apk
+            adb install -r candidate/runtars.apk
+            adb shell am start -S -W -n com.runtars.app/.MainActivity
+            timeout 90 bash -c 'until adb shell uiautomator dump /sdcard/window.xml >/dev/null && adb shell cat /sdcard/window.xml | grep -E "(Welcome to|Sign in to|Sign up for) RunTars" >/dev/null; do sleep 2; done'
