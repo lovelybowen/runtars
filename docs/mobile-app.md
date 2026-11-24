@@ -12,7 +12,10 @@ You can also choose **Get the mobile app** from the account menu in the web or d
 
 Sign in with your runtars.com account. To use your own server instead, tap **Use a custom server** on
 the sign-in screen and enter its address. For a server on your local network, follow
-[Connecting a phone on the same network](./self-host-clients.md#connecting-a-phone-on-the-same-network).
+[Connecting a phone on the same network](./self-host-clients.md#connecting-a-phone-on-the-same-network);
+over Tailscale, follow [Connecting a phone over Tailscale](./self-host-clients.md#connecting-a-phone-over-tailscale).
+The desktop app's **This computer** server can't be reached from a phone; see
+[Desktop "This computer" servers](./self-host-clients.md#desktop-this-computer-servers).
 
 Custom servers you switch to or away from are listed on that screen, so you can switch back with
 one tap (the five most recent are kept, counting the one in use; press and hold one to remove it). The app is signed in to one server at a
@@ -68,5 +71,5 @@ On iPhone, RunTars adds actions to Shortcuts, Siri and the Action button:
 On iOS, open another app's share sheet and choose the mobile app to share text, a link, images or files.
 Pick a bot to open the chat with the shared content in the draft, then review it before sending.
 
-On Android, share text, images, audio, video, PDFs or files from another app to RunTars and pick the
-bot to send them to.
+On Android, share text, images, audio, video, PDFs or files from another app to RunTars.
+Pick a bot to open the chat with the shared content in the draft, then review it before sending.

@@ -1,0 +1,11 @@
+{
+  "ios": {
+    "NSCameraUsageDescription": "RunTars, bir bota gönderilen mesaja fotoğraf ekleyebilmeniz için kamerayı kullanır.",
+    "NSPhotoLibraryUsageDescription": "RunTars, bir bota gönderilen mesaja görsel ekleyebilmeniz için fotoğraf arşivinizi kullanır.",
+    "NSPhotoLibraryAddUsageDescription": "RunTars, Çıktılar'dan indirdiğiniz fotoğrafları ve videoları fotoğraf arşivinize kaydeder.",
+    "NSLocalNetworkUsageDescription": "RunTars, yerel ağınızdaki kendi barındırdığınız RunTars sunucusuna bağlanır.",
+    "NSMicrophoneUsageDescription": "RunTars, botlarınızla sesli görüşmeler için mikrofonu kullanır.",
+    "NSSpeechRecognitionUsageDescription": "RunTars, sesli görüşmeler sırasında konuşmanızı mesajlara dönüştürür.",
+    "NSFaceIDUsageDescription": "RunTars'nun Face ID kullanmasına izin verin."
+  }
+}

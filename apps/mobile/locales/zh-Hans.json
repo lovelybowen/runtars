@@ -1,0 +1,11 @@
+{
+  "ios": {
+    "NSCameraUsageDescription": "RunTars 使用相机，以便你在发给 Bot 的消息中附加照片。",
+    "NSPhotoLibraryUsageDescription": "RunTars 使用你的照片图库，以便你在发给 Bot 的消息中附加图片。",
+    "NSPhotoLibraryAddUsageDescription": "RunTars 会将你从产物中下载的照片和视频保存到你的照片图库。",
+    "NSLocalNetworkUsageDescription": "RunTars 会连接到你本地网络中自托管的 RunTars 服务器。",
+    "NSMicrophoneUsageDescription": "RunTars 使用麦克风与你的 Bot 进行语音通话。",
+    "NSSpeechRecognitionUsageDescription": "RunTars 在语音通话中将你的语音转换为消息。",
+    "NSFaceIDUsageDescription": "允许 RunTars 使用面容 ID。"
+  }
+}

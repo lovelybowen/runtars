@@ -1,6 +1,10 @@
 import { oc } from "@orpc/contract";
 import * as z from "zod";
-import { AnalyticsSurface, ModelSignInCancelReason } from "../account/analytics.js";
+import {
+  AnalyticsAppVersion,
+  AnalyticsSurface,
+  ModelSignInCancelReason,
+} from "../account/analytics.js";
 import { Id, ThinkingLevelSchema } from "../ids.js";
 import { SettingsScopeSchema, settingsScopeInput } from "../settings-scope.js";
 import { DeploymentModelSettingsSchema, DeploymentModelUpdateSchema } from "./deployment-model.js";
@@ -24,6 +28,7 @@ import {
   ModelRoleViewSchema,
 } from "./model-roles.js";
 import {
+  MAX_TRANSCRIPTION_VOCABULARY_LENGTH,
   VoiceCatalogEntrySchema,
   VoiceCredentialSchema,
   VoiceInfoSchema,
@@ -61,7 +66,14 @@ export const modelsRpc = {
       .input(modelChoiceListSchema(ModelRoleChoiceSchema))
       .output(z.object({ ok: z.literal(true) })),
     connect: oc
-      .input(ModelConnectInputSchema.and(z.object({ surface: AnalyticsSurface.optional() })))
+      .input(
+        ModelConnectInputSchema.and(
+          z.object({
+            surface: AnalyticsSurface.optional(),
+            appVersion: AnalyticsAppVersion.optional(),
+          }),
+        ),
+      )
       .output(ModelCredentialSchema),
     probeOpenAiCompatible: oc
       .input(
@@ -96,6 +108,7 @@ export const modelsRpc = {
           /** No loopback listener (web, mobile): the provider shows a code to paste instead. */
           codePage: z.boolean().optional(),
           surface: AnalyticsSurface.optional(),
+          appVersion: AnalyticsAppVersion.optional(),
         }),
       )
       .output(ModelOAuthBeginSchema),
@@ -162,6 +175,12 @@ export const modelsRpc = {
             sttApiKey: z.string().max(4096).optional(),
             ttsModel: z.string().max(200).optional(),
             sttModel: z.string().max(200).optional(),
+            /** Omitted keeps the hint for the same server. Blank clears it. */
+            transcriptionVocabulary: z
+              .string()
+              .trim()
+              .max(MAX_TRANSCRIPTION_VOCABULARY_LENGTH)
+              .optional(),
             /** Where the connection becomes the default voice. */
             scope: SettingsScopeSchema.optional(),
           })

@@ -1,0 +1,11 @@
+{
+  "ios": {
+    "NSCameraUsageDescription": "RunTars משתמשת במצלמה כדי שתוכלו לצרף תמונות להודעה לבוט.",
+    "NSPhotoLibraryUsageDescription": "RunTars משתמשת בספריית התמונות שלכם כדי שתוכלו לצרף תמונות להודעה לבוט.",
+    "NSPhotoLibraryAddUsageDescription": "RunTars שומרת בספריית התמונות שלכם תמונות וסרטונים שהורדתם מהתוצרים.",
+    "NSLocalNetworkUsageDescription": "RunTars מתחברת לשרת RunTars באירוח עצמי ברשת המקומית שלכם.",
+    "NSMicrophoneUsageDescription": "RunTars משתמשת במיקרופון לשיחות קוליות עם הבוטים שלכם.",
+    "NSSpeechRecognitionUsageDescription": "RunTars הופכת את הדיבור שלכם להודעות במהלך שיחות קוליות.",
+    "NSFaceIDUsageDescription": "אפשרו ל-RunTars להשתמש ב-Face ID."
+  }
+}

@@ -287,7 +287,9 @@ describe("TableOfContents", () => {
     const host = mount(<TableOfContents items={items.slice(0, 5)} title="Contents" />);
     expect(host.querySelector("nav")!.getAttribute("aria-label")).toBe("Contents");
     expect(host.querySelector('a[aria-current="location"]')!.textContent).toBe("Part 1");
-    expect(host.querySelector<HTMLAnchorElement>('a[href="#p5"]')!.style.paddingLeft).toBe("22px");
+    expect(host.querySelector<HTMLAnchorElement>('a[href="#p5"]')!.style.paddingInlineStart).toBe(
+      "22px",
+    );
     act(() => host.querySelector<HTMLAnchorElement>('a[href="#p2"]')!.click());
     expect(target.scrollIntoView).toHaveBeenCalledOnce();
     target.remove();
@@ -337,22 +339,20 @@ describe("links and legend", () => {
   });
 
   it("draws the names comparison points at as grey dashed lines, in their place", () => {
-    const markup = html(
+    const host = mount(
       <Legend names={["Daily visits", "7-day average", "Signups"]} comparison={[1]} />,
     );
-    const items = markup.match(/<li [\s\S]*?<\/li>/g)!;
-    expect(items.map((item) => item.replace(/<[^>]+>/g, ""))).toEqual([
+    const items = Array.from(host.querySelectorAll("li"));
+    expect(items.map((item) => item.textContent)).toEqual([
       "Daily visits",
       "7-day average",
       "Signups",
     ]);
-    expect(items.map((item) => item.includes('stroke-dasharray="3 2"'))).toEqual([
-      false,
-      true,
-      false,
-    ]);
-    expect(items[1]).toContain("color:var(--rk-other)");
-    expect(items[2]).toContain("color:var(--rk-c3)");
+    expect(
+      items.map((item) => item.querySelector("line")?.getAttribute("stroke-dasharray")),
+    ).toEqual([null, "3 2", null]);
+    expect(items[1]?.style.color).toBe("var(--rk-other)");
+    expect(items[2]?.style.color).toBe("var(--rk-c3)");
     expect(html(<Legend names={[]} />)).toBe("");
   });
 });

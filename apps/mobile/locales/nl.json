@@ -1,0 +1,11 @@
+{
+  "ios": {
+    "NSCameraUsageDescription": "RunTars gebruikt de camera zodat je foto's kunt toevoegen aan een bericht aan een bot.",
+    "NSPhotoLibraryUsageDescription": "RunTars gebruikt je fotobibliotheek zodat je afbeeldingen kunt toevoegen aan een bericht aan een bot.",
+    "NSPhotoLibraryAddUsageDescription": "RunTars bewaart foto's en video's die je uit Artefacten downloadt in je fotobibliotheek.",
+    "NSLocalNetworkUsageDescription": "RunTars maakt verbinding met een zelfgehoste RunTars-server op je lokale netwerk.",
+    "NSMicrophoneUsageDescription": "RunTars gebruikt de microfoon voor spraakgesprekken met je bots.",
+    "NSSpeechRecognitionUsageDescription": "RunTars zet je spraak om in berichten tijdens spraakgesprekken.",
+    "NSFaceIDUsageDescription": "Sta RunTars toe Face ID te gebruiken."
+  }
+}
