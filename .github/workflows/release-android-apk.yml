@@ -40,6 +40,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 90
+    outputs:
+      version_code: ${{ steps.build.outputs.version_code }}
+      build_id: ${{ steps.build.outputs.build_id }}
+      sha256: ${{ steps.build.outputs.sha256 }}
     permissions:
       contents: write
     env:
@@ -117,6 +121,8 @@ jobs:
           "$build_tools/aapt" dump badging "$apk" > "$RUNNER_TEMP/apk-badging.txt"
           grep -F "package: name='com.runtars.app' versionCode='$version_code' versionName='$version'" "$RUNNER_TEMP/apk-badging.txt"
           source_commit="$(jq -er '.gitCommitHash | select(test("^[0-9a-f]{40}$"))' "$metadata")"
+          echo "build_id=$(jq -er '.id' "$metadata")" >> "$GITHUB_OUTPUT"
+          echo "sha256=$sha256" >> "$GITHUB_OUTPUT"
           echo "source_commit=$source_commit" >> "$GITHUB_OUTPUT"
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "version_code=$version_code" >> "$GITHUB_OUTPUT"
@@ -205,3 +211,46 @@ jobs:
           set -euo pipefail
           gh release download "$RELEASE_TAG" --pattern runtars.apk --output "$RUNNER_TEMP/published.apk"
           echo "${ACCEPTED_SHA256,,}  $RUNNER_TEMP/published.apk" | sha256sum --check
+
+  acceptance:
+    name: Install and cold-launch the candidate on Android 35
+    needs: release
+    if: ${{ !inputs.publish }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: runtars-android-${{ needs.release.outputs.version_code }}
+          path: candidate
+      - name: Check the candidate and fetch the current public APK
+        env:
+          APK_SHA256: ${{ needs.release.outputs.sha256 }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "$APK_SHA256  candidate/runtars.apk" | sha256sum --check
+          gh release list -R "$GITHUB_REPOSITORY" --limit 1000 --json tagName --jq '.[].tagName' > tags
+          if grep -Fxq android tags; then
+            gh release download android -R "$GITHUB_REPOSITORY" --pattern runtars.apk --dir previous
+          fi
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm",GROUP="kvm",MODE="0666",OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: reactivecircus/android-emulator-runner@c9c93e6ba9c4194322e114c40970d5983d9a07cc # v2.38.0
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          script: |
+            if [ -f previous/runtars.apk ]; then adb install previous/runtars.apk; fi
+            adb install -r candidate/runtars.apk
+            adb shell am start -S -W -n com.runtars.app/.MainActivity
+            timeout 90 bash -c 'until adb shell uiautomator dump >/dev/null && adb shell cat /sdcard/window.xml | grep -E "(Welcome to|Sign in to|Sign up for) RunTars" >/dev/null; do sleep 2; done'
+      - name: Record the accepted EAS build and APK checksum
+        env:
+          BUILD_ID: ${{ needs.release.outputs.build_id }}
+          APK_SHA256: ${{ needs.release.outputs.sha256 }}
+        run: echo "Accepted EAS build $BUILD_ID with SHA-256 $APK_SHA256" | tee -a "$GITHUB_STEP_SUMMARY"
