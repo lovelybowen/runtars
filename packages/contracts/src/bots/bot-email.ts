@@ -118,9 +118,9 @@ export function suggestedEmailName(botName: string): string {
     .toLowerCase()
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
+    .replace(/^-|-$/g, "")
     .slice(0, 64)
-    .replace(/-+$/, "");
+    .replace(/-$/, "");
   // The schema owns every rule (length, reserved names), so a suggestion is always claimable.
   return BotEmailNameSchema.safeParse(name).success ? name : "";
 }

@@ -1620,8 +1620,9 @@ describe("files listing script", () => {
       writeFileSync(join(outside, "private.txt"), "fixture");
       const link = join(folder, "link");
       symlinkSync(outside, link);
-      for (const path of [link, join(link, "private.txt")]) {
-        const result = spawnSync("sh", ["-c", FILES_SCRIPT, "watch", folder, path], {
+      for (const path of ["link", "link/private.txt"]) {
+        const result = spawnSync("sh", ["-c", FILES_SCRIPT, "watch", ".", path], {
+          cwd: folder,
           encoding: "utf8",
         });
         expect(result.status).toBe(1);

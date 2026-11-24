@@ -822,7 +822,9 @@ function renderEnsureScreenCommand(
           "fi",
         ];
   const targetFile = `${TARGETS}/view-${layout.displayNumber}`;
-  const socket = `/tmp/rakazo/sockets/view-${layout.displayNumber}-\${desktop_view_token}`;
+  // biome-ignore lint/suspicious/noTemplateCurlyInString: generated shell parameter expansion
+  const tokenVariable = "${desktop_view_token}";
+  const socket = `/tmp/rakazo/sockets/view-${layout.displayNumber}-${tokenVariable}`;
   const setupView = [
     `mkdir -p ${TARGETS} /tmp/rakazo/sockets`,
     // The viewer takes no keys: -repeat leaves X key autorepeat to the control process, which

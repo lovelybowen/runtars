@@ -83,14 +83,12 @@ export default defineConfig({
       },
       // Native-only transitive deps of the renderer contain uncompiled Flow
       // source; stub them out in tests (they never render anyway).
-      ...["react-native-fit-image", "@react-native-vector-icons/material-design-icons"].map(
-        (dep) => ({
-          find: new RegExp(`^${dep.replace(/[/]/g, "\\/")}$`),
-          replacement: fileURLToPath(
-            new URL("./packages/chat-ui/src/native-test-stubs.tsx", import.meta.url),
-          ),
-        }),
-      ),
+      {
+        find: /^(?:react-native-fit-image|@react-native-vector-icons\/material-design-icons)$/,
+        replacement: fileURLToPath(
+          new URL("./packages/chat-ui/src/native-test-stubs.tsx", import.meta.url),
+        ),
+      },
     ],
   },
   test: {
