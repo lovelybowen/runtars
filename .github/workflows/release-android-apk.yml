@@ -248,7 +248,7 @@ jobs:
             if [ -f previous/runtars.apk ]; then adb install previous/runtars.apk; fi
             adb install -r candidate/runtars.apk
             adb shell am start -S -W -n com.runtars.app/.MainActivity
-            timeout 90 bash -c 'until adb shell uiautomator dump >/dev/null && adb shell cat /sdcard/window.xml | grep -E "(Welcome to|Sign in to|Sign up for) RunTars" >/dev/null; do sleep 2; done'
+            timeout 90 bash -c 'until adb shell uiautomator dump /sdcard/window.xml >/dev/null && adb shell cat /sdcard/window.xml | grep -E "(Welcome to|Sign in to|Sign up for) RunTars" >/dev/null; do sleep 2; done'
       - name: Record the accepted EAS build and APK checksum
         env:
           BUILD_ID: ${{ needs.release.outputs.build_id }}
