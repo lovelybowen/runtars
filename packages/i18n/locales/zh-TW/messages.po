@@ -2609,8 +2609,8 @@ msgstr "選擇資料夾"
 
 #: apps/web/src/components/billing/CreditChoice.tsx
 #: apps/web/src/components/billing/SubscriptionGate.tsx
-msgid "Choose how to use Rakazo"
-msgstr "選擇 Rakazo 的使用方式"
+msgid "Choose how to use RunTars"
+msgstr "選擇 RunTars 的使用方式"
 
 #: apps/web/src/pages/shell/bots/agent-import.tsx
 msgid "Choose your {home} folder, or a backup of it."
@@ -3107,8 +3107,8 @@ msgstr "連接你的 AI"
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/run-error.ts
-msgid "Connect your own API key in Models or choose Rakazo credits in Billing."
-msgstr "請在「模型」中連接你自己的 API 金鑰，或在「帳務」中選擇 Rakazo 點數。"
+msgid "Connect your own API key in Models or choose RunTars credits in Billing."
+msgstr "請在「模型」中連接你自己的 API 金鑰，或在「帳務」中選擇 RunTars 點數。"
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/plugin-catalog.ts
@@ -5538,8 +5538,8 @@ msgid "Ends {day}"
 msgstr "於 {day} 結束"
 
 #: apps/web/src/pages/shell/composer/github-star-prompt.tsx
-msgid "Enjoying Rakazo?"
-msgstr "喜歡 Rakazo 嗎？"
+msgid "Enjoying RunTars?"
+msgstr "喜歡 RunTars 嗎？"
 
 #: packages/i18n/src/user-error.ts
 msgid "Enter a password"
@@ -6293,8 +6293,8 @@ msgstr "如何檢查"
 
 #: apps/mobile/app/(settings)/signup-survey.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "How will you use Rakazo?"
-msgstr "你會如何使用 Rakazo？"
+msgid "How will you use RunTars?"
+msgstr "你會如何使用 RunTars？"
 
 #: apps/mobile/components/models/compatible-endpoint-form.tsx
 msgid "http://127.0.0.1:8000/v1"
@@ -7035,7 +7035,6 @@ msgid "Make member"
 msgstr "設為成員"
 
 #: apps/web/src/pages/settings/BillingSettingsPanel.tsx
-#: apps/web/src/pages/settings/SpacesSettingsPanel.tsx
 msgid "Manage"
 msgstr "管理"
 
@@ -8086,8 +8085,8 @@ msgid "Not in {organizationName}. They'll only see this Space."
 msgstr "不在 {organizationName} 中，只能看到此空間。"
 
 #: apps/web/src/pages/shell/bots/import-status.ts
-msgid "Not in Rakazo's catalog"
-msgstr "不在 Rakazo 目錄中"
+msgid "Not in RunTars's catalog"
+msgstr "不在 RunTars 目錄中"
 
 #: apps/mobile/app/(settings)/integrations.tsx
 #: apps/web/src/pages/plugins/plugin-browse.tsx
@@ -8137,12 +8136,12 @@ msgstr "未傳送。點一下重試"
 
 #: apps/web/src/pages/shell/bots/agent-import-plan.tsx
 #: apps/web/src/pages/shell/bots/import-status.ts
-msgid "Not supported in Rakazo"
-msgstr "Rakazo 不支援"
+msgid "Not supported in RunTars"
+msgstr "RunTars 不支援"
 
 #: apps/web/src/pages/shell/bots/agent-import-plan.tsx
-msgid "Not used by Rakazo"
-msgstr "Rakazo 不使用"
+msgid "Not used by RunTars"
+msgstr "RunTars 不使用"
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/plugin-catalog.ts
@@ -8378,8 +8377,8 @@ msgstr "開啟導覽"
 #: apps/web/src/pages/auth/Invite.tsx
 #: apps/web/src/pages/auth/JoinOrganization.tsx
 #: apps/web/src/pages/SharedPage.tsx
-msgid "Open Rakazo"
-msgstr "開啟 Rakazo"
+msgid "Open RunTars"
+msgstr "開啟 RunTars"
 
 #: apps/web/src/components/models/SubscriptionSignInSteps.tsx
 msgid "Open settings"
@@ -9016,28 +9015,13 @@ msgstr "引用"
 msgid "Quote selection"
 msgstr "引用所選內容"
 
-#: apps/mobile/app/(settings)/ai-data-sharing.tsx
-#: apps/mobile/app/(settings)/general.tsx
-#: apps/mobile/app/bot-settings.tsx
-#: apps/web/src/pages/settings/AccountSettingsOverlay.tsx
-#: apps/web/src/pages/shell/bots/avatar-studio-popover.tsx
-msgid "Rakazo"
-msgstr "Rakazo"
-
-#: apps/mobile/app/(settings)/billing.tsx
-#: apps/mobile/components/models/model-role-settings.tsx
-#: apps/web/src/pages/model-settings/ModelRoleSettings.tsx
-#: apps/web/src/pages/onboarding/use-onboarding-model.ts
-msgid "Rakazo credits"
-msgstr "Rakazo 額度"
-
 #: apps/mobile/lib/billing/self-hosted-support.ts
 msgid "Rakazo is free to self-host. If you'd like to support it, subscribers can email support@rakazo.com for help."
 msgstr "Rakazo 可免費自行託管。如果你想支持 Rakazo，訂閱者可寄信至 support@rakazo.com 取得協助。"
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
-msgid "rakazo-shared and IDs starting with bot- are reserved for Rakazo."
-msgstr "rakazo-shared 與以 bot- 開頭的 ID 保留給 Rakazo 使用。"
+msgid "rakazo-shared and IDs starting with bot- are reserved for RunTars."
+msgstr "rakazo-shared 與以 bot- 開頭的 ID 保留給 RunTars 使用。"
 
 #: apps/mobile/app/(settings)/account.tsx
 msgid "Rate Rakazo"
@@ -9095,8 +9079,8 @@ msgid "Recall from banks"
 msgstr "從記憶庫回想"
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
-msgid "Recall from this peer; save to Rakazo’s own peers."
-msgstr "從此 peer 讀取；儲存至 Rakazo 自己的 peer。"
+msgid "Recall from this peer; save to RunTars’s own peers."
+msgstr "從此 peer 讀取；儲存至 RunTars 自己的 peer。"
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
 msgid "Recall only"
@@ -9774,8 +9758,8 @@ msgstr "返回收件匣"
 
 #: apps/web/src/pages/integrations/McpOAuthCallback.tsx
 #: apps/web/src/pages/integrations/SlackInstallCallback.tsx
-msgid "Return to Rakazo"
-msgstr "返回 Rakazo"
+msgid "Return to RunTars"
+msgstr "返回 RunTars"
 
 #: apps/mobile/app/page.tsx
 #: apps/web/src/components/pages/PageViewHost.tsx
@@ -9913,6 +9897,21 @@ msgstr "執行"
 #: apps/web/src/pages/routines/routine-editor/trigger-cards.tsx
 msgid "Runs when this bot receives a verified message from this provider."
 msgstr "當此機器人收到來自這個供應商且通過驗證的訊息時執行。"
+
+#: apps/mobile/app/(settings)/ai-data-sharing.tsx
+#: apps/mobile/app/(settings)/general.tsx
+#: apps/mobile/app/bot-settings.tsx
+#: apps/web/src/pages/settings/AccountSettingsOverlay.tsx
+#: apps/web/src/pages/shell/bots/avatar-studio-popover.tsx
+msgid "RunTars"
+msgstr "RunTars"
+
+#: apps/mobile/app/(settings)/billing.tsx
+#: apps/mobile/components/models/model-role-settings.tsx
+#: apps/web/src/pages/model-settings/ModelRoleSettings.tsx
+#: apps/web/src/pages/onboarding/use-onboarding-model.ts
+msgid "RunTars credits"
+msgstr "RunTars 額度"
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/plugin-catalog.ts
@@ -10651,8 +10650,8 @@ msgstr "在 {host} 登入，然後將頁面顯示的驗證碼貼到這裡。"
 
 #: apps/mobile/app/sign-in.tsx
 #: apps/web/src/pages/auth/Auth.tsx
-msgid "Sign in to Rakazo"
-msgstr "登入 Rakazo"
+msgid "Sign in to RunTars"
+msgstr "登入 RunTars"
 
 #: packages/i18n/src/user-error.ts
 msgid "Sign in to your account, then link this provider in settings"
@@ -10682,8 +10681,8 @@ msgid "Sign up"
 msgstr "註冊"
 
 #: apps/mobile/app/sign-in.tsx
-msgid "Sign up for Rakazo"
-msgstr "註冊 Rakazo"
+msgid "Sign up for RunTars"
+msgstr "註冊 RunTars"
 
 #: apps/web/src/pages/plugins/PluginsOverlay.tsx
 msgid "Sign-in cancelled. Retry in Manage MCP servers."
@@ -11038,8 +11037,8 @@ msgid "Start recording"
 msgstr "開始錄製"
 
 #: apps/mobile/app/paywall.tsx
-msgid "Start using Rakazo"
-msgstr "開始使用 Rakazo"
+msgid "Start using RunTars"
+msgstr "開始使用 RunTars"
 
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/web/src/components/billing/ModelCredits.tsx
@@ -11364,8 +11363,8 @@ msgid "That isn't a Grok Bot export. Paste the Bot's whole reply."
 msgstr "這不是 Grok Bot 的匯出內容。請貼上該 Bot 的完整回覆。"
 
 #: apps/mobile/lib/api/endpoint.ts
-msgid "That URL did not look like a Rakazo server"
-msgstr "該地址看起來不是 Rakazo 伺服器"
+msgid "That URL did not look like a RunTars server"
+msgstr "該地址看起來不是 RunTars 伺服器"
 
 #: apps/mobile/lib/api/endpoint.ts
 msgid "That URL is missing a host"
@@ -11673,8 +11672,8 @@ msgid "This draft isn't available"
 msgstr "無法使用此草稿"
 
 #: apps/web/src/lib/bots/agent-import-errors.ts
-msgid "This export is newer than Rakazo can read. Update Rakazo and try again."
-msgstr "此匯出內容的版本比 Rakazo 能讀取的更新。請更新 Rakazo 後再試一次。"
+msgid "This export is newer than RunTars can read. Update RunTars and try again."
+msgstr "此匯出內容的版本比 RunTars 能讀取的更新。請更新 RunTars 後再試一次。"
 
 #: apps/web/src/lib/bots/agent-import-errors.ts
 msgid "This export is too large to import."
@@ -11848,8 +11847,8 @@ msgstr "此空間有自己的保管庫。其中的機器人會在那裡儲存和
 
 #: apps/mobile/app/(settings)/model-connection.tsx
 #: apps/web/src/pages/model-settings/connection-controls.tsx
-msgid "This subscription sign-in is not available in Rakazo yet. Use a deployment credential or choose another provider."
-msgstr "此訂閱登入在 Rakazo 中尚不可用。請使用部署憑證或選擇其他供應商。"
+msgid "This subscription sign-in is not available in RunTars yet. Use a deployment credential or choose another provider."
+msgstr "此訂閱登入在 RunTars 中尚不可用。請使用部署憑證或選擇其他供應商。"
 
 #: apps/mobile/app/(settings)/bot-template.tsx
 msgid "This template is no longer available."
@@ -12469,8 +12468,8 @@ msgstr "輸入密碼時，請使用受保護的輸入。"
 
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/web/src/components/billing/ModelCredits.tsx
-msgid "Use Rakazo credits"
-msgstr "使用 Rakazo 額度"
+msgid "Use RunTars credits"
+msgstr "使用 RunTars 額度"
 
 #: apps/mobile/components/settings/space-bots-model.tsx
 msgid "Use space default"
@@ -12719,8 +12718,8 @@ msgstr "歡迎回來"
 #: apps/mobile/app/(settings)/_layout.tsx
 #: apps/mobile/app/sign-in.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "Welcome to Rakazo"
-msgstr "歡迎使用 Rakazo"
+msgid "Welcome to RunTars"
+msgstr "歡迎使用 RunTars"
 
 #: apps/web/src/pages/shell/create-delete-dialogs.tsx
 msgid "What about its memories?"
@@ -12732,8 +12731,8 @@ msgstr "此空間可以使用什麼？"
 
 #: apps/mobile/app/(settings)/signup-survey.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "What do you most want Rakazo to help with?"
-msgstr "你最希望 Rakazo 幫你做什麼？"
+msgid "What do you most want RunTars to help with?"
+msgstr "你最希望 RunTars 幫你做什麼？"
 
 #: apps/web/src/pages/shell/chat/message-cards.tsx
 msgid "What do you want me on first?"
@@ -13139,117 +13138,3 @@ msgstr "零資料保留"
 #: apps/web/src/components/vault/VaultItemEditor.tsx
 msgid "ZIP or postal code"
 msgstr "郵遞區號"
-
-#: apps/web/src/components/ModelCredits.tsx
-#: apps/web/src/components/SubscriptionGate.tsx
-msgid "Choose how to use RunTars"
-msgstr "選擇 RunTars 的使用方式"
-
-#. js-lingui-explicit-id
-#: packages/i18n/src/run-error.ts
-msgid "Connect your own API key in Models or choose RunTars credits in Billing."
-msgstr "請在「模型」中連接你自己的 API 金鑰，或在「帳務」中選擇 RunTars 點數。"
-
-#: apps/web/src/components/GitHubStarPrompt.tsx
-msgid "Enjoying RunTars?"
-msgstr "喜歡 RunTars 嗎？"
-
-#: apps/mobile/app/(settings)/signup-survey.tsx
-#: apps/web/src/components/SignupSurvey.tsx
-msgid "How will you use RunTars?"
-msgstr "你會如何使用 RunTars？"
-
-#: apps/web/src/pages/shell/import-status.ts
-msgid "Not in RunTars's catalog"
-msgstr "不在 RunTars 目錄中"
-
-#: apps/web/src/pages/shell/agent-import-plan.tsx
-#: apps/web/src/pages/shell/import-status.ts
-msgid "Not supported in RunTars"
-msgstr "RunTars 不支援"
-
-#: apps/web/src/pages/shell/agent-import-plan.tsx
-msgid "Not used by RunTars"
-msgstr "RunTars 不使用"
-
-#: apps/web/src/components/pages/PublicPageShell.tsx
-#: apps/web/src/pages/Invite.tsx
-#: apps/web/src/pages/SharedPage.tsx
-msgid "Open RunTars"
-msgstr "開啟 RunTars"
-
-#: apps/mobile/components/compatible-endpoint-form.tsx
-#: apps/web/src/pages/model-settings/compatible-model-fields.tsx
-msgid "Paste the OpenAI-compatible address from your server. RunTars adds /v1 if needed."
-msgstr "貼上伺服器的 OpenAI 相容地址。需要時 RunTars 會補上 /v1。"
-
-#: apps/mobile/app/(settings)/ai-data-sharing.tsx
-#: apps/mobile/app/(settings)/general.tsx
-#: apps/mobile/app/bot-settings.tsx
-#: apps/web/src/pages/AccountSettingsOverlay.tsx
-#: apps/web/src/pages/shell/avatar-studio-popover.tsx
-msgid "RunTars"
-msgstr "RunTars"
-
-#: apps/mobile/app/(settings)/billing.tsx
-#: apps/web/src/pages/onboarding/use-onboarding-model.ts
-msgid "RunTars credits"
-msgstr "RunTars 額度"
-
-#: apps/web/src/components/ProviderSettingsForm.tsx
-msgid "rakazo-shared and IDs starting with bot- are reserved for RunTars."
-msgstr "rakazo-shared 與以 bot- 開頭的 ID 保留給 RunTars 使用。"
-
-#: apps/web/src/components/ProviderSettingsForm.tsx
-msgid "Recall from this peer; save to RunTars’s own peers."
-msgstr "從此 peer 讀取；儲存至 RunTars 自己的 peer。"
-
-#: apps/web/src/pages/McpOAuthCallback.tsx
-#: apps/web/src/pages/SlackInstallCallback.tsx
-msgid "Return to RunTars"
-msgstr "返回 RunTars"
-
-#: apps/mobile/app/sign-in.tsx
-msgid "Sign in to continue to RunTars"
-msgstr "登入以繼續使用 RunTars"
-
-#: apps/mobile/app/sign-in.tsx
-#: apps/web/src/pages/Auth.tsx
-msgid "Sign in to RunTars"
-msgstr "登入 RunTars"
-
-#: apps/mobile/app/sign-in.tsx
-msgid "Sign up for RunTars"
-msgstr "註冊 RunTars"
-
-#: apps/mobile/app/paywall.tsx
-msgid "Start using RunTars"
-msgstr "開始使用 RunTars"
-
-#: apps/mobile/lib/endpoint.ts
-msgid "That URL did not look like a RunTars server"
-msgstr "該地址看起來不是 RunTars 伺服器"
-
-#: apps/web/src/lib/agent-import-errors.ts
-msgid "This export is newer than RunTars can read. Update RunTars and try again."
-msgstr "此匯出內容的版本比 RunTars 能讀取的更新。請更新 RunTars 後再試一次。"
-
-#: apps/mobile/app/(settings)/model-connection.tsx
-#: apps/web/src/pages/model-settings/connection-controls.tsx
-msgid "This subscription sign-in is not available in RunTars yet. Use a deployment credential or choose another provider."
-msgstr "此訂閱登入在 RunTars 中尚不可用。請使用部署憑證或選擇其他供應商。"
-
-#: apps/mobile/app/(settings)/billing.tsx
-#: apps/web/src/components/ModelCredits.tsx
-msgid "Use RunTars credits"
-msgstr "使用 RunTars 額度"
-
-#: apps/mobile/app/(settings)/_layout.tsx
-#: apps/web/src/components/SignupSurvey.tsx
-msgid "Welcome to RunTars"
-msgstr "歡迎使用 RunTars"
-
-#: apps/mobile/app/(settings)/signup-survey.tsx
-#: apps/web/src/components/SignupSurvey.tsx
-msgid "What do you most want RunTars to help with?"
-msgstr "你最希望 RunTars 幫你做什麼？"

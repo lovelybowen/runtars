@@ -2608,8 +2608,8 @@ msgstr "Elegir carpeta"
 
 #: apps/web/src/components/billing/CreditChoice.tsx
 #: apps/web/src/components/billing/SubscriptionGate.tsx
-msgid "Choose how to use Rakazo"
-msgstr "Elige cómo usar Rakazo"
+msgid "Choose how to use RunTars"
+msgstr "Elige cómo usar RunTars"
 
 #: apps/web/src/pages/shell/bots/agent-import.tsx
 msgid "Choose your {home} folder, or a backup of it."
@@ -3106,8 +3106,8 @@ msgstr "Conecta tu IA"
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/run-error.ts
-msgid "Connect your own API key in Models or choose Rakazo credits in Billing."
-msgstr "Conecta tu propia clave de API en Modelos o elige créditos de Rakazo en Facturación."
+msgid "Connect your own API key in Models or choose RunTars credits in Billing."
+msgstr "Conecta tu propia clave de API en Modelos o elige créditos de RunTars en Facturación."
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/plugin-catalog.ts
@@ -5537,8 +5537,8 @@ msgid "Ends {day}"
 msgstr "Termina el {day}"
 
 #: apps/web/src/pages/shell/composer/github-star-prompt.tsx
-msgid "Enjoying Rakazo?"
-msgstr "¿Te gusta Rakazo?"
+msgid "Enjoying RunTars?"
+msgstr "¿Te gusta RunTars?"
 
 #: packages/i18n/src/user-error.ts
 msgid "Enter a password"
@@ -6292,8 +6292,8 @@ msgstr "Cómo comprobar"
 
 #: apps/mobile/app/(settings)/signup-survey.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "How will you use Rakazo?"
-msgstr "¿Cómo usarás Rakazo?"
+msgid "How will you use RunTars?"
+msgstr "¿Cómo usarás RunTars?"
 
 #: apps/mobile/components/models/compatible-endpoint-form.tsx
 msgid "http://127.0.0.1:8000/v1"
@@ -7034,7 +7034,6 @@ msgid "Make member"
 msgstr "Hacer miembro"
 
 #: apps/web/src/pages/settings/BillingSettingsPanel.tsx
-#: apps/web/src/pages/settings/SpacesSettingsPanel.tsx
 msgid "Manage"
 msgstr "Gestionar"
 
@@ -8085,8 +8084,8 @@ msgid "Not in {organizationName}. They'll only see this Space."
 msgstr "No está en {organizationName}. Solo verá este Espacio."
 
 #: apps/web/src/pages/shell/bots/import-status.ts
-msgid "Not in Rakazo's catalog"
-msgstr "No está en el catálogo de Rakazo"
+msgid "Not in RunTars's catalog"
+msgstr "No está en el catálogo de RunTars"
 
 #: apps/mobile/app/(settings)/integrations.tsx
 #: apps/web/src/pages/plugins/plugin-browse.tsx
@@ -8136,12 +8135,12 @@ msgstr "No enviado. Toca para reintentar"
 
 #: apps/web/src/pages/shell/bots/agent-import-plan.tsx
 #: apps/web/src/pages/shell/bots/import-status.ts
-msgid "Not supported in Rakazo"
-msgstr "No compatible con Rakazo"
+msgid "Not supported in RunTars"
+msgstr "No compatible con RunTars"
 
 #: apps/web/src/pages/shell/bots/agent-import-plan.tsx
-msgid "Not used by Rakazo"
-msgstr "Rakazo no lo usa"
+msgid "Not used by RunTars"
+msgstr "RunTars no lo usa"
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/plugin-catalog.ts
@@ -8377,8 +8376,8 @@ msgstr "Abrir navegación"
 #: apps/web/src/pages/auth/Invite.tsx
 #: apps/web/src/pages/auth/JoinOrganization.tsx
 #: apps/web/src/pages/SharedPage.tsx
-msgid "Open Rakazo"
-msgstr "Abrir Rakazo"
+msgid "Open RunTars"
+msgstr "Abrir RunTars"
 
 #: apps/web/src/components/models/SubscriptionSignInSteps.tsx
 msgid "Open settings"
@@ -9015,28 +9014,13 @@ msgstr "Citar"
 msgid "Quote selection"
 msgstr "Citar selección"
 
-#: apps/mobile/app/(settings)/ai-data-sharing.tsx
-#: apps/mobile/app/(settings)/general.tsx
-#: apps/mobile/app/bot-settings.tsx
-#: apps/web/src/pages/settings/AccountSettingsOverlay.tsx
-#: apps/web/src/pages/shell/bots/avatar-studio-popover.tsx
-msgid "Rakazo"
-msgstr "Rakazo"
-
-#: apps/mobile/app/(settings)/billing.tsx
-#: apps/mobile/components/models/model-role-settings.tsx
-#: apps/web/src/pages/model-settings/ModelRoleSettings.tsx
-#: apps/web/src/pages/onboarding/use-onboarding-model.ts
-msgid "Rakazo credits"
-msgstr "Créditos de Rakazo"
-
 #: apps/mobile/lib/billing/self-hosted-support.ts
 msgid "Rakazo is free to self-host. If you'd like to support it, subscribers can email support@rakazo.com for help."
 msgstr "Autoalojar Rakazo es gratis. Si quieres apoyarlo, los suscriptores pueden escribir a support@rakazo.com para recibir ayuda."
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
-msgid "rakazo-shared and IDs starting with bot- are reserved for Rakazo."
-msgstr "rakazo-shared y los ID que empiezan con bot- están reservados para Rakazo."
+msgid "rakazo-shared and IDs starting with bot- are reserved for RunTars."
+msgstr "rakazo-shared y los ID que empiezan con bot- están reservados para RunTars."
 
 #: apps/mobile/app/(settings)/account.tsx
 msgid "Rate Rakazo"
@@ -9094,8 +9078,8 @@ msgid "Recall from banks"
 msgstr "Recordar de los bancos"
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
-msgid "Recall from this peer; save to Rakazo’s own peers."
-msgstr "Consultar este peer; guardar en los propios peers de Rakazo."
+msgid "Recall from this peer; save to RunTars’s own peers."
+msgstr "Consultar este peer; guardar en los propios peers de RunTars."
 
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
 msgid "Recall only"
@@ -9773,8 +9757,8 @@ msgstr "Volver a la bandeja de entrada"
 
 #: apps/web/src/pages/integrations/McpOAuthCallback.tsx
 #: apps/web/src/pages/integrations/SlackInstallCallback.tsx
-msgid "Return to Rakazo"
-msgstr "Volver a Rakazo"
+msgid "Return to RunTars"
+msgstr "Volver a RunTars"
 
 #: apps/mobile/app/page.tsx
 #: apps/web/src/components/pages/PageViewHost.tsx
@@ -9912,6 +9896,21 @@ msgstr "Ejecuciones"
 #: apps/web/src/pages/routines/routine-editor/trigger-cards.tsx
 msgid "Runs when this bot receives a verified message from this provider."
 msgstr "Se ejecuta cuando este bot recibe un mensaje verificado de este proveedor."
+
+#: apps/mobile/app/(settings)/ai-data-sharing.tsx
+#: apps/mobile/app/(settings)/general.tsx
+#: apps/mobile/app/bot-settings.tsx
+#: apps/web/src/pages/settings/AccountSettingsOverlay.tsx
+#: apps/web/src/pages/shell/bots/avatar-studio-popover.tsx
+msgid "RunTars"
+msgstr "RunTars"
+
+#: apps/mobile/app/(settings)/billing.tsx
+#: apps/mobile/components/models/model-role-settings.tsx
+#: apps/web/src/pages/model-settings/ModelRoleSettings.tsx
+#: apps/web/src/pages/onboarding/use-onboarding-model.ts
+msgid "RunTars credits"
+msgstr "Créditos de RunTars"
 
 #. js-lingui-explicit-id
 #: packages/i18n/src/plugin-catalog.ts
@@ -10650,8 +10649,8 @@ msgstr "Inicia sesión en {host} y pega aquí el código que te muestre."
 
 #: apps/mobile/app/sign-in.tsx
 #: apps/web/src/pages/auth/Auth.tsx
-msgid "Sign in to Rakazo"
-msgstr "Inicia sesión en Rakazo"
+msgid "Sign in to RunTars"
+msgstr "Inicia sesión en RunTars"
 
 #: packages/i18n/src/user-error.ts
 msgid "Sign in to your account, then link this provider in settings"
@@ -10681,8 +10680,8 @@ msgid "Sign up"
 msgstr "Registrarse"
 
 #: apps/mobile/app/sign-in.tsx
-msgid "Sign up for Rakazo"
-msgstr "Regístrate en Rakazo"
+msgid "Sign up for RunTars"
+msgstr "Regístrate en RunTars"
 
 #: apps/web/src/pages/plugins/PluginsOverlay.tsx
 msgid "Sign-in cancelled. Retry in Manage MCP servers."
@@ -11037,8 +11036,8 @@ msgid "Start recording"
 msgstr "Iniciar grabación"
 
 #: apps/mobile/app/paywall.tsx
-msgid "Start using Rakazo"
-msgstr "Empieza a usar Rakazo"
+msgid "Start using RunTars"
+msgstr "Empieza a usar RunTars"
 
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/web/src/components/billing/ModelCredits.tsx
@@ -11363,8 +11362,8 @@ msgid "That isn't a Grok Bot export. Paste the Bot's whole reply."
 msgstr "Eso no es una exportación de Grok Bot. Pega la respuesta completa del Bot."
 
 #: apps/mobile/lib/api/endpoint.ts
-msgid "That URL did not look like a Rakazo server"
-msgstr "Esa URL no parece ser de un servidor de Rakazo"
+msgid "That URL did not look like a RunTars server"
+msgstr "Esa URL no parece ser de un servidor de RunTars"
 
 #: apps/mobile/lib/api/endpoint.ts
 msgid "That URL is missing a host"
@@ -11672,8 +11671,8 @@ msgid "This draft isn't available"
 msgstr "Este borrador no está disponible"
 
 #: apps/web/src/lib/bots/agent-import-errors.ts
-msgid "This export is newer than Rakazo can read. Update Rakazo and try again."
-msgstr "Esta exportación es más reciente de lo que Rakazo puede leer. Actualiza Rakazo y vuelve a intentarlo."
+msgid "This export is newer than RunTars can read. Update RunTars and try again."
+msgstr "Esta exportación es más reciente de lo que RunTars puede leer. Actualiza RunTars y vuelve a intentarlo."
 
 #: apps/web/src/lib/bots/agent-import-errors.ts
 msgid "This export is too large to import."
@@ -11847,8 +11846,8 @@ msgstr "Este Espacio tiene su propia bóveda. Sus bots guardan y usan elementos 
 
 #: apps/mobile/app/(settings)/model-connection.tsx
 #: apps/web/src/pages/model-settings/connection-controls.tsx
-msgid "This subscription sign-in is not available in Rakazo yet. Use a deployment credential or choose another provider."
-msgstr "Este inicio de sesión por suscripción aún no está disponible en Rakazo. Usa una credencial de despliegue o elige otro proveedor."
+msgid "This subscription sign-in is not available in RunTars yet. Use a deployment credential or choose another provider."
+msgstr "Este inicio de sesión por suscripción aún no está disponible en RunTars. Usa una credencial de despliegue o elige otro proveedor."
 
 #: apps/mobile/app/(settings)/bot-template.tsx
 msgid "This template is no longer available."
@@ -12468,8 +12467,8 @@ msgstr "Usa Entrada protegida para las contraseñas."
 
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/web/src/components/billing/ModelCredits.tsx
-msgid "Use Rakazo credits"
-msgstr "Usar créditos de Rakazo"
+msgid "Use RunTars credits"
+msgstr "Usar créditos de RunTars"
 
 #: apps/mobile/components/settings/space-bots-model.tsx
 msgid "Use space default"
@@ -12718,8 +12717,8 @@ msgstr "Hola de nuevo"
 #: apps/mobile/app/(settings)/_layout.tsx
 #: apps/mobile/app/sign-in.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "Welcome to Rakazo"
-msgstr "Te damos la bienvenida a Rakazo"
+msgid "Welcome to RunTars"
+msgstr "Te damos la bienvenida a RunTars"
 
 #: apps/web/src/pages/shell/create-delete-dialogs.tsx
 msgid "What about its memories?"
@@ -12731,8 +12730,8 @@ msgstr "¿Qué puede usar este espacio?"
 
 #: apps/mobile/app/(settings)/signup-survey.tsx
 #: apps/web/src/components/account/SignupSurvey.tsx
-msgid "What do you most want Rakazo to help with?"
-msgstr "¿Con qué quieres que Rakazo te ayude más?"
+msgid "What do you most want RunTars to help with?"
+msgstr "¿Con qué quieres que RunTars te ayude más?"
 
 #: apps/web/src/pages/shell/chat/message-cards.tsx
 msgid "What do you want me on first?"
@@ -13138,117 +13137,3 @@ msgstr "Sin retención de datos"
 #: apps/web/src/components/vault/VaultItemEditor.tsx
 msgid "ZIP or postal code"
 msgstr "Código postal"
-
-#: apps/web/src/components/ModelCredits.tsx
-#: apps/web/src/components/SubscriptionGate.tsx
-msgid "Choose how to use RunTars"
-msgstr "Elige cómo usar RunTars"
-
-#. js-lingui-explicit-id
-#: packages/i18n/src/run-error.ts
-msgid "Connect your own API key in Models or choose RunTars credits in Billing."
-msgstr "Conecta tu propia clave de API en Modelos o elige créditos de RunTars en Facturación."
-
-#: apps/web/src/components/GitHubStarPrompt.tsx
-msgid "Enjoying RunTars?"
-msgstr "¿Te gusta RunTars?"
-
-#: apps/mobile/app/(settings)/signup-survey.tsx
-#: apps/web/src/components/SignupSurvey.tsx
-msgid "How will you use RunTars?"
-msgstr "¿Cómo usarás RunTars?"
-
-#: apps/web/src/pages/shell/import-status.ts
-msgid "Not in RunTars's catalog"
-msgstr "No está en el catálogo de RunTars"
-
-#: apps/web/src/pages/shell/agent-import-plan.tsx
-#: apps/web/src/pages/shell/import-status.ts
-msgid "Not supported in RunTars"
-msgstr "No compatible con RunTars"
-
-#: apps/web/src/pages/shell/agent-import-plan.tsx
-msgid "Not used by RunTars"
-msgstr "RunTars no lo usa"
-
-#: apps/web/src/components/pages/PublicPageShell.tsx
-#: apps/web/src/pages/Invite.tsx
-#: apps/web/src/pages/SharedPage.tsx
-msgid "Open RunTars"
-msgstr "Abrir RunTars"
-
-#: apps/mobile/components/compatible-endpoint-form.tsx
-#: apps/web/src/pages/model-settings/compatible-model-fields.tsx
-msgid "Paste the OpenAI-compatible address from your server. RunTars adds /v1 if needed."
-msgstr "Pega la dirección compatible con OpenAI de tu servidor. RunTars agrega /v1 si es necesario."
-
-#: apps/mobile/app/(settings)/ai-data-sharing.tsx
-#: apps/mobile/app/(settings)/general.tsx
-#: apps/mobile/app/bot-settings.tsx
-#: apps/web/src/pages/AccountSettingsOverlay.tsx
-#: apps/web/src/pages/shell/avatar-studio-popover.tsx
-msgid "RunTars"
-msgstr "RunTars"
-
-#: apps/mobile/app/(settings)/billing.tsx
-#: apps/web/src/pages/onboarding/use-onboarding-model.ts
-msgid "RunTars credits"
-msgstr "Créditos de RunTars"
-
-#: apps/web/src/components/ProviderSettingsForm.tsx
-msgid "rakazo-shared and IDs starting with bot- are reserved for RunTars."
-msgstr "rakazo-shared y los ID que empiezan con bot- están reservados para RunTars."
-
-#: apps/web/src/components/ProviderSettingsForm.tsx
-msgid "Recall from this peer; save to RunTars’s own peers."
-msgstr "Consultar este peer; guardar en los propios peers de RunTars."
-
-#: apps/web/src/pages/McpOAuthCallback.tsx
-#: apps/web/src/pages/SlackInstallCallback.tsx
-msgid "Return to RunTars"
-msgstr "Volver a RunTars"
-
-#: apps/mobile/app/sign-in.tsx
-msgid "Sign in to continue to RunTars"
-msgstr "Inicia sesión para continuar en RunTars"
-
-#: apps/mobile/app/sign-in.tsx
-#: apps/web/src/pages/Auth.tsx
-msgid "Sign in to RunTars"
-msgstr "Inicia sesión en RunTars"
-
-#: apps/mobile/app/sign-in.tsx
-msgid "Sign up for RunTars"
-msgstr "Regístrate en RunTars"
-
-#: apps/mobile/app/paywall.tsx
-msgid "Start using RunTars"
-msgstr "Empieza a usar RunTars"
-
-#: apps/mobile/lib/endpoint.ts
-msgid "That URL did not look like a RunTars server"
-msgstr "Esa URL no parece ser de un servidor de RunTars"
-
-#: apps/web/src/lib/agent-import-errors.ts
-msgid "This export is newer than RunTars can read. Update RunTars and try again."
-msgstr "Esta exportación es más reciente de lo que RunTars puede leer. Actualiza RunTars y vuelve a intentarlo."
-
-#: apps/mobile/app/(settings)/model-connection.tsx
-#: apps/web/src/pages/model-settings/connection-controls.tsx
-msgid "This subscription sign-in is not available in RunTars yet. Use a deployment credential or choose another provider."
-msgstr "Este inicio de sesión por suscripción aún no está disponible en RunTars. Usa una credencial de despliegue o elige otro proveedor."
-
-#: apps/mobile/app/(settings)/billing.tsx
-#: apps/web/src/components/ModelCredits.tsx
-msgid "Use RunTars credits"
-msgstr "Usar créditos de RunTars"
-
-#: apps/mobile/app/(settings)/_layout.tsx
-#: apps/web/src/components/SignupSurvey.tsx
-msgid "Welcome to RunTars"
-msgstr "Te damos la bienvenida a RunTars"
-
-#: apps/mobile/app/(settings)/signup-survey.tsx
-#: apps/web/src/components/SignupSurvey.tsx
-msgid "What do you most want RunTars to help with?"
-msgstr "¿Con qué quieres que RunTars te ayude más?"
