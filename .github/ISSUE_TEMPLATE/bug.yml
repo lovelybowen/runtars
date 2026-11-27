@@ -1,6 +1,5 @@
 name: Bug report
 description: Something is broken in RunTars
-title: "[Bug]: "
 labels:
   - bug
 body:
@@ -8,14 +7,6 @@ body:
     attributes:
       value: |
         For **security vulnerabilities**, email [support@runtars.com](mailto:support@runtars.com) — do not use this form. See [SECURITY.md](https://github.com/lovelybowen/runtars/blob/main/SECURITY.md).
-
-  - type: checkboxes
-    id: not-security
-    attributes:
-      label: Confirmation
-      options:
-        - label: This is not a security vulnerability report
-          required: true
 
   - type: textarea
     id: description
@@ -42,15 +33,11 @@ body:
     id: expected
     attributes:
       label: Expected behavior
-    validations:
-      required: true
 
   - type: textarea
     id: actual
     attributes:
       label: Actual behavior
-    validations:
-      required: true
 
   - type: input
     id: version
@@ -69,8 +56,6 @@ body:
         - Linux
         - Windows
         - Other
-    validations:
-      required: true
 
   - type: input
     id: sandbox

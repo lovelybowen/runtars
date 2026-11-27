@@ -419,6 +419,7 @@ export function Thread({ sessionEpoch, userId }: { sessionEpoch: number; userId:
   useIncomingShareImport({
     attachments,
     composerRef: composer.composerRef,
+    focused,
     readOnly,
     threadKey,
     uploadConfig,
