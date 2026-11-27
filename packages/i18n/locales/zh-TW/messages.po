@@ -1510,7 +1510,7 @@ msgstr "一律允許 {site}"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Always allow routine updates"
-msgstr ""
+msgstr "一律允許更新例行任務"
 
 #: apps/mobile/lib/cards/ask-action-label.ts
 #: apps/web/src/components/messages/AskCard.tsx
@@ -1723,7 +1723,7 @@ msgstr "核准"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Approve once"
-msgstr ""
+msgstr "只核准這一次"
 
 #: apps/mobile/lib/calls/call-session.ts
 #: apps/web/src/lib/calls/call-session.ts
@@ -6456,7 +6456,7 @@ msgstr "此機器人中"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "In this chat"
-msgstr ""
+msgstr "在此聊天中"
 
 #: apps/mobile/app/(settings)/mcp-server.tsx
 msgid "In use"
@@ -7554,7 +7554,7 @@ msgstr "更多操作"
 #: apps/mobile/components/cards/AskActions.tsx
 #: apps/web/src/components/messages/AskCard.tsx
 msgid "More approval options"
-msgstr ""
+msgstr "更多核准選項"
 
 #: apps/web/src/pages/plugins/plugin-browse.tsx
 msgid "More apps"
@@ -7781,7 +7781,7 @@ msgstr "新的標頭值"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "New instructions"
-msgstr ""
+msgstr "新指令"
 
 #: apps/mobile/app/(settings)/vault.tsx
 msgid "New item"
@@ -8984,7 +8984,7 @@ msgstr "上一張圖片"
 #: apps/mobile/components/cards/routine-approval-detail.tsx
 #: apps/web/src/components/messages/RoutineApprovalDetail.tsx
 msgid "Previous instructions"
-msgstr ""
+msgstr "先前的指令"
 
 #: apps/web/src/pages/shell/chat/chat-find-bar.tsx
 msgid "Previous match"
@@ -9000,7 +9000,7 @@ msgstr "上一組設定區段"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Previously: {value}"
-msgstr ""
+msgstr "先前：{value}"
 
 #: apps/web/src/pages/space/board-views.tsx
 #: apps/web/src/pages/space/Board.tsx
@@ -10215,7 +10215,7 @@ msgstr "回答是或否，或一句話說明。"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Schedule"
-msgstr ""
+msgstr "執行排程"
 
 #: apps/mobile/app/routine.tsx
 #: apps/mobile/lib/routines/routine.ts
@@ -10483,7 +10483,7 @@ msgstr "已傳送"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Separately from this chat"
-msgstr ""
+msgstr "在此聊天之外獨立執行"
 
 #: apps/mobile/app/_layout.tsx
 #: apps/mobile/app/(settings)/mcp-server.tsx
@@ -12014,7 +12014,7 @@ msgstr "時間"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Time zone"
-msgstr ""
+msgstr "時區"
 
 #: apps/web/src/pages/settings/AccountSettingsOverlay.tsx
 msgid "Timezone"
@@ -12955,7 +12955,7 @@ msgstr "何時使用"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Where it runs"
-msgstr ""
+msgstr "執行位置"
 
 #: apps/web/src/pages/shell/host-computer-prompt.tsx
 msgid "Where should bots run?"

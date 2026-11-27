@@ -1509,7 +1509,7 @@ msgstr "Zawsze zezwalaj na {site}"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Always allow routine updates"
-msgstr ""
+msgstr "Zawsze zezwalaj na zmiany w rutynach"
 
 #: apps/mobile/lib/cards/ask-action-label.ts
 #: apps/web/src/components/messages/AskCard.tsx
@@ -1722,7 +1722,7 @@ msgstr "Zatwierdź"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Approve once"
-msgstr ""
+msgstr "Zatwierdź jednorazowo"
 
 #: apps/mobile/lib/calls/call-session.ts
 #: apps/web/src/lib/calls/call-session.ts
@@ -6455,7 +6455,7 @@ msgstr "W tym bocie"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "In this chat"
-msgstr ""
+msgstr "W tym czacie"
 
 #: apps/mobile/app/(settings)/mcp-server.tsx
 msgid "In use"
@@ -7553,7 +7553,7 @@ msgstr "Więcej działań"
 #: apps/mobile/components/cards/AskActions.tsx
 #: apps/web/src/components/messages/AskCard.tsx
 msgid "More approval options"
-msgstr ""
+msgstr "Więcej opcji zatwierdzania"
 
 #: apps/web/src/pages/plugins/plugin-browse.tsx
 msgid "More apps"
@@ -7780,7 +7780,7 @@ msgstr "Nowa wartość nagłówka"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "New instructions"
-msgstr ""
+msgstr "Nowe instrukcje"
 
 #: apps/mobile/app/(settings)/vault.tsx
 msgid "New item"
@@ -8983,7 +8983,7 @@ msgstr "Poprzedni obraz"
 #: apps/mobile/components/cards/routine-approval-detail.tsx
 #: apps/web/src/components/messages/RoutineApprovalDetail.tsx
 msgid "Previous instructions"
-msgstr ""
+msgstr "Poprzednie instrukcje"
 
 #: apps/web/src/pages/shell/chat/chat-find-bar.tsx
 msgid "Previous match"
@@ -8999,7 +8999,7 @@ msgstr "Poprzednie sekcje ustawień"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Previously: {value}"
-msgstr ""
+msgstr "Poprzednio: {value}"
 
 #: apps/web/src/pages/space/board-views.tsx
 #: apps/web/src/pages/space/Board.tsx
@@ -10214,7 +10214,7 @@ msgstr "Powiedz tak lub nie albo odpowiedz zdaniem."
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Schedule"
-msgstr ""
+msgstr "Harmonogram"
 
 #: apps/mobile/app/routine.tsx
 #: apps/mobile/lib/routines/routine.ts
@@ -10482,7 +10482,7 @@ msgstr "Wysłano"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Separately from this chat"
-msgstr ""
+msgstr "Niezależnie od tego czatu"
 
 #: apps/mobile/app/_layout.tsx
 #: apps/mobile/app/(settings)/mcp-server.tsx
@@ -12013,7 +12013,7 @@ msgstr "Pora dnia"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Time zone"
-msgstr ""
+msgstr "Strefa czasowa"
 
 #: apps/web/src/pages/settings/AccountSettingsOverlay.tsx
 msgid "Timezone"
@@ -12954,7 +12954,7 @@ msgstr "Kiedy używać"
 
 #: packages/i18n/src/routine-approval.ts
 msgid "Where it runs"
-msgstr ""
+msgstr "Miejsce uruchomienia"
 
 #: apps/web/src/pages/shell/host-computer-prompt.tsx
 msgid "Where should bots run?"
