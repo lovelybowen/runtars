@@ -91,8 +91,8 @@ WHERE "connectorId" = 'pipedream' AND "status" = 'connected' AND "providerRef" =
 
 `.github/workflows/publish-server-image.yml` เผยแพร่ไปที่ `ghcr.io/<owner>/<repo>/…` ซึ่งได้มาจาก `${{ github.repository }}` ไม่ได้ hardcode CI ของ fork จึงเผยแพร่ลง namespace ของ fork เอง สำหรับ repository นี้คือ:
 
-| Image                             | เนื้อหา                                                        |
-| --------------------------------- | ------------------------------------------------------------ |
+| Image                                  | เนื้อหา                                                        |
+| -------------------------------------- | ------------------------------------------------------------ |
 | `ghcr.io/lovelybowen/runtars/app`      | api, worker, web และ sandbox supervisor: image เดียว หลายคำสั่ง |
 | `ghcr.io/lovelybowen/runtars/computer` | Linux desktop ที่ใช้เป็น computer ของแต่ละ bot                    |
 | `ghcr.io/lovelybowen/runtars/updater`  | updater sidecar พร้อม Docker CLI                              |
