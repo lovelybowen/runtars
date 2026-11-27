@@ -19,6 +19,7 @@ import { createThreadMessage } from "@rakazo/db";
 import { disposableDatabaseEnv } from "../cli/postgres.js";
 import { runProcess } from "../cli/process.js";
 import { sessionCookieHeader } from "../index.js";
+import { ensureMcpServer } from "./mcp-server-fixture.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../..");
 const REPORT_DIR = path.join(ROOT, "test-report", "mobile-screenshots");
@@ -207,36 +208,42 @@ function startDeviceControlServer(
   prisma: PrismaClient,
   fixture: Awaited<ReturnType<typeof seedFixture>>,
 ): Server {
-  const routes: Record<string, () => Promise<unknown>> = {
-    "/expand-notifications": () => adb(["shell", "cmd", "statusbar", "expand-notifications"]),
-    "/share-text": () =>
-      adb([
-        "shell",
-        "am start -a android.intent.action.SEND -t text/plain",
-        "--es android.intent.extra.TEXT 'Shared from another app'",
-        "-n com.rakazo.app/.MainActivity",
-      ]),
-    "/ring": () => ringFromResearcher(prisma, fixture),
-    "/connect-voice": () =>
-      rpc(app, fixture.cookie, "voice/connect", {
-        provider: "scripted",
-        apiKey: "fixture-voice-key",
-      }),
-  };
+  function runDeviceCommand(url: string | undefined): Promise<unknown> | undefined {
+    switch (url) {
+      case "/expand-notifications":
+        return adb(["shell", "cmd", "statusbar", "expand-notifications"]);
+      case "/share-text":
+        return adb([
+          "shell",
+          "am start -a android.intent.action.SEND -t text/plain",
+          "--es android.intent.extra.TEXT 'Shared from another app'",
+          "-n com.rakazo.app/.MainActivity",
+        ]);
+      case "/ring":
+        return ringFromResearcher(prisma, fixture);
+      case "/connect-voice":
+        return rpc(app, fixture.cookie, "voice/connect", {
+          provider: "scripted",
+          apiKey: "fixture-voice-key",
+        });
+      default:
+        return undefined;
+    }
+  }
   const server = createServer((req, res) => {
-    const route = req.method === "GET" ? routes[req.url ?? ""] : undefined;
-    if (!route) {
+    const command = req.method === "GET" ? runDeviceCommand(req.url) : undefined;
+    if (!command) {
       res.writeHead(404, { "content-type": "text/plain; charset=utf-8" });
       res.end("not found");
       return;
     }
-    route().then(
+    command.then(
       () => {
         res.writeHead(200, { "content-type": "text/plain; charset=utf-8" });
         res.end("ok");
       },
       (error: unknown) => {
-        console.error(`Device control ${req.url} failed`, error);
+        console.error("Device control %s failed", req.url, error);
         res.writeHead(500, { "content-type": "text/plain; charset=utf-8" });
         res.end("failed");
       },
@@ -506,6 +513,11 @@ async function seedFixture(app: App, prisma: PrismaClient) {
     runId: peerRun.id,
     markUnread: false,
     blocks: [{ kind: "text", text: "Update from Writer: The fixture launch note is drafted." }],
+  });
+  await ensureMcpServer(prisma, {
+    spaceId: botThread.spaceId,
+    userId: botThread.userId,
+    botIds: [researcher.id, writer.id],
   });
 
   return {

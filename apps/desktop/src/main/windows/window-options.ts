@@ -20,7 +20,7 @@ function windowChrome(platform: NodeJS.Platform) {
     autoHideMenuBar: true,
     frame: mac || platform === "win32",
     titleBarStyle: mac ? ("hiddenInset" as const) : undefined,
-    trafficLightPosition: mac ? { x: 16, y: 16 } : undefined,
+    trafficLightPosition: mac ? { x: 16, y: 19 } : undefined,
   };
 }
 
