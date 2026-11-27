@@ -971,7 +971,6 @@ msgstr "Access token (ไม่บังคับ)"
 
 #: apps/mobile/app/(settings)/_layout.tsx
 #: apps/mobile/app/paywall.tsx
-#: apps/mobile/components/inbox/inbox-footer.tsx
 #: apps/mobile/components/inbox/inbox-header.tsx
 #: apps/mobile/lib/inbox/use-inbox-header.ts
 #: apps/web/src/components/account/AccountMenu.tsx
@@ -1029,6 +1028,7 @@ msgstr "การดำเนินการสำหรับ {name}"
 #: apps/mobile/app/routine.tsx
 #: apps/web/src/pages/routines/RoutineEditor.tsx
 #: apps/web/src/pages/settings/BillingSettingsPanel.tsx
+#: packages/i18n/src/routine-approval.ts
 msgid "Active"
 msgstr "เปิดใช้งาน"
 
@@ -1501,6 +1501,10 @@ msgstr "อนุญาตเสมอ"
 msgid "Always allow {site}"
 msgstr "อนุญาต {site} เสมอ"
 
+#: packages/i18n/src/routine-approval.ts
+msgid "Always allow routine updates"
+msgstr ""
+
 #: apps/mobile/lib/cards/ask-action-label.ts
 #: apps/web/src/components/messages/AskCard.tsx
 msgid "Always allow this tool"
@@ -1709,6 +1713,10 @@ msgstr "การอนุมัติ"
 #: apps/web/src/pages/shell/chat/message-cards.tsx
 msgid "Approve"
 msgstr "อนุมัติ"
+
+#: packages/i18n/src/routine-approval.ts
+msgid "Approve once"
+msgstr ""
 
 #: apps/mobile/lib/calls/call-session.ts
 #: apps/web/src/lib/calls/call-session.ts
@@ -2880,11 +2888,6 @@ msgstr "คำสั่ง"
 #: apps/web/src/pages/shell/keyboard-shortcuts-dialog.tsx
 msgid "Command menu"
 msgstr "เมนูคำสั่ง"
-
-#: apps/mobile/lib/vault/secret-destination.ts
-#: apps/web/src/components/messages/SecretAskCard.tsx
-msgid "Command variable"
-msgstr "ตัวแปรคำสั่ง"
 
 #: apps/mobile/lib/pages/page-review-comments.tsx
 #: apps/web/src/components/pages/PageReviewComments.tsx
@@ -4899,6 +4902,7 @@ msgstr "วัน"
 #: apps/web/src/components/call/IncomingCall.tsx
 #: apps/web/src/components/messages/ToolQuestionCard.tsx
 #: apps/web/src/pages/settings/MessagingSettingsPanel.tsx
+#: packages/i18n/src/routine-approval.ts
 msgid "Decline"
 msgstr "ปฏิเสธ"
 
@@ -6443,6 +6447,10 @@ msgstr "อยู่ในการประชุม"
 msgid "In this bot"
 msgstr "ในบอทนี้"
 
+#: packages/i18n/src/routine-approval.ts
+msgid "In this chat"
+msgstr ""
+
 #: apps/mobile/app/(settings)/mcp-server.tsx
 msgid "In use"
 msgstr "ใช้งานอยู่"
@@ -7536,6 +7544,11 @@ msgstr "เพิ่มเติม"
 msgid "More actions"
 msgstr "การทำงานเพิ่มเติม"
 
+#: apps/mobile/components/cards/AskActions.tsx
+#: apps/web/src/components/messages/AskCard.tsx
+msgid "More approval options"
+msgstr ""
+
 #: apps/web/src/pages/plugins/plugin-browse.tsx
 msgid "More apps"
 msgstr "แอปเพิ่มเติม"
@@ -7559,7 +7572,7 @@ msgid "Move them to your shared memory."
 msgstr "ย้ายไปยังความจำที่ใช้ร่วมกัน"
 
 #: apps/mobile/components/inbox/bot-organize-modal.tsx
-#: apps/mobile/components/inbox/inbox-swipe-row.ios.tsx
+#: apps/mobile/components/inbox/chat-menu-items.ios.tsx
 #: apps/mobile/lib/board/board-list.ios.tsx
 #: apps/mobile/lib/board/board-list.tsx
 #: apps/web/src/pages/shell/chat/bot-context-menu.tsx
@@ -7612,6 +7625,7 @@ msgstr "คอมพิวเตอร์ของฉัน"
 #: apps/web/src/pages/shell/bots/create-bot-dialog.tsx
 #: apps/web/src/pages/shell/create-delete-dialogs.tsx
 #: apps/web/src/pages/space/GroupPanel.tsx
+#: packages/i18n/src/routine-approval.ts
 msgid "Name"
 msgstr "ชื่อ"
 
@@ -7758,6 +7772,10 @@ msgstr "แชทกลุ่มใหม่"
 msgid "New header value"
 msgstr "ค่าเฮดเดอร์ใหม่"
 
+#: packages/i18n/src/routine-approval.ts
+msgid "New instructions"
+msgstr ""
+
 #: apps/mobile/app/(settings)/vault.tsx
 msgid "New item"
 msgstr "รายการใหม่"
@@ -7806,7 +7824,7 @@ msgid "New routine"
 msgstr "รูทีนใหม่"
 
 #: apps/mobile/components/inbox/bot-organize-modal.tsx
-#: apps/mobile/components/inbox/inbox-swipe-row.ios.tsx
+#: apps/mobile/components/inbox/chat-menu-items.ios.tsx
 #: apps/mobile/lib/inbox/use-inbox-chat-actions.ts
 #: apps/web/src/pages/shell/chat/bot-context-menu.tsx
 #: apps/web/src/pages/shell/create-delete-dialogs.tsx
@@ -7856,6 +7874,7 @@ msgid "Next page"
 msgstr "หน้าถัดไป"
 
 #: apps/mobile/app/routine.tsx
+#: packages/i18n/src/routine-approval.ts
 msgid "Next run"
 msgstr "การรันถัดไป"
 
@@ -8103,6 +8122,7 @@ msgstr "ไม่พบคอลัมน์เว็บไซต์และร
 #: apps/web/src/components/billing/SpendingLimitSettings.tsx
 #: apps/web/src/components/messages/ToolQuestionCard.tsx
 #: apps/web/src/components/vault/VaultItemEditor.tsx
+#: packages/i18n/src/routine-approval.ts
 msgid "None"
 msgstr "ไม่มี"
 
@@ -8757,6 +8777,7 @@ msgstr "หยุด {name} ชั่วคราว"
 #: apps/mobile/lib/routines/routine.ts
 #: apps/web/src/pages/routines/RoutineList.tsx
 #: apps/web/src/pages/shell/bots/import-status.ts
+#: packages/i18n/src/routine-approval.ts
 msgid "Paused"
 msgstr "หยุดชั่วคราว"
 
@@ -8953,6 +8974,11 @@ msgstr "ไม่สามารถดูตัวอย่างไฟล์ป
 msgid "Previous image"
 msgstr "รูปภาพก่อนหน้า"
 
+#: apps/mobile/components/cards/routine-approval-detail.tsx
+#: apps/web/src/components/messages/RoutineApprovalDetail.tsx
+msgid "Previous instructions"
+msgstr ""
+
 #: apps/web/src/pages/shell/chat/chat-find-bar.tsx
 msgid "Previous match"
 msgstr "รายการที่ตรงกันก่อนหน้า"
@@ -8964,6 +8990,10 @@ msgstr "หน้าก่อนหน้า"
 #: apps/web/src/pages/settings/SettingsOverlay.tsx
 msgid "Previous settings sections"
 msgstr "ส่วนการตั้งค่าก่อนหน้า"
+
+#: packages/i18n/src/routine-approval.ts
+msgid "Previously: {value}"
+msgstr ""
 
 #: apps/web/src/pages/space/board-views.tsx
 #: apps/web/src/pages/space/Board.tsx
@@ -9518,8 +9548,8 @@ msgid "Rename"
 msgstr "เปลี่ยนชื่อ"
 
 #: apps/mobile/components/inbox/bot-organize-modal.tsx
+#: apps/mobile/components/inbox/chat-menu-items.ios.tsx
 #: apps/mobile/components/inbox/inbox-render-item.tsx
-#: apps/mobile/components/inbox/inbox-swipe-row.ios.tsx
 #: apps/mobile/lib/inbox/use-inbox-chat-actions.ts
 #: apps/web/src/pages/shell/chat/bot-context-menu.tsx
 #: apps/web/src/pages/shell/create-delete-dialogs.tsx
@@ -9771,7 +9801,7 @@ msgid "Restoring…"
 msgstr "กำลังคืนค่า…"
 
 #: apps/mobile/components/inbox/bot-organize-modal.tsx
-#: apps/mobile/components/inbox/inbox-swipe-row.ios.tsx
+#: apps/mobile/components/inbox/chat-menu-items.ios.tsx
 msgid "Resume notifications"
 msgstr "เปิดการแจ้งเตือนอีกครั้ง"
 
@@ -10176,6 +10206,10 @@ msgstr "กำลังบันทึก…"
 msgid "Say yes or no, or answer in a sentence."
 msgstr "ตอบใช่หรือไม่ หรือตอบเป็นประโยคก็ได้"
 
+#: packages/i18n/src/routine-approval.ts
+msgid "Schedule"
+msgstr ""
+
 #: apps/mobile/app/routine.tsx
 #: apps/mobile/lib/routines/routine.ts
 #: apps/web/src/pages/routines/RoutineEditor.tsx
@@ -10424,6 +10458,7 @@ msgstr "ส่งพรอมต์นี้ถึงผู้ช่วยขอ
 msgid "Send with Enter"
 msgstr "ส่งด้วย Enter"
 
+#: apps/mobile/components/cards/AskActions.tsx
 #: apps/mobile/components/thread/failed-send-bubble.tsx
 #: apps/web/src/components/messages/AskCard.tsx
 #: apps/web/src/components/messages/SecretAskCard.tsx
@@ -10438,6 +10473,10 @@ msgstr "กำลังส่ง…"
 #: apps/web/src/components/messages/ToolQuestionCard.tsx
 msgid "Sent"
 msgstr "ส่งแล้ว"
+
+#: packages/i18n/src/routine-approval.ts
+msgid "Separately from this chat"
+msgstr ""
 
 #: apps/mobile/app/_layout.tsx
 #: apps/mobile/app/(settings)/mcp-server.tsx
@@ -10475,6 +10514,7 @@ msgstr "ตั้งค่า"
 
 #: apps/mobile/app/(settings)/_layout.tsx
 #: apps/mobile/components/calls/CallCard.tsx
+#: apps/mobile/components/inbox/inbox-footer.tsx
 #: apps/mobile/components/inbox/inbox-render-item.tsx
 #: apps/web/src/components/call/CallCard.tsx
 #: apps/web/src/pages/settings/MessagingSettingsPanel.tsx
@@ -10794,7 +10834,7 @@ msgid "Signing out deletes unsent messages."
 msgstr "การออกจากระบบจะลบข้อความที่ยังไม่ได้ส่ง"
 
 #: apps/mobile/components/inbox/bot-organize-modal.tsx
-#: apps/mobile/components/inbox/inbox-swipe-row.ios.tsx
+#: apps/mobile/components/inbox/chat-menu-items.ios.tsx
 msgid "Silence notifications"
 msgstr "ปิดเสียงการแจ้งเตือน"
 
@@ -10903,7 +10943,7 @@ msgid "Slide up to lock"
 msgstr "เลื่อนขึ้นเพื่อล็อก"
 
 #: apps/mobile/components/inbox/bot-organize-modal.tsx
-#: apps/mobile/components/inbox/inbox-swipe-row.ios.tsx
+#: apps/mobile/components/inbox/chat-menu-items.ios.tsx
 #: apps/web/src/pages/shell/chat/bot-context-menu.tsx
 msgid "Snooze"
 msgstr "ปักเวลา"
@@ -11161,6 +11201,7 @@ msgstr "จังหวัดหรือภูมิภาค"
 #: apps/web/src/pages/space/ActivityList.tsx
 #: apps/web/src/pages/space/board-views.tsx
 #: apps/web/src/pages/space/Board.tsx
+#: packages/i18n/src/routine-approval.ts
 msgid "Status"
 msgstr "สถานะ"
 
@@ -11964,6 +12005,10 @@ msgstr "ตั๋ว"
 msgid "Time of day"
 msgstr "เวลา"
 
+#: packages/i18n/src/routine-approval.ts
+msgid "Time zone"
+msgstr ""
+
 #: apps/web/src/pages/settings/AccountSettingsOverlay.tsx
 msgid "Timezone"
 msgstr "เขตเวลา"
@@ -12253,7 +12298,7 @@ msgid "Type your answer"
 msgstr "พิมพ์คำตอบ"
 
 #: apps/mobile/components/inbox/bot-organize-modal.tsx
-#: apps/mobile/components/inbox/inbox-swipe-row.ios.tsx
+#: apps/mobile/components/inbox/chat-menu-items.ios.tsx
 #: apps/mobile/lib/inbox/inbox-spaces.ts
 #: apps/web/src/pages/shell/chat/bot-context-menu.tsx
 #: apps/web/src/pages/shell/sidebar/use-sidebar-view.ts
@@ -12310,7 +12355,7 @@ msgid "Unsent messages"
 msgstr "ข้อความที่ยังไม่ได้ส่ง"
 
 #: apps/mobile/components/inbox/bot-organize-modal.tsx
-#: apps/mobile/components/inbox/inbox-swipe-row.ios.tsx
+#: apps/mobile/components/inbox/chat-menu-items.ios.tsx
 #: apps/web/src/pages/shell/chat/bot-context-menu.tsx
 #: apps/web/src/pages/shell/sidebar/snoozed-chats.tsx
 msgid "Unsnooze"
@@ -12900,6 +12945,10 @@ msgstr "กำหนดเวลารัน"
 #: apps/web/src/components/vault/VaultItemEditor.tsx
 msgid "When to use"
 msgstr "ใช้เมื่อไร"
+
+#: packages/i18n/src/routine-approval.ts
+msgid "Where it runs"
+msgstr ""
 
 #: apps/web/src/pages/shell/host-computer-prompt.tsx
 msgid "Where should bots run?"
