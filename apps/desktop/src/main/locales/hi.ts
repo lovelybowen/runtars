@@ -99,6 +99,7 @@ export const HI_MESSAGES: Record<string, string> = {
   "Almost ready…": "लगभग तैयार…",
   "RunTars is ready.": "RunTars तैयार है।",
   "{size} downloaded": "{size} डाउनलोड हुआ",
+  "{done} of {total}": "{total} में से {done}",
   "Connecting…": "कनेक्ट हो रहा है…",
   "Checking…": "जाँच हो रही है…",
   "RunTars answered at {url}.": "RunTars ने {url} पर जवाब दिया।",

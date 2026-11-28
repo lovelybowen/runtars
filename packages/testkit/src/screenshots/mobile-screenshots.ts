@@ -150,7 +150,7 @@ async function main() {
  * that clears app data during that teardown has its fresh launch killed with the old task.
  */
 async function settleApp() {
-  execFileSync("adb", ["shell", "am", "force-stop", "com.rakazo.app"], { stdio: "inherit" });
+  execFileSync("adb", ["shell", "am", "force-stop", "com.runtars.app"], { stdio: "inherit" });
   await new Promise((resolve) => setTimeout(resolve, 10_000));
 }
 
@@ -217,7 +217,7 @@ function startDeviceControlServer(
           "shell",
           "am start -a android.intent.action.SEND -t text/plain",
           "--es android.intent.extra.TEXT 'Shared from another app'",
-          "-n com.rakazo.app/.MainActivity",
+          "-n com.runtars.app/.MainActivity",
         ]);
       case "/ring":
         return ringFromResearcher(prisma, fixture);

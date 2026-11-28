@@ -110,6 +110,7 @@ export const PL_MESSAGES: Record<string, string> = {
   "Almost ready…": "Prawie gotowe…",
   "RunTars is ready.": "RunTars jest gotowe.",
   "{size} downloaded": "Pobrano {size}",
+  "{done} of {total}": "{done} z {total}",
   "Connecting…": "Łączenie…",
   "Checking…": "Sprawdzanie…",
   "RunTars answered at {url}.": "RunTars odpowiedziało pod adresem {url}.",

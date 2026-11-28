@@ -1,4 +1,5 @@
 {
+  "ignoreCommand": "sh scripts/ignore-build.sh",
   "installCommand": "corepack pnpm install",
   "redirects": [
     {

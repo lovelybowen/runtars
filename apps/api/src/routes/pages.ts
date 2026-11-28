@@ -1,15 +1,18 @@
 import { AI_CONSENT_REQUIRED } from "@rakazo/contracts";
 import { ClientError } from "@rakazo/core";
 import { aiConsentStatus } from "../account/ai-consent.js";
+import { askFromPage } from "../content/page-ask.js";
 import {
   addPageComment,
   getPageGrants,
+  getPageImage,
   getPageReview,
   grantPage,
   listPageReviews,
   pageComments,
   resolvePageComment,
   revokePage,
+  savePageReaderState,
 } from "../content/page-collaboration.js";
 import { askPageRevision, getPageDraft, publishPageDraft } from "../content/page-revisions.js";
 import {
@@ -23,10 +26,11 @@ import {
 import type { RouterContext } from "./context.js";
 
 export function pagesRoutes(ctx: RouterContext) {
-  const { deps, authed } = ctx;
+  const { deps, authed, codexCatalog } = ctx;
   const pageDeps = () => ({
     prisma: deps.prisma,
     secrets: deps.secrets,
+    artifacts: deps.artifacts,
     webOrigin: deps.env.webOrigin,
     events: deps.events,
   });
@@ -70,6 +74,12 @@ export function pagesRoutes(ctx: RouterContext) {
       publish: authed.pageReviews.publish.handler(({ context, input }) =>
         publishPageDraft(deps, context.actor, input),
       ),
+      saveState: authed.pageReviews.saveState.handler(({ context, input }) =>
+        savePageReaderState(deps.prisma, context.actor, input.pageId, input.values),
+      ),
+      image: authed.pageReviews.image.handler(({ context, input }) =>
+        getPageImage(deps, context.actor, input),
+      ),
     },
     pages: {
       list: authed.pages.list.handler(({ context, input }) =>
@@ -95,6 +105,15 @@ export function pagesRoutes(ctx: RouterContext) {
       remove: authed.pages.remove.handler(({ context, input }) =>
         removePage(pageDeps(), context.actor, input.pageId),
       ),
+      ask: authed.pages.ask.handler(async function* ({ context, input }) {
+        yield* askFromPage(
+          { ...deps, codexCatalog },
+          context.actor,
+          input,
+          context.signal,
+          context.stillAuthorized,
+        );
+      }),
     },
   };
 }

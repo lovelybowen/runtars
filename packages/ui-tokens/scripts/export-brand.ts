@@ -78,6 +78,7 @@ await png(rounded, "apps/mobile/assets/favicon.png", 128);
 await png(square, "apps/desktop/assets/icon.png", 1024);
 await ico(rounded, "apps/desktop/assets/icon.ico", [16, 32, 48, 64, 128, 256]);
 await png(square, "apps/mobile/assets/icon.png", 1024);
+await png(square, "apps/mobile/assets/app-mark.png", 192);
 
 // Android masks its own icon. Keep the entire foreground inside the launcher's
 // safe area instead of carrying over the old character's bottom-aligned crop.

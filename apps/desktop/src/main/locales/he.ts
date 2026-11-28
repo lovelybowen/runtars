@@ -98,6 +98,7 @@ export const HE_MESSAGES: Record<string, string> = {
   "Almost ready…": "כמעט מוכן…",
   "RunTars is ready.": "RunTars מוכן.",
   "{size} downloaded": "הורדו {size}",
+  "{done} of {total}": "{done} מתוך {total}",
   "Connecting…": "מתחבר…",
   "Checking…": "בודק…",
   "RunTars answered at {url}.": "RunTars הגיב בכתובת {url}.",

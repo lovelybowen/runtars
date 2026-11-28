@@ -101,6 +101,7 @@ export const NL_MESSAGES: Record<string, string> = {
   "Almost ready…": "Bijna klaar…",
   "RunTars is ready.": "RunTars is klaar.",
   "{size} downloaded": "{size} gedownload",
+  "{done} of {total}": "{done} van {total}",
   "Connecting…": "Verbinden…",
   "Checking…": "Controleren…",
   "RunTars answered at {url}.": "RunTars antwoordde op {url}.",

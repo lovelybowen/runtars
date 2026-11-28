@@ -8,14 +8,23 @@ import type {
   PluginPreview,
 } from "@rakazo/contracts";
 import { mcpServerConnection, mcpServerNeedsSignIn, PluginPreviewSchema } from "@rakazo/contracts";
-import { installedPluginParts, pluginSite } from "@rakazo/core";
-import { Button, Spinner } from "@rakazo/ui-web";
+import {
+  activeOrganizationForSpace,
+  canShareWithOrganization,
+  installedPluginParts,
+  pluginInstallIsReadOnly,
+  pluginInstallScope,
+  pluginSite,
+  selectPluginInstall,
+} from "@rakazo/core";
+import { Button, Checkbox, Field, FieldLabel, Spinner } from "@rakazo/ui-web";
 import { ArrowUpRight, Check, ChevronLeft, FileText, Plug } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { connectMcpOauth } from "../../lib/integrations/mcp-connect";
 import { rpc } from "../../lib/query/rpc";
 import type { ErrorDetails } from "../../lib/query/user-error";
 import { errorDetails } from "../../lib/query/user-error";
+import { useOrganizations } from "../../lib/spaces/organizations";
 import { ErrorNotice } from "../ErrorNotice";
 import { AvailabilityControl, reachesOtherSpaces, useOwnSpaces } from "./space-availability";
 import { useCatalogIconVisibility } from "./use-catalog-icon-visibility";
@@ -23,6 +32,8 @@ import { useCatalogIconVisibility } from "./use-catalog-icon-visibility";
 export type PluginSelection = {
   source: string;
   installedSource: string;
+  installId?: string;
+  organization?: boolean;
   name: string;
   description?: string;
   logo?: string | null;
@@ -172,6 +183,11 @@ export function PluginDetail({
   onChanged: () => Promise<unknown>;
 }) {
   const { t } = useLingui();
+  const organizationList = useOrganizations();
+  const canShare = canShareWithOrganization(activeOrganizationForSpace(organizationList));
+  const organizationScopeId = useId();
+  const [forOrganization, setForOrganization] = useState(false);
+  const organizationScope = pluginInstallScope(selection.organization, canShare, forOrganization);
   const [preview, setPreview] = useState<PluginPreview | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
   const [pending, setPending] = useState<string | null>(null);
@@ -191,11 +207,13 @@ export function PluginDetail({
   }, []);
 
   // A pasted URL can differ from the normalized source the install is saved under.
-  const install = installs.find(
-    (row) =>
-      row.kind === "plugin" &&
-      (row.source === selection.installedSource || row.source === preview?.installedSource),
+  const install = selectPluginInstall(
+    installs,
+    [selection.installedSource, preview?.installedSource],
+    selection.installId,
+    organizationScope,
   );
+  const readOnly = pluginInstallIsReadOnly(install, organizationScope, canShare);
   const parts = install ? installedPluginParts(install.config) : [];
   const servers =
     install && parts.includes("connector")
@@ -252,6 +270,7 @@ export function PluginDetail({
             name: preview.name,
             source: preview.pinnedSource ?? selection.source,
             pluginDigest: preview.digest,
+            ...(organizationScope ? { organization: true } : {}),
             config: {},
             pluginParts: next,
           });
@@ -298,7 +317,10 @@ export function PluginDetail({
     setRecipe({ name, content: null });
     try {
       const entry = (await rpc.agentSkills.list()).find(
-        (row) => row.source === "plugin" && row.name.toLowerCase() === name.toLowerCase(),
+        (row) =>
+          row.source === "plugin" &&
+          row.installId === install?.id &&
+          row.name.toLowerCase() === name.toLowerCase(),
       );
       if (!entry) throw new Error(t`Could not load skill`);
       const skill = await rpc.agentSkills.get({ skillId: entry.id });
@@ -330,10 +352,12 @@ export function PluginDetail({
   const headerOn = parts.includes(headerPart);
   const skillsOn = parts.includes("skills");
   const busy = Boolean(pending);
-  const everywhere = reachesOtherSpaces(install?.availability, spaceCount);
+  const everywhere =
+    Boolean(install?.organization) || reachesOtherSpaces(install?.availability, spaceCount);
   const ready = Boolean(detail) && (Boolean(install) || Boolean(preview));
 
   function headerAction() {
+    if (readOnly) return null;
     if (managed)
       return managed.connected ? (
         <Button variant="secondary" disabled={busy} onClick={managed.onManage}>
@@ -446,7 +470,25 @@ export function PluginDetail({
         </p>
       ) : null}
 
-      {install ? (
+      {!managed && canShare && !selection.installId ? (
+        <Field orientation="horizontal">
+          <Checkbox
+            id={organizationScopeId}
+            checked={forOrganization}
+            onCheckedChange={setForOrganization}
+            disabled={busy}
+          />
+          <FieldLabel htmlFor={organizationScopeId}>
+            <Trans>Install for organization</Trans>
+          </FieldLabel>
+        </Field>
+      ) : null}
+      {install?.organization && selection.installId ? (
+        <p className="text-body-sm text-muted-foreground">
+          <Trans>Organization</Trans>
+        </p>
+      ) : null}
+      {install && !install.organization ? (
         <AvailabilityControl
           kind="install"
           id={install.id}
@@ -511,7 +553,9 @@ export function PluginDetail({
                   </span>
                   {mcpServerConnection(server) === "connected" ? (
                     <Check role="img" aria-label={t`Connected`} className="size-4 text-success" />
-                  ) : noAuth.has(server.id) || !mcpServerNeedsSignIn(server) ? null : (
+                  ) : server.manageable === false ||
+                    noAuth.has(server.id) ||
+                    !mcpServerNeedsSignIn(server) ? null : (
                     <Button
                       size="sm"
                       variant="secondary"
@@ -527,7 +571,7 @@ export function PluginDetail({
                       )}
                     </Button>
                   )}
-                  {activeBotId ? (
+                  {activeBotId && !server.organization ? (
                     assigned.has(server.id) ? (
                       <span className="text-body-sm text-muted-foreground">
                         <Trans>In this bot</Trans>
@@ -569,7 +613,7 @@ export function PluginDetail({
               <Trans>Skills</Trans>
               <span className="text-muted-foreground">{skills.length}</span>
             </h3>
-            {skillPack ? null : (
+            {skillPack || readOnly ? null : (
               <Button
                 variant="secondary"
                 size="sm"

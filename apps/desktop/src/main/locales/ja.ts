@@ -101,6 +101,7 @@ export const JA_MESSAGES: Record<string, string> = {
   "Almost ready…": "まもなく完了…",
   "RunTars is ready.": "RunTarsの準備ができました。",
   "{size} downloaded": "{size}ダウンロード済み",
+  "{done} of {total}": "{done} / {total}",
   "Connecting…": "接続しています…",
   "Checking…": "確認しています…",
   "RunTars answered at {url}.": "RunTarsが{url}で応答しました。",
