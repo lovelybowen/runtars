@@ -1,4 +1,4 @@
-appId: com.rakazo.app
+appId: "${maestro.platform === 'android' ? 'com.runtars.app' : 'com.rakazo.app'}"
 name: Android native features
 tags:
   - android
