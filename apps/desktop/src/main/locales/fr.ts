@@ -102,6 +102,7 @@ export const FR_MESSAGES: Record<string, string> = {
   "Almost ready…": "Presque prêt…",
   "RunTars is ready.": "RunTars est prêt.",
   "{size} downloaded": "{size} téléchargés",
+  "{done} of {total}": "{done} sur {total}",
   "Connecting…": "Connexion…",
   "Checking…": "Vérification…",
   "RunTars answered at {url}.": "RunTars a répondu à {url}.",

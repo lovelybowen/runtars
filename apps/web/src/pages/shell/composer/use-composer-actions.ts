@@ -20,6 +20,7 @@ import type { ComposerMention } from "@rakazo/core";
 import {
   applyThreadSendReceipt,
   attachmentsForThread,
+  canRetryRun,
   foldPeerReplies,
   inferAttachmentMimeType,
   isImageInputConfirmation,
@@ -45,6 +46,7 @@ import {
 import { canPrepareImage, prepareImage } from "../../../lib/composer/prepare-image";
 import type { PageSession } from "../../../lib/pages/pages";
 import { requestBrowserNotificationPermission } from "../../../lib/platform/browser-notifications";
+import { useSave, useSpaceQueries } from "../../../lib/query/query";
 import type { createSpaceRpc } from "../../../lib/query/rpc";
 import { clearActiveThreadRuns, threadRunError } from "../../../lib/query/thread-events";
 import { errorText } from "../../../lib/query/user-error";
@@ -52,6 +54,10 @@ import type { PendingAttachment } from "../chat/chat-shared";
 import type { useShellNavigation } from "../use-shell-navigation";
 
 type ThreadRefresh = RefObject<(id: string) => Promise<ThreadSnapshot>>;
+
+type RetryTarget = ({ botId: string; groupId?: never } | { groupId: string; botId?: never }) & {
+  runId: string;
+};
 
 /**
  * What the composer sends and the chat actions beside it: attachments, replies, send, stop,
@@ -109,6 +115,13 @@ export function useComposerActions({
   const [sending, setSending] = useState(false);
   const [pendingSends, setPendingSends] = useState<PendingSend[]>([]);
   const activeThreadKey = inGroup ? groupId : activeId;
+  // Reselecting the same chat starts a new selection.
+  const chatSelection = useRef({ threadKey: activeThreadKey, inGroup });
+  if (
+    chatSelection.current.threadKey !== activeThreadKey ||
+    chatSelection.current.inGroup !== inGroup
+  )
+    chatSelection.current = { threadKey: activeThreadKey, inGroup };
   const activeMessages = activeSnapshot?.messages;
   // A send stays shown until the chat holds its stored message, whichever update brings it;
   // a seq that lands after its message arrived is checked against the messages already here.
@@ -180,6 +193,32 @@ export function useComposerActions({
   const runError = threadRunError(activeSnapshot, dismissedRunErrorIds);
   const displayedRunError = !sendError ? runError : null;
   const displayedRunErrorId = displayedRunError ? (activeSnapshot?.run?.id ?? null) : null;
+  const runRetryable =
+    Boolean(displayedRunErrorId) && canRetryRun(activeSnapshot?.run, bootstrapMe?.userId);
+  const displayedRunErrorIdRef = useRef(displayedRunErrorId);
+  displayedRunErrorIdRef.current = displayedRunErrorId;
+  const isActiveTarget = (target: RetryTarget) =>
+    target.groupId !== undefined
+      ? activeGroupId.current === target.groupId
+      : activeBotId.current === target.botId;
+  const queries = useSpaceQueries();
+  const retrySave = useSave({
+    save: (target: RetryTarget, client) => client.threads.retry(target),
+    stale: (target) => [
+      queries.threads.get.queryKey({
+        input: target.groupId !== undefined ? { groupId: target.groupId } : { botId: target.botId },
+      }),
+    ],
+    onSaved: (_, target) => {
+      // Hide the old failure while the live retry signal refreshes the thread.
+      setDismissedRunErrorIds((current) => new Set(current).add(target.runId));
+    },
+    onFailed: (error, target) => {
+      if (isActiveTarget(target) && displayedRunErrorIdRef.current === target.runId) {
+        setSendError(errorText(error, t`Could not try again`));
+      }
+    },
+  });
   const handleRunErrorPresented = useCallback((runId: string) => {
     rememberSeenRunErrorId(runId);
   }, []);
@@ -372,6 +411,8 @@ export function useComposerActions({
       const initialBotTarget = activeBotId.current;
       const initialGroupTarget = activeGroupId.current;
       if ((!initialBotTarget && !initialGroupTarget) || sending) return false;
+      const selectionAtSend = chatSelection.current;
+      const originStillOpen = () => chatSelection.current === selectionAtSend;
       const editsAtSend = draftEdits.current;
       // The reply this send carries, read from the ref so a callback that outlived
       // a re-pick of the same message still carries the armed one; a reply picked
@@ -465,7 +506,7 @@ export function useComposerActions({
           );
           setAttachmentNotice(null);
           if (reroutedToGroup && groupTarget) {
-            navigate(`/app/g/${groupTarget}`);
+            if (originStillOpen()) navigate(`/app/g/${groupTarget}`);
             return true;
           }
           // The routine is saved; live events reconcile a failed refresh.
@@ -563,7 +604,7 @@ export function useComposerActions({
         // Refresh sidebar status even when a bot→group reroute navigates away below.
         void refreshBots().catch(() => undefined);
         if (reroutedToGroup && groupTarget) {
-          navigate(`/app/g/${groupTarget}`);
+          if (originStillOpen()) navigate(`/app/g/${groupTarget}`);
           return true;
         }
         if (groupTarget && activeGroupId.current === groupTarget) setAttachmentNotice(null);
@@ -580,12 +621,7 @@ export function useComposerActions({
           message: errorText(error, t`Failed to send message`),
           imageConfirmation: confirmation,
         };
-        if (
-          reroutedToGroup &&
-          groupTarget &&
-          activeBotId.current === initialBotTarget &&
-          activeGroupId.current === initialGroupTarget
-        ) {
+        if (reroutedToGroup && originStillOpen()) {
           setSendFailure(failure);
         } else if (groupTarget && activeGroupId.current === groupTarget) {
           setSendFailure(failure);
@@ -676,6 +712,15 @@ export function useComposerActions({
     }
   }
 
+  function retryRun() {
+    const runId = displayedRunErrorId;
+    const botId = activeBotId.current;
+    const groupId = activeGroupId.current;
+    if (!runId || sendingRef.current) return;
+    if (groupId) retrySave.run({ groupId, runId });
+    else if (botId) retrySave.run({ botId, runId });
+  }
+
   return {
     activePendingAttachments,
     attachmentNotice,
@@ -709,6 +754,7 @@ export function useComposerActions({
     displayedRunErrorId,
     handleRunErrorPresented,
     dismissComposerError,
+    retryRun: runRetryable && !retrySave.pending && !sending ? retryRun : undefined,
     startFocusPrompt,
   };
 }

@@ -100,6 +100,7 @@ export const TR_MESSAGES: Record<string, string> = {
   "Almost ready…": "Neredeyse hazır…",
   "RunTars is ready.": "RunTars hazır.",
   "{size} downloaded": "{size} indirildi",
+  "{done} of {total}": "{total} içinden {done}",
   "Connecting…": "Bağlanıyor…",
   "Checking…": "Denetleniyor…",
   "RunTars answered at {url}.": "RunTars {url} adresinde yanıt verdi.",

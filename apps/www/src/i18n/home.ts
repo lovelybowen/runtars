@@ -52,6 +52,7 @@ export type HomeCopy = {
     setupWithAgent: string;
     copiedForAgent: string;
     copyFailed: string;
+    usedBy: string;
   };
   selfHost: {
     heading: string;
@@ -974,6 +975,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "Skonfiguruj ze swoim agentem",
       copiedForAgent: "Skopiowano dla agenta",
       copyFailed: "Nie udało się skopiować. Spróbuj ponownie.",
+      usedBy: "Dołącz do ponad 13 000 profesjonalistów, w tym osób z:",
     },
     selfHost: {
       heading: "Na własnym serwerze",
@@ -1157,6 +1159,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "Set up with your agent",
       copiedForAgent: "Copied for your agent",
       copyFailed: "Copy failed. Try again.",
+      usedBy: "Join 13,000+ professionals, including people at:",
     },
     selfHost: {
       heading: "Self-hosted",
@@ -1335,6 +1338,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "Mit deinem Agenten einrichten",
       copiedForAgent: "Für deinen Agenten kopiert",
       copyFailed: "Kopieren fehlgeschlagen. Erneut versuchen.",
+      usedBy: "Schließ dich über 13.000 Profis an, darunter Leute von:",
     },
     selfHost: {
       heading: "Self-hosted",
@@ -1522,6 +1526,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "에이전트로 설정하기",
       copiedForAgent: "에이전트용으로 복사됨",
       copyFailed: "복사 실패. 다시 시도하세요.",
+      usedBy: "13,000명 이상의 전문가와 함께하세요. 다음 회사의 사람들도 사용합니다:",
     },
     selfHost: {
       heading: "셀프 호스트",
@@ -1692,6 +1697,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "用你的智能体安装",
       copiedForAgent: "已为你的智能体复制",
       copyFailed: "复制失败。请重试。",
+      usedBy: "加入 13,000+ 位专业人士，其中包括来自以下公司的人：",
     },
     selfHost: {
       heading: "自托管",
@@ -1854,6 +1860,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "エージェントでセットアップ",
       copiedForAgent: "エージェント用にコピーしました",
       copyFailed: "コピーできませんでした。もう一度お試しください。",
+      usedBy: "13,000人以上のプロフェッショナルが利用中。利用者の所属先:",
     },
     selfHost: {
       heading: "セルフホスト",
@@ -2028,6 +2035,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "Configurar con tu agente",
       copiedForAgent: "Copiado para tu agente",
       copyFailed: "No se pudo copiar. Inténtalo de nuevo.",
+      usedBy: "Únete a más de 13.000 profesionales, incluidas personas de:",
     },
     selfHost: {
       heading: "Autoalojado",
@@ -2210,6 +2218,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "Configurer avec votre agent",
       copiedForAgent: "Copié pour votre agent",
       copyFailed: "Échec de la copie. Réessayez.",
+      usedBy: "Rejoignez plus de 13 000 professionnels, dont des personnes de :",
     },
     selfHost: {
       heading: "Auto-hébergé",
@@ -2398,6 +2407,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "Configurar com seu agente",
       copiedForAgent: "Copiado para seu agente",
       copyFailed: "Falha ao copiar. Tente novamente.",
+      usedBy: "Junte-se a mais de 13.000 profissionais, incluindo pessoas da:",
     },
     selfHost: {
       heading: "Auto-hospedado",
@@ -2583,6 +2593,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "Instellen met je agent",
       copiedForAgent: "Gekopieerd voor je agent",
       copyFailed: "Kopiëren mislukt. Probeer het opnieuw.",
+      usedBy: "Sluit je aan bij meer dan 13.000 professionals, onder wie mensen van:",
     },
     selfHost: {
       heading: "Zelf gehost",
@@ -2765,6 +2776,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "Настроить с помощью агента",
       copiedForAgent: "Скопировано для агента",
       copyFailed: "Не удалось скопировать. Попробуйте ещё раз.",
+      usedBy: "Присоединяйтесь к более чем 13 000 профессионалов, включая сотрудников:",
     },
     selfHost: {
       heading: "На своём сервере",
@@ -2947,6 +2959,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "Ajanınızla kurun",
       copiedForAgent: "Ajanınız için kopyalandı",
       copyFailed: "Kopyalanamadı. Tekrar deneyin.",
+      usedBy:
+        "Aralarında şu şirketlerden kişilerin de olduğu 13.000'den fazla profesyonele katılın:",
     },
     selfHost: {
       heading: "Kendi sunucunuzda",
@@ -3128,6 +3142,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "הגדרה עם הסוכן שלך",
       copiedForAgent: "הועתק עבור הסוכן שלך",
       copyFailed: "ההעתקה נכשלה. אפשר לנסות שוב.",
+      usedBy: "הצטרפו ליותר מ-13,000 אנשי מקצוע, כולל אנשים מ:",
     },
     selfHost: {
       heading: "באירוח עצמי",
@@ -3303,6 +3318,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "अपने एजेंट से सेट अप करें",
       copiedForAgent: "आपके एजेंट के लिए कॉपी किया गया",
       copyFailed: "कॉपी नहीं हो सका। फिर से कोशिश करें।",
+      usedBy: "13,000+ पेशेवरों से जुड़ें, जिनमें इन कंपनियों के लोग भी हैं:",
     },
     selfHost: {
       heading: "सेल्फ़-होस्टेड",
@@ -3484,6 +3500,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       setupWithAgent: "用你的代理程式設定",
       copiedForAgent: "已為你的代理程式複製",
       copyFailed: "複製失敗，請重試。",
+      usedBy: "加入 13,000+ 位專業人士，其中包括來自以下公司的人：",
     },
     selfHost: {
       heading: "自行託管",

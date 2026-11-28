@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
 import { useTimeout } from "@rakazo/chat-ui/hooks";
 import { PageIcon } from "@rakazo/chat-ui/web";
-import type { PageSectionAnchor } from "@rakazo/contracts";
+import type { PageSectionAnchor, PageState } from "@rakazo/contracts";
 import { PAGE_TITLE_MAX_LENGTH } from "@rakazo/contracts";
 import { cn, Dialog, DialogClose, DialogContent, DialogTitle } from "@rakazo/ui-web";
 import { Pencil, X } from "lucide-react";
@@ -30,11 +30,13 @@ export function PageView({
   title,
   document,
   onRename,
-  renameError = null,
+  titleError = null,
   share,
   composer,
   onReply,
+  onAsk,
   onSections,
+  onSaveState,
   returnFocus,
   compact = false,
   notice = null,
@@ -45,12 +47,15 @@ export function PageView({
   document: string | null;
   /** Absent while a rename is being saved. */
   onRename?: (title: string) => void;
-  renameError?: string | null;
+  titleError?: string | null;
   share: ReactNode;
   composer?: ReactNode;
   /** Takes a page's reply text into the docked composer. */
   onReply?: (text: unknown) => void;
+  /** Sends a page's question to its bot and resolves with the answer. */
+  onAsk?: (text: string) => Promise<string | null>;
   onSections?: (sections: PageSectionAnchor[]) => void;
+  onSaveState?: (values: PageState) => void;
   /** Puts focus back on close; false tells the dialog it is done. */
   returnFocus?: () => boolean;
   /** Touch screens get larger round controls. */
@@ -162,9 +167,9 @@ export function PageView({
               ) : (
                 <DialogTitle className="sr-only">{t`Page`}</DialogTitle>
               )}
-              {renameError ? (
+              {titleError ? (
                 <p role="alert" className="text-label text-destructive">
-                  {renameError}
+                  {titleError}
                 </p>
               ) : null}
             </div>
@@ -199,7 +204,9 @@ export function PageView({
                       title={title}
                       interactive
                       onReply={onReply}
+                      onAsk={onAsk}
                       onSections={onSections}
+                      onSaveState={onSaveState}
                       onHeight={onDrawn}
                     />
                   </div>

@@ -16,6 +16,8 @@ const detail = (id: string, title: string): PageDetail => ({
   updatedAt: "2026-10-30T00:00:00.000Z",
   version: 1,
   code: "",
+  images: {},
+  abilities: [],
   owner: { name: "Elie", image: null },
   shareUrl: null,
 });

@@ -102,6 +102,7 @@ export const RU_MESSAGES: Record<string, string> = {
   "Almost ready…": "Почти готово…",
   "RunTars is ready.": "RunTars готов.",
   "{size} downloaded": "Загружено {size}",
+  "{done} of {total}": "{done} из {total}",
   "Connecting…": "Подключение…",
   "Checking…": "Проверка…",
   "RunTars answered at {url}.": "RunTars ответил по адресу {url}.",
