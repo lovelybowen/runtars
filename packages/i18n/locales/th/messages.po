@@ -514,6 +514,14 @@ msgstr "ตัวเลือกของ {name}"
 msgid "{name} stopped"
 msgstr "{name} หยุดแล้ว"
 
+#: apps/mobile/app/(settings)/billing.tsx
+msgid "{name}, {price} / month"
+msgstr ""
+
+#: apps/mobile/app/(settings)/billing.tsx
+msgid "{name}, {price} / year"
+msgstr ""
+
 #: apps/mobile/lib/routines/routine.ts
 msgid "{name}, Off"
 msgstr "{name}, ปิด"
@@ -3130,6 +3138,7 @@ msgstr "ยืนยันการนำออก"
 #: apps/web/src/components/models/ProviderSettingsForm.tsx
 #: apps/web/src/pages/model-settings/role-model-picker.tsx
 #: apps/web/src/pages/plugins/connector-detail.tsx
+#: apps/web/src/pages/settings/MemorySettingsOverlay.tsx
 #: apps/web/src/pages/settings/MessagingSettingsPanel.tsx
 #: apps/web/src/pages/settings/PaymentWalletSettingsPanel.tsx
 #: apps/web/src/pages/settings/VoiceSettingsOverlay.tsx
@@ -3213,10 +3222,6 @@ msgstr "เชื่อมต่อเซิร์ฟเวอร์ MCP “{nam
 #: apps/mobile/components/cards/McpApprovalCard.tsx
 msgid "Connect MCP server {name}"
 msgstr "เชื่อมต่อเซิร์ฟเวอร์ MCP {name}"
-
-#: apps/web/src/pages/settings/MemorySettingsOverlay.tsx
-msgid "Connect memory provider"
-msgstr "เชื่อมต่อผู้ให้บริการความจำ"
 
 #: apps/web/src/components/billing/CreditChoice.tsx
 msgid "Connect my own"
@@ -6862,6 +6867,10 @@ msgstr "เปิดไม่สำเร็จ ลองอีกครั้�
 msgid "It may have been deleted, or it belongs to someone else."
 msgstr "อาจถูกลบไปแล้ว หรือเป็นของผู้อื่น"
 
+#: apps/web/src/components/vault/VaultSettings.tsx
+msgid "Items"
+msgstr ""
+
 #: apps/mobile/lib/inbox/sections/confirm-delete-section.ts
 #: apps/web/src/pages/shell/shell-dialogs.tsx
 msgid "Its bots and groups are kept and leave the section."
@@ -7531,6 +7540,10 @@ msgstr "ความจำ {position}"
 msgid "Memory for {title}"
 msgstr "ความจำของ {title}"
 
+#: apps/web/src/pages/settings/MemorySettingsOverlay.tsx
+msgid "Memory provider"
+msgstr ""
+
 #: apps/web/src/pages/shell/composer/composer-parts.tsx
 msgid "Mentions"
 msgstr "เมนชัน"
@@ -7758,6 +7771,7 @@ msgid "month"
 msgstr "เดือน"
 
 #: apps/mobile/app/(settings)/account.tsx
+#: apps/mobile/app/(settings)/billing.tsx
 #: apps/mobile/app/(settings)/spending-limit.tsx
 #: apps/mobile/app/paywall.tsx
 #: apps/web/src/components/billing/PlanControls.tsx
@@ -8749,10 +8763,13 @@ msgstr "เปิดการนำทาง"
 msgid "Open photo {0} of {1}"
 msgstr "เปิดรูปภาพที่ {0} จาก {1}"
 
+#: apps/web/src/pages/auth/Redeem.tsx
+msgid "Open Rakazo"
+msgstr ""
+
 #: apps/web/src/components/pages/PublicPageShell.tsx
 #: apps/web/src/pages/auth/Invite.tsx
 #: apps/web/src/pages/auth/JoinOrganization.tsx
-#: apps/web/src/pages/auth/Redeem.tsx
 #: apps/web/src/pages/SharedPage.tsx
 msgid "Open RunTars"
 msgstr "เปิด RunTars"
@@ -9197,7 +9214,7 @@ msgid "Plain HTTP does not pair this computer. Use HTTPS, or a loopback server."
 msgstr "HTTP ปกติจับคู่คอมพิวเตอร์นี้ไม่ได้ ใช้ HTTPS หรือเซิร์ฟเวอร์ลูปแบ็ก"
 
 #: apps/mobile/app/(settings)/billing.tsx
-#: apps/web/src/components/billing/ModelCredits.tsx
+#: apps/web/src/components/billing/PlanControls.tsx
 msgid "Plan"
 msgstr "แผน"
 
@@ -9952,6 +9969,10 @@ msgstr "เปลี่ยนชื่อ"
 msgid "Rename section"
 msgstr "เปลี่ยนชื่อส่วน"
 
+#: apps/web/src/components/billing/ModelCredits.tsx
+msgid "Renew for {price}"
+msgstr ""
+
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/mobile/lib/cards/run-error-presentation.ts
 #: apps/web/src/components/billing/ModelCredits.tsx
@@ -10359,6 +10380,7 @@ msgstr "แถวที่ {line}"
 
 #: apps/mobile/app/(settings)/_layout.tsx
 #: apps/mobile/components/settings/approval-settings-rows.tsx
+#: apps/web/src/components/settings/ApprovalRulesSettings.tsx
 msgid "Rules"
 msgstr "กฎ"
 
@@ -13553,6 +13575,7 @@ msgstr "เขียนว่ารูทีนนี้ควรทำอะไ
 msgid "year"
 msgstr "ปี"
 
+#: apps/mobile/app/(settings)/billing.tsx
 #: apps/web/src/components/billing/PlanControls.tsx
 msgid "Yearly"
 msgstr "รายปี"
@@ -13702,6 +13725,10 @@ msgstr "OpenRouter ของคุณ"
 msgid "Your other spaces stay private"
 msgstr "สเปซอื่น ๆ ยังคงเป็นส่วนตัว"
 
+#: apps/web/src/components/billing/CreditChoice.tsx
+msgid "Your own AI"
+msgstr ""
+
 #: apps/web/src/components/billing/ModelCredits.tsx
 msgid "Your plan becomes {annualPrice} / year when your trial ends."
 msgstr "เมื่อช่วงทดลองใช้สิ้นสุด แพ็กเกจจะเป็น {annualPrice} / ปี"
@@ -13743,7 +13770,6 @@ msgstr "สกิลของคุณ"
 
 #: apps/mobile/app/(settings)/billing.tsx
 #: apps/mobile/app/paywall.tsx
-#: apps/web/src/components/billing/CreditChoice.tsx
 #: apps/web/src/components/billing/ModelCredits.tsx
 msgid "Your subscription or API key"
 msgstr "การสมัครใช้งานหรือ API key ของคุณ"
