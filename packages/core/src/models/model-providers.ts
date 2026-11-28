@@ -519,7 +519,7 @@ function modelRelease(choice: ChatModelChoice): ModelRelease {
   const version: number[] = [];
   const date: number[] = [];
   let tagged = false;
-  const parts = name.match(/\d+(?:\.\d+)?[a-z][a-z\d]*|[a-z]+|\d+/g) ?? [];
+  const parts = name.match(/\d+(?:(?:\.\d+)?[a-z][a-z\d]*)?|[a-z]+/g) ?? [];
   let wordAfterVersion = false;
   for (const [index, part] of parts.entries()) {
     if (!/^\d+$/.test(part)) {
